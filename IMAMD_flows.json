@@ -7,8 +7,8 @@
       "base_language": "base", 
       "action_sets": [
         {
-          "y": 2924, 
-          "x": 28, 
+          "y": 3164, 
+          "x": 41, 
           "destination": "4973d98d-5fc1-4c15-b782-38c1b455194e", 
           "uuid": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
           "actions": [
@@ -21,36 +21,22 @@
           ]
         }, 
         {
-          "y": 2232, 
-          "x": 41, 
-          "destination": "18cf1eae-9065-45f1-9892-19f48d496997", 
-          "uuid": "8c68b899-6e68-4b58-b23b-113eaf4c848b", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter your position code. \nState Nutrition Officer=SC \nState M&E Officer=SD \nState Stores Manager=SW\nTechnical Assistance=TA\nObserver=OB\n"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 2685, 
-          "x": 38, 
+          "y": 2577, 
+          "x": 30, 
           "destination": "5750b383-0497-4431-8f7a-d4fbee38f61d", 
           "uuid": "af49993c-c65b-4230-8a71-a32c60394876", 
           "actions": [
             {
               "msg": {
-                "base": "Position code:\nIn charge=HC\nDoctor=MD\nLab Tech/Pharm=LW\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB\n"
+                "base": "Position code:\nIn charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 3358, 
-          "x": 337, 
+          "y": 3649, 
+          "x": 300, 
           "destination": null, 
           "uuid": "f00df51a-6e66-4aed-bd81-891a532c3e33", 
           "actions": [
@@ -59,102 +45,50 @@
                 "base": "Thank you @contact. You have completed the registration. Please consider getting an email address to receive regular reports."
               }, 
               "type": "reply"
+            }, 
+            {
+              "type": "del_group", 
+              "groups": [
+                {
+                  "name": "No_SiteID", 
+                  "id": 17560
+                }
+              ]
+            }, 
+            {
+              "type": "del_group", 
+              "groups": [
+                {
+                  "name": "No_Post", 
+                  "id": 17567
+                }
+              ]
             }
           ]
         }, 
         {
-          "y": 711, 
-          "x": 1051, 
+          "y": 817, 
+          "x": 879, 
           "destination": "4d731e77-cbff-4cf3-884a-80a29df79d1b", 
           "uuid": "996b450f-ee41-41db-9077-24af0788c512", 
           "actions": [
             {
               "msg": {
-                "base": "I am sorry, I did not understand.  Please respond in an SMS with one of the following keywords: REGISTER, PROGRAM, STOCK, OUT, DESPATCH, VALIDATE, SCREEN, HELP"
+                "base": "I am sorry, I did not understand.  Please respond in an SMS with one of the following keywords: REGISTER, PROGRAM, STOCK or SCREENING"
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 1313, 
-          "x": 23, 
+          "y": 1287, 
+          "x": 37, 
           "destination": "b9a45e87-bc71-42fe-9908-0f276c294b81", 
           "uuid": "b4d8a91b-c512-4749-b4be-1a25e811462b", 
           "actions": [
             {
               "msg": {
-                "base": "Please send your SiteID.  This is the ID recorded on your job-aid during training or is available from your supervision team.  "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1025, 
-          "x": 151, 
-          "destination": "6c931c52-5ab9-4472-8a58-9e17488036e9", 
-          "uuid": "06da8ceb-9046-4ee6-9abd-b07b48dd6a20", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter your name (first middle last name) "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1922, 
-          "x": 31, 
-          "destination": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
-          "uuid": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter your position code.  \nNational Coordinator=NC\nNational Database Manager=ND\nNational Stocks Manager=NW\nTechnical Assistance=TA\nObserver=OB\n"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 2507, 
-          "x": 40, 
-          "destination": "ef5c5e91-9603-4630-ae3c-83c5a43bf02f", 
-          "uuid": "d7fa3df6-b44d-4722-8ce0-deca40713333", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter your position code\nLGA Nutrition Focal Person=LC\nLGA M&E Officer=LD\nLGA Stores Manager=LW\nTechnical Assistance=TA\nObserver=OB\n"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1349, 
-          "x": 830, 
-          "destination": null, 
-          "uuid": "b0475d14-886b-4b45-86f7-9da7dbe69b5d", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please contact your supervision team for more help with the use of the SAM Reports tool. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 399, 
-          "x": 29, 
-          "destination": "6c931c52-5ab9-4472-8a58-9e17488036e9", 
-          "uuid": "1e415e8f-9939-4425-ba23-1cb305ec2e25", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please complete the following registration with SAM Reports before using the tool. Please enter your name (first, middle last name)"
+                "base": "Please send your SiteID.  This is the ID recorded on your job-aid during training and is available from your supervisor."
               }, 
               "type": "reply"
             }, 
@@ -166,6 +100,34 @@
                   "id": 1289
                 }
               ]
+            }
+          ]
+        }, 
+        {
+          "y": 1922, 
+          "x": 31, 
+          "destination": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
+          "uuid": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter your position code.  \nCoordinator=C\nDatabase Manager=D\nStocks Manager=S\nTechnical Assistance=TA\nObserver=OB"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 651, 
+          "x": 28, 
+          "destination": "6c931c52-5ab9-4472-8a58-9e17488036e9", 
+          "uuid": "1e415e8f-9939-4425-ba23-1cb305ec2e25", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please complete the following registration with SAM Reports. Please enter your name (first, middle last name)"
+              }, 
+              "type": "reply"
             }, 
             {
               "type": "add_group", 
@@ -175,12 +137,36 @@
                   "id": 1790
                 }
               ]
+            }, 
+            {
+              "type": "add_group", 
+              "groups": [
+                {
+                  "name": "No_SiteID", 
+                  "id": 17560
+                }
+              ]
+            }, 
+            {
+              "type": "add_group", 
+              "groups": [
+                {
+                  "name": "No_Post", 
+                  "id": 17567
+                }
+              ]
+            }, 
+            {
+              "field": "registration_date", 
+              "type": "save", 
+              "value": "Registration Date", 
+              "label": "Registration Date"
             }
           ]
         }, 
         {
-          "y": 397, 
-          "x": 355, 
+          "y": 174, 
+          "x": 301, 
           "destination": "4d731e77-cbff-4cf3-884a-80a29df79d1b", 
           "uuid": "068a0bac-9991-495c-a72d-6def45ee4428", 
           "actions": [
@@ -193,21 +179,21 @@
           ]
         }, 
         {
-          "y": 3148, 
-          "x": 352, 
+          "y": 3374, 
+          "x": 351, 
           "destination": "4973d98d-5fc1-4c15-b782-38c1b455194e", 
           "uuid": "c8ba5e87-4a60-46e3-ba54-12c154fa9fa5", 
           "actions": [
             {
               "msg": {
-                "base": "Sorrry, I did not understand @flow.email  Please check carefully and enter your email again."
+                "base": "Sorrry, I did not understand @flow.emailaddress.  Please check carefully and enter your email again."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 3452, 
+          "y": 3650, 
           "x": 27, 
           "destination": null, 
           "uuid": "a2fb38e9-38d3-467b-98c1-d78cb47098e6", 
@@ -226,6 +212,104 @@
                   "id": 1790
                 }
               ]
+            }, 
+            {
+              "type": "del_group", 
+              "groups": [
+                {
+                  "name": "No_SiteID", 
+                  "id": 17560
+                }
+              ]
+            }, 
+            {
+              "type": "del_group", 
+              "groups": [
+                {
+                  "name": "No_Post", 
+                  "id": 17567
+                }
+              ]
+            }
+          ]
+        }, 
+        {
+          "y": 500, 
+          "x": 879, 
+          "destination": null, 
+          "uuid": "b1bfd09b-dce7-446d-878f-1ab20024349e", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "SAM Program", 
+              "id": 2697
+            }
+          ]
+        }, 
+        {
+          "y": 573, 
+          "x": 876, 
+          "destination": null, 
+          "uuid": "bce0826f-56d6-49f0-adcc-a9b10efda342", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "SAM Stock Report", 
+              "id": 44
+            }
+          ]
+        }, 
+        {
+          "y": 651, 
+          "x": 878, 
+          "destination": null, 
+          "uuid": "b0a8314f-3c1d-4c16-a9d5-68e537cc0da0", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "SAM Screening", 
+              "id": 24746
+            }
+          ]
+        }, 
+        {
+          "y": 733, 
+          "x": 878, 
+          "destination": null, 
+          "uuid": "766b38ed-b0a4-40c7-813d-0967ecebed16", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "SAM Language", 
+              "id": 24749
+            }
+          ]
+        }, 
+        {
+          "y": 1526, 
+          "x": 801, 
+          "destination": "b9a45e87-bc71-42fe-9908-0f276c294b81", 
+          "uuid": "3d2eb8bf-c11b-4a5d-a56a-a0d250d0f9bc", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.siteid.  Please verify the ID with your supervisor and resend."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2024, 
+          "x": 803, 
+          "destination": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
+          "uuid": "fa88cb8a-33ed-4de2-926e-b3c356f2a140", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.post. Please respond with:\nCoordinator=C\nDatabase Manager=D\nStocks Manager=S\nTechnical Assistance=TA\nObserver=OB"
+              }, 
+              "type": "reply"
             }
           ]
         }
@@ -234,103 +318,6 @@
       "flow_type": "F", 
       "entry": "e197e964-d195-4ed0-a086-3c7776457ae9", 
       "rule_sets": [
-        {
-          "uuid": "18cf1eae-9065-45f1-9892-19f48d496997", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "SC"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "State Nutrition Officer"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "1274b2d3-d334-4518-8585-6a841196435d", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "SD"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "State M&E Officer"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "8a1cfa6c-4e4f-4593-b020-d91054075d84", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "SW"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "State Stores Manager"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "d71d0909-7d7a-45e5-b26c-6991ac40a4b1", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "TA"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "Technical Assistance"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "86d4cae5-e4de-427f-8141-14e673fda51a", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "OB"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "Observer"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "bfbb8e70-a3eb-430c-a635-107eaf864520", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "8c68b899-6e68-4b58-b23b-113eaf4c848b", 
-              "uuid": "3ba8a834-8b09-4560-9eb2-a21ecdf52203", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "Post", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 2235, 
-          "x": 264, 
-          "config": {}
-        }, 
         {
           "uuid": "4973d98d-5fc1-4c15-b782-38c1b455194e", 
           "webhook_action": null, 
@@ -341,7 +328,7 @@
               }, 
               "test": {
                 "test": {
-                  "base": "\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b"
+                  "base": ".+@.+"
                 }, 
                 "base": "\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b", 
                 "type": "regex"
@@ -366,12 +353,12 @@
               "destination_type": "A"
             }, 
             {
-              "category": {
-                "base": "Other"
-              }, 
               "test": {
                 "test": "true", 
                 "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
               }, 
               "destination": "c8ba5e87-4a60-46e3-ba54-12c154fa9fa5", 
               "uuid": "2d275a67-1b51-4f54-b9f2-6b580420b9e4", 
@@ -380,109 +367,12 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Email", 
+          "label": "EmailAddress", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "C", 
-          "y": 3149, 
+          "y": 3349, 
           "x": 27, 
-          "config": {}
-        }, 
-        {
-          "uuid": "ef5c5e91-9603-4630-ae3c-83c5a43bf02f", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "LC"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "LGA Nutrition Focal Person"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "a96dd538-5d86-436d-8d22-42bec35e8a58", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "LD"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "LGA M&E Officer"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "070f85f1-f717-4b4c-967b-6295738a0123", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "LW"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "LGA Stores Manager"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "05bd35f6-1ecc-4f90-a34c-4ab5aac9d878", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "TA"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "Technical Assistance"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "11748d38-7adb-496a-8877-0f07b28959dd", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "OB"
-                }, 
-                "type": "contains"
-              }, 
-              "category": {
-                "base": "Observer"
-              }, 
-              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
-              "uuid": "dada4673-7cc5-4733-8da4-ccc86ae054cb", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "d7fa3df6-b44d-4722-8ce0-deca40713333", 
-              "uuid": "4d8bb1af-87e7-48b9-b5b3-2c0fbab64714", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "Post", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 2550, 
-          "x": 251, 
           "config": {}
         }, 
         {
@@ -492,7 +382,7 @@
             {
               "test": {
                 "test": {
-                  "base": "NG"
+                  "base": "National Nat N Federal Fed N"
                 }, 
                 "type": "contains"
               }, 
@@ -512,7 +402,7 @@
               "category": {
                 "base": "State"
               }, 
-              "destination": "8c68b899-6e68-4b58-b23b-113eaf4c848b", 
+              "destination": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
               "uuid": "85304584-57a6-416f-8a87-7241e5151883", 
               "destination_type": "A"
             }, 
@@ -525,15 +415,15 @@
               "category": {
                 "base": "LGA"
               }, 
-              "destination": "d7fa3df6-b44d-4722-8ce0-deca40713333", 
+              "destination": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
               "uuid": "f0ae5092-3760-45c8-90ec-8336dc442009", 
               "destination_type": "A"
             }, 
             {
               "test": {
-                "max": "37999999", 
+                "max": "3799999", 
                 "type": "between", 
-                "min": "101001"
+                "min": "10101"
               }, 
               "category": {
                 "base": "Site"
@@ -563,7 +453,7 @@
               "category": {
                 "base": "Other"
               }, 
-              "destination": "b4d8a91b-c512-4749-b4be-1a25e811462b", 
+              "destination": "3d2eb8bf-c11b-4a5d-a56a-a0d250d0f9bc", 
               "uuid": "805de811-4863-473f-b63a-014205d12cb6", 
               "destination_type": "A"
             }
@@ -574,8 +464,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "C", 
-          "y": 1526, 
-          "x": 277, 
+          "y": 1449, 
+          "x": 276, 
           "config": {}
         }, 
         {
@@ -601,8 +491,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "O", 
-          "y": 1188, 
-          "x": 276, 
+          "y": 1077, 
+          "x": 25, 
           "config": {}
         }, 
         {
@@ -612,12 +502,12 @@
             {
               "test": {
                 "test": {
-                  "base": "NC"
+                  "base": "C"
                 }, 
                 "type": "contains"
               }, 
               "category": {
-                "base": "National Coordinator"
+                "base": "Coordinator"
               }, 
               "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
               "uuid": "39e8dfb3-14a2-4546-915b-6417e9233f2c", 
@@ -626,12 +516,12 @@
             {
               "test": {
                 "test": {
-                  "base": "ND"
+                  "base": "D"
                 }, 
                 "type": "contains"
               }, 
               "category": {
-                "base": "National Database Manager"
+                "base": "Database Manager"
               }, 
               "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
               "uuid": "949eb2a4-0980-448c-afd2-abb39695c9f1", 
@@ -640,12 +530,12 @@
             {
               "test": {
                 "test": {
-                  "base": "NS"
+                  "base": "S"
                 }, 
                 "type": "contains"
               }, 
               "category": {
-                "base": "National Stocks Manager"
+                "base": "Stocks Manager"
               }, 
               "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
               "uuid": "bda4900f-8479-4b96-8e0c-0a9684b08a05", 
@@ -687,7 +577,7 @@
               "category": {
                 "base": "Other"
               }, 
-              "destination": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
+              "destination": "fa88cb8a-33ed-4de2-926e-b3c356f2a140", 
               "uuid": "f6a2a153-80db-4559-9167-ae5b290f691a", 
               "destination_type": "A"
             }
@@ -698,7 +588,7 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "C", 
-          "y": 1927, 
+          "y": 1928, 
           "x": 252, 
           "config": {}
         }, 
@@ -716,7 +606,7 @@
               "category": {
                 "base": "Register"
               }, 
-              "destination": "06da8ceb-9046-4ee6-9abd-b07b48dd6a20", 
+              "destination": "1e415e8f-9939-4425-ba23-1cb305ec2e25", 
               "uuid": "421c9a5e-6a68-4c5c-b83d-1fc83bd82a2e", 
               "destination_type": "A"
             }, 
@@ -730,8 +620,9 @@
               "category": {
                 "base": "Program"
               }, 
-              "destination": null, 
-              "uuid": "88debbf3-f6fe-498a-a949-c52a9ac65567"
+              "destination": "b1bfd09b-dce7-446d-878f-1ab20024349e", 
+              "uuid": "88debbf3-f6fe-498a-a949-c52a9ac65567", 
+              "destination_type": "A"
             }, 
             {
               "test": {
@@ -743,8 +634,9 @@
               "category": {
                 "base": "Stock"
               }, 
-              "destination": null, 
-              "uuid": "0ead01d3-fa62-4aae-862d-6ae8632fb0a7"
+              "destination": "bce0826f-56d6-49f0-adcc-a9b10efda342", 
+              "uuid": "0ead01d3-fa62-4aae-862d-6ae8632fb0a7", 
+              "destination_type": "A"
             }, 
             {
               "test": {
@@ -756,8 +648,23 @@
               "category": {
                 "base": "Screen"
               }, 
-              "destination": null, 
-              "uuid": "b83ddfbf-d7ad-431f-9311-c5455cbe598a"
+              "destination": "b0a8314f-3c1d-4c16-a9d5-68e537cc0da0", 
+              "uuid": "b83ddfbf-d7ad-431f-9311-c5455cbe598a", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "Language Lang Lan"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Language"
+              }, 
+              "destination": "766b38ed-b0a4-40c7-813d-0967ecebed16", 
+              "uuid": "630b40fa-8273-4c0b-965f-b7c8cc978e87", 
+              "destination_type": "A"
             }, 
             {
               "test": {
@@ -769,8 +676,7 @@
               "category": {
                 "base": "X"
               }, 
-              "destination": null, 
-              "uuid": "630b40fa-8273-4c0b-965f-b7c8cc978e87"
+              "uuid": "0d607879-a964-43f2-8f9d-d73e7f2862d0"
             }, 
             {
               "test": {
@@ -791,8 +697,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "C", 
-          "y": 752, 
-          "x": 32, 
+          "y": 400, 
+          "x": 505, 
           "config": {}
         }, 
         {
@@ -830,12 +736,12 @@
             {
               "test": {
                 "test": {
-                  "base": "LW"
+                  "base": "LP"
                 }, 
                 "type": "contains"
               }, 
               "category": {
-                "base": "Lab Tech"
+                "base": "LabTech-Pharm"
               }, 
               "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
               "uuid": "0d8efdec-3b2d-48e9-b8ab-67fc6dbf50e8", 
@@ -919,9 +825,8 @@
               "category": {
                 "base": "Other"
               }, 
-              "destination": "af49993c-c65b-4230-8a71-a32c60394876", 
-              "uuid": "365a8fb7-a574-4dbf-8bad-3dba1493899b", 
-              "destination_type": "A"
+              "destination": null, 
+              "uuid": "365a8fb7-a574-4dbf-8bad-3dba1493899b"
             }
           ], 
           "webhook": null, 
@@ -930,8 +835,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "C", 
-          "y": 2813, 
-          "x": 250, 
+          "y": 2692, 
+          "x": 266, 
           "config": {}
         }, 
         {
@@ -966,7 +871,7 @@
             }
           ], 
           "webhook": null, 
-          "ruleset_type": "expression", 
+          "ruleset_type": "contact_field", 
           "label": "Registered", 
           "operand": "@contact.groups", 
           "finished_key": null, 
@@ -980,27 +885,15 @@
         "uuid": "2d3352aa-2d14-4847-b821-0d17aac8ad5d", 
         "notes": [
           {
-            "body": "...", 
-            "x": 261, 
-            "y": 1939, 
-            "title": "State Level"
+            "body": "The supervision level posts are generic and do not need to be updated for each country.", 
+            "x": 1047, 
+            "y": 1925, 
+            "title": "Supervision Level"
           }, 
           {
-            "body": "", 
-            "x": 254, 
-            "y": 1624, 
-            "title": "National Level"
-          }, 
-          {
-            "body": "...", 
-            "x": 254, 
-            "y": 2259, 
-            "title": "LGA Level "
-          }, 
-          {
-            "body": "...", 
-            "x": 250, 
-            "y": 2520, 
+            "body": "The site level posts are specific to Nigeria. These can be updated to country specific terms.", 
+            "x": 1203, 
+            "y": 2777, 
             "title": "Site Level"
           }, 
           {
@@ -1010,16 +903,10 @@
             "title": "Trigger word SAM"
           }, 
           {
-            "body": "This has to be stored as a string and not a categorical variable. Currently National (Nigeria) = NG. Best to change to NAT (national).  ", 
+            "body": "This has to be stored as a string and not a categorical variable. Currently National or Federal = NAT", 
             "x": 1039, 
             "y": 1459, 
             "title": "SiteID"
-          }, 
-          {
-            "body": "DELETE THE ARROW FOR OTHER. Here Other has to be set to exit the flow. The test for registration would be query based on phone number returns registered = yes or no data", 
-            "x": 294, 
-            "y": 132, 
-            "title": "Caution"
           }, 
           {
             "body": "People who work in warehouses enter the appropriate ID for state, district or site plus S for stocks and the number of warehouse.", 
@@ -1028,20 +915,20 @@
             "title": "Warehouses/ Stores"
           }, 
           {
-            "body": "This test does not work", 
-            "x": 580, 
-            "y": 2949.75, 
+            "body": "Permissive Regex", 
+            "x": 596, 
+            "y": 3374, 
             "title": "Check for Email"
           }, 
           {
-            "body": "IMAM Program\n\nIMAM Stock Report\n\nIMAM Stockout\n\nIMAM Screen\n\nIMAM Validate\n\nIMAM Despatch\n\nHELP\n\nBe sure to add these forwards back into tool when installing functioning tool ", 
-            "x": 1271, 
-            "y": 714, 
+            "body": "IMAM Program\n\nIMAM Stock Report\n\nIMAM Screen\n\nX is always Exit\n\nBe sure to add these forwards back into tool when installing functioning tool", 
+            "x": 1243, 
+            "y": 404, 
             "title": "Start Another Flow: "
           }, 
           {
-            "y": 395, 
-            "x": 601, 
+            "y": 147, 
+            "x": 981, 
             "body": "Welcome to SAM Reports. To REGISTER, send PROGRAM, STOCK, SCREENING data, a stock OUT,  DESPATCH, VALIDATE data or ask for HELP, please respond with a keyword.", 
             "title": "Old commands"
           }, 
@@ -1050,13 +937,19 @@
             "x": 551, 
             "body": "If @contact.groups contains SAM PERSONNEL then reporter has been registered previously", 
             "title": "Registered"
+          }, 
+          {
+            "y": 898, 
+            "x": 302, 
+            "body": "The date a contact is first seen is visible through the API:\nhttps://app.rapidpro.io/api/v2/contacts", 
+            "title": "Registration Date"
           }
         ], 
         "expires": 720, 
         "name": "SAM Register", 
-        "revision": 83, 
+        "revision": 315, 
         "id": 40, 
-        "saved_on": "2016-05-20T06:32:01.586100Z"
+        "saved_on": "2016-05-20T12:46:01.136322Z"
       }
     }, 
     {
@@ -4702,98 +4595,14 @@
       "base_language": "base", 
       "action_sets": [
         {
-          "y": 1073, 
-          "x": 51, 
-          "destination": "c282e58e-fa6a-444d-b3bc-03ab1f9021ae", 
-          "uuid": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
+          "y": 0, 
+          "x": 100, 
+          "destination": "6ae91aee-be09-42d1-b160-836581562adb", 
+          "uuid": "631464d4-50b3-4d5d-bf8c-2bfffb5c77b7", 
           "actions": [
             {
               "msg": {
-                "base": "Your stock out of @flow.stockout  has been registered. Do you want to report stock outs of other items?  Please enter Yes or No. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 699, 
-          "x": 53, 
-          "destination": "0e5e5f42-f24e-4f86-8350-0dac72add461", 
-          "uuid": "ce6b9d7e-8ec1-4e85-be3a-3202492aac62", 
-          "actions": [
-            {
-              "msg": {
-                "base": "For stock outs, please enter only one stocked out item per SMS. The stock list is:  RUTF \nF75 \nF100\nRESO \nAMOX\nAMAL\nVITA\nDEWM\nFEFO\nMUAC\nFORM\nMEAS\n"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 687, 
-          "x": 1054, 
-          "destination": "0e5e5f42-f24e-4f86-8350-0dac72add461", 
-          "uuid": "8b4e37f4-da5b-429c-8d07-6a0939e85f33", 
-          "actions": [
-            {
-              "msg": {
-                "base": "I did not understand the item @flow.stockout .  Please report one stocked out item per SMS. The stock list is:  RUTF \nF75 \nF100\nRESO \nAMOX\nAMAL\nVITA\nDEWM\nFEFO\nMUAC\nFORM\nMEAS"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1267, 
-          "x": 53, 
-          "destination": null, 
-          "uuid": "794b914f-a9a9-453a-bb39-4ece6bd2d11a", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Thank you @contact  for sending your Stock Out report. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1074, 
-          "x": 803, 
-          "destination": "c282e58e-fa6a-444d-b3bc-03ab1f9021ae", 
-          "uuid": "a6a32098-fac1-4c85-9818-018bfee73a0f", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Sorry, I did not understand your response.  Please enter Yes or No. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 276, 
-          "x": 399, 
-          "destination": "757648a9-8227-4d0c-87c0-d8aa637aafbd", 
-          "uuid": "08f474fd-0c8f-4417-86a5-9a81a192f12f", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter the SiteID for reporting Stock-Outs."
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 525, 
-          "x": 829, 
-          "destination": "757648a9-8227-4d0c-87c0-d8aa637aafbd", 
-          "uuid": "098291eb-d8b8-49b3-9be0-055cbdb8876b", 
-          "actions": [
-            {
-              "msg": {
-                "base": "I'm sorry.  I don't recognize the SiteID @flow.checksiteid . Please re-enter the SiteID or enter x to exit. "
+                "base": "Please enter number of children 6-59 months of age screened"
               }, 
               "type": "reply"
             }
@@ -4802,192 +4611,20 @@
       ], 
       "version": 8, 
       "flow_type": "F", 
-      "entry": "4d4d8a71-b35e-47b2-a47a-97a6a5f66aec", 
+      "entry": "631464d4-50b3-4d5d-bf8c-2bfffb5c77b7", 
       "rule_sets": [
         {
-          "uuid": "0e5e5f42-f24e-4f86-8350-0dac72add461", 
+          "uuid": "6ae91aee-be09-42d1-b160-836581562adb", 
           "webhook_action": null, 
           "rules": [
             {
               "test": {
-                "test": {
-                  "base": "RUTF "
-                }, 
-                "type": "contains_any"
+                "type": "number"
               }, 
               "category": {
-                "base": "RUTF"
+                "base": "numeric"
               }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "8bde3c18-fcc3-4513-95a8-57b626f7f395", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "F75"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "F75"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "0e8546bf-b3a3-46ee-906c-9bd76999ea1b", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "F100"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "F100"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "67de6985-97b3-4d59-bd85-3fc2c710c0f8", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "RESO "
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Resomal"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "4ce4fb37-be4c-4e6e-a58a-dfecab6d5a36", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "AMOX"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Amoxicillin"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "cd5eac39-8703-46dc-839a-c31754f53bbc", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "AMAL"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Antimalarials"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "ac1e892c-e7d3-4651-8f25-9368d17fe44c", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "VITA"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Vitamin A"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "017462b4-5734-4c64-8ce3-5fe84c50fc0c", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "DEWM"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Deworming"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "cd87d7fc-526e-4031-ac25-35fc3080e844", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "FEFO"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Iron Folate"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "5cef9fdb-fcdc-4c15-b763-28bf4bd585d2", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "MUAC"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "MUAC Strips"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "9e74de68-c30c-4c39-bf2f-cff7fb7f17d6", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "Form"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Reporting Forms"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "649548cd-d026-4706-9ae1-27f4109894d3", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "MEAS"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Measles vaccine"
-              }, 
-              "destination": "a9a19041-e41b-4726-8ebd-1eca3f6f51ff", 
-              "uuid": "350cb422-002b-4d09-b4e0-01961fd5d4b6", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "x"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "x"
-              }, 
-              "destination": null, 
-              "uuid": "05fd3c8e-8480-48e4-82a1-79c070b7c020"
+              "uuid": "e28e462b-73bf-4987-98f9-83ea37e120b9"
             }, 
             {
               "test": {
@@ -4997,273 +4634,26 @@
               "category": {
                 "base": "Other"
               }, 
-              "destination": "8b4e37f4-da5b-429c-8d07-6a0939e85f33", 
-              "uuid": "18248e43-c70c-4f0c-a3ad-acd365a34430", 
-              "destination_type": "A"
+              "uuid": "73a73a20-00cc-479a-82de-54d645a47b34"
             }
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "StockOut", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 949, 
-          "x": 54, 
-          "config": {}
-        }, 
-        {
-          "uuid": "c282e58e-fa6a-444d-b3bc-03ab1f9021ae", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "yes y"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Yes"
-              }, 
-              "destination": "ce6b9d7e-8ec1-4e85-be3a-3202492aac62", 
-              "uuid": "ed2a3cce-846c-42c3-b18f-afc5672f3fd0", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "no n"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "No"
-              }, 
-              "destination": "794b914f-a9a9-453a-bb39-4ece6bd2d11a", 
-              "uuid": "d9970c06-eb67-449e-82b2-fa700acc4d32", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "x"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "X"
-              }, 
-              "destination": null, 
-              "uuid": "1485cb64-4cdf-436d-a65f-1e7972c21b72"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "a6a32098-fac1-4c85-9818-018bfee73a0f", 
-              "uuid": "45d3b7b4-9858-47fc-a700-7b6414080b8b", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "END", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 1072, 
-          "x": 298, 
-          "config": {}
-        }, 
-        {
-          "uuid": "4d4d8a71-b35e-47b2-a47a-97a6a5f66aec", 
-          "webhook_action": "GET", 
-          "rules": [
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "All Responses"
-              }, 
-              "destination": "2da3858c-1553-4c39-83bd-3bff1ac2a83b", 
-              "uuid": "10231b79-a59e-4b48-bf9d-a6133e6fe825", 
-              "destination_type": "R"
-            }
-          ], 
-          "webhook": "www.goandcheck.com", 
-          "ruleset_type": "webhook", 
-          "label": "PostLevel Webhook", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 74, 
-          "x": 76, 
-          "config": {}
-        }, 
-        {
-          "uuid": "757648a9-8227-4d0c-87c0-d8aa637aafbd", 
-          "webhook_action": "GET", 
-          "rules": [
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "All Responses"
-              }, 
-              "destination": "ed5e149a-cb3e-42fa-bba2-730d5dd6aee9", 
-              "uuid": "0d47ec26-e681-423a-9ef0-69f444f39590", 
-              "destination_type": "R"
-            }
-          ], 
-          "webhook": "www.goandcheck.com", 
-          "ruleset_type": "webhook", 
-          "label": "CheckSiteID Webhook", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 398, 
-          "x": 396, 
-          "config": {}
-        }, 
-        {
-          "uuid": "2da3858c-1553-4c39-83bd-3bff1ac2a83b", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "Implementation"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Implementation"
-              }, 
-              "destination": "ce6b9d7e-8ec1-4e85-be3a-3202492aac62", 
-              "uuid": "2b5fbdc5-6743-4cc0-b249-27561d322194", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "Supervision"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Supervision"
-              }, 
-              "destination": "08f474fd-0c8f-4417-86a5-9a81a192f12f", 
-              "uuid": "28033557-2b27-41ac-af86-37315983a9f7", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": null, 
-              "uuid": "10231b79-a59e-4b48-bf9d-a6133e6fe825"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "PostLevel", 
+          "label": "Screened6-59tot", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 174, 
-          "x": 76, 
-          "config": {}
-        }, 
-        {
-          "uuid": "ed5e149a-cb3e-42fa-bba2-730d5dd6aee9", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "Yes"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Yes"
-              }, 
-              "destination": "ce6b9d7e-8ec1-4e85-be3a-3202492aac62", 
-              "uuid": "9f60dccc-76cc-4a5f-a076-05cace14714b", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "No"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "No"
-              }, 
-              "destination": "098291eb-d8b8-49b3-9be0-055cbdb8876b", 
-              "uuid": "cc8d7a51-1aba-4c6f-b5c2-0f33a235289f", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "x"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "X"
-              }, 
-              "destination": null, 
-              "uuid": "47249a1f-8357-4157-828e-7f21bdb01a11"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": null, 
-              "uuid": "0d47ec26-e681-423a-9ef0-69f444f39590"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "CheckSiteID", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "", 
-          "y": 498, 
-          "x": 396, 
+          "y": 151, 
+          "x": 99, 
           "config": {}
         }
       ], 
       "metadata": {
-        "uuid": "af933a6c-6e12-42bf-b335-ffd12c258049", 
-        "notes": [], 
-        "expires": 720, 
-        "name": "SAM Stockout", 
-        "revision": 4, 
-        "id": 43, 
-        "saved_on": "2015-11-25T13:27:31.360102Z"
+        "expires": 180, 
+        "revision": 3, 
+        "id": 24746, 
+        "name": "SAM Screening", 
+        "saved_on": "2016-05-20T06:52:30.265827Z"
       }
     }, 
     {
@@ -5384,7 +4774,7 @@
       ], 
       "version": 8, 
       "flow_type": "F", 
-      "entry": "bc00d3e7-bb3c-4164-9bbc-514bc09279b2", 
+      "entry": "34f34776-3645-462c-9d6c-e7329eee244e", 
       "rule_sets": [
         {
           "uuid": "81c6217c-e52b-461e-822f-1f2ddecb51e4", 
@@ -5768,33 +5158,6 @@
           "config": {}
         }, 
         {
-          "uuid": "bc00d3e7-bb3c-4164-9bbc-514bc09279b2", 
-          "webhook_action": "GET", 
-          "rules": [
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "All Responses"
-              }, 
-              "destination": "34f34776-3645-462c-9d6c-e7329eee244e", 
-              "uuid": "81579241-509f-4d0e-acd5-8d1871429546", 
-              "destination_type": "R"
-            }
-          ], 
-          "webhook": "www.goandcheck.com", 
-          "ruleset_type": "webhook", 
-          "label": "PostLevel Webhook", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 0, 
-          "x": 51, 
-          "config": {}
-        }, 
-        {
           "uuid": "7f4ad3a1-b6de-4a57-a9ca-37d6f09cdc8f", 
           "webhook_action": "GET", 
           "rules": [
@@ -5872,8 +5235,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 100, 
-          "x": 51, 
+          "y": 0, 
+          "x": 57, 
           "config": {}
         }, 
         {
@@ -5986,135 +5349,51 @@
         ], 
         "expires": 720, 
         "name": "SAM Stock Report", 
-        "revision": 2, 
+        "revision": 4, 
         "id": 44, 
-        "saved_on": "2016-05-20T06:35:51.923342Z"
+        "saved_on": "2016-05-20T06:40:28.521410Z"
       }
     }, 
     {
       "base_language": "base", 
       "action_sets": [
         {
-          "y": 699, 
-          "x": 78, 
+          "y": 0, 
+          "x": 100, 
+          "destination": "efb04042-ced7-4911-9a6a-190ac2f8749d", 
+          "uuid": "d02d2f8e-f03d-427f-b6f6-9706024de1b8", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Which language do you prefer to use, English or French ?"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 350, 
+          "x": 99, 
           "destination": null, 
-          "uuid": "b4434136-02f9-4cbb-9c8e-c9edb37603df", 
+          "uuid": "90b563f1-ffb8-4483-8d6b-d8a390254f22", 
           "actions": [
             {
               "msg": {
-                "base": "Please enter the abbreviation for the stock that you have despatched: \nRUTF \nF75 \nF100\nRESO \nAMOX\nAMAL\nVITA\nDEWM\nFEFO\nMUAC\nFORM\nMEAS\n"
+                "base": "Thanks, your language preference has been saved."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 2003, 
-          "x": 52, 
+          "y": 352, 
+          "x": 425, 
           "destination": null, 
-          "uuid": "11cfcc51-a507-4be0-8a3b-ea2d38166d80", 
+          "uuid": "565114bc-5ddb-4afa-bb74-6cd83b2f59a2", 
           "actions": [
             {
               "msg": {
-                "base": "Thank you @contact  for sending your stock despatch report. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 887, 
-          "x": 1029, 
-          "destination": "464ef8f4-9bde-46fa-af79-9fbca4c79d59", 
-          "uuid": "8849be1c-417b-4189-9c3c-c3a1c4878fef", 
-          "actions": [
-            {
-              "msg": {
-                "base": "I did not understand @flow.stock_type .  Please enter the abbreviation for the stock: \nRUTF \nF75 \nF100\nRESO \nAMOX\nAMAL\nVITA\nDEWM\nFEFO\nMUAC\nFORM\nMEAS"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1274, 
-          "x": 53, 
-          "destination": "225b0beb-c44a-4974-914a-a5d9db4a2258", 
-          "uuid": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter the number of units of @flow.stock_type  that you have despatched: "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1448, 
-          "x": 50, 
-          "destination": "c8f7299b-8e38-4112-982c-8aed0a72f16f", 
-          "uuid": "3770089d-3e99-4d48-9448-0d43bbce83db", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter the destination of the despatched stock.  This is the SiteID. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1649, 
-          "x": 51, 
-          "destination": "de3ad426-bd03-46ee-b931-9277a3f0420d", 
-          "uuid": "da594005-5128-48d6-bed9-0b9a2569263f", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter the number of units of @flow.stock_type type   that you have in balance now: "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 1847, 
-          "x": 52, 
-          "destination": "547b6c6e-4c58-44b3-a5c5-b837db0a3448", 
-          "uuid": "cb1ce6b5-9aa4-408e-8853-f2551ebfbbfe", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Do you want to despatches of other stocks?  Enter Yes or No. "
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 274, 
-          "x": 402, 
-          "destination": "63320597-6605-4aef-962f-cc71ac030eb1", 
-          "uuid": "43bad3b6-6ac1-4f50-b764-9893ceb6420e", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Please enter the SiteID to report despatching of a stock."
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 579, 
-          "x": 828, 
-          "destination": "63320597-6605-4aef-962f-cc71ac030eb1", 
-          "uuid": "25e5b8be-c4c3-4fc7-89f5-49ae0eeb0a69", 
-          "actions": [
-            {
-              "msg": {
-                "base": "I'm sorry. I don't recognize the SiteID @flow.checksiteid . Please re-enter the SiteID or enter x to exit."
+                "base": "Merci, Votre choix de langue a \u00e9t\u00e9 sauvgard\u00e9."
               }, 
               "type": "reply"
             }
@@ -6123,23 +5402,38 @@
       ], 
       "version": 8, 
       "flow_type": "F", 
-      "entry": "169a74f7-3daa-413d-9b56-9b5b6e48d71d", 
+      "entry": "d02d2f8e-f03d-427f-b6f6-9706024de1b8", 
       "rule_sets": [
         {
-          "uuid": "de3ad426-bd03-46ee-b931-9277a3f0420d", 
+          "uuid": "efb04042-ced7-4911-9a6a-190ac2f8749d", 
           "webhook_action": null, 
           "rules": [
             {
               "test": {
-                "max": "999999", 
-                "type": "between", 
-                "min": "0"
+                "test": {
+                  "base": "English Eng En E"
+                }, 
+                "type": "contains_any"
               }, 
               "category": {
-                "base": "0-999999"
+                "base": "English"
               }, 
-              "destination": "cb1ce6b5-9aa4-408e-8853-f2551ebfbbfe", 
-              "uuid": "8758a2f6-7739-4f36-b0b5-f2d02348e8b2", 
+              "destination": "90b563f1-ffb8-4483-8d6b-d8a390254f22", 
+              "uuid": "255558b5-1884-43c9-badb-4f93f2909440", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "French Fre Fr F"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "French"
+              }, 
+              "destination": "565114bc-5ddb-4afa-bb74-6cd83b2f59a2", 
+              "uuid": "fefb1d48-efd3-4953-90fa-6bd89cec9b26", 
               "destination_type": "A"
             }, 
             {
@@ -6150,585 +5444,34 @@
               "category": {
                 "base": "Other"
               }, 
-              "destination": "da594005-5128-48d6-bed9-0b9a2569263f", 
-              "uuid": "1184d5f5-3f6d-455a-b35a-3fd3c3b102fa", 
-              "destination_type": "A"
+              "uuid": "36ae0485-8c07-4ab6-a287-59a2d2e0eedc"
             }
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "StockBal", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "N", 
-          "y": 1649, 
-          "x": 278, 
-          "config": {}
-        }, 
-        {
-          "uuid": "547b6c6e-4c58-44b3-a5c5-b837db0a3448", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "yes y"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Yes"
-              }, 
-              "destination": "b4434136-02f9-4cbb-9c8e-c9edb37603df", 
-              "uuid": "10cc7602-c19c-43b5-ac48-ef740c93fbdd", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "No n"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "No"
-              }, 
-              "destination": "11cfcc51-a507-4be0-8a3b-ea2d38166d80", 
-              "uuid": "0f543b72-52cf-4e89-be41-637995e96407", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "cb1ce6b5-9aa4-408e-8853-f2551ebfbbfe", 
-              "uuid": "c55c8dca-e719-49f7-81f2-fc6bff02ef54", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "END", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 1848, 
-          "x": 275, 
-          "config": {}
-        }, 
-        {
-          "uuid": "464ef8f4-9bde-46fa-af79-9fbca4c79d59", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "RUTF"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "RUTF"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "516fb53c-2dd3-4829-b4c5-88e9062668b5", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "F75"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "F75"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "f3707c39-d06d-4b35-b63d-88100c757a84", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "F100"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "F100"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "fb0fdbfb-674f-4204-b35d-a3d427255cbe", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "RESO"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Resomal"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "016359d9-f99e-447f-b2ce-17fe1b660520", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "AMOX"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Amoxicillin"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "f79b335f-ab1b-4042-b8b8-cb9885b97fd6", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "AMAL"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Anti-malarials"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "ffe95dbb-9528-4cc2-afc5-7dca4ddf18fd", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "VITA"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Vitamin A drops"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "bba577a8-b54a-44c4-b35e-12facc78f6c1", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "DEWM"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Deworming Tablets"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "56d78545-9d09-410e-b9a9-3c60eeabd242", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "FEFO"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Iron Folate"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "ad5060f6-1a81-4d25-9a9e-8e42681f3956", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "MUAC"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Muac Strips"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "93705830-2ee3-47aa-9ae8-a1c8c324b281", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "FORM"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Reporting Forms"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "ffff6c3b-5403-4459-b1ca-994632ebdcf4", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "MEAS"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Measles Vaccine"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "2906010c-8fb6-4c8a-a298-1f4020789292", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "x"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "X"
-              }, 
-              "destination": null, 
-              "uuid": "94abe50f-4173-4031-b9df-bf6c5d2c04b4"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "8849be1c-417b-4189-9c3c-c3a1c4878fef", 
-              "uuid": "061b0569-15c0-4540-a7e5-e558cb7eebad", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "StockType", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 1109, 
-          "x": 26, 
-          "config": {}
-        }, 
-        {
-          "uuid": "225b0beb-c44a-4974-914a-a5d9db4a2258", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "max": "999999", 
-                "type": "between", 
-                "min": "0"
-              }, 
-              "category": {
-                "base": "0-999999"
-              }, 
-              "destination": "3770089d-3e99-4d48-9448-0d43bbce83db", 
-              "uuid": "e0302c84-6cdb-47ad-8a1f-617a4d9d8481", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "d177d8e1-0895-4fd3-bb28-5620b973f48a", 
-              "uuid": "987ed4df-3205-48db-b308-5593d23d08c4", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "Stock_in_out", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "N", 
-          "y": 1276, 
-          "x": 274, 
-          "config": {}
-        }, 
-        {
-          "uuid": "c8f7299b-8e38-4112-982c-8aed0a72f16f", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "max": "3799999", 
-                "type": "between", 
-                "min": "1"
-              }, 
-              "category": {
-                "base": "1-3799999"
-              }, 
-              "destination": "da594005-5128-48d6-bed9-0b9a2569263f", 
-              "uuid": "18b22815-a192-41e3-871d-e56e29b1ab09", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": "3770089d-3e99-4d48-9448-0d43bbce83db", 
-              "uuid": "d5b2993d-88a3-4d42-a270-fe2c28b7c9bd", 
-              "destination_type": "A"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "Destination", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "N", 
-          "y": 1452, 
-          "x": 277, 
-          "config": {}
-        }, 
-        {
-          "uuid": "169a74f7-3daa-413d-9b56-9b5b6e48d71d", 
-          "webhook_action": "GET", 
-          "rules": [
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "All Responses"
-              }, 
-              "destination": "08083a4f-dc80-4b36-83c1-48135be3cc27", 
-              "uuid": "022a1ec3-07ac-4ba4-9170-3a6f5e7fa4dc", 
-              "destination_type": "R"
-            }
-          ], 
-          "webhook": "www.goandcheck.com", 
-          "ruleset_type": "webhook", 
-          "label": "PostLevel Webhook", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 26, 
-          "x": 75, 
-          "config": {}
-        }, 
-        {
-          "uuid": "63320597-6605-4aef-962f-cc71ac030eb1", 
-          "webhook_action": "GET", 
-          "rules": [
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "All Responses"
-              }, 
-              "destination": "9114b035-a9d2-4c95-bd0b-2b3655b749e6", 
-              "uuid": "2a3d87ff-5a37-4fac-9004-3066f6090b8b", 
-              "destination_type": "R"
-            }
-          ], 
-          "webhook": "www.goandcheck.com", 
-          "ruleset_type": "webhook", 
-          "label": "CheckSiteID Webhook", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "C", 
-          "y": 426, 
-          "x": 403, 
-          "config": {}
-        }, 
-        {
-          "uuid": "08083a4f-dc80-4b36-83c1-48135be3cc27", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "Implementation"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Implementation"
-              }, 
-              "destination": "b4434136-02f9-4cbb-9c8e-c9edb37603df", 
-              "uuid": "c42e9a3d-96a6-4536-b999-17f36358d0fd", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "Supervision"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Supervision"
-              }, 
-              "destination": "43bad3b6-6ac1-4f50-b764-9893ceb6420e", 
-              "uuid": "a04d20bf-d40b-4295-8ab2-510f020fdff7", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": null, 
-              "uuid": "022a1ec3-07ac-4ba4-9170-3a6f5e7fa4dc"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "PostLevel", 
+          "label": "Language", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 126, 
-          "x": 75, 
-          "config": {}
-        }, 
-        {
-          "uuid": "9114b035-a9d2-4c95-bd0b-2b3655b749e6", 
-          "webhook_action": null, 
-          "rules": [
-            {
-              "test": {
-                "test": {
-                  "base": "Yes"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "Yes"
-              }, 
-              "destination": "b4434136-02f9-4cbb-9c8e-c9edb37603df", 
-              "uuid": "f95aec82-a682-410e-8a43-ae1938888440", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "No"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "No"
-              }, 
-              "destination": "25e5b8be-c4c3-4fc7-89f5-49ae0eeb0a69", 
-              "uuid": "03c5ef9e-0d4a-4aee-9306-cf03049ee7c6", 
-              "destination_type": "A"
-            }, 
-            {
-              "test": {
-                "test": {
-                  "base": "x"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "X"
-              }, 
-              "destination": null, 
-              "uuid": "ffbae670-a4ee-42e1-b9b0-aff28a23cf90"
-            }, 
-            {
-              "test": {
-                "test": "true", 
-                "type": "true"
-              }, 
-              "category": {
-                "base": "Other"
-              }, 
-              "destination": null, 
-              "uuid": "2a3d87ff-5a37-4fac-9004-3066f6090b8b"
-            }
-          ], 
-          "webhook": null, 
-          "ruleset_type": "wait_message", 
-          "label": "CheckSiteID", 
-          "operand": "@step.value", 
-          "finished_key": null, 
-          "response_type": "", 
-          "y": 526, 
-          "x": 403, 
+          "y": 123, 
+          "x": 324, 
           "config": {}
         }
       ], 
       "metadata": {
-        "uuid": "1ccc9b1f-6328-41d8-9b8c-b9539e7474d5", 
+        "name": "SAM Language", 
         "notes": [
           {
-            "body": "All despatches are recorded as negative receipts in the stocks database", 
-            "x": 498, 
-            "y": 1074.8333740234375, 
-            "title": "Stock_In_Out"
-          }, 
-          {
-            "body": "If destination does not fall within distribution line (from state to LGA within that state, or from LGA to site within that LGA, then ask for a correction. ", 
-            "x": 501, 
-            "y": 1250.8333740234375, 
-            "title": "Webhook to look up Destination"
-          }, 
-          {
-            "body": "...", 
-            "x": 505, 
-            "y": 1449.8333740234375, 
-            "title": "StockBalance"
-          }, 
-          {
-            "body": "If Management of MAM is provided, expand the stocks list to include\nRUSF\nSuper Cereal\nUNIMIX\nCSB\nSugar\nOil\nother products\n", 
-            "x": 851, 
-            "y": 1073.8333740234375, 
-            "title": "Supplementary Feeding"
-          }, 
-          {
-            "body": "Return the SiteID and Post for user. Determine if user is an implementer or supervisor.", 
-            "x": 396, 
-            "y": 18, 
-            "title": "Webhook for SiteID"
-          }, 
-          {
-            "body": "If SiteID is valid and the site is within the supervision area of supervisor then continue with the flow. ", 
-            "x": 827, 
-            "y": 248, 
-            "title": "Valid SiteID and Permissions"
+            "y": 0, 
+            "x": 350, 
+            "body": "Create separate trigger word to start Change Language", 
+            "title": "Don't start through Register"
           }
         ], 
-        "expires": 720, 
-        "name": "SAM Despatch", 
-        "revision": 2, 
-        "id": 41, 
-        "saved_on": "2015-12-02T17:40:08.488353Z"
+        "expires": 60, 
+        "revision": 29, 
+        "id": 24749, 
+        "saved_on": "2016-05-20T07:51:18.391139Z"
       }
     }
   ], 
