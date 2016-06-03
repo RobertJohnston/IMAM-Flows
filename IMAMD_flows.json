@@ -27,7 +27,7 @@
           ]
         }, 
         {
-          "y": 2577, 
+          "y": 2572, 
           "x": 30, 
           "destination": "5750b383-0497-4431-8f7a-d4fbee38f61d", 
           "uuid": "af49993c-c65b-4230-8a71-a32c60394876", 
@@ -39,13 +39,10 @@
               "type": "reply"
             }, 
             {
-              "type": "add_group", 
-              "groups": [
-                {
-                  "name": "Sam Personnel", 
-                  "id": 1289
-                }
-              ]
+              "field": "sitetype", 
+              "type": "save", 
+              "value": "@flow.type.", 
+              "label": "Type"
             }
           ]
         }, 
@@ -116,7 +113,7 @@
           ]
         }, 
         {
-          "y": 1704, 
+          "y": 1703, 
           "x": 39, 
           "destination": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
           "uuid": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
@@ -128,23 +125,23 @@
               "type": "reply"
             }, 
             {
-              "field": "siteid", 
-              "type": "save", 
-              "value": "@flow.site_input.text", 
-              "label": "SiteID"
-            }, 
-            {
               "field": "level", 
               "type": "save", 
               "value": "@flow.site_input.category", 
               "label": "Level"
             }, 
             {
+              "field": "siteid", 
+              "type": "save", 
+              "value": "@flow.site_input.text", 
+              "label": "SiteID"
+            }, 
+            {
               "type": "add_group", 
               "groups": [
                 {
-                  "name": "Sam Personnel", 
-                  "id": 1289
+                  "name": "Nut Personnel", 
+                  "id": 17848
                 }
               ]
             }
@@ -205,7 +202,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Welcome to SAM Reports. To REGISTER, send PROGRAM, STOCK or SCREENING data, please respond with a keyword."
+                "base": "Welcome to IMAM Reports. To REGISTER, send PROGRAM, STOCK or SCREENING data, please respond with a keyword."
               }, 
               "type": "reply"
             }
@@ -273,14 +270,14 @@
           ]
         }, 
         {
-          "y": 500, 
+          "y": 501, 
           "x": 879, 
           "destination": null, 
           "uuid": "b1bfd09b-dce7-446d-878f-1ab20024349e", 
           "actions": [
             {
               "type": "flow", 
-              "name": "SAM Program", 
+              "name": "IMAM Program", 
               "id": 2697
             }
           ]
@@ -293,7 +290,7 @@
           "actions": [
             {
               "type": "flow", 
-              "name": "SAM Stock Report", 
+              "name": "IMAM Stock Report", 
               "id": 44
             }
           ]
@@ -306,7 +303,7 @@
           "actions": [
             {
               "type": "flow", 
-              "name": "SAM Screening", 
+              "name": "IMAM Screening", 
               "id": 24746
             }
           ]
@@ -367,8 +364,8 @@
           ]
         }, 
         {
-          "y": 2128, 
-          "x": 44, 
+          "y": 2169, 
+          "x": 46, 
           "destination": "9ac6e850-66ed-451d-9c9f-b4c2457ba7a6", 
           "uuid": "5e709a6d-ea0d-4bf7-82ee-ef1125bff135", 
           "actions": [
@@ -381,8 +378,8 @@
           ]
         }, 
         {
-          "y": 2226, 
-          "x": 543, 
+          "y": 2176, 
+          "x": 745, 
           "destination": "9ac6e850-66ed-451d-9c9f-b4c2457ba7a6", 
           "uuid": "05ea1692-132d-4688-84a7-68281d704710", 
           "actions": [
@@ -928,7 +925,7 @@
             {
               "test": {
                 "test": {
-                  "base": "SAM PERSONNEL"
+                  "base": "NUT PERSONNEL"
                 }, 
                 "type": "contains_any"
               }, 
@@ -1025,8 +1022,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 2123, 
-          "x": 330, 
+          "y": 2173, 
+          "x": 325, 
           "config": {}
         }
       ], 
@@ -1076,12 +1073,6 @@
             "title": "Start Another Flow: "
           }, 
           {
-            "y": 147, 
-            "x": 981, 
-            "body": "Welcome to SAM Reports. To REGISTER, send PROGRAM, STOCK, SCREENING data, a stock OUT,  DESPATCH, VALIDATE data or ask for HELP, please respond with a keyword.", 
-            "title": "Old commands"
-          }, 
-          {
             "y": 3, 
             "x": 551, 
             "body": "If @contact.groups contains SAM PERSONNEL then reporter has been registered previously", 
@@ -1096,9 +1087,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Register", 
-        "saved_on": "2016-06-03T06:10:25.033783Z", 
+        "saved_on": "2016-06-03T12:51:59.490510Z", 
         "id": 40, 
-        "revision": 417
+        "revision": 440
       }
     }, 
     {
@@ -4085,6 +4076,568 @@
         "revision": 29, 
         "id": 24749, 
         "saved_on": "2016-05-20T07:51:18.391139Z"
+      }
+    }, 
+    {
+      "base_language": "eng", 
+      "action_sets": [
+        {
+          "y": 313, 
+          "x": 531, 
+          "destination": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "uuid": "d66cab9f-a60a-4916-9dd1-60884fe59e84", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number supervisory visits conducted:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 73, 
+          "x": 349, 
+          "destination": null, 
+          "uuid": "9751e6ce-cfb3-4d27-84a2-496ca585c09e", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please register before sending the regular IYCF programme data."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 523, 
+          "x": 75, 
+          "destination": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "uuid": "5fc826a1-194d-4de4-9838-cd282fbab5e2", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of PREGNANT WOMAN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 852, 
+          "x": 75, 
+          "destination": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "uuid": "0d117e3e-187d-4266-9d9e-3c737ff5f0e9", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MOTHERS with CHILDREN < 6 MONTHS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1174, 
+          "x": 78, 
+          "destination": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "uuid": "141a95a3-6625-4d49-a9d7-55a26ccf8fec", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MOTHERS with CHILDREN  6 TO 23 MONTHS  who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1525, 
+          "x": 73, 
+          "destination": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "uuid": "97b119df-055f-4c85-8f79-11d2901ed3fa", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of WOMEN OF CHILD BEARING AGE who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1851, 
+          "x": 74, 
+          "destination": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "uuid": "a5dbdb2e-deb3-4609-bef9-79d339f3be74", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of GRANDMOTHERS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2150, 
+          "x": 73, 
+          "destination": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "uuid": "66f8c62f-b323-4b3b-9738-109ffc3525ea", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MEN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2449, 
+          "x": 76, 
+          "destination": null, 
+          "uuid": "56f053d0-9c5e-4929-8584-454a291288bf", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Thank you for sending your IYCF report."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 149, 
+          "x": 75, 
+          "destination": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "uuid": "e966377b-c52f-43a0-90e6-09ce9fd7a49a", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the MONTH number that you are reporting for:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "193f2688-5bee-4de9-9619-a2a87dffe8d5", 
+      "rule_sets": [
+        {
+          "uuid": "193f2688-5bee-4de9-9619-a2a87dffe8d5", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "eng": "Nut Personnel"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "Registered"
+              }, 
+              "destination": "e966377b-c52f-43a0-90e6-09ce9fd7a49a", 
+              "uuid": "8c5956ee-11e4-44c1-9a91-0b987ba31520", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "9751e6ce-cfb3-4d27-84a2-496ca585c09e", 
+              "uuid": "0119aef6-440e-45e2-980b-3c7a02a0448e", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "Response 1", 
+          "operand": "@contact.groups", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 0, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "5fc826a1-194d-4de4-9838-cd282fbab5e2", 
+              "uuid": "6f058ce3-a3a1-4653-9e05-acb4d4e30f06", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "92a2a9aa-16fe-46e4-a3ff-c149eda55c8c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "f2c6fb0a-1757-42b8-a9c4-5b1048824335"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "SupervisionVisits", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 440, 
+          "x": 521, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "0d117e3e-187d-4266-9d9e-3c737ff5f0e9", 
+              "uuid": "1b9dc306-3fec-4a82-b274-cd9c221b1607", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a9a07357-dcfc-4901-9a7a-4b4c733bb59c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "7f8d302d-8caf-4057-959c-5552be1b04c7"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "PregnantWomen", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 677, 
+          "x": 76, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "141a95a3-6625-4d49-a9d7-55a26ccf8fec", 
+              "uuid": "ee2f3a6a-2e56-433b-a2f8-346035104240", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "61ae19c8-52f7-42fe-b7f9-97cb4e7d8261"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "8c0ed011-4439-48ee-8992-3be95b3f3f06"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "MothersLT6Months", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1001, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "97b119df-055f-4c85-8f79-11d2901ed3fa", 
+              "uuid": "ef818a44-348f-444a-ab5b-cbfe4cbd34d7", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "00f7f354-d22e-42c4-b94d-cfe4634fa1a3"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "a77c25a1-a2e7-43a5-b74c-ffdd9ee5a180"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Mothers6to23Months", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1350, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "a5dbdb2e-deb3-4609-bef9-79d339f3be74", 
+              "uuid": "d61f035d-590d-4784-b3f1-408627a41f98", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a0f677d7-92f8-4217-b482-1fc54097e03b"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "aac52e5e-b571-4def-ad4a-0bd9e81d9a98"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "WomenRepAge", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1673, 
+          "x": 76, 
+          "config": {}
+        }, 
+        {
+          "uuid": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "66f8c62f-b323-4b3b-9738-109ffc3525ea", 
+              "uuid": "e9ae25fb-4247-4a9f-90d5-b758e17b060c", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "85bfb24f-f26d-456f-956b-5e8168e972a2"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Grandmothers", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2001, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "56f053d0-9c5e-4929-8584-454a291288bf", 
+              "uuid": "7ed76f32-ac7a-4ffb-9d47-adf058c328bf", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "8014b9e4-33da-4100-9467-6175c931d9e5"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Men", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2298, 
+          "x": 76, 
+          "config": {}
+        }, 
+        {
+          "uuid": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "12", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "eng": "1 - 12"
+              }, 
+              "destination": "d66cab9f-a60a-4916-9dd1-60884fe59e84", 
+              "uuid": "6dd03c91-4a9d-4ee3-9fa7-e1d139fac24d", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "0ba8fe05-cd7f-4d87-b89f-7866f54a93f1"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Response 9", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 273, 
+          "x": 75, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "expires": 60, 
+        "revision": 51, 
+        "id": 24991, 
+        "name": "IYCF", 
+        "saved_on": "2016-06-03T13:50:57.865618Z"
       }
     }
   ], 
