@@ -1,0 +1,4756 @@
+{
+  "campaigns": [], 
+  "version": 8, 
+  "site": "https://app.rapidpro.io", 
+  "flows": [
+    {
+      "base_language": "base", 
+      "action_sets": [
+        {
+          "y": 2975, 
+          "x": 29, 
+          "destination": "4973d98d-5fc1-4c15-b782-38c1b455194e", 
+          "uuid": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+          "actions": [
+            {
+              "msg": {
+                "base": "If you have an email please enter it below (optional).  If you don't have an email, please enter No"
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "field": "level", 
+              "type": "save", 
+              "value": "@flow.site_input.category", 
+              "label": "Level"
+            }, 
+            {
+              "field": "siteid", 
+              "type": "save", 
+              "value": "@flow.site_input.text", 
+              "label": "SiteID"
+            }, 
+            {
+              "field": "post", 
+              "type": "save", 
+              "value": "@flow.post.category", 
+              "label": "Post"
+            }, 
+            {
+              "type": "del_group", 
+              "groups": [
+                {
+                  "name": "No_SiteID", 
+                  "id": 17560
+                }, 
+                {
+                  "name": "No_Post", 
+                  "id": 17567
+                }
+              ]
+            }
+          ]
+        }, 
+        {
+          "y": 2577, 
+          "x": 29, 
+          "destination": "5750b383-0497-4431-8f7a-d4fbee38f61d", 
+          "uuid": "af49993c-c65b-4230-8a71-a32c60394876", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Position code:\nIn charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "field": "type", 
+              "type": "save", 
+              "value": "@flow.type.category", 
+              "label": "Type"
+            }
+          ]
+        }, 
+        {
+          "y": 3650, 
+          "x": 299, 
+          "destination": "16a37b5a-6aa0-438e-9873-2f21328e0467", 
+          "uuid": "f00df51a-6e66-4aed-bd81-891a532c3e33", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Thank you @contact You have completed the registration. Please consider getting an email address to receive regular reports."
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "field": "mail", 
+              "type": "save", 
+              "value": "@flow.mail.category", 
+              "label": "Mail"
+            }
+          ]
+        }, 
+        {
+          "y": 896, 
+          "x": 1122, 
+          "destination": "4d731e77-cbff-4cf3-884a-80a29df79d1b", 
+          "uuid": "996b450f-ee41-41db-9077-24af0788c512", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I am sorry, I did not understand @flow.command.  Please respond in an SMS with one of the following keywords: REGISTER, PROGRAM, STOCK or SCREENING"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1275, 
+          "x": 29, 
+          "destination": "b9a45e87-bc71-42fe-9908-0f276c294b81", 
+          "uuid": "b4d8a91b-c512-4749-b4be-1a25e811462b", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please send your SiteID.  This is the ID recorded on your job-aid during training and is available from your supervisor."
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "field": "name", 
+              "type": "save", 
+              "value": "@flow.name.", 
+              "label": "Contact Name"
+            }, 
+            {
+              "type": "add_group", 
+              "groups": [
+                {
+                  "name": "Nut Personnel", 
+                  "id": 17848
+                }
+              ]
+            }
+          ]
+        }, 
+        {
+          "y": 1706, 
+          "x": 39, 
+          "destination": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
+          "uuid": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter your position code.  \nCoordinator=C\nDatabase Manager=D\nStocks Manager=S\nTechnical Assistance=TA\nObserver=OB"
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "field": "sitetype", 
+              "type": "save", 
+              "value": ",", 
+              "label": "SiteType"
+            }
+          ]
+        }, 
+        {
+          "y": 652, 
+          "x": 28, 
+          "destination": "6c931c52-5ab9-4472-8a58-9e17488036e9", 
+          "uuid": "1e415e8f-9939-4425-ba23-1cb305ec2e25", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please complete the following registration. Please enter your name (first, middle last name)"
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "type": "add_group", 
+              "groups": [
+                {
+                  "name": "No_Email", 
+                  "id": 1790
+                }
+              ]
+            }, 
+            {
+              "type": "add_group", 
+              "groups": [
+                {
+                  "name": "No_SiteID", 
+                  "id": 17560
+                }
+              ]
+            }, 
+            {
+              "type": "add_group", 
+              "groups": [
+                {
+                  "name": "No_Post", 
+                  "id": 17567
+                }
+              ]
+            }, 
+            {
+              "field": "registration_date", 
+              "type": "save", 
+              "value": "@(TODAY())", 
+              "label": "Registration Date"
+            }
+          ]
+        }, 
+        {
+          "y": 174, 
+          "x": 301, 
+          "destination": "4d731e77-cbff-4cf3-884a-80a29df79d1b", 
+          "uuid": "068a0bac-9991-495c-a72d-6def45ee4428", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Welcome to IMAM Reports. To REGISTER, send PROGRAM, STOCK or SCREENING data, please respond with a keyword."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3416, 
+          "x": 455, 
+          "destination": "4973d98d-5fc1-4c15-b782-38c1b455194e", 
+          "uuid": "c8ba5e87-4a60-46e3-ba54-12c154fa9fa5", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorrry, I did not understand @flow.mail.  Please check carefully and re-enter. If you don't have an email, please enter x."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3651, 
+          "x": 28, 
+          "destination": "16a37b5a-6aa0-438e-9873-2f21328e0467", 
+          "uuid": "a2fb38e9-38d3-467b-98c1-d78cb47098e6", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Thank you @contact You have completed the registration."
+              }, 
+              "type": "reply"
+            }, 
+            {
+              "field": "mail", 
+              "type": "save", 
+              "value": "@flow.mail.text", 
+              "label": "Mail"
+            }, 
+            {
+              "type": "del_group", 
+              "groups": [
+                {
+                  "name": "No_Email", 
+                  "id": 1790
+                }
+              ]
+            }
+          ]
+        }, 
+        {
+          "y": 501, 
+          "x": 879, 
+          "destination": null, 
+          "uuid": "b1bfd09b-dce7-446d-878f-1ab20024349e", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "IMAM Program", 
+              "id": 2697
+            }
+          ]
+        }, 
+        {
+          "y": 573, 
+          "x": 876, 
+          "destination": null, 
+          "uuid": "bce0826f-56d6-49f0-adcc-a9b10efda342", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "IMAM Stock Report", 
+              "id": 44
+            }
+          ]
+        }, 
+        {
+          "y": 651, 
+          "x": 878, 
+          "destination": null, 
+          "uuid": "b0a8314f-3c1d-4c16-a9d5-68e537cc0da0", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "IMAM Screening", 
+              "id": 24746
+            }
+          ]
+        }, 
+        {
+          "y": 733, 
+          "x": 878, 
+          "destination": null, 
+          "uuid": "766b38ed-b0a4-40c7-813d-0967ecebed16", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "Choose Language", 
+              "id": 24749
+            }
+          ]
+        }, 
+        {
+          "y": 1349, 
+          "x": 808, 
+          "destination": "b9a45e87-bc71-42fe-9908-0f276c294b81", 
+          "uuid": "3d2eb8bf-c11b-4a5d-a56a-a0d250d0f9bc", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.site_input.  Please verify the ID with your supervisor and resend."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1811, 
+          "x": 777, 
+          "destination": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
+          "uuid": "fa88cb8a-33ed-4de2-926e-b3c356f2a140", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.post. Please respond with:\nCoordinator=C\nDatabase Manager=D\nStocks Manager=S\nTechnical Assistance=TA\nObserver=OB"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2925, 
+          "x": 1199, 
+          "destination": "5750b383-0497-4431-8f7a-d4fbee38f61d", 
+          "uuid": "dc4ad88b-8863-4663-aff1-c528b5a9de1e", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.post. Please respond with: In charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2169, 
+          "x": 46, 
+          "destination": "9ac6e850-66ed-451d-9c9f-b4c2457ba7a6", 
+          "uuid": "5e709a6d-ea0d-4bf7-82ee-ef1125bff135", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please report the type of site that you are reporting for:\nIPF Inpatient Facility\nOTP Outpatient Therapeutic Program."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2176, 
+          "x": 745, 
+          "destination": "9ac6e850-66ed-451d-9c9f-b4c2457ba7a6", 
+          "uuid": "05ea1692-132d-4688-84a7-68281d704710", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand.  Please report the type of site that you are reporting for IPF Inpatient Facility or Outpatient Therapeutic Program."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 813, 
+          "x": 880, 
+          "destination": null, 
+          "uuid": "d9874133-4cb5-49fd-9eb6-cbb708e18880", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "Validate", 
+              "id": 25010
+            }
+          ]
+        }, 
+        {
+          "y": 4126, 
+          "x": 164, 
+          "destination": null, 
+          "uuid": "16a37b5a-6aa0-438e-9873-2f21328e0467", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Hello @contact  You registered on @contact.registration_date at SiteID @contact.siteid @contact.type as @contact.post on @contact.level level with @contact.mail email"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "e197e964-d195-4ed0-a086-3c7776457ae9", 
+      "rule_sets": [
+        {
+          "uuid": "4973d98d-5fc1-4c15-b782-38c1b455194e", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "category": {
+                "base": "Email"
+              }, 
+              "test": {
+                "test": {
+                  "base": ".+@.+"
+                }, 
+                "base": "\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b", 
+                "type": "regex"
+              }, 
+              "destination": "a2fb38e9-38d3-467b-98c1-d78cb47098e6", 
+              "uuid": "5ac3548b-ec99-4b76-8d10-70fa8d5b17fb", 
+              "destination_type": "A"
+            }, 
+            {
+              "category": {
+                "base": "no"
+              }, 
+              "test": {
+                "test": {
+                  "base": "no"
+                }, 
+                "base": "x", 
+                "type": "contains_any"
+              }, 
+              "destination": "f00df51a-6e66-4aed-bd81-891a532c3e33", 
+              "uuid": "86974976-3b22-4b06-bbfb-8868b86c6cf3", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "53dc485f-214f-4669-9440-a2fd57f80917"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "c8ba5e87-4a60-46e3-ba54-12c154fa9fa5", 
+              "uuid": "2d275a67-1b51-4f54-b9f2-6b580420b9e4", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Mail", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 3411, 
+          "x": 34, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b9a45e87-bc71-42fe-9908-0f276c294b81", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "National Nat N Federal Fed N"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "National"
+              }, 
+              "destination": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
+              "uuid": "dce7fc3a-a52e-4563-ab99-60ae9be2ae43", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "max": "37", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "base": "First"
+              }, 
+              "destination": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
+              "uuid": "85304584-57a6-416f-8a87-7241e5151883", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "max": "3799", 
+                "type": "between", 
+                "min": "101"
+              }, 
+              "category": {
+                "base": "Second"
+              }, 
+              "destination": "01463f36-c6eb-4a11-b10b-9368b08ca66a", 
+              "uuid": "f0ae5092-3760-45c8-90ec-8336dc442009", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "max": "379999", 
+                "type": "between", 
+                "min": "10101"
+              }, 
+              "category": {
+                "base": "Site"
+              }, 
+              "destination": "5e709a6d-ea0d-4bf7-82ee-ef1125bff135", 
+              "uuid": "38f857a4-e00d-4cb4-8e02-eaaaddb38bd5", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "cc016dc9-fccc-4300-9165-b3b99208a9b3"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "3d2eb8bf-c11b-4a5d-a56a-a0d250d0f9bc", 
+              "uuid": "805de811-4863-473f-b63a-014205d12cb6", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Site_input", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1277, 
+          "x": 272, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6c931c52-5ab9-4472-8a58-9e17488036e9", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "All Responses"
+              }, 
+              "destination": "b4d8a91b-c512-4749-b4be-1a25e811462b", 
+              "uuid": "19b9dca9-43e2-4c4e-8dfd-2148aadb98bc", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Name", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "O", 
+          "y": 1077, 
+          "x": 25, 
+          "config": {}
+        }, 
+        {
+          "uuid": "f523c6db-580f-4eec-89c4-2682acb37bdb", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "C"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Coordinator"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "39e8dfb3-14a2-4546-915b-6417e9233f2c", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "D"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Database Manager"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "949eb2a4-0980-448c-afd2-abb39695c9f1", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "S"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Stocks Manager"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "bda4900f-8479-4b96-8e0c-0a9684b08a05", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "TA"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Technical Assistance"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "65bd8bf0-5fe5-4659-b0c1-0aa41528fbf8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "OB"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Observer"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "3a1f6ec2-3ca1-4b0c-82a5-d0c03f13f057", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "fa88cb8a-33ed-4de2-926e-b3c356f2a140", 
+              "uuid": "f6a2a153-80db-4559-9167-ae5b290f691a", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Post", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1712, 
+          "x": 270, 
+          "config": {}
+        }, 
+        {
+          "uuid": "4d731e77-cbff-4cf3-884a-80a29df79d1b", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "Register Reg re r"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Register"
+              }, 
+              "destination": "1e415e8f-9939-4425-ba23-1cb305ec2e25", 
+              "uuid": "421c9a5e-6a68-4c5c-b83d-1fc83bd82a2e", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "Program Pro Prog pr p"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Program"
+              }, 
+              "destination": "b1bfd09b-dce7-446d-878f-1ab20024349e", 
+              "uuid": "88debbf3-f6fe-498a-a949-c52a9ac65567", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "Stock Sto St"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Stock"
+              }, 
+              "destination": "bce0826f-56d6-49f0-adcc-a9b10efda342", 
+              "uuid": "0ead01d3-fa62-4aae-862d-6ae8632fb0a7", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "Screen SCR sc"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Screen"
+              }, 
+              "destination": "b0a8314f-3c1d-4c16-a9d5-68e537cc0da0", 
+              "uuid": "b83ddfbf-d7ad-431f-9311-c5455cbe598a", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "Language Lang Lan"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Language"
+              }, 
+              "destination": "766b38ed-b0a4-40c7-813d-0967ecebed16", 
+              "uuid": "630b40fa-8273-4c0b-965f-b7c8cc978e87", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "0d607879-a964-43f2-8f9d-d73e7f2862d0"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "Val"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Validate"
+              }, 
+              "destination": "d9874133-4cb5-49fd-9eb6-cbb708e18880", 
+              "uuid": "608656e5-dd68-428a-82d6-3116a4ad003c", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "996b450f-ee41-41db-9077-24af0788c512", 
+              "uuid": "d7567e67-7ead-4cc1-93fc-bc5b6b1c6bd4", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Command", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 400, 
+          "x": 505, 
+          "config": {}
+        }, 
+        {
+          "uuid": "5750b383-0497-4431-8f7a-d4fbee38f61d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "HC"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "In Charge Hospital/PHC"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "42eae173-123b-438c-be07-17f3aaeaa382", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "MD"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Doctor"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "e2e2919c-03b5-496d-b254-061c12091193", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "LP"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "LabTech-Pharm"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "0d8efdec-3b2d-48e9-b8ab-67fc6dbf50e8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "HW"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Community Health Officer"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "3f5aba4a-34c4-478f-8118-e21b1884c648", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "NU"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Nurse/Midwife"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "0b8cc807-0915-43e7-849c-e3d02dfad1a3", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "VO"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Volunteer"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "e766c612-419e-4d59-8f66-261dc4b1bde8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "TA"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Technical Assistance"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "f3272ed4-2798-457e-9335-c123dbb98ae8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "OB"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "Observer"
+              }, 
+              "destination": "fd4be0a4-6085-4654-83ba-1b5ecb3b8af7", 
+              "uuid": "c72d3ae5-ec0f-48c0-8c73-83c053cab509", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "dc4ad88b-8863-4663-aff1-c528b5a9de1e", 
+              "uuid": "365a8fb7-a574-4dbf-8bad-3dba1493899b", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Post", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 2692, 
+          "x": 266, 
+          "config": {}
+        }, 
+        {
+          "uuid": "e197e964-d195-4ed0-a086-3c7776457ae9", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "NUT PERSONNEL"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Yes"
+              }, 
+              "destination": "068a0bac-9991-495c-a72d-6def45ee4428", 
+              "uuid": "ab53d1dc-dbcb-465c-8065-4376e932e44b", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "1e415e8f-9939-4425-ba23-1cb305ec2e25", 
+              "uuid": "af155ed8-4248-471d-b960-e9b63d5b72ba", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "Registered", 
+          "operand": "@contact.groups", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1, 
+          "x": 31, 
+          "config": {}
+        }, 
+        {
+          "uuid": "9ac6e850-66ed-451d-9c9f-b4c2457ba7a6", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "OTP OPT OP O"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "OTP"
+              }, 
+              "destination": "af49993c-c65b-4230-8a71-a32c60394876", 
+              "uuid": "82eff0c8-44e7-483b-98a2-abf07af290c9", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "IPF IFP IP I"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "IPF"
+              }, 
+              "destination": "af49993c-c65b-4230-8a71-a32c60394876", 
+              "uuid": "6018e7cd-5593-4c67-9f42-e6c5ecd389e1", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "fa01a143-6944-4ee7-af14-aa49c5aa4c47"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "05ea1692-132d-4688-84a7-68281d704710", 
+              "uuid": "7263d883-a88c-44e4-9d6a-32e35f240c85", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Type", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2177, 
+          "x": 328, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "uuid": "2d3352aa-2d14-4847-b821-0d17aac8ad5d", 
+        "notes": [
+          {
+            "body": "The supervision level posts are generic and do not need to be updated for each country.", 
+            "x": 1032, 
+            "y": 1823, 
+            "title": "Supervision Level"
+          }, 
+          {
+            "body": "The site level posts are specific to Nigeria. These can be updated to country specific terms.", 
+            "x": 1203, 
+            "y": 2777, 
+            "title": "Site Level"
+          }, 
+          {
+            "body": "starts reporting flow for SAM Reports.", 
+            "x": 303, 
+            "y": 2, 
+            "title": "Trigger word SAM"
+          }, 
+          {
+            "body": "This has to be stored as a string and not a categorical variable. Currently National or Federal = NAT, State = First, LGA = Second, Health Center = Site", 
+            "x": 1027, 
+            "y": 1279, 
+            "title": "SiteID"
+          }, 
+          {
+            "body": "People who work in warehouses enter the appropriate ID for state, district or site plus S for stocks and the number of warehouse.", 
+            "x": 1039, 
+            "y": 1634, 
+            "title": "Warehouses/ Stores"
+          }, 
+          {
+            "body": "Permissive Regex", 
+            "x": 703, 
+            "y": 3414, 
+            "title": "Check for Email"
+          }, 
+          {
+            "body": "IMAM Program\n\nIMAM Stock Report\n\nIMAM Screen\n\nX is always Exit\n\nBe sure to add these forwards back into tool when installing functioning tool", 
+            "x": 1243, 
+            "y": 404, 
+            "title": "Start Another Flow: "
+          }, 
+          {
+            "y": 3, 
+            "x": 551, 
+            "body": "If @contact.groups contains NUT PERSONNEL then reporter has been registered previously", 
+            "title": "Registered"
+          }, 
+          {
+            "y": 898, 
+            "x": 302, 
+            "body": "The date a contact is first seen is visible through the API:\nhttps://app.rapidpro.io/api/v2/contacts", 
+            "title": "Registration Date"
+          }, 
+          {
+            "y": 1841, 
+            "x": 246, 
+            "body": "Here the type OTP or IPF is set to blank for supervision level staff .", 
+            "title": "Update Contact TYPE"
+          }, 
+          {
+            "y": 2762, 
+            "x": 236, 
+            "body": "Type is updated for implementation staff here as it is always different than supervision staff", 
+            "title": "Update Type"
+          }
+        ], 
+        "expires": 30, 
+        "name": "IMAM Register", 
+        "saved_on": "2016-06-18T22:23:49.508528Z", 
+        "id": 40, 
+        "revision": 682
+      }
+    }, 
+    {
+      "base_language": "base", 
+      "action_sets": [
+        {
+          "y": 4626, 
+          "x": 479, 
+          "destination": "0c76b6c4-2233-4e10-979d-1292b0bcefa7", 
+          "uuid": "b353cce5-d1ec-4902-a263-cd4da96fd598", 
+          "actions": [
+            {
+              "msg": {
+                "base": "You reported @flow.beg in charge, @flow.amar adm, @flow.dcur cures, @flow.dead deaths, @flow.defu defaults, @flow.tout transfers out for week @flow.weeknum Please confirm: Yes or No?"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 5476, 
+          "x": 76, 
+          "destination": null, 
+          "uuid": "5136fc03-36e5-4947-a259-e4484d6c0e07", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Thank you @contact for sending the program data.  Please continue with the stock reporting. "
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2298, 
+          "x": 99, 
+          "destination": "eb6bd9ea-3656-43a9-8372-7a7b463c1c2a", 
+          "uuid": "dcfa82d8-11c2-411f-ab45-36fc6707b608", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of TREATMENT SUCCESS cases and transferred from the IPF to a OTP for continuing RX week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1289, 
+          "x": 750, 
+          "destination": "8d38bb4d-190c-4503-94d7-fa867770e497", 
+          "uuid": "d0c6cb06-e282-4501-b8da-d0c2940a4dca", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of OTP cases IN CHARGE at the beginning of week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3265, 
+          "x": 103, 
+          "destination": "203cf12c-6441-4519-90a7-4692e80d0606", 
+          "uuid": "f71624f0-42e2-4e30-aa5e-1188a6a23d0f", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of DEFAULTERS in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 476, 
+          "x": 674, 
+          "destination": "39de9342-da95-47c8-a7a8-ec992ac948ce", 
+          "uuid": "856d02f2-53a7-4b7a-913d-a2e67c3c21e5", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the SiteID for reporting programme data"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2998, 
+          "x": 101, 
+          "destination": "f53c7131-1c5a-485b-943f-e5667bfb21aa", 
+          "uuid": "eb9ffca5-6fd1-4964-a25a-fd543f772140", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1300, 
+          "x": 101, 
+          "destination": "125c8f1d-3a40-47a0-8a2b-da617e89ea9b", 
+          "uuid": "f2ad652f-4066-4ca4-beff-34a537625187", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of IPF cases IN CHARGE at the beginning of week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 4626, 
+          "x": 100, 
+          "destination": "c05f3f5a-cd58-4271-99bd-da0547716a1f", 
+          "uuid": "d26f461d-1840-49ea-9133-a96e7a87cb4c", 
+          "actions": [
+            {
+              "msg": {
+                "base": "You reported @flow.beg in charge, @flow.amar adm, @flow.tin transfers, @flow.tout Rx success @flow.dead deaths, @flow.defu defaults, @flow.dmed med transfers, @flow.dcur cures for week @flow.weeknum Please confirm: Yes or No?"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3899, 
+          "x": 102, 
+          "destination": "aea1b51c-f940-409b-8269-ced62d0bd6f3", 
+          "uuid": "a279768d-7540-403c-904a-d9b8e63e969f", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of cases CURED in the IPF (full ~8 week treatment in IPF):"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 600, 
+          "x": 1075, 
+          "destination": "39de9342-da95-47c8-a7a8-ec992ac948ce", 
+          "uuid": "47a14733-a6df-4044-91ab-529a4937b831", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I'm sorry. @flow.prositeid is not a valid SiteID. Please re-enter the SiteID or enter x to exit."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 5128, 
+          "x": 294, 
+          "destination": "c05f3f5a-cd58-4271-99bd-da0547716a1f", 
+          "uuid": "1b9e7b92-4946-4bc9-9e2f-4c2d577585f0", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I am sorry, I did not understand @flow.confirm. Please answer Yes or No. "
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 4144, 
+          "x": 777, 
+          "destination": "dae6da32-cb93-4c70-af11-635fb847b3bb", 
+          "uuid": "8a7248d7-f58c-4299-85dd-90c005bf5f5e", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of cases who were TRANSFERRED OUT (to IPF or another OTP) in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1625, 
+          "x": 100, 
+          "destination": "5c4504d1-9da2-4748-ac6e-4d1cccf14c3f", 
+          "uuid": "75a10c4d-5113-42f1-b720-a1eb0ec1a5b8", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3599, 
+          "x": 99, 
+          "destination": "0d575a55-a288-4381-b963-0c88c72b479c", 
+          "uuid": "3a090b51-e472-40b5-959f-611e388c7268", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of MEDICAL TRANSFERS (after unsuccessful RX in IMAM programme) in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1624, 
+          "x": 751, 
+          "destination": "def0465d-4fdf-40dc-a886-c9fd196f56d5", 
+          "uuid": "dcdb1114-d231-48d0-b4ce-1ad0aeb07dbc", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3251, 
+          "x": 752, 
+          "destination": "a40fc16b-46d1-4b72-8717-8ba208ddf12b", 
+          "uuid": "f5d913f6-16ca-4078-b869-30c9e49c9b02", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of DEFAULTERS in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 5122, 
+          "x": 601, 
+          "destination": "0c76b6c4-2233-4e10-979d-1292b0bcefa7", 
+          "uuid": "125bd126-198b-424a-a039-ba12291e52b0", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I am sorry, I did not understand @flow.confirm. Please answer Yes or No. "
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 0, 
+          "x": 55, 
+          "destination": "c5f16bee-f771-4e2f-bebe-1fa49fbae919", 
+          "uuid": "a8c091f5-3ee5-423d-9e98-071cedaa94f2", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Week Number: Please report the week number you are reporting program data."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2997, 
+          "x": 750, 
+          "destination": "1274d71b-5bc9-4b86-87d9-649a8159c441", 
+          "uuid": "4d3f2775-9a63-4515-b7e6-238ea6b78f6e", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of SAM outpatient cases who DIED in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2599, 
+          "x": 750, 
+          "destination": "ebaea297-f6c8-4111-9d5d-ecc65b4d1fa4", 
+          "uuid": "25b000e6-6988-4e26-8871-26923927a8b0", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of CURED SAM cases in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 326, 
+          "x": 374, 
+          "destination": null, 
+          "uuid": "ce8ddb0b-8674-4a4e-bf79-bd62f3f89d4f", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, please complete registration before sending program reports or contact your supervision for help."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 747, 
+          "x": 679, 
+          "destination": "012bb632-c66b-4eeb-a5ab-ba327ab25eee", 
+          "uuid": "30b38550-a493-4366-821a-f7f7c6f87de0", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the type of site OTP or IPF."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 826, 
+          "x": 1099, 
+          "destination": "012bb632-c66b-4eeb-a5ab-ba327ab25eee", 
+          "uuid": "78488062-59c2-4572-a3df-20a2db4ef4ae", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry I did not understand @flow.prositetype. Please enter OTP for Outpatient Therapeutic Programme or IPF for Inpatient Facilty."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 5315, 
+          "x": 293, 
+          "destination": null, 
+          "uuid": "3ec90257-d003-40ab-8773-e0bc50194026", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please re-enter data to correct any errors.  Thank you."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 622, 
+          "x": 381, 
+          "destination": null, 
+          "uuid": "2b77bcd1-e8a1-40a8-b128-d0b13c49301c", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please complete the registration before sending programme data."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 49, 
+          "x": 604, 
+          "destination": "a8c091f5-3ee5-423d-9e98-071cedaa94f2", 
+          "uuid": "c74d7745-1f9b-4bcd-9654-0cd8fdd31223", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry I did not understand@flow.weeknum. Please enter refer to your week number calendar and enter the week number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1924, 
+          "x": 103, 
+          "destination": "64971b98-5bcd-4354-aa11-b67d8a29e2af", 
+          "uuid": "2bda13ca-6fc4-4f1a-b9c7-6890c9efb677", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of TRANSFERS IN from OTP or other IPF week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1450, 
+          "x": 406, 
+          "destination": null, 
+          "uuid": "57ca4d9e-00c6-4b6b-af2c-1c1e2c36d3a2", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of IPF cases IN CHARGE at the beginning of week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1451, 
+          "x": 1050, 
+          "destination": null, 
+          "uuid": "ffdef48c-24b6-4648-b02f-2ce935160891", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of OTP cases IN CHARGE at the beginning of week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1774, 
+          "x": 398, 
+          "destination": "5c4504d1-9da2-4748-ac6e-4d1cccf14c3f", 
+          "uuid": "3d2a43ee-b1c9-40a2-b045-4e8bb8d38148", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1774, 
+          "x": 1060, 
+          "destination": "def0465d-4fdf-40dc-a886-c9fd196f56d5", 
+          "uuid": "fad56100-c62d-4bab-a837-ca5cfdf437db", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2074, 
+          "x": 402, 
+          "destination": "64971b98-5bcd-4354-aa11-b67d8a29e2af", 
+          "uuid": "1fe5abe0-408f-4b9f-b2b5-ade5064eebbe", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of TRANSFERS IN from OTP or other IPF week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2499, 
+          "x": 398, 
+          "destination": "eb6bd9ea-3656-43a9-8372-7a7b463c1c2a", 
+          "uuid": "1fc4df4f-b5fd-4054-b8b0-e77f6d4fec9b", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, Please re-enter the number of TREATMENT SUCCESS cases and transferred from the IPF to a OTP for continuing RX week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2724, 
+          "x": 1055, 
+          "destination": "ebaea297-f6c8-4111-9d5d-ecc65b4d1fa4", 
+          "uuid": "303d0be1-8ac4-44d0-8652-a96a9d1e5bd3", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of CURED SAM cases in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3124, 
+          "x": 404, 
+          "destination": "f53c7131-1c5a-485b-943f-e5667bfb21aa", 
+          "uuid": "1664b771-b1ce-49a9-9939-42ff30bb0722", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3122, 
+          "x": 1051, 
+          "destination": "1274d71b-5bc9-4b86-87d9-649a8159c441", 
+          "uuid": "79f8aca2-7da8-4b46-b286-601e7fe32f77", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3377, 
+          "x": 404, 
+          "destination": "203cf12c-6441-4519-90a7-4692e80d0606", 
+          "uuid": "4c17a152-9c34-45c0-958a-360b4a983229", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of DEFAULTERS in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3374, 
+          "x": 1051, 
+          "destination": "a40fc16b-46d1-4b72-8717-8ba208ddf12b", 
+          "uuid": "32a6bb64-3660-4f20-970b-b3a1a6ebd35d", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand. Please enter the number of DEFAULTERS in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3750, 
+          "x": 400, 
+          "destination": "0d575a55-a288-4381-b963-0c88c72b479c", 
+          "uuid": "9787858a-ad14-4078-b24a-1e0bd4ea4a6a", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, please re-enter the number of MEDICAL TRANSFERS (after unsuccessful RX in IMAM programme) in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 4024, 
+          "x": 400, 
+          "destination": "aea1b51c-f940-409b-8269-ced62d0bd6f3", 
+          "uuid": "b8eee4d7-7563-4190-8a1f-aeaf9d09c11c", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry I did not understand. Please enter the number of cases CURED in the IPF (full ~8 week treatment in IPF):"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 4300, 
+          "x": 1062, 
+          "destination": "dae6da32-cb93-4c70-af11-635fb847b3bb", 
+          "uuid": "b0503981-085d-4ce3-9a11-b2a1d89698c9", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, please re-enter the number of cases who were TRANSFERRED OUT (to IPF or another OTP) in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "a8c091f5-3ee5-423d-9e98-071cedaa94f2", 
+      "rule_sets": [
+        {
+          "uuid": "8d38bb4d-190c-4503-94d7-fa867770e497", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "dcdb1114-d231-48d0-b4ce-1ad0aeb07dbc", 
+              "uuid": "c7970087-1666-4245-b672-631fcee2f5cc", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "816cc708-7d29-4d44-befa-560332496421"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "ffdef48c-24b6-4648-b02f-2ce935160891", 
+              "uuid": "a2f82713-d061-415d-ab05-9ac48afa860f", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Beg", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1450, 
+          "x": 750, 
+          "config": {}
+        }, 
+        {
+          "uuid": "0c76b6c4-2233-4e10-979d-1292b0bcefa7", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "yes y ye"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Yes"
+              }, 
+              "destination": "5136fc03-36e5-4947-a259-e4484d6c0e07", 
+              "uuid": "89732b6d-7caf-43a8-b470-1ef60734fc25", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "no n"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "No"
+              }, 
+              "destination": "3ec90257-d003-40ab-8773-e0bc50194026", 
+              "uuid": "0663abfa-c6b7-4985-b6b2-c34b19480a21", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "2fc02862-5637-46f6-9390-0e625aafcf6e"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "125bd126-198b-424a-a039-ba12291e52b0", 
+              "uuid": "5bf09fd1-4db4-4540-b769-1ab2555e0f72", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Confirm", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 5022, 
+          "x": 477, 
+          "config": {}
+        }, 
+        {
+          "uuid": "a40fc16b-46d1-4b72-8717-8ba208ddf12b", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "8a7248d7-f58c-4299-85dd-90c005bf5f5e", 
+              "uuid": "89cf3ed7-d07a-471b-9335-2024bac5dd14", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "9c713a46-55e4-4535-ab5b-70ba17ec20bb"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "32a6bb64-3660-4f20-970b-b3a1a6ebd35d", 
+              "uuid": "50650f21-9b85-44ea-83c4-71d5aa60376e", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "DefU", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 3374, 
+          "x": 752, 
+          "config": {}
+        }, 
+        {
+          "uuid": "0d575a55-a288-4381-b963-0c88c72b479c", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "a279768d-7540-403c-904a-d9b8e63e969f", 
+              "uuid": "81c291ae-1c3d-48c4-a50e-393b9ceb49da", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "e62c0827-5e29-4168-ab30-f126a2aa56db"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "9787858a-ad14-4078-b24a-1e0bd4ea4a6a", 
+              "uuid": "05f6f822-a031-4373-a1a2-de5fbf560926", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Dmed", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 3759, 
+          "x": 101, 
+          "config": {}
+        }, 
+        {
+          "uuid": "dae6da32-cb93-4c70-af11-635fb847b3bb", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "b353cce5-d1ec-4902-a263-cd4da96fd598", 
+              "uuid": "c5d0136c-1f2e-4c50-813a-7f5fed8e7712", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "1fee822e-8c71-48c0-8d95-ea70a79842b1"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "b0503981-085d-4ce3-9a11-b2a1d89698c9", 
+              "uuid": "2123a7f0-356c-4b69-a3a6-aad7b7395f1f", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Tout", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 4301, 
+          "x": 773, 
+          "config": {}
+        }, 
+        {
+          "uuid": "c5f16bee-f771-4e2f-bebe-1fa49fbae919", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "53", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "base": "1 - 53"
+              }, 
+              "destination": "53a38283-a243-4035-b1c1-9e3e59a0a0b0", 
+              "uuid": "a3f58197-a562-43da-9cac-5740e6fc9d2c", 
+              "destination_type": "R"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "8aa08870-0559-4d1e-aca4-3098eab794f0"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "c74d7745-1f9b-4bcd-9654-0cd8fdd31223", 
+              "uuid": "37c53614-cfda-4d1c-81b7-9818c168f78a", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "WeekNum", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 51, 
+          "x": 304, 
+          "config": {}
+        }, 
+        {
+          "uuid": "125c8f1d-3a40-47a0-8a2b-da617e89ea9b", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "75a10c4d-5113-42f1-b720-a1eb0ec1a5b8", 
+              "uuid": "d5bdfba3-503c-4f87-966c-93ae03e7706a", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "b182ffb2-8672-4b14-bdab-7fccbabc11ef"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "57ca4d9e-00c6-4b6b-af2c-1c1e2c36d3a2", 
+              "uuid": "60f32328-cf1a-47a6-bee8-d49502b92d58", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Beg", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1453, 
+          "x": 103, 
+          "config": {}
+        }, 
+        {
+          "uuid": "aea1b51c-f940-409b-8269-ced62d0bd6f3", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "d26f461d-1840-49ea-9133-a96e7a87cb4c", 
+              "uuid": "814bd151-3b49-4e3e-8ad4-e490279bbf43", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "bd86fb27-f27c-47b9-a7f9-3fe5bc6441a9"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "b8eee4d7-7563-4190-8a1f-aeaf9d09c11c", 
+              "uuid": "de8fcdfc-cc14-47e0-bf4a-a0a8dc41f6fe", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Dcur", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 4023, 
+          "x": 104, 
+          "config": {}
+        }, 
+        {
+          "uuid": "eb6bd9ea-3656-43a9-8372-7a7b463c1c2a", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "eb9ffca5-6fd1-4964-a25a-fd543f772140", 
+              "uuid": "a5f9bf2e-b61d-468d-812e-1c64ab7702a9", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "f15ffb7f-484a-4eaa-b3c9-fb7763e7f90e"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "1fc4df4f-b5fd-4054-b8b0-e77f6d4fec9b", 
+              "uuid": "845dbe18-6ba6-4944-95dd-3200df671b7e", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Tout", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 2500, 
+          "x": 95, 
+          "config": {}
+        }, 
+        {
+          "uuid": "def0465d-4fdf-40dc-a886-c9fd196f56d5", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "25b000e6-6988-4e26-8871-26923927a8b0", 
+              "uuid": "3bc4c59e-3b04-48ea-ba4a-8404751e59fd", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "e298a483-cf50-4ead-a58a-24abb19057b9"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "fad56100-c62d-4bab-a837-ca5cfdf437db", 
+              "uuid": "705b15ba-0640-4081-b7d2-957f62767722", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Amar", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1774, 
+          "x": 750, 
+          "config": {}
+        }, 
+        {
+          "uuid": "1274d71b-5bc9-4b86-87d9-649a8159c441", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "f5d913f6-16ca-4078-b869-30c9e49c9b02", 
+              "uuid": "a3d44ab9-2a24-4f12-9d65-2565b175a12a", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "1e66b39f-9489-49ed-b6be-4b5f30f8b696"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "79f8aca2-7da8-4b46-b286-601e7fe32f77", 
+              "uuid": "ab4f33e6-59d0-45c2-b047-b4af664c1f8d", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Dead", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 3124, 
+          "x": 754, 
+          "config": {}
+        }, 
+        {
+          "uuid": "f53c7131-1c5a-485b-943f-e5667bfb21aa", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "f71624f0-42e2-4e30-aa5e-1188a6a23d0f", 
+              "uuid": "93d15aa0-355f-49c5-a49c-f5354a1df9ce", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "01cd0061-11a9-47ce-9d16-dcfa65b30164"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "1664b771-b1ce-49a9-9939-42ff30bb0722", 
+              "uuid": "63986a48-5e5c-4153-8d06-94c7b218bec4", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Dead", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 3126, 
+          "x": 101, 
+          "config": {}
+        }, 
+        {
+          "uuid": "c05f3f5a-cd58-4271-99bd-da0547716a1f", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "yes y ye"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Yes"
+              }, 
+              "destination": "5136fc03-36e5-4947-a259-e4484d6c0e07", 
+              "uuid": "f5e64799-6239-43ae-aee3-bf8264b9a13d", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "No n"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "No"
+              }, 
+              "destination": "3ec90257-d003-40ab-8773-e0bc50194026", 
+              "uuid": "67dd2650-6d23-4888-8585-ec76eb0b406b", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "89cd0c69-802b-435f-81b8-5a8e35ba75f0"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "1b9e7b92-4946-4bc9-9e2f-4c2d577585f0", 
+              "uuid": "d13e58d2-0174-4dda-ac39-0c6c92b825f5", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Confirm", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 5023, 
+          "x": 77, 
+          "config": {}
+        }, 
+        {
+          "uuid": "5c4504d1-9da2-4748-ac6e-4d1cccf14c3f", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "2bda13ca-6fc4-4f1a-b9c7-6890c9efb677", 
+              "uuid": "223e2c35-92e5-446d-92a4-63336dc5ea81", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "c1dc038b-c0e9-4cd3-acd8-27cdcd4958d3"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "3d2a43ee-b1c9-40a2-b045-4e8bb8d38148", 
+              "uuid": "e3c05510-338e-49ac-baa7-4c19d4e493a9", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Amar", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1772, 
+          "x": 99, 
+          "config": {}
+        }, 
+        {
+          "uuid": "ebaea297-f6c8-4111-9d5d-ecc65b4d1fa4", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "4d3f2775-9a63-4515-b7e6-238ea6b78f6e", 
+              "uuid": "4fcc7632-fc1e-4ff0-b6e7-f393b0c1b1d5", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "1c1070ae-a7e2-45f6-a923-f66ba99720ab"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "303d0be1-8ac4-44d0-8652-a96a9d1e5bd3", 
+              "uuid": "0d6d8113-7d58-48de-8ffe-c7b2f9fa6108", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Dcur", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 2723, 
+          "x": 748, 
+          "config": {}
+        }, 
+        {
+          "uuid": "203cf12c-6441-4519-90a7-4692e80d0606", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "3a090b51-e472-40b5-959f-611e388c7268", 
+              "uuid": "11e149ec-8e01-45df-85fc-028cf46689d8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "48b50800-7d08-4019-8bf8-8d637cbf43af"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "4c17a152-9c34-45c0-958a-360b4a983229", 
+              "uuid": "19cb3ce4-4933-44b7-8032-34b031caf526", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "DefU", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 3375, 
+          "x": 99, 
+          "config": {}
+        }, 
+        {
+          "uuid": "39de9342-da95-47c8-a7a8-ec992ac948ce", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "379999", 
+                "type": "between", 
+                "min": "10101"
+              }, 
+              "category": {
+                "base": "ValidSiteID"
+              }, 
+              "destination": "30b38550-a493-4366-821a-f7f7c6f87de0", 
+              "uuid": "01fe0126-214c-4f74-aca2-7c73bc7e097d", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "ddcd2256-4364-46c9-92ed-89085cbed43c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "47a14733-a6df-4044-91ab-529a4937b831", 
+              "uuid": "1200cd60-5762-4734-849a-f1d65088b193", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "ProSiteID", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 600, 
+          "x": 677, 
+          "config": {}
+        }, 
+        {
+          "uuid": "53a38283-a243-4035-b1c1-9e3e59a0a0b0", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "Site"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Implementation"
+              }, 
+              "destination": "b76d6d24-ca9b-4687-af68-494ee4948207", 
+              "uuid": "146256ce-0421-403e-8f16-a15f7f9b46a1", 
+              "destination_type": "R"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "National First Second"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Supervision"
+              }, 
+              "destination": "856d02f2-53a7-4b7a-913d-a2e67c3c21e5", 
+              "uuid": "723e83cf-0a95-42b3-bd56-81a435a4ac34", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "ce8ddb0b-8674-4a4e-bf79-bd62f3f89d4f", 
+              "uuid": "a99c29ca-a25e-49cc-a190-084470c809a4", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "Function", 
+          "operand": "@contact.level", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 300, 
+          "x": 53, 
+          "config": {}
+        }, 
+        {
+          "uuid": "012bb632-c66b-4eeb-a5ab-ba327ab25eee", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "IPF IFP IP IF I"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "IPF"
+              }, 
+              "destination": "f2ad652f-4066-4ca4-beff-34a537625187", 
+              "uuid": "1fdb0568-38e9-4b53-b007-fe7e3ac97bcd", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "OTP OPT OT OP O"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "OTP"
+              }, 
+              "destination": "d0c6cb06-e282-4501-b8da-d0c2940a4dca", 
+              "uuid": "46bb1577-f8f7-4e68-ab1e-ae2b06ed36fd", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "9f1d63e4-3b29-4097-8328-43fd2910bf96"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "78488062-59c2-4572-a3df-20a2db4ef4ae", 
+              "uuid": "b46cd7a6-ce01-4f58-a5db-f150bde0e2e0", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "ProType", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 852, 
+          "x": 677, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b76d6d24-ca9b-4687-af68-494ee4948207", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "IPF"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Ipf"
+              }, 
+              "destination": "f2ad652f-4066-4ca4-beff-34a537625187", 
+              "uuid": "5a5cc959-78dc-48bb-a019-4b0893591059", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "OTP"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Otp"
+              }, 
+              "destination": "d0c6cb06-e282-4501-b8da-d0c2940a4dca", 
+              "uuid": "4606b79b-b3f5-4fdf-83b6-9156210191e9", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "407806ad-f40c-424f-bc34-c7457079fff6"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "2b77bcd1-e8a1-40a8-b128-d0b13c49301c", 
+              "uuid": "99a9cb81-eee0-45f6-99e1-4263bc6e7738", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "ProType", 
+          "operand": "@contact.sitetype", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 550, 
+          "x": 52, 
+          "config": {}
+        }, 
+        {
+          "uuid": "64971b98-5bcd-4354-aa11-b67d8a29e2af", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "dcfa82d8-11c2-411f-ab45-36fc6707b608", 
+              "uuid": "013a83ef-077f-47af-a9ef-591cd50c6633", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "d2643b89-db2f-4f5a-a4e3-d1125ff2cce4"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "1fe5abe0-408f-4b9f-b2b5-ade5064eebbe", 
+              "uuid": "07f59152-888f-4f1f-906b-67a2084de4e2", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Tin", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2073, 
+          "x": 99, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "uuid": "7ed94fe7-937e-4b5c-ba9d-802edc340aaf", 
+        "notes": [
+          {
+            "body": "...", 
+            "x": 103, 
+            "y": 1171, 
+            "title": "Inpatient Facility"
+          }, 
+          {
+            "body": "Not included in Nigeria implementation", 
+            "x": 1154, 
+            "y": 1138, 
+            "title": "Supplementary Feeding Program"
+          }, 
+          {
+            "body": "...", 
+            "x": 750, 
+            "y": 1154, 
+            "title": "Outpatient Therapeutic Program"
+          }, 
+          {
+            "body": "Most sites will provide services only 1x/week. So date of Program Data will correspond to week. For sites with more than 1x /week then a weekly total needs to be entered. ", 
+            "x": 850, 
+            "y": 0, 
+            "title": "Weekly Data"
+          }, 
+          {
+            "body": "If SiteID is valid and site is within the supervision area of supervisor, then continue in question flow.", 
+            "x": 971, 
+            "y": 398, 
+            "title": "Valid SiteID and Permissions"
+          }, 
+          {
+            "body": "REMOVED Children under 6 months of age are treated in inpatients wards.  They cannot be treated in outpatients as they cannot eat RUTF", 
+            "x": 886, 
+            "y": 5237, 
+            "title": "Data Entry for Children Under Six Months of Age"
+          }, 
+          {
+            "y": 175, 
+            "x": 53, 
+            "body": "Determine if reporter is from implementation or supervision level", 
+            "title": "Level"
+          }, 
+          {
+            "y": 396, 
+            "x": 1218, 
+            "body": "Deleted from current version. See the first entry on github to find the age group codings.", 
+            "title": "Age Groups"
+          }
+        ], 
+        "expires": 60, 
+        "name": "IMAM Program", 
+        "saved_on": "2016-06-08T10:27:55.187151Z", 
+        "id": 2697, 
+        "revision": 532
+      }
+    }, 
+    {
+      "base_language": "base", 
+      "action_sets": [
+        {
+          "y": 0, 
+          "x": 100, 
+          "destination": "6ae91aee-be09-42d1-b160-836581562adb", 
+          "uuid": "631464d4-50b3-4d5d-bf8c-2bfffb5c77b7", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the total number of children 6-59 months of age screened"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 350, 
+          "x": 100, 
+          "destination": "aa222b0f-c000-4686-be55-a5b4b2dacf9c", 
+          "uuid": "7f77a384-0489-48be-a395-93b60a4d306b", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the total number of children 6-59 months of age with bilateral oedema."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 150, 
+          "x": 401, 
+          "destination": "6ae91aee-be09-42d1-b160-836581562adb", 
+          "uuid": "2751d7c7-d376-47d4-927b-3aff198e6629", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I'm sorry, I did not understand @flow.screened6_59.  Please respond with the total number of children 6-59 months of age screened."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 497, 
+          "x": 400, 
+          "destination": "aa222b0f-c000-4686-be55-a5b4b2dacf9c", 
+          "uuid": "e938db58-4e31-442d-b742-e62b72b0bd01", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I'm sorry, I did not understand @flow.oedema6_59.  Please respond with the total number of children 6-59 months of age with bilateral oedema."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 722, 
+          "x": 101, 
+          "destination": "9e964888-a8f5-4242-8167-fe69287d15cd", 
+          "uuid": "db3c0fcb-d54f-45ff-b815-7551f628b7ff", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the total number of children 6-59 months of age with MUAC < 115mm or WHZ <-3 SD."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1077, 
+          "x": 101, 
+          "destination": "b6251ab6-cba0-4a09-a33e-22f65bb09387", 
+          "uuid": "dd51cd49-ac4e-4cd3-8a23-367c03bdd265", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the total number of children 6-59 months of age with moderate acute malnutrition (MUAC from 115 to 124mm or WHZ between -2 and -3 SD)"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1421, 
+          "x": 100, 
+          "destination": null, 
+          "uuid": "aba1a9a1-4f3d-45a3-889c-fa5af672d50e", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Thank you @contact for sending the screening report. You reported @flow.oedema6_59 oedema cases, @flow.sam6_59 severe wasting, @flow.mam6_59 moderate wasting and a total of @flow.screened6_59 cases screened."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 897, 
+          "x": 400, 
+          "destination": "9e964888-a8f5-4242-8167-fe69287d15cd", 
+          "uuid": "d1d7b41a-dafa-4e47-bf7f-f52952a5c84d", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I'm sorry, I did not understand @flow.sam6_59.  Please respond with the total number of children 6-59 months of age with MUAC < 115mm or WHZ <-3 SD."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1301, 
+          "x": 404, 
+          "destination": "b6251ab6-cba0-4a09-a33e-22f65bb09387", 
+          "uuid": "7b42e93b-0717-41f4-bb8d-f61cfc178b75", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I'm sorry, I did not understand @flow.sam6_59.  Please respond with the total number of children 6-59 months of age with  with moderate acute malnutrition (MUAC from 115 to 124mm or WHZ between -2 and -3 SD)"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "631464d4-50b3-4d5d-bf8c-2bfffb5c77b7", 
+      "rule_sets": [
+        {
+          "uuid": "6ae91aee-be09-42d1-b160-836581562adb", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "numeric"
+              }, 
+              "destination": "7f77a384-0489-48be-a395-93b60a4d306b", 
+              "uuid": "e28e462b-73bf-4987-98f9-83ea37e120b9", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "ce5afb8c-9cc3-4f47-a692-d8a4815fb3e7"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "2751d7c7-d376-47d4-927b-3aff198e6629", 
+              "uuid": "73a73a20-00cc-479a-82de-54d645a47b34", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Screened6-59", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 151, 
+          "x": 98, 
+          "config": {}
+        }, 
+        {
+          "uuid": "aa222b0f-c000-4686-be55-a5b4b2dacf9c", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999"
+              }, 
+              "destination": "db3c0fcb-d54f-45ff-b815-7551f628b7ff", 
+              "uuid": "5e24ffc5-a861-4873-b7e3-705f4cd04d7a", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "70d8575f-9886-418f-8b81-9b7d5f4039c8"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "e938db58-4e31-442d-b742-e62b72b0bd01", 
+              "uuid": "d8ef6c4a-d26e-4428-8407-a027d88b67eb", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Oedema6-59", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 498, 
+          "x": 101, 
+          "config": {}
+        }, 
+        {
+          "uuid": "9e964888-a8f5-4242-8167-fe69287d15cd", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999"
+              }, 
+              "destination": "dd51cd49-ac4e-4cd3-8a23-367c03bdd265", 
+              "uuid": "ff41bd76-a342-4a88-853e-f33c3d7c8250", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "1863cb6c-42e0-43c5-a6cf-810b671de1d1"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "d1d7b41a-dafa-4e47-bf7f-f52952a5c84d", 
+              "uuid": "0a83997c-f2c0-4787-9562-0b0f97a6e511", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Sam6-59", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 898, 
+          "x": 101, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b6251ab6-cba0-4a09-a33e-22f65bb09387", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999"
+              }, 
+              "destination": "aba1a9a1-4f3d-45a3-889c-fa5af672d50e", 
+              "uuid": "8c550a11-3aa4-47dc-a830-63c2748d4696", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "e6b7bf2f-bda2-4604-8b44-ecad14bed5eb"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "7b42e93b-0717-41f4-bb8d-f61cfc178b75", 
+              "uuid": "e6552356-3b31-441f-8fb0-0c6fa8512235", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Mam6-59", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1299, 
+          "x": 103, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "expires": 60, 
+        "saved_on": "2016-06-02T14:31:15.526024Z", 
+        "id": 24746, 
+        "name": "IMAM Screening", 
+        "revision": 59
+      }
+    }, 
+    {
+      "base_language": "base", 
+      "action_sets": [
+        {
+          "y": 900, 
+          "x": 47, 
+          "destination": "d8e6a974-3d9e-47f7-86d3-c61e78b8b68b", 
+          "uuid": "f8191b94-495f-42c2-9cc0-34987254e4f3", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of cartons of RUTF you received during week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1551, 
+          "x": 47, 
+          "destination": "7606c913-33ba-4430-b65c-c24148c43242", 
+          "uuid": "a9ada84c-9233-4819-98b4-5194f95caeaa", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of CARTONS of RUTF you have in balance at the end of week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1951, 
+          "x": 50, 
+          "destination": null, 
+          "uuid": "4e6bf7bc-b0ec-483a-9b24-3e0c75cd71a6", 
+          "actions": [
+            {
+              "msg": {
+                "base": "You reported a receipt of @flow.stock_in_out  cartons, use of @flow.stock_used_carton cartons and @flow.stock_used_sachet sachets with a balance of @flow.stock_bal_carton cartons and @flow.stock_bal_sachet sachets."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 137, 
+          "x": 426, 
+          "destination": "0ede122e-6773-44de-9e08-7c398f574bd3", 
+          "uuid": "46e7e515-9336-4af5-8091-1beb9b26a24a", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please send SiteID for stock reporting."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 250, 
+          "x": 875, 
+          "destination": "0ede122e-6773-44de-9e08-7c398f574bd3", 
+          "uuid": "06259800-db28-4f70-979f-f9f5cf232848", 
+          "actions": [
+            {
+              "msg": {
+                "base": "I'm sorry, I don't recognize the SiteID @flow.checksiteid . Please re-enter the Site ID or enter x to exit. "
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1150, 
+          "x": 54, 
+          "destination": "87f9879c-fc83-449e-8bf5-003ad5f19cb1", 
+          "uuid": "c8837b22-ccb4-43dd-ab9c-aab2c9e276b7", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of complete CARTONS of RUTF used during week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 899, 
+          "x": 654, 
+          "destination": "f8191b94-495f-42c2-9cc0-34987254e4f3", 
+          "uuid": "354b13aa-7e9c-4237-88e0-ac62a192dcaf", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.stock_in_out.  Please enter the number of cartons of RUTF you received during week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1148, 
+          "x": 653, 
+          "destination": "c8837b22-ccb4-43dd-ab9c-aab2c9e276b7", 
+          "uuid": "ba8041f0-14c6-4c8a-b474-027e5a71b1ea", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.stock_used_carton..  Please enter the number of complete cartons used during week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1551, 
+          "x": 650, 
+          "destination": "a9ada84c-9233-4819-98b4-5194f95caeaa", 
+          "uuid": "eb47bfb5-dc5a-4524-bfa5-32031d8c55db", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.stock_bal_carton.   Please enter the number of CARTONS of RUTF you have in balance at the end of week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 348, 
+          "x": 55, 
+          "destination": "bd7b43ee-e1ee-4e26-ad0a-ab319ee4889a", 
+          "uuid": "4ed29178-8476-4e08-8573-bb7829a535c8", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the week number that you are reporting for:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 423, 
+          "x": 374, 
+          "destination": "bd7b43ee-e1ee-4e26-ad0a-ab319ee4889a", 
+          "uuid": "594ba3ad-1009-4c3b-9af2-eede4bd595d6", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry I did not understand @flow.week_number. Please enter the week number that you are reporting for."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1350, 
+          "x": 53, 
+          "destination": "b9679256-5d35-499d-9a10-9552000bd1b1", 
+          "uuid": "132a50b4-4329-4d86-a101-fbdeb64221ec", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of SACHETS of RUTF used in past week (not including number of cartons):"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1745, 
+          "x": 52, 
+          "destination": "5416b5ae-3812-4d5e-96f0-840355a4d2f9", 
+          "uuid": "ef2f94dd-a2d0-43e2-9588-d9efbfc5b08b", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of SACHETS of RUTF remaining in balance at the end of week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1347, 
+          "x": 653, 
+          "destination": null, 
+          "uuid": "b28d75dc-2d16-4b62-8189-d1231134a75a", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.stock_used_sachet.  Please enter the number of sachets of RUTF used during week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1751, 
+          "x": 653, 
+          "destination": null, 
+          "uuid": "c18fac09-a310-40df-a157-a1d89219827e", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.stock_bal_sachet.  Please enter the number of SACHETS of RUTF you have in balance at the end of week @flow.week_number."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 27, 
+          "x": 1085, 
+          "destination": null, 
+          "uuid": "b9e64e54-d9b0-4729-9f23-6c7921e1eca6", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, please complete registration before sending stock reports."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "34f34776-3645-462c-9d6c-e7329eee244e", 
+      "rule_sets": [
+        {
+          "uuid": "d8e6a974-3d9e-47f7-86d3-c61e78b8b68b", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999999"
+              }, 
+              "destination": "c8837b22-ccb4-43dd-ab9c-aab2c9e276b7", 
+              "uuid": "1710eef8-ab15-48b2-b2b4-d0d41da87792", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "4c1d7762-7835-4a3f-a1b8-7be2b5694a79"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "354b13aa-7e9c-4237-88e0-ac62a192dcaf", 
+              "uuid": "67c085ba-d445-46b0-b290-3c6a59899b54", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Stock_in_out", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 896, 
+          "x": 351, 
+          "config": {}
+        }, 
+        {
+          "uuid": "7606c913-33ba-4430-b65c-c24148c43242", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999999"
+              }, 
+              "destination": "ef2f94dd-a2d0-43e2-9588-d9efbfc5b08b", 
+              "uuid": "c8b56bcc-a2aa-4ef5-977e-ad7dfedd9523", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "d756d52f-c372-4eae-9d19-d04831c695bc"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "eb47bfb5-dc5a-4524-bfa5-32031d8c55db", 
+              "uuid": "ba2cad2b-596e-4280-aece-93d88c7d14f6", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Stock_bal_carton", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "C", 
+          "y": 1550, 
+          "x": 351, 
+          "config": {}
+        }, 
+        {
+          "uuid": "34f34776-3645-462c-9d6c-e7329eee244e", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "Site"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Implementation"
+              }, 
+              "destination": "4ed29178-8476-4e08-8573-bb7829a535c8", 
+              "uuid": "9e596343-6918-4d6f-a8ae-d0db93b9b5fb", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "National First Second"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Supervision"
+              }, 
+              "destination": "46e7e515-9336-4af5-8091-1beb9b26a24a", 
+              "uuid": "5ab8f1b2-c020-483f-9182-1d15423a4107", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "b9e64e54-d9b0-4729-9f23-6c7921e1eca6", 
+              "uuid": "81579241-509f-4d0e-acd5-8d1871429546", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "PostLevel", 
+          "operand": "@contact.level", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 0, 
+          "x": 57, 
+          "config": {}
+        }, 
+        {
+          "uuid": "0ede122e-6773-44de-9e08-7c398f574bd3", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": "Yes", 
+                "max": "3799999", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "base": "Ok"
+              }, 
+              "destination": "4ed29178-8476-4e08-8573-bb7829a535c8", 
+              "uuid": "f7eb0533-bf3e-4415-b346-aae7b2f93fff", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "No"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "No"
+              }, 
+              "destination": "06259800-db28-4f70-979f-f9f5cf232848", 
+              "uuid": "40a38f98-d102-457f-ad32-1f6e3a4301fc", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "destination": null, 
+              "uuid": "943e2e6a-1465-4ac9-8cf3-23ba395fc76e"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "06259800-db28-4f70-979f-f9f5cf232848", 
+              "uuid": "555611aa-3e79-4aeb-b215-fd7ceb1e38e5", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "CheckSiteID", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 246, 
+          "x": 427, 
+          "config": {}
+        }, 
+        {
+          "uuid": "87f9879c-fc83-449e-8bf5-003ad5f19cb1", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999999"
+              }, 
+              "destination": "132a50b4-4329-4d86-a101-fbdeb64221ec", 
+              "uuid": "1f057eff-ccc4-40bb-ab2b-65795caadb64", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "21c46437-24a6-46db-ae54-8f32fdd3f284"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "ba8041f0-14c6-4c8a-b474-027e5a71b1ea", 
+              "uuid": "81f60964-a23d-4510-af76-c38f06e2797e", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Stock_used_carton", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1147, 
+          "x": 353, 
+          "config": {}
+        }, 
+        {
+          "uuid": "bd7b43ee-e1ee-4e26-ad0a-ab319ee4889a", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "53", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "base": "1 - 53"
+              }, 
+              "destination": "f8191b94-495f-42c2-9cc0-34987254e4f3", 
+              "uuid": "a9a5e6f2-1b73-470f-b10c-f00caa73ae21", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "f4cd9466-8a11-4307-a09a-ea133279c02f"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "594ba3ad-1009-4c3b-9af2-eede4bd595d6", 
+              "uuid": "43d5f71b-d5be-44bb-a08d-85b964678d85", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Week_Number", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 475, 
+          "x": 49, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b9679256-5d35-499d-9a10-9552000bd1b1", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 9999"
+              }, 
+              "destination": "a9ada84c-9233-4819-98b4-5194f95caeaa", 
+              "uuid": "3ba957be-4ffa-487e-b55c-d8adb4b9a199", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "eb353de7-d51e-4009-9821-b36c167b3efd"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "b28d75dc-2d16-4b62-8189-d1231134a75a", 
+              "uuid": "2eb68f30-d40a-42a2-a2ea-1808b9b0f885", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Stock_used_sachet", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1350, 
+          "x": 350, 
+          "config": {}
+        }, 
+        {
+          "uuid": "5416b5ae-3812-4d5e-96f0-840355a4d2f9", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0 - 999"
+              }, 
+              "destination": "4e6bf7bc-b0ec-483a-9b24-3e0c75cd71a6", 
+              "uuid": "97904ff7-28d2-4dd2-a389-a05a4901145a", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "cbd0154e-51ac-41c3-a53d-2b080b8e7e11"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "c18fac09-a310-40df-a157-a1d89219827e", 
+              "uuid": "56036f53-0230-4cba-b4f4-3fb50ef60573", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Stock_bal_sachet", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1750, 
+          "x": 352, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "uuid": "62b11a0c-e08a-4541-8228-c3eb6167db86", 
+        "notes": [
+          {
+            "body": "If SiteID is valid and site is within the supervision are of supervisor then allow to continue reporting.", 
+            "x": 1143, 
+            "y": 200, 
+            "title": "Valid SiteID and Permissions"
+          }
+        ], 
+        "expires": 60, 
+        "name": "IMAM Stock Report", 
+        "saved_on": "2016-06-03T04:50:50.464085Z", 
+        "id": 44, 
+        "revision": 274
+      }
+    }, 
+    {
+      "base_language": "base", 
+      "action_sets": [
+        {
+          "y": 0, 
+          "x": 100, 
+          "destination": "efb04042-ced7-4911-9a6a-190ac2f8749d", 
+          "uuid": "d02d2f8e-f03d-427f-b6f6-9706024de1b8", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Which language do you prefer to use, English or French ?"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 350, 
+          "x": 99, 
+          "destination": null, 
+          "uuid": "90b563f1-ffb8-4483-8d6b-d8a390254f22", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Thanks, your language preference has been saved."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 352, 
+          "x": 425, 
+          "destination": null, 
+          "uuid": "565114bc-5ddb-4afa-bb74-6cd83b2f59a2", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Merci, Votre choix de langue a \u00e9t\u00e9 sauvgard\u00e9."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "d02d2f8e-f03d-427f-b6f6-9706024de1b8", 
+      "rule_sets": [
+        {
+          "uuid": "efb04042-ced7-4911-9a6a-190ac2f8749d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "English Eng En E"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "English"
+              }, 
+              "destination": "90b563f1-ffb8-4483-8d6b-d8a390254f22", 
+              "uuid": "255558b5-1884-43c9-badb-4f93f2909440", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "French Fre Fr F"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "French"
+              }, 
+              "destination": "565114bc-5ddb-4afa-bb74-6cd83b2f59a2", 
+              "uuid": "fefb1d48-efd3-4953-90fa-6bd89cec9b26", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "uuid": "36ae0485-8c07-4ab6-a287-59a2d2e0eedc"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Language", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 123, 
+          "x": 324, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "name": "Choose Language", 
+        "notes": [
+          {
+            "y": 0, 
+            "x": 350, 
+            "body": "Create separate trigger word to start Change Language", 
+            "title": "Don't start through Register"
+          }
+        ], 
+        "expires": 60, 
+        "revision": 29, 
+        "id": 24749, 
+        "saved_on": "2016-05-20T07:51:18.391139Z"
+      }
+    }, 
+    {
+      "base_language": "eng", 
+      "action_sets": [
+        {
+          "y": 0, 
+          "x": 97, 
+          "destination": null, 
+          "uuid": "7189a7e0-1e32-4825-bc57-e33bc16e2c35", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Hello @contact  You registered on @contact.registration_date at SiteID @contact.siteid @contact.type as @contact.post on @contact.level level with @contact.mail email"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "7189a7e0-1e32-4825-bc57-e33bc16e2c35", 
+      "rule_sets": [], 
+      "metadata": {
+        "expires": 60, 
+        "revision": 15, 
+        "id": 25010, 
+        "name": "Validate", 
+        "saved_on": "2016-06-18T17:36:57.661671Z"
+      }
+    }, 
+    {
+      "base_language": "eng", 
+      "action_sets": [
+        {
+          "y": 474, 
+          "x": 77, 
+          "destination": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "uuid": "d66cab9f-a60a-4916-9dd1-60884fe59e84", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number supervisory visits conducted:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 74, 
+          "x": 377, 
+          "destination": null, 
+          "uuid": "9751e6ce-cfb3-4d27-84a2-496ca585c09e", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please register before sending the regular IYCF programme data."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 748, 
+          "x": 78, 
+          "destination": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "uuid": "5fc826a1-194d-4de4-9838-cd282fbab5e2", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of PREGNANT WOMAN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1077, 
+          "x": 77, 
+          "destination": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "uuid": "0d117e3e-187d-4266-9d9e-3c737ff5f0e9", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MOTHERS with CHILDREN < 6 MONTHS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1401, 
+          "x": 75, 
+          "destination": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "uuid": "141a95a3-6625-4d49-a9d7-55a26ccf8fec", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MOTHERS with CHILDREN  6 TO 23 MONTHS  who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1749, 
+          "x": 76, 
+          "destination": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "uuid": "97b119df-055f-4c85-8f79-11d2901ed3fa", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of WOMEN OF CHILD BEARING AGE who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2075, 
+          "x": 78, 
+          "destination": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "uuid": "a5dbdb2e-deb3-4609-bef9-79d339f3be74", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of GRANDMOTHERS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2400, 
+          "x": 77, 
+          "destination": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "uuid": "66f8c62f-b323-4b3b-9738-109ffc3525ea", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MEN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2729, 
+          "x": 74, 
+          "destination": null, 
+          "uuid": "56f053d0-9c5e-4929-8584-454a291288bf", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Thank you for sending your IYCF report."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 177, 
+          "x": 79, 
+          "destination": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "uuid": "e966377b-c52f-43a0-90e6-09ce9fd7a49a", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the MONTH number that you are reporting for:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 298, 
+          "x": 376, 
+          "destination": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "uuid": "6534b88c-203a-4dea-b7a4-e824ec8fa21f", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the month number that you are reporting for."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "193f2688-5bee-4de9-9619-a2a87dffe8d5", 
+      "rule_sets": [
+        {
+          "uuid": "193f2688-5bee-4de9-9619-a2a87dffe8d5", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "eng": "Nut Personnel"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "Registered"
+              }, 
+              "destination": "e966377b-c52f-43a0-90e6-09ce9fd7a49a", 
+              "uuid": "8c5956ee-11e4-44c1-9a91-0b987ba31520", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "9751e6ce-cfb3-4d27-84a2-496ca585c09e", 
+              "uuid": "0119aef6-440e-45e2-980b-3c7a02a0448e", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "Response 1", 
+          "operand": "@contact.groups", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 0, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "5fc826a1-194d-4de4-9838-cd282fbab5e2", 
+              "uuid": "6f058ce3-a3a1-4653-9e05-acb4d4e30f06", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "92a2a9aa-16fe-46e4-a3ff-c149eda55c8c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "f2c6fb0a-1757-42b8-a9c4-5b1048824335"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "SupervisionVisits", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 576, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "0d117e3e-187d-4266-9d9e-3c737ff5f0e9", 
+              "uuid": "1b9dc306-3fec-4a82-b274-cd9c221b1607", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a9a07357-dcfc-4901-9a7a-4b4c733bb59c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "7f8d302d-8caf-4057-959c-5552be1b04c7"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "PregnantWomen", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 898, 
+          "x": 77, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "141a95a3-6625-4d49-a9d7-55a26ccf8fec", 
+              "uuid": "ee2f3a6a-2e56-433b-a2f8-346035104240", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "61ae19c8-52f7-42fe-b7f9-97cb4e7d8261"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "8c0ed011-4439-48ee-8992-3be95b3f3f06"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "MothersLT6Months", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1224, 
+          "x": 79, 
+          "config": {}
+        }, 
+        {
+          "uuid": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "97b119df-055f-4c85-8f79-11d2901ed3fa", 
+              "uuid": "ef818a44-348f-444a-ab5b-cbfe4cbd34d7", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "00f7f354-d22e-42c4-b94d-cfe4634fa1a3"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "a77c25a1-a2e7-43a5-b74c-ffdd9ee5a180"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Mothers6to23Months", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1576, 
+          "x": 74, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "a5dbdb2e-deb3-4609-bef9-79d339f3be74", 
+              "uuid": "d61f035d-590d-4784-b3f1-408627a41f98", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a0f677d7-92f8-4217-b482-1fc54097e03b"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "aac52e5e-b571-4def-ad4a-0bd9e81d9a98"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "WomenRepAge", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1897, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "66f8c62f-b323-4b3b-9738-109ffc3525ea", 
+              "uuid": "e9ae25fb-4247-4a9f-90d5-b758e17b060c", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "85bfb24f-f26d-456f-956b-5e8168e972a2"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Grandmothers", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2222, 
+          "x": 80, 
+          "config": {}
+        }, 
+        {
+          "uuid": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "56f053d0-9c5e-4929-8584-454a291288bf", 
+              "uuid": "7ed76f32-ac7a-4ffb-9d47-adf058c328bf", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "uuid": "8014b9e4-33da-4100-9467-6175c931d9e5"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Men", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2526, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "12", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "eng": "1 - 12"
+              }, 
+              "destination": "d66cab9f-a60a-4916-9dd1-60884fe59e84", 
+              "uuid": "6dd03c91-4a9d-4ee3-9fa7-e1d139fac24d", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "6534b88c-203a-4dea-b7a4-e824ec8fa21f", 
+              "uuid": "0ba8fe05-cd7f-4d87-b89f-7866f54a93f1", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Response 9", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 299, 
+          "x": 77, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "expires": 60, 
+        "revision": 130, 
+        "id": 24991, 
+        "name": "IYCF", 
+        "saved_on": "2016-06-19T10:26:09.484485Z"
+      }
+    }
+  ], 
+  "triggers": [
+    {
+      "trigger_type": "K", 
+      "flow": {
+        "name": "IMAM Register", 
+        "id": 40
+      }, 
+      "groups": [], 
+      "keyword": "sam", 
+      "channel": null
+    }
+  ]
+}
