@@ -1,0 +1,804 @@
+{
+  "campaigns": [], 
+  "version": 8, 
+  "site": "https://app.rapidpro.io", 
+  "flows": [
+    {
+      "base_language": "eng", 
+      "action_sets": [
+        {
+          "y": 474, 
+          "x": 77, 
+          "destination": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "uuid": "d66cab9f-a60a-4916-9dd1-60884fe59e84", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number supervisory visits conducted:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 72, 
+          "x": 402, 
+          "destination": null, 
+          "uuid": "9751e6ce-cfb3-4d27-84a2-496ca585c09e", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please register before sending the regular IYCF programme data."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 748, 
+          "x": 78, 
+          "destination": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "uuid": "5fc826a1-194d-4de4-9838-cd282fbab5e2", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of PREGNANT WOMEN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1077, 
+          "x": 77, 
+          "destination": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "uuid": "0d117e3e-187d-4266-9d9e-3c737ff5f0e9", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MOTHERS with CHILDREN < 6 MONTHS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1401, 
+          "x": 75, 
+          "destination": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "uuid": "141a95a3-6625-4d49-a9d7-55a26ccf8fec", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MOTHERS with CHILDREN  6 TO 23 MONTHS  who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1749, 
+          "x": 76, 
+          "destination": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "uuid": "97b119df-055f-4c85-8f79-11d2901ed3fa", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of WOMEN OF CHILD BEARING AGE who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2075, 
+          "x": 78, 
+          "destination": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "uuid": "a5dbdb2e-deb3-4609-bef9-79d339f3be74", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of GRANDMOTHERS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2400, 
+          "x": 77, 
+          "destination": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "uuid": "66f8c62f-b323-4b3b-9738-109ffc3525ea", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the number of MEN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3325, 
+          "x": 79, 
+          "destination": null, 
+          "uuid": "56f053d0-9c5e-4929-8584-454a291288bf", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Thank you for sending your IYCF report."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 177, 
+          "x": 79, 
+          "destination": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "uuid": "e966377b-c52f-43a0-90e6-09ce9fd7a49a", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Please enter the MONTH number that you are reporting for:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 300, 
+          "x": 402, 
+          "destination": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "uuid": "6534b88c-203a-4dea-b7a4-e824ec8fa21f", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the month number that you are reporting for."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 573, 
+          "x": 399, 
+          "destination": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "uuid": "a6079605-7013-4b7b-8d22-4d966e6d0392", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of supervisory visits conducted:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 900, 
+          "x": 403, 
+          "destination": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "uuid": "28375275-ff58-4fcb-afed-2c74d8f4f5e2", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of PREGNANT WOMEN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1222, 
+          "x": 399, 
+          "destination": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "uuid": "e167b5b8-8da0-4ba0-a237-97b5eb8b188a", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of MOTHERS with CHILDREN < 6 MONTHS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1573, 
+          "x": 400, 
+          "destination": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "uuid": "3132389a-7d61-419c-a29d-8eccffc60dbd", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of MOTHERS with CHILDREN FROM 6 TO 23 MONTHS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1897, 
+          "x": 402, 
+          "destination": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "uuid": "3beb6519-66cc-4953-a9f8-0a70f2a796b8", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of WOMAN OF CHILD BEARING AGE who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2224, 
+          "x": 398, 
+          "destination": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "uuid": "77ae33b6-183b-4bdc-b2e0-d51fe2e7132c", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of GRANDMOTHERS who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2524, 
+          "x": 398, 
+          "destination": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "uuid": "6af4f931-21c4-463b-b39c-e554a3b26847", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Sorry, I did not understand.  Please enter the number of MEN who attended the support group meeting:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2700, 
+          "x": 79, 
+          "destination": "c0c0b50e-b5bf-4c1d-a5ee-03d135bc452d", 
+          "uuid": "8903bcff-a5fd-4df6-9489-e502c4e361bc", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Total Number of People who Attended a Support Group Meeting for the First Time"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 3024, 
+          "x": 77, 
+          "destination": "db16efa1-742b-4d21-9763-13568e6b1f69", 
+          "uuid": "f9032250-b35c-4a3d-92f8-62c40929120a", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "No. of People Referred to Health Facility for Counselling"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "193f2688-5bee-4de9-9619-a2a87dffe8d5", 
+      "rule_sets": [
+        {
+          "uuid": "193f2688-5bee-4de9-9619-a2a87dffe8d5", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "eng": "Nut Personnel"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "Registered"
+              }, 
+              "destination": "e966377b-c52f-43a0-90e6-09ce9fd7a49a", 
+              "uuid": "8c5956ee-11e4-44c1-9a91-0b987ba31520", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "9751e6ce-cfb3-4d27-84a2-496ca585c09e", 
+              "uuid": "0119aef6-440e-45e2-980b-3c7a02a0448e", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "contact_field", 
+          "label": "Response 1", 
+          "operand": "@contact.groups", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 0, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "f704a4c7-7a53-46fd-bd07-0face12062db", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "5fc826a1-194d-4de4-9838-cd282fbab5e2", 
+              "uuid": "6f058ce3-a3a1-4653-9e05-acb4d4e30f06", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "92a2a9aa-16fe-46e4-a3ff-c149eda55c8c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "a6079605-7013-4b7b-8d22-4d966e6d0392", 
+              "uuid": "f2c6fb0a-1757-42b8-a9c4-5b1048824335", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "SupervisionVisits", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 576, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6194b771-c6cd-45e5-b183-5d417b773c80", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "0d117e3e-187d-4266-9d9e-3c737ff5f0e9", 
+              "uuid": "1b9dc306-3fec-4a82-b274-cd9c221b1607", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a9a07357-dcfc-4901-9a7a-4b4c733bb59c"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "28375275-ff58-4fcb-afed-2c74d8f4f5e2", 
+              "uuid": "7f8d302d-8caf-4057-959c-5552be1b04c7", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "PregnantWomen", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 898, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "6cca9f46-0b0b-4bf6-a4aa-d4448cbf8289", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "141a95a3-6625-4d49-a9d7-55a26ccf8fec", 
+              "uuid": "ee2f3a6a-2e56-433b-a2f8-346035104240", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "61ae19c8-52f7-42fe-b7f9-97cb4e7d8261"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "e167b5b8-8da0-4ba0-a237-97b5eb8b188a", 
+              "uuid": "8c0ed011-4439-48ee-8992-3be95b3f3f06", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "MothersLT6Months", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1224, 
+          "x": 79, 
+          "config": {}
+        }, 
+        {
+          "uuid": "1f1a7d13-3528-40b3-9f98-4b84360c89dc", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "97b119df-055f-4c85-8f79-11d2901ed3fa", 
+              "uuid": "ef818a44-348f-444a-ab5b-cbfe4cbd34d7", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "00f7f354-d22e-42c4-b94d-cfe4634fa1a3"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "3132389a-7d61-419c-a29d-8eccffc60dbd", 
+              "uuid": "a77c25a1-a2e7-43a5-b74c-ffdd9ee5a180", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Mothers6to23Months", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1576, 
+          "x": 74, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b3de086a-e393-4f79-b71d-37d73d15a858", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "a5dbdb2e-deb3-4609-bef9-79d339f3be74", 
+              "uuid": "d61f035d-590d-4784-b3f1-408627a41f98", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a0f677d7-92f8-4217-b482-1fc54097e03b"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "3beb6519-66cc-4953-a9f8-0a70f2a796b8", 
+              "uuid": "aac52e5e-b571-4def-ad4a-0bd9e81d9a98", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "WomenRepAge", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 1899, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "97d18346-b751-47a9-9ae0-f1e02e274e9d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "66f8c62f-b323-4b3b-9738-109ffc3525ea", 
+              "uuid": "e9ae25fb-4247-4a9f-90d5-b758e17b060c", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "f8de6196-0c91-422d-8e65-e9bbb92539a3"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "77ae33b6-183b-4bdc-b2e0-d51fe2e7132c", 
+              "uuid": "85bfb24f-f26d-456f-956b-5e8168e972a2", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Grandmothers", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2222, 
+          "x": 80, 
+          "config": {}
+        }, 
+        {
+          "uuid": "e5e0bfe9-c1df-47b4-b913-f384d0c0756d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "eng": "0 - 999"
+              }, 
+              "destination": "8903bcff-a5fd-4df6-9489-e502c4e361bc", 
+              "uuid": "7ed76f32-ac7a-4ffb-9d47-adf058c328bf", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "eng": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "eng": "X"
+              }, 
+              "uuid": "a566d1aa-730f-4022-b7f1-b850a41a8f55"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "6af4f931-21c4-463b-b39c-e554a3b26847", 
+              "uuid": "8014b9e4-33da-4100-9467-6175c931d9e5", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Men", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2526, 
+          "x": 75, 
+          "config": {}
+        }, 
+        {
+          "uuid": "7089cf40-11fe-4109-b981-266afd1b81e0", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "12", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "eng": "1 - 12"
+              }, 
+              "destination": "d66cab9f-a60a-4916-9dd1-60884fe59e84", 
+              "uuid": "6dd03c91-4a9d-4ee3-9fa7-e1d139fac24d", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "Other"
+              }, 
+              "destination": "6534b88c-203a-4dea-b7a4-e824ec8fa21f", 
+              "uuid": "0ba8fe05-cd7f-4d87-b89f-7866f54a93f1", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Response 9", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 299, 
+          "x": 77, 
+          "config": {}
+        }, 
+        {
+          "uuid": "c0c0b50e-b5bf-4c1d-a5ee-03d135bc452d", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "All Responses"
+              }, 
+              "destination": "f9032250-b35c-4a3d-92f8-62c40929120a", 
+              "uuid": "e467a2b4-7d3b-4ae3-a8af-0c4b2740fa5c", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Response 10", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2825, 
+          "x": 81, 
+          "config": {}
+        }, 
+        {
+          "uuid": "db16efa1-742b-4d21-9763-13568e6b1f69", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "eng": "All Responses"
+              }, 
+              "destination": "56f053d0-9c5e-4929-8584-454a291288bf", 
+              "uuid": "6bc369f5-585b-4e72-a3f1-52a984eb88c7", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Response 11", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 3123, 
+          "x": 77, 
+          "config": {}
+        }
+      ], 
+      "metadata": {
+        "expires": 60, 
+        "revision": 266, 
+        "id": 24991, 
+        "name": "IYCF", 
+        "saved_on": "2016-06-21T16:38:11.997611Z"
+      }
+    }
+  ], 
+  "triggers": []
+}
