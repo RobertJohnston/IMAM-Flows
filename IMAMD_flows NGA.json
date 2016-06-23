@@ -567,11 +567,23 @@
           "rules": [
             {
               "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "99e40228-f7b9-434b-8c45-8c48909c7bcb"
+            }, 
+            {
+              "test": {
                 "test": "true", 
                 "type": "true"
               }, 
               "category": {
-                "base": "All Responses"
+                "base": "Other"
               }, 
               "destination": "f8c64487-b82d-46bf-8687-a3439d88fcf9", 
               "uuid": "1c49cb88-3e3d-426c-a292-98bcef2c715f", 
@@ -1128,9 +1140,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Register", 
-        "saved_on": "2016-06-23T11:40:59.950086Z", 
+        "saved_on": "2016-06-23T15:11:39.940774Z", 
         "id": 24993, 
-        "revision": 20
+        "revision": 21
       }
     }, 
     {
@@ -1417,7 +1429,7 @@
           ]
         }, 
         {
-          "y": 2574, 
+          "y": 2670, 
           "x": 750, 
           "destination": "a42e4631-f17d-460a-9605-98611c376ed5", 
           "uuid": "cf3761e7-00c6-45e5-9d6b-9c9a47096a9d", 
@@ -1522,7 +1534,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of TRANSFERS IN from OTP or other IPF week @flow.weeknum"
+                "base": "Please enter the number of TRANSFERS IN from OTP or other IPF for week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1536,7 +1548,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of IPF cases IN CHARGE at the beginning of week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.beg. Please enter the number of IPF cases IN CHARGE at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1550,7 +1562,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of OTP cases IN CHARGE at the beginning of week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.beg. Please enter the number of OTP cases IN CHARGE at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1564,7 +1576,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.amar. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1578,7 +1590,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.amar. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1592,7 +1604,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of TRANSFERS IN from OTP or other IPF week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.tin. Please enter the number of TRANSFERS IN from OTP or other IPF for week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1613,14 +1625,14 @@
           ]
         }, 
         {
-          "y": 2724, 
-          "x": 1055, 
+          "y": 2801, 
+          "x": 1060, 
           "destination": "a42e4631-f17d-460a-9605-98611c376ed5", 
           "uuid": "f639ea76-ebee-4aac-bbb1-bed484d1975e", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of CURED SAM cases in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.dcur. Please enter the number of CURED SAM cases in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1634,7 +1646,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.dead. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1648,7 +1660,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.dead. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1662,7 +1674,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of DEFAULTERS in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.defu. Please enter the number of DEFAULTERS in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1676,7 +1688,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand. Please enter the number of DEFAULTERS in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.defu. Please enter the number of DEFAULTERS in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1704,7 +1716,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry I did not understand. Please enter the number of cases CURED in the IPF (full ~8 week treatment in IPF):"
+                "base": "Sorry I did not understand @flow.dcur. Please enter the number of cases CURED in the IPF (full ~8 week treatment in IPF):"
               }, 
               "type": "reply"
             }
@@ -2550,8 +2562,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 2723, 
-          "x": 748, 
+          "y": 2795, 
+          "x": 751, 
           "config": {}
         }, 
         {
@@ -2956,9 +2968,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Program", 
-        "saved_on": "2016-06-20T15:41:17.307931Z", 
+        "saved_on": "2016-06-23T15:33:11.633208Z", 
         "id": 24994, 
-        "revision": 5
+        "revision": 31
       }
     }, 
     {
@@ -5184,6 +5196,36 @@
         "id": 24998, 
         "name": "IYCF", 
         "saved_on": "2016-06-23T12:24:08.424103Z"
+      }
+    }, 
+    {
+      "base_language": "eng", 
+      "action_sets": [
+        {
+          "y": 0, 
+          "x": 100, 
+          "destination": null, 
+          "uuid": "0217833f-4da6-4d0b-9f06-2a1a9e16aff1", 
+          "actions": [
+            {
+              "msg": {
+                "eng": "Hello @contact  You registered on @contact.registration_date at SiteID @contact.siteid @contact.type as @contact.post on @contact.level level with @contact.mail email"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }
+      ], 
+      "version": 8, 
+      "flow_type": "F", 
+      "entry": "0217833f-4da6-4d0b-9f06-2a1a9e16aff1", 
+      "rule_sets": [], 
+      "metadata": {
+        "expires": 60, 
+        "revision": 5, 
+        "id": 25008, 
+        "name": "IMAM Validate", 
+        "saved_on": "2016-06-20T15:42:05.663310Z"
       }
     }
   ], 
