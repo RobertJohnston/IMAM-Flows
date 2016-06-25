@@ -393,6 +393,19 @@
               "type": "reply"
             }
           ]
+        }, 
+        {
+          "y": 803, 
+          "x": 880, 
+          "destination": null, 
+          "uuid": "b747dd1d-63f8-4b3b-8e96-8a06e14442a5", 
+          "actions": [
+            {
+              "type": "flow", 
+              "name": "IMAM Validate", 
+              "id": 25008
+            }
+          ]
         }
       ], 
       "version": 8, 
@@ -774,18 +787,6 @@
             {
               "test": {
                 "test": {
-                  "base": "x"
-                }, 
-                "type": "contains_any"
-              }, 
-              "category": {
-                "base": "X"
-              }, 
-              "uuid": "9aae5ab3-1417-4d44-897e-3d03a2c8907e"
-            }, 
-            {
-              "test": {
-                "test": {
                   "base": "Val"
                 }, 
                 "type": "contains_any"
@@ -793,9 +794,21 @@
               "category": {
                 "base": "Validate"
               }, 
-              "destination": null, 
+              "destination": "b747dd1d-63f8-4b3b-8e96-8a06e14442a5", 
               "uuid": "b9b4ea1e-0847-44e2-b0f7-c4955574b1d6", 
               "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "X"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "ee8b27ea-917b-4d05-b9e9-876acc674bf7"
             }, 
             {
               "test": {
@@ -1132,17 +1145,17 @@
             "title": "Update Contact TYPE"
           }, 
           {
-            "y": 2762, 
-            "x": 236, 
+            "y": 2765, 
+            "x": 248, 
             "body": "Type is updated for implementation staff here as it is always different than supervision staff", 
             "title": "Update Type"
           }
         ], 
         "expires": 60, 
         "name": "IMAM Register", 
-        "saved_on": "2016-06-23T15:11:39.940774Z", 
+        "saved_on": "2016-06-25T11:24:40.261541Z", 
         "id": 24993, 
-        "revision": 21
+        "revision": 26
       }
     }, 
     {
@@ -1173,6 +1186,11 @@
                 "base": "Thank you @contact for sending the program data.  Please continue with the stock reporting. "
               }, 
               "type": "reply"
+            }, 
+            {
+              "type": "flow", 
+              "name": "IMAM Stock Report", 
+              "id": 24996
             }
           ]
         }, 
@@ -1184,7 +1202,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of TREATMENT SUCCESS cases and transferred from the IPF to a OTP for continuing RX week @flow.weeknum"
+                "base": "Please enter the number of TREATMENT SUCCESS cases and transferred from the IPF to a OTP for continuing RX in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1198,7 +1216,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of OTP cases IN CHARGE at the beginning of week @flow.weeknum"
+                "base": "Please enter the number of OTP cases IN TREATMENT at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1240,7 +1258,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+                "base": "Please enter the number of DEATHS of inpatient cases in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1254,7 +1272,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of IPF cases IN CHARGE at the beginning of week @flow.weeknum"
+                "base": "Please enter the number of IPF cases IN TREATMENT at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1282,7 +1300,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of cases CURED in the IPF (full ~8 week treatment in IPF):"
+                "base": "Please enter the number of cases CURED in the IPF:"
               }, 
               "type": "reply"
             }
@@ -1352,7 +1370,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of MEDICAL TRANSFERS (after unsuccessful RX in IMAM programme) in week @flow.weeknum"
+                "base": "Please enter the number of NON-RECOVERED or MEDICAL TRANSFERS (after unsuccessful RX in IMAM programme) in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1422,7 +1440,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of SAM outpatient cases who DIED in week @flow.weeknum"
+                "base": "Please enter the number of DEATHS in outpatient cases in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1548,7 +1566,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.beg. Please enter the number of IPF cases IN CHARGE at the beginning of week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.beg. Please enter the number of IPF cases IN TREATMENT at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1562,7 +1580,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.beg. Please enter the number of OTP cases IN CHARGE at the beginning of week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.beg. Please enter the number of OTP cases IN TREATMENT at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1612,13 +1630,13 @@
         }, 
         {
           "y": 2499, 
-          "x": 398, 
+          "x": 397, 
           "destination": "4ad2e902-db5d-4738-b489-1da41910e9f3", 
           "uuid": "29e577ca-9689-47de-9d53-0e03f8cde965", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry, Please re-enter the number of TREATMENT SUCCESS cases and transferred from the IPF to a OTP for continuing RX week @flow.weeknum"
+                "base": "Sorry, Please re-enter the number of TREATMENT SUCCESS cases and transferred from the IPF to a OTP for continuing RX week in @flowweeknum"
               }, 
               "type": "reply"
             }
@@ -1695,14 +1713,14 @@
           ]
         }, 
         {
-          "y": 3750, 
-          "x": 400, 
+          "y": 3774, 
+          "x": 426, 
           "destination": "be31ae5e-9161-41e5-930c-a9db80e70f88", 
           "uuid": "98175437-a919-454f-aa5b-df8aa73e049d", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry, please re-enter the number of MEDICAL TRANSFERS (after unsuccessful RX in IMAM programme) in week @flow.weeknum"
+                "base": "Sorry, please re-enter the number of NON-RECOVERED or MEDICAL TRANSFERS in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1710,13 +1728,13 @@
         }, 
         {
           "y": 4024, 
-          "x": 400, 
+          "x": 399, 
           "destination": "55ed41de-6026-4bbe-964b-5a2459f40eda", 
           "uuid": "8e65b65c-6658-407f-a61c-c2ba9ac6dd6d", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry I did not understand @flow.dcur. Please enter the number of cases CURED in the IPF (full ~8 week treatment in IPF):"
+                "base": "Sorry I did not understand @flow.dcur. Please enter the number of cases CURED in the IPF:"
               }, 
               "type": "reply"
             }
@@ -1964,8 +1982,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 3759, 
-          "x": 101, 
+          "y": 3773, 
+          "x": 99, 
           "config": {}
         }, 
         {
@@ -2070,8 +2088,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 51, 
-          "x": 304, 
+          "y": 49, 
+          "x": 309, 
           "config": {}
         }, 
         {
@@ -2723,8 +2741,8 @@
           "operand": "@contact.level", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 300, 
-          "x": 53, 
+          "y": 307, 
+          "x": 55, 
           "config": {}
         }, 
         {
@@ -2949,28 +2967,34 @@
           }, 
           {
             "body": "REMOVED Children under 6 months of age are treated in inpatients wards.  They cannot be treated in outpatients as they cannot eat RUTF", 
-            "x": 73, 
-            "y": 5650, 
+            "x": 72, 
+            "y": 5689, 
             "title": "Data Entry for Children Under Six Months of Age"
           }, 
           {
-            "y": 175, 
+            "y": 176, 
             "x": 53, 
-            "body": "Determine if reporter is from implementation or supervision level", 
-            "title": "Level"
+            "body": "RapidPro determines if reporter is from implementation or supervision level", 
+            "title": "Level Query"
           }, 
           {
             "y": 396, 
             "x": 1218, 
             "body": "Deleted from current version. See the first entry on github to find the age group codings.", 
             "title": "Age Groups"
+          }, 
+          {
+            "y": 4176, 
+            "x": 400, 
+            "body": "This means that the case was treated exclusively in the IPF and was never referred to OTP", 
+            "title": "CURE in IPF"
           }
         ], 
         "expires": 60, 
         "name": "IMAM Program", 
-        "saved_on": "2016-06-23T15:33:11.633208Z", 
+        "saved_on": "2016-06-25T11:58:32.436896Z", 
         "id": 24994, 
-        "revision": 31
+        "revision": 80
       }
     }, 
     {
@@ -3486,7 +3510,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please send SiteID for the site that you are stock reporting."
+                "base": "Please send SiteID for the site that you are reporting for."
               }, 
               "type": "reply"
             }
@@ -4223,9 +4247,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Stock Report", 
-        "saved_on": "2016-06-23T12:08:45.057050Z", 
+        "saved_on": "2016-06-25T12:15:48.929638Z", 
         "id": 24996, 
-        "revision": 23
+        "revision": 24
       }
     }, 
     {
