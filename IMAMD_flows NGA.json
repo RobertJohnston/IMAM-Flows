@@ -59,7 +59,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Position code:\nIn charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
+                "base": "Position code:\nIn charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ Chew=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
               }, 
               "type": "reply"
             }, 
@@ -328,7 +328,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please report the type of site that you are reporting for:\nSC Stabilisation Centre OTP Outpatient Therapeutic Program."
+                "base": "Please enter the type of your site:  OTP= Outpatient Therapeutic Program\nSC= Stabilisation Centre"
               }, 
               "type": "reply"
             }
@@ -1107,8 +1107,8 @@
             "title": "Registered"
           }, 
           {
-            "y": 898, 
-            "x": 302, 
+            "y": 875, 
+            "x": 277, 
             "body": "The date a contact is first seen is visible through the API:\nhttps://app.rapidpro.io/api/v2/contacts", 
             "title": "Registration Date"
           }, 
@@ -1133,9 +1133,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Register", 
-        "saved_on": "2016-06-28T15:09:13.994100Z", 
+        "saved_on": "2016-06-29T06:46:57.844935Z", 
         "id": 24993, 
-        "revision": 64
+        "revision": 67
       }
     }, 
     {
@@ -1191,7 +1191,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of OTP cases UNDER TREATMENT at the beginning of week @flow.weeknum"
+                "base": "Please enter the number of cases UNDER TREATMENT at the beginning of week @flow.weeknum at OTP"
               }, 
               "type": "reply"
             }
@@ -1247,7 +1247,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Please enter the number of SC cases UNDER TREATMENT at the beginning of week @flow.weeknum"
+                "base": "Please enter the number of cases UNDER TREATMENT at the beginning of week @flow.weeknum at SC"
               }, 
               "type": "reply"
             }
@@ -1583,7 +1583,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.tin. Please enter the number of TRANSFERS IN from OTP or other IPF for week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.tin. Please enter the number of TRANSFERS IN from OTP or SC for week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1730,8 +1730,8 @@
           ]
         }, 
         {
-          "y": 863, 
-          "x": 277, 
+          "y": 1000, 
+          "x": 476, 
           "destination": "6fb5089c-d989-4126-838b-9dceb57e6470", 
           "uuid": "1a1ec55c-fcbc-4b53-8c08-718bff8ba897", 
           "actions": [
@@ -1779,6 +1779,34 @@
             {
               "msg": {
                 "base": "Sorry, please re-enter the number of NON-RECOVERED in week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 1926, 
+          "x": 751, 
+          "destination": "3b3b4d6d-ed72-4708-bfb6-5ef8979a46bd", 
+          "uuid": "1f187716-ea1a-47dc-af2c-38c1b16c5a19", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the number of TRANSFERS IN from OTP or other IPF for week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2075, 
+          "x": 1051, 
+          "destination": null, 
+          "uuid": "e1b6e26d-235f-4982-9086-90ae98db393f", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand @flow.tin. Please enter the number of TRANSFERS IN from OTP or SC for week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -2226,7 +2254,7 @@
               "category": {
                 "base": "0 - 9999"
               }, 
-              "destination": "cf3761e7-00c6-45e5-9d6b-9c9a47096a9d", 
+              "destination": "1f187716-ea1a-47dc-af2c-38c1b16c5a19", 
               "uuid": "c7f762d4-b6c9-4748-8be8-6ecbca1c6c52", 
               "destination_type": "A"
             }, 
@@ -3063,6 +3091,58 @@
           "y": 3774, 
           "x": 723, 
           "config": {}
+        }, 
+        {
+          "uuid": "3b3b4d6d-ed72-4708-bfb6-5ef8979a46bd", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "max": "9999", 
+                "type": "between", 
+                "min": "0"
+              }, 
+              "category": {
+                "base": "0-9999"
+              }, 
+              "destination": "cf3761e7-00c6-45e5-9d6b-9c9a47096a9d", 
+              "uuid": "b127cd8b-5707-4343-82b0-b692a430bef8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "9e88a611-019b-4506-a78a-3dac8e28c876"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "e1b6e26d-235f-4982-9086-90ae98db393f", 
+              "uuid": "6c48a086-1dd3-4129-8d9a-b677d33e5387", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Tin", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 2075, 
+          "x": 752, 
+          "config": {}
         }
       ], 
       "metadata": {
@@ -3101,7 +3181,7 @@
           {
             "body": "REMOVED Children under 6 months of age are treated in inpatients wards.  They cannot be treated in outpatients as they cannot eat RUTF", 
             "x": 72, 
-            "y": 5776, 
+            "y": 5786, 
             "title": "Data Entry for Children Under Six Months of Age"
           }, 
           {
@@ -3137,9 +3217,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Program", 
-        "saved_on": "2016-06-28T12:33:55.737760Z", 
+        "saved_on": "2016-06-29T06:57:01.169379Z", 
         "id": 24994, 
-        "revision": 228
+        "revision": 250
       }
     }, 
     {
