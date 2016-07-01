@@ -1156,8 +1156,8 @@
           ]
         }, 
         {
-          "y": 5476, 
-          "x": 76, 
+          "y": 5595, 
+          "x": 690, 
           "destination": "9e71a65a-1d5e-4757-8f40-b51a5c1becdc", 
           "uuid": "0edd1076-fb93-44ba-909f-91bd8a9898da", 
           "actions": [
@@ -1184,8 +1184,8 @@
           ]
         }, 
         {
-          "y": 1276, 
-          "x": 755, 
+          "y": 1300, 
+          "x": 751, 
           "destination": "2afcda2d-b90a-4caf-83a1-71a223c63082", 
           "uuid": "dfdde2e9-1856-49c0-8f4a-6f7c4cac187e", 
           "actions": [
@@ -1457,7 +1457,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry I did not understand @flow.prositetype. Please enter OTP for Outpatient Therapeutic Programme or SC for Stabilsation Centre"
+                "base": "Sorry I did not understand @flow.protype Please enter OTP for Outpatient Therapeutic Programme or SC for Stabilsation Centre"
               }, 
               "type": "reply"
             }
@@ -1744,8 +1744,8 @@
           ]
         }, 
         {
-          "y": 5702, 
-          "x": 72, 
+          "y": 5884, 
+          "x": 76, 
           "destination": null, 
           "uuid": "05809541-e3e6-44e6-9f19-939a8071ed7f", 
           "actions": [
@@ -2414,9 +2414,9 @@
               "category": {
                 "base": "Yes"
               }, 
-              "destination": "0edd1076-fb93-44ba-909f-91bd8a9898da", 
+              "destination": "9e71a65a-1d5e-4757-8f40-b51a5c1becdc", 
               "uuid": "a7a2a05f-42df-4f3f-923f-d547422fcc1a", 
-              "destination_type": "A"
+              "destination_type": "R"
             }, 
             {
               "test": {
@@ -3036,7 +3036,7 @@
           "finished_key": null, 
           "response_type": "", 
           "y": 5621, 
-          "x": 77, 
+          "x": 76, 
           "config": {}
         }, 
         {
@@ -3162,7 +3162,7 @@
           }, 
           {
             "body": "...", 
-            "x": 581, 
+            "x": 752, 
             "y": 1198, 
             "title": "Outpatient Therapeutic Program"
           }, 
@@ -3180,8 +3180,8 @@
           }, 
           {
             "body": "REMOVED Children under 6 months of age are treated in inpatients wards.  They cannot be treated in outpatients as they cannot eat RUTF", 
-            "x": 72, 
-            "y": 5786, 
+            "x": 78, 
+            "y": 5977, 
             "title": "Data Entry for Children Under Six Months of Age"
           }, 
           {
@@ -3203,23 +3203,23 @@
             "title": "CURE in IPF"
           }, 
           {
-            "y": 1020, 
-            "x": 1004, 
+            "y": 1002, 
+            "x": 695, 
             "body": "0-5m, 6-59m, other", 
             "title": "Age group"
           }, 
           {
             "y": 5600, 
             "x": 447, 
-            "body": "IF you are supervision, you are sent to Warehouse reporting", 
+            "body": "IF you are supervision, you are sent to Warehouse reporting - DELETE to right.", 
             "title": "Error"
           }
         ], 
         "expires": 60, 
         "name": "IMAM Program", 
-        "saved_on": "2016-06-29T06:57:01.169379Z", 
+        "saved_on": "2016-06-29T18:49:11.940731Z", 
         "id": 24994, 
-        "revision": 250
+        "revision": 293
       }
     }, 
     {
@@ -3714,36 +3714,36 @@
           ]
         }, 
         {
-          "y": 1951, 
-          "x": 50, 
+          "y": 1939, 
+          "x": 49, 
           "destination": "2db96e4d-9eab-4d7d-98ed-54a28a6ce75f", 
           "uuid": "b85c6375-05fc-4bec-bc6e-1639112bd4ee", 
           "actions": [
             {
               "msg": {
-                "base": "You reported a receipt of @flow.rutf_in cartons, use of @flow.rutf_used_carton and @flow.rutf_used_sachet sachets with a balance of @flow.rutf_bal_carton cartons and @flow.rutf_bal_sachet sachets. Please confirm Yes or No ?"
+                "base": "For week @flow.week_number you received @flow.rutf_in cartons, used @flow.rutf_used_carton cartons and @flow.rutf_used_sachet sachets with a balance of @flow.rutf_bal_carton cartons and @flow.rutf_bal_sachet sachets. Please confirm Yes or No ?"
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 137, 
-          "x": 426, 
+          "y": 478, 
+          "x": 829, 
           "destination": "c930d5d3-c0a2-42ba-a48e-f04fe37a4085", 
           "uuid": "6086c008-5d35-48db-9b95-237929bcb965", 
           "actions": [
             {
               "msg": {
-                "base": "Please send SiteID for the site that you are reporting for."
+                "base": "Please send SiteID for the site that you are STOCK reporting for."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 250, 
-          "x": 875, 
+          "y": 718, 
+          "x": 1039, 
           "destination": "c930d5d3-c0a2-42ba-a48e-f04fe37a4085", 
           "uuid": "41b74faf-2126-4ab9-bfeb-42a9adfc2420", 
           "actions": [
@@ -3812,28 +3812,28 @@
           ]
         }, 
         {
-          "y": 348, 
-          "x": 55, 
+          "y": 349, 
+          "x": 52, 
           "destination": "e60a324c-a3eb-4b2b-98b7-89f5875c15c1", 
           "uuid": "4d369d67-d531-447e-9f83-9e1ed70c4533", 
           "actions": [
             {
               "msg": {
-                "base": "Please enter the week number that you are reporting stocks data for:"
+                "base": "Please enter the WEEK NUMBER that you are reporting STOCKS data for:"
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 423, 
-          "x": 374, 
+          "y": 476, 
+          "x": 375, 
           "destination": "e60a324c-a3eb-4b2b-98b7-89f5875c15c1", 
           "uuid": "75fba382-b54f-4fcd-8609-2ab8681108b8", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry I did not understand @flow.week_number. Please enter the week number that you are reporting for."
+                "base": "Sorry I did not understand @flow.week_number. Please enter the WEEK NUMBER that you are STOCK reporting for."
               }, 
               "type": "reply"
             }
@@ -3896,14 +3896,14 @@
           ]
         }, 
         {
-          "y": 27, 
-          "x": 1085, 
+          "y": 51, 
+          "x": 379, 
           "destination": null, 
           "uuid": "971ea878-d060-4af3-9c92-0bdd4847fcaa", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry, please register with your SITE ID before sending stock reports."
+                "base": "Sorry, please register with your SITE ID before sending STOCK reports."
               }, 
               "type": "reply"
             }
@@ -3917,15 +3917,15 @@
           "actions": [
             {
               "msg": {
-                "base": "Thank you @contact for sending the stock report."
+                "base": "Thank you @contact for sending the STOCK REPORT."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 2474, 
-          "x": 275, 
+          "y": 2427, 
+          "x": 227, 
           "destination": null, 
           "uuid": "e2b4dd4e-3094-4d48-8519-9bbe6319eaa7", 
           "actions": [
@@ -3938,8 +3938,8 @@
           ]
         }, 
         {
-          "y": 2274, 
-          "x": 477, 
+          "y": 2325, 
+          "x": 500, 
           "destination": "2db96e4d-9eab-4d7d-98ed-54a28a6ce75f", 
           "uuid": "9a2f6272-2a10-490b-bcd0-282aa3c27241", 
           "actions": [
@@ -4092,8 +4092,8 @@
           ]
         }, 
         {
-          "y": 124, 
-          "x": 175, 
+          "y": 376, 
+          "x": 677, 
           "destination": null, 
           "uuid": "c44baa10-75c6-48bc-b334-8d76505f94f3", 
           "actions": [
@@ -4101,6 +4101,34 @@
               "type": "flow", 
               "name": "IMAM State LGA Stocks", 
               "id": 25581
+            }
+          ]
+        }, 
+        {
+          "y": 152, 
+          "x": 854, 
+          "destination": "2bbde655-8ce7-4bda-9a64-a83fa347928f", 
+          "uuid": "913d85d6-7830-46c4-b861-78d52f2c5d64", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Do you want to report STOCKS for your SiteID @contact.siteid:  Yes or No ?"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 372, 
+          "x": 1063, 
+          "destination": "2bbde655-8ce7-4bda-9a64-a83fa347928f", 
+          "uuid": "631e8482-4277-4d2a-8f90-057c9f87e4cf", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I don't understand. Please enter the SiteID that you are STOCK reporting for:"
+              }, 
+              "type": "reply"
             }
           ]
         }
@@ -4243,7 +4271,7 @@
               "category": {
                 "base": "Supervision"
               }, 
-              "destination": "c44baa10-75c6-48bc-b334-8d76505f94f3", 
+              "destination": "913d85d6-7830-46c4-b861-78d52f2c5d64", 
               "uuid": "bbe54646-4f13-448f-a937-3c3b6cc26ab1", 
               "destination_type": "A"
             }, 
@@ -4283,7 +4311,7 @@
               "category": {
                 "base": "Site"
               }, 
-              "destination": null, 
+              "destination": "4d369d67-d531-447e-9f83-9e1ed70c4533", 
               "uuid": "1cbac095-427c-4970-ab3b-cdd966eb65bb", 
               "destination_type": "A"
             }, 
@@ -4333,8 +4361,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 249, 
-          "x": 427, 
+          "y": 593, 
+          "x": 824, 
           "config": {}
         }, 
         {
@@ -4608,8 +4636,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 2274, 
-          "x": 50, 
+          "y": 2325, 
+          "x": 46, 
           "config": {}
         }, 
         {
@@ -4870,6 +4898,73 @@
           "y": 3724, 
           "x": 599, 
           "config": {}
+        }, 
+        {
+          "uuid": "2bbde655-8ce7-4bda-9a64-a83fa347928f", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "Yes Ye Y"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Yes"
+              }, 
+              "destination": "c44baa10-75c6-48bc-b334-8d76505f94f3", 
+              "uuid": "745ba291-3f3f-4b6a-b182-25706f1081c4", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "No N"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "No"
+              }, 
+              "destination": "6086c008-5d35-48db-9b95-237929bcb965", 
+              "uuid": "58c98f2f-677f-4577-ac90-9746832a90f6", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "ad37dcb3-eb1e-4f13-95b6-f0a067f1accc"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "631e8482-4277-4d2a-8f90-057c9f87e4cf", 
+              "uuid": "9339df37-33be-4003-9b66-588f24ddf7e0", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "Response 15", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 275, 
+          "x": 851, 
+          "config": {}
         }
       ], 
       "metadata": {
@@ -4877,8 +4972,8 @@
         "notes": [
           {
             "body": "If SiteID is valid and site is within the supervision are of supervisor then allow to continue reporting.", 
-            "x": 637, 
-            "y": 138, 
+            "x": 609, 
+            "y": 233, 
             "title": "Valid SiteID and Permissions"
           }, 
           {
@@ -4888,17 +4983,17 @@
             "title": "SC"
           }, 
           {
-            "y": 146, 
-            "x": 931, 
-            "body": "Supervision cannot report stocks for site", 
-            "title": "Error"
+            "y": 1976, 
+            "x": 311, 
+            "body": "...", 
+            "title": "Add week number"
           }
         ], 
         "expires": 60, 
         "name": "IMAM Stock Report", 
-        "saved_on": "2016-06-28T07:37:31.137853Z", 
+        "saved_on": "2016-06-29T19:07:21.084136Z", 
         "id": 24996, 
-        "revision": 136
+        "revision": 316
       }
     }, 
     {
@@ -5067,14 +5162,14 @@
           ]
         }, 
         {
-          "y": 1077, 
+          "y": 1050, 
           "x": 77, 
           "destination": "9c7a8298-91e8-4bd5-80a5-476e2b64d6fd", 
           "uuid": "1ab24f4c-e59d-42ce-9f10-0ab180d3323d", 
           "actions": [
             {
               "msg": {
-                "eng": "Please enter the number of MOTHERS with CHILDREN < 6 MONTHS who attended the support group meeting:"
+                "eng": "Please enter the number of MOTHERS with CHILDREN LESS THAN 6 MONTHS who attended the support group meeting:"
               }, 
               "type": "reply"
             }
@@ -5207,8 +5302,8 @@
           ]
         }, 
         {
-          "y": 1222, 
-          "x": 399, 
+          "y": 1223, 
+          "x": 400, 
           "destination": "9c7a8298-91e8-4bd5-80a5-476e2b64d6fd", 
           "uuid": "ffee5bac-3f80-463c-93e1-9355ab2ce56a", 
           "actions": [
@@ -5915,9 +6010,9 @@
           }
         ], 
         "expires": 60, 
-        "revision": 88, 
+        "revision": 160, 
         "id": 24998, 
-        "saved_on": "2016-06-28T15:00:43.196298Z"
+        "saved_on": "2016-06-29T18:19:34.215617Z"
       }
     }, 
     {
