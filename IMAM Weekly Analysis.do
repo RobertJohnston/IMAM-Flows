@@ -70,6 +70,12 @@ replace Mail = "no" if MailCategoryIMAMRegister=="no"
 * if Type (OTP or SC) is recorded for 1st or 2nd level not implementation level, then delete
 replace Type ="" if Level =="First" | Level == "Second"
 
+* Enumerate the number of persons registered and number of telephones
+bysort state lga Name: egen num_tel = seq()
+* Number of phones that one person has registered with 
+tab num_tel, m
+* The total number of persons registered is first row in table - num_tel=1. 
+
 sort state lga_code Level Name
 * To remove any personnel with more than one phone add 'if num_tel ==1'
 list state lga Name Level Post Type if num_tel ==1
@@ -92,16 +98,11 @@ tab URN, m
 tab num_tel , m
 tab Mail , m
 
-keep URN Name Post Level Mail SiteID Type FirstSeen LastSeen state_code state lga_code lga
+keep URN Name Post Level Mail SiteID Type FirstSeen LastSeen state_code state lga_code lga num_tel RegistrationDate
 order  Name state lga SiteID Level Type Post URN num_tel Mail 
 
 save delete_reg, replace
 
-* Enumerate the number of persons registered and number of telephones
-bysort state lga Name: egen num_tel = seq()
-* Number of phones that one person has registered with 
-tab num_tel, m
-* The total number of persons registered is first row in table - num_tel=1. 
 
 * To Analyse Registration Date Use RegistrationDate and not LastSeen - LastSeen represents last time that they routed through to programme report. 
 gen RegDate =date(RegistrationDate,"DMY")
@@ -286,7 +287,7 @@ drop if strlen(SiteID) <9
 drop if rep_date_error ==1 | rep_date_error ==2 
 
 keep ContactUUID URN Name SiteID FirstSeen LastSeen WeekNum ConfirmCategory Role Level report_date Year CurrWeekNum ///
-      RepWeekNum weekdiff rep_date_error SiteID_error Type AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout unique
+      RepWeekNum weekdiff rep_date_error SiteID_error Type AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout unique 
 
 order SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout
 
@@ -349,6 +350,10 @@ order Phone Name SiteID MissProRept TotProgRept
 * add MissStoRept
 
 export excel using "C:\TEMP\MissingReptWeeks.xls", firstrow(variables) replace
+
+
+
+
 
 ****************
 * Stocks data - Site
