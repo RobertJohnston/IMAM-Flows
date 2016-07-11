@@ -31,12 +31,6 @@
               "label": "SiteID"
             }, 
             {
-              "field": "post", 
-              "type": "save", 
-              "value": "@flow.post.category", 
-              "label": "Post"
-            }, 
-            {
               "type": "del_group", 
               "groups": [
                 {
@@ -79,7 +73,7 @@
           "actions": [
             {
               "msg": {
-                "base": "I am sorry, I did not understand @flow.command.  Please respond in an SMS with one of the following keywords: REGISTER, PROGRAM, STOCK or SCREENING"
+                "base": "I am sorry, I did not understand @flow.command.   Enter REG to Register,  PRO send Programme data and STO to send Stock data."
               }, 
               "type": "reply"
             }
@@ -127,10 +121,10 @@
               "type": "reply"
             }, 
             {
-              "field": "sitetype", 
+              "field": "type", 
               "type": "save", 
               "value": ",", 
-              "label": "SiteType"
+              "label": "Type"
             }
           ]
         }, 
@@ -189,7 +183,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Welcome to IMAM Reports. enter REG to Register,  PRO send Programme data and STO to send Stock data."
+                "base": "Welcome to RapidPro Reports. Enter REG to Register,  PRO send Programme data and STO to send Stock data."
               }, 
               "type": "reply"
             }
@@ -203,7 +197,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorrry, I did not understand @flow.mail.  Please check carefully and re-enter. If you don't have an email, please enter no."
+                "base": "Sorry, I did not understand @flow.mail.  Please check carefully and re-enter. If you don't have an email, please enter No"
               }, 
               "type": "reply"
             }
@@ -247,7 +241,7 @@
           "actions": [
             {
               "type": "flow", 
-              "name": "IMAM Stock Report", 
+              "name": "IMAM Stock ", 
               "id": 24996
             }
           ]
@@ -300,7 +294,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.post. Please respond with:\nCoordinator=C\nDatabase Manager=D\nStocks Manager=S\nTechnical Assistance=TA\nObserver=OB"
+                "base": "Sorry, I did not understand @flow.post_sup Please respond with:\nCoordinator=C\nDatabase Manager=D\nStocks Manager=S\nTechnical Assistance=TA\nObserver=OB"
               }, 
               "type": "reply"
             }
@@ -308,13 +302,13 @@
         }, 
         {
           "y": 2925, 
-          "x": 1199, 
+          "x": 1198, 
           "destination": "7aa3711b-1d55-431d-a597-44c1cc1ca09e", 
           "uuid": "dfbc7a6f-f051-42b4-b2a8-dcb68885cc68", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.post. Please respond with: In charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
+                "base": "Sorry, I did not understand @flow.post_imp. Please respond with: In charge=HC\nDoctor=MD\nLab Tech/Pharm=LP\nCommunity Hlth Officer/ CHEW=HW\nNurse /Midwife=NU\nVolunteer=VO\nTech Asst=TA\nObserver=OB"
               }, 
               "type": "reply"
             }
@@ -342,7 +336,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand.  Please report the type of site that you are reporting for SC Stabilisation or Outpatient Therapeutic Program."
+                "base": "Sorry, I did not understand. Please enter the type of your site:  OTP= Outpatient Therapeutic Program SC= Stabilisation Centre"
               }, 
               "type": "reply"
             }
@@ -356,7 +350,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Hello @contact  You registered on @contact.registration_date at SiteID @contact.siteid @contact.type as @contact.post on @contact.level level with @contact.mail email"
+                "base": "Thank you @(PROPER(contact))  You registered on @contact.registration_date at SiteID @contact.siteid @contact.type as @contact.post on @contact.level level with @flow.mail email"
               }, 
               "type": "reply"
             }, 
@@ -378,6 +372,48 @@
               "type": "flow", 
               "name": "IMAM Validate", 
               "id": 25008
+            }
+          ]
+        }, 
+        {
+          "y": 1074, 
+          "x": 353, 
+          "destination": "b92aa2eb-ded6-4a79-a18a-d07730373a21", 
+          "uuid": "7772f9ff-45e2-44d7-99b8-8e124ebd4cae", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I did not understand your name. Please enter your name (first, middle last name)"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 2828, 
+          "x": 687, 
+          "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+          "uuid": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
+          "actions": [
+            {
+              "field": "post", 
+              "type": "save", 
+              "value": "@flow.post_imp.category", 
+              "label": "Post"
+            }
+          ]
+        }, 
+        {
+          "y": 1866, 
+          "x": 508, 
+          "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+          "uuid": "bcfb834e-1d8e-46ac-a50b-47a427e97fbb", 
+          "actions": [
+            {
+              "field": "post", 
+              "type": "save", 
+              "value": "@flow.post_sup.category", 
+              "label": "Post"
             }
           ]
         }
@@ -411,7 +447,7 @@
               }, 
               "test": {
                 "test": {
-                  "base": "no"
+                  "base": "No N"
                 }, 
                 "base": "x", 
                 "type": "contains_any"
@@ -555,14 +591,28 @@
             {
               "test": {
                 "test": {
+                  "base": "Reg Pro Sto SCR Val Lan"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "Error"
+              }, 
+              "destination": "7772f9ff-45e2-44d7-99b8-8e124ebd4cae", 
+              "uuid": "99e40228-f7b9-434b-8c45-8c48909c7bcb", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
                   "base": "x"
                 }, 
-                "type": "contains"
+                "type": "contains_any"
               }, 
               "category": {
                 "base": "X"
               }, 
-              "uuid": "99e40228-f7b9-434b-8c45-8c48909c7bcb"
+              "uuid": "f4679e06-a980-494d-8cb3-694d774415f0"
             }, 
             {
               "test": {
@@ -601,7 +651,7 @@
               "category": {
                 "base": "Coordinator"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "bcfb834e-1d8e-46ac-a50b-47a427e97fbb", 
               "uuid": "80c9063e-fbe8-4875-9109-ccf865d86cfd", 
               "destination_type": "A"
             }, 
@@ -615,7 +665,7 @@
               "category": {
                 "base": "Database Manager"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "bcfb834e-1d8e-46ac-a50b-47a427e97fbb", 
               "uuid": "64314c2e-4b2d-4fa4-96a4-7708d2be835b", 
               "destination_type": "A"
             }, 
@@ -629,7 +679,7 @@
               "category": {
                 "base": "Stocks Manager"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "bcfb834e-1d8e-46ac-a50b-47a427e97fbb", 
               "uuid": "2114e996-4a5a-4971-a369-8de34f720736", 
               "destination_type": "A"
             }, 
@@ -643,7 +693,7 @@
               "category": {
                 "base": "Technical Assistance"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "bcfb834e-1d8e-46ac-a50b-47a427e97fbb", 
               "uuid": "8cceed7b-40c7-45ff-9349-3a93e7cfa47e", 
               "destination_type": "A"
             }, 
@@ -657,7 +707,7 @@
               "category": {
                 "base": "Observer"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "bcfb834e-1d8e-46ac-a50b-47a427e97fbb", 
               "uuid": "eb7e2d64-b40b-4f68-ad2c-a1c7e888f3c7", 
               "destination_type": "A"
             }, 
@@ -676,7 +726,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Post", 
+          "label": "Post_sup", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -705,7 +755,7 @@
             {
               "test": {
                 "test": {
-                  "base": "Program Pro Prog pr p"
+                  "base": "Program Pro Prog pr p Pr0"
                 }, 
                 "type": "contains_any"
               }, 
@@ -719,7 +769,7 @@
             {
               "test": {
                 "test": {
-                  "base": "Stock Sto St"
+                  "base": "Stock Sto St St0"
                 }, 
                 "type": "contains_any"
               }, 
@@ -821,7 +871,7 @@
               "category": {
                 "base": "In Charge Hospital/PHC"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "7446676c-2c29-4e10-803d-037654ef5f14", 
               "destination_type": "A"
             }, 
@@ -835,7 +885,7 @@
               "category": {
                 "base": "Doctor"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "58e1a8c3-d793-4406-a285-8483d67e7e0c", 
               "destination_type": "A"
             }, 
@@ -849,7 +899,7 @@
               "category": {
                 "base": "LabTech-Pharm"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "7d29158b-2729-43e3-9bfc-1851ea8e12a9", 
               "destination_type": "A"
             }, 
@@ -863,7 +913,7 @@
               "category": {
                 "base": "Community Health Officer"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "843a9831-9061-499b-96bd-9c7fd4dc4cf4", 
               "destination_type": "A"
             }, 
@@ -877,7 +927,7 @@
               "category": {
                 "base": "Nurse/Midwife"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "017bbdf3-4fe5-429b-a24d-d4535effcf1b", 
               "destination_type": "A"
             }, 
@@ -891,7 +941,7 @@
               "category": {
                 "base": "Volunteer"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "d00a6f21-dcdc-4276-b0b7-1e883f1e712e", 
               "destination_type": "A"
             }, 
@@ -905,7 +955,7 @@
               "category": {
                 "base": "Technical Assistance"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "64674c0d-9315-481a-a8de-7fd40ed85a74", 
               "destination_type": "A"
             }, 
@@ -919,7 +969,7 @@
               "category": {
                 "base": "Observer"
               }, 
-              "destination": "77499bde-ff07-4a67-ba92-2c012fd87799", 
+              "destination": "30e50e3d-b5a7-42c9-a454-c809b3cea15a", 
               "uuid": "3e1caff6-d619-40db-ae5b-283e4312dd69", 
               "destination_type": "A"
             }, 
@@ -938,12 +988,12 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Post", 
+          "label": "Post_imp", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 2692, 
-          "x": 266, 
+          "y": 2681, 
+          "x": 269, 
           "config": {}
         }, 
         {
@@ -994,7 +1044,7 @@
             {
               "test": {
                 "test": {
-                  "base": "OTP OPT OP O"
+                  "base": "OTP OPT OP O 0TP"
                 }, 
                 "type": "contains_any"
               }, 
@@ -1113,9 +1163,9 @@
             "title": "Registration Date"
           }, 
           {
-            "y": 1841, 
-            "x": 246, 
-            "body": "Here the type OTP or IPF is set to blank for supervision level staff .", 
+            "y": 1819, 
+            "x": 243, 
+            "body": "Here the type OTP or IPF is set to blank for supervision level staff . This is only necessary when an implementation level staff is promoted to supervision level.", 
             "title": "Update Contact TYPE"
           }, 
           {
@@ -1133,9 +1183,9 @@
         ], 
         "expires": 60, 
         "name": "IMAM Register", 
-        "saved_on": "2016-06-29T06:46:57.844935Z", 
+        "saved_on": "2016-07-11T11:39:15.141314Z", 
         "id": 24993, 
-        "revision": 67
+        "revision": 199
       }
     }, 
     {
@@ -1149,21 +1199,7 @@
           "actions": [
             {
               "msg": {
-                "base": "For week @flow.weeknum, you reported @flow.beg under Rx, @flow.amar adm, @flow.tin transfers in, @flow.dcur cures,@flow.dead deaths, @flow.defu defaults, @flow.dmed non recovered and @flow.tout transfers out. Please confirm: Yes or No?"
-              }, 
-              "type": "reply"
-            }
-          ]
-        }, 
-        {
-          "y": 5595, 
-          "x": 690, 
-          "destination": "9e71a65a-1d5e-4757-8f40-b51a5c1becdc", 
-          "uuid": "0edd1076-fb93-44ba-909f-91bd8a9898da", 
-          "actions": [
-            {
-              "msg": {
-                "base": "Thank you @contact for sending the program data.  Please continue immediately with the stock reporting."
+                "base": "For week @flow.weeknum, you reported @flow.beg_o under Rx, @flow.amar_o adm, @flow.tin_o transfers in, @flow.dcur_o cures,@flow.dead_o deaths, @flow.defu_o defaults, @flow.dmed_o non recovered and @flow.tout_o transfers out. Please confirm: Yes or No?"
               }, 
               "type": "reply"
             }
@@ -1261,7 +1297,7 @@
           "actions": [
             {
               "msg": {
-                "base": "For week @flow.weeknum, you reported @flow.beg under Rx, @flow.amar adm, @flow.tin transfers in, @flow.tout Rx success @flow.dead deaths, @flow.defu defaults, @flow.dmed non recovered, @flow.dcur cures. Please confirm: Yes or No?"
+                "base": "For week @flow.weeknum, you reported @flow.beg_i under Rx, @flow.amar_i adm, @flow.tin_i transfers in, @flow.tout_i Rx success @flow.dead_i deaths, @flow.defu_i defaults, @flow.dmed_i non recovered, @flow.dcur_i cures. Please confirm: Yes or No?"
               }, 
               "type": "reply"
             }
@@ -1424,7 +1460,7 @@
         {
           "y": 326, 
           "x": 374, 
-          "destination": null, 
+          "destination": "04fe3292-c1fc-43fd-a97e-70f885b85d91", 
           "uuid": "71383370-140e-4252-9e68-070e00356122", 
           "actions": [
             {
@@ -1471,9 +1507,14 @@
           "actions": [
             {
               "msg": {
-                "base": "Please make any necessary corrections on your form and re-enter data to correct any errors.  Thank you."
+                "base": "Please make any necessary corrections on your form and re-enter data in RapidPro to correct any errors.  Thank you."
               }, 
               "type": "reply"
+            }, 
+            {
+              "type": "flow", 
+              "name": "IMAM Program", 
+              "id": 24994
             }
           ]
         }, 
@@ -1527,7 +1568,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.beg. Please enter the number of SC cases UNDER TREATMENT at the beginning of week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.beg_i. Please enter the number of SC cases UNDER TREATMENT at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1541,7 +1582,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.beg. Please enter the number of OTP cases UNDER TREATMENT at the beginning of week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.beg_o. Please enter the number of OTP cases UNDER TREATMENT at the beginning of week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1555,7 +1596,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.amar. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.amar_i. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1569,7 +1610,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.amar. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.amar_o. Please enter the number of NEW ADMISSIONS with SAM in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1583,7 +1624,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.tin. Please enter the number of TRANSFERS IN from OTP or SC for week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.tin_i. Please enter the number of TRANSFERS IN from OTP or SC for week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1611,7 +1652,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.dcur. Please enter the number of RECOVERED SAM cases in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.dcur_o. Please enter the number of RECOVERED SAM cases in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1625,7 +1666,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.dead. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.dead_i. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1639,7 +1680,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.dead. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.dead_o. Please enter the number of SAM inpatient cases who DIED in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1653,7 +1694,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.defu. Please enter the number of DEFAULTERS in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.defu_i. Please enter the number of DEFAULTERS in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1667,7 +1708,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.defu. Please enter the number of DEFAULTERS in week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.defu_o. Please enter the number of DEFAULTERS in week @flow.weeknum"
               }, 
               "type": "reply"
             }
@@ -1688,14 +1729,14 @@
           ]
         }, 
         {
-          "y": 4024, 
-          "x": 399, 
+          "y": 4023, 
+          "x": 480, 
           "destination": "55ed41de-6026-4bbe-964b-5a2459f40eda", 
           "uuid": "8e65b65c-6658-407f-a61c-c2ba9ac6dd6d", 
           "actions": [
             {
               "msg": {
-                "base": "Sorry I did not understand @flow.dcur. Please enter the number of cases CURED in the SC:"
+                "base": "Sorry I did not understand @flow.dcur_i. Please enter the number of cases CURED in the SC:"
               }, 
               "type": "reply"
             }
@@ -1737,7 +1778,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.age_group. Please enter N for 0-5 months or C for 6-59 months."
+                "base": "Sorry, I did not understand @flow.age_group. Please enter N for Nursing Infant 0-5 months or C for Child from 6-59 months."
               }, 
               "type": "reply"
             }
@@ -1751,7 +1792,7 @@
           "actions": [
             {
               "type": "flow", 
-              "name": "IMAM Stock Report", 
+              "name": "IMAM Stock ", 
               "id": 24996
             }
           ]
@@ -1806,7 +1847,21 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry, I did not understand @flow.tin. Please enter the number of TRANSFERS IN from OTP or SC for week @flow.weeknum"
+                "base": "Sorry, I did not understand @flow.tin_o. Please enter the number of TRANSFERS IN from OTP or SC for week @flow.weeknum"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 4129, 
+          "x": 190, 
+          "destination": "a2e3fe19-b103-43b0-a137-cce99718f4a1", 
+          "uuid": "e608df18-0f79-4150-adb8-ed34d2959563", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Normally, cases are stabilised in the SC and transferred to OTP as successful Rx. Please make sure that you did not make a mistake in reporting transfers out from SC as cured and exits from the CMAM programme."
               }, 
               "type": "reply"
             }
@@ -1862,7 +1917,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Beg", 
+          "label": "Beg_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -1915,7 +1970,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "DefU", 
+          "label": "DefU_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -1968,7 +2023,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Dmed", 
+          "label": "Dmed_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2021,7 +2076,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Tout", 
+          "label": "Tout_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2127,7 +2182,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Beg", 
+          "label": "Beg_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2146,10 +2201,24 @@
                 "min": "0"
               }, 
               "category": {
-                "base": "0 - 9999"
+                "base": "0"
               }, 
               "destination": "a2e3fe19-b103-43b0-a137-cce99718f4a1", 
               "uuid": "0e673ed0-2745-4b4a-b448-cd1332c084e8", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": "x", 
+                "max": "9999", 
+                "type": "between", 
+                "min": "1"
+              }, 
+              "category": {
+                "base": "1-9999"
+              }, 
+              "destination": "e608df18-0f79-4150-adb8-ed34d2959563", 
+              "uuid": "9baf1120-4d78-449e-955e-d9c469666fd0", 
               "destination_type": "A"
             }, 
             {
@@ -2162,8 +2231,7 @@
               "category": {
                 "base": "X"
               }, 
-              "destination": null, 
-              "uuid": "9baf1120-4d78-449e-955e-d9c469666fd0"
+              "uuid": "4463141b-cada-4cb7-a790-9a25e7f0e612"
             }, 
             {
               "test": {
@@ -2180,7 +2248,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Dcur", 
+          "label": "Dcur_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2233,7 +2301,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Tout", 
+          "label": "Tout_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2286,7 +2354,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Amar", 
+          "label": "Amar_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2339,7 +2407,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Dead", 
+          "label": "Dead_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2392,7 +2460,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Dead", 
+          "label": "Dead_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2513,7 +2581,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Amar", 
+          "label": "Amar_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2566,7 +2634,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Dcur", 
+          "label": "Dcur_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2619,7 +2687,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "DefU", 
+          "label": "DefU_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -2727,7 +2795,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "contact_field", 
-          "label": "Function", 
+          "label": "Role", 
           "operand": "@contact.level", 
           "finished_key": null, 
           "response_type": "", 
@@ -2861,7 +2929,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "contact_field", 
-          "label": "ProType", 
+          "label": "Type", 
           "operand": "@contact.type", 
           "finished_key": null, 
           "response_type": "", 
@@ -2913,7 +2981,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Tin", 
+          "label": "Tin_i", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -3031,7 +3099,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "contact_field", 
-          "label": "Response 22", 
+          "label": "Msg Routing", 
           "operand": "@contact.level", 
           "finished_key": null, 
           "response_type": "", 
@@ -3045,7 +3113,6 @@
           "rules": [
             {
               "test": {
-                "test": "9999", 
                 "max": "9999", 
                 "type": "between", 
                 "min": "0"
@@ -3084,7 +3151,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Dmed", 
+          "label": "Dmed_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -3136,7 +3203,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Tin", 
+          "label": "Tin_o", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -3156,8 +3223,8 @@
           }, 
           {
             "body": "Not included in Nigeria implementation", 
-            "x": 1218, 
-            "y": 1317, 
+            "x": 1097, 
+            "y": 1197, 
             "title": "Supplementary Feeding Program"
           }, 
           {
@@ -3179,15 +3246,9 @@
             "title": "Valid SiteID and Permissions"
           }, 
           {
-            "body": "REMOVED Children under 6 months of age are treated in inpatients wards.  They cannot be treated in outpatients as they cannot eat RUTF", 
-            "x": 78, 
-            "y": 5977, 
-            "title": "Data Entry for Children Under Six Months of Age"
-          }, 
-          {
             "y": 176, 
             "x": 53, 
-            "body": "RapidPro determines if reporter is from implementation or supervision level", 
+            "body": "RapidPro determines role of reporter (implementation or supervision)", 
             "title": "Level Query"
           }, 
           {
@@ -3207,27 +3268,21 @@
             "x": 695, 
             "body": "0-5m, 6-59m, other", 
             "title": "Age group"
-          }, 
-          {
-            "y": 5600, 
-            "x": 447, 
-            "body": "IF you are supervision, you are sent to Warehouse reporting - DELETE to right.", 
-            "title": "Error"
           }
         ], 
         "expires": 60, 
         "name": "IMAM Program", 
-        "saved_on": "2016-06-29T18:49:11.940731Z", 
+        "saved_on": "2016-07-08T16:14:46.954993Z", 
         "id": 24994, 
-        "revision": 293
+        "revision": 403
       }
     }, 
     {
       "base_language": "base", 
       "action_sets": [
         {
-          "y": 0, 
-          "x": 100, 
+          "y": 304, 
+          "x": 102, 
           "destination": "e72c78a3-e637-4a73-b393-6cf62916a54a", 
           "uuid": "2fb40249-8548-4a7f-b442-91d6238def80", 
           "actions": [
@@ -3240,8 +3295,8 @@
           ]
         }, 
         {
-          "y": 350, 
-          "x": 100, 
+          "y": 625, 
+          "x": 104, 
           "destination": "ba738e40-09a6-4f29-90d8-c7acdcc958d4", 
           "uuid": "2ea6a2f6-a5be-4073-9cb3-7bc478bc885c", 
           "actions": [
@@ -3254,8 +3309,8 @@
           ]
         }, 
         {
-          "y": 150, 
-          "x": 401, 
+          "y": 451, 
+          "x": 454, 
           "destination": "e72c78a3-e637-4a73-b393-6cf62916a54a", 
           "uuid": "1ea8f760-386d-4d2a-839c-95e9106c3fb0", 
           "actions": [
@@ -3268,8 +3323,8 @@
           ]
         }, 
         {
-          "y": 497, 
-          "x": 400, 
+          "y": 771, 
+          "x": 452, 
           "destination": "ba738e40-09a6-4f29-90d8-c7acdcc958d4", 
           "uuid": "bb4a5e79-a894-4c4d-8ebb-9108ba449bbd", 
           "actions": [
@@ -3282,8 +3337,8 @@
           ]
         }, 
         {
-          "y": 722, 
-          "x": 101, 
+          "y": 924, 
+          "x": 102, 
           "destination": "32fc11b7-1d1c-4f23-927f-61c35bb5ab82", 
           "uuid": "247ccc68-ff6a-4084-ba13-96594f46b8bb", 
           "actions": [
@@ -3296,8 +3351,8 @@
           ]
         }, 
         {
-          "y": 1077, 
-          "x": 101, 
+          "y": 1255, 
+          "x": 103, 
           "destination": "66fe542e-f9ba-4a53-af1a-ec1dca0ec4b7", 
           "uuid": "961ac620-9361-47c3-9cb2-75190dbafde2", 
           "actions": [
@@ -3310,8 +3365,8 @@
           ]
         }, 
         {
-          "y": 1421, 
-          "x": 100, 
+          "y": 1560, 
+          "x": 99, 
           "destination": "9c475c80-0209-4bca-9945-8ddae8276360", 
           "uuid": "1de29f97-e161-4451-9d9e-39fece2b9654", 
           "actions": [
@@ -3324,8 +3379,8 @@
           ]
         }, 
         {
-          "y": 897, 
-          "x": 400, 
+          "y": 1072, 
+          "x": 427, 
           "destination": "32fc11b7-1d1c-4f23-927f-61c35bb5ab82", 
           "uuid": "e13b0f12-4f7e-433a-a72b-519f7369d600", 
           "actions": [
@@ -3338,8 +3393,8 @@
           ]
         }, 
         {
-          "y": 1301, 
-          "x": 404, 
+          "y": 1423, 
+          "x": 428, 
           "destination": "66fe542e-f9ba-4a53-af1a-ec1dca0ec4b7", 
           "uuid": "1f5fd517-1c81-47af-ba86-89b9b86af9a7", 
           "actions": [
@@ -3359,7 +3414,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Thank you @contact for sending the SCREENING REPORT."
+                "base": "Thank you @(PROPER(contact)) for sending the SCREENING REPORT."
               }, 
               "type": "reply"
             }
@@ -3380,8 +3435,8 @@
           ]
         }, 
         {
-          "y": 1801, 
-          "x": 497, 
+          "y": 1851, 
+          "x": 528, 
           "destination": "9c475c80-0209-4bca-9945-8ddae8276360", 
           "uuid": "edc01eec-f233-44df-abc1-593140c53016", 
           "actions": [
@@ -3392,11 +3447,25 @@
               "type": "reply"
             }
           ]
+        }, 
+        {
+          "y": 0, 
+          "x": 102, 
+          "destination": "cdad676b-6bf6-440d-9fbd-64a554d82a6f", 
+          "uuid": "cb68c365-7a5c-4d6c-9770-7fcecf1615e2", 
+          "actions": [
+            {
+              "msg": {
+                "base": "SITE NAME :  Please enter the name of the site where you collected the screening data ."
+              }, 
+              "type": "reply"
+            }
+          ]
         }
       ], 
       "version": 8, 
       "flow_type": "F", 
-      "entry": "2fb40249-8548-4a7f-b442-91d6238def80", 
+      "entry": "cb68c365-7a5c-4d6c-9770-7fcecf1615e2", 
       "rule_sets": [
         {
           "uuid": "e72c78a3-e637-4a73-b393-6cf62916a54a", 
@@ -3425,6 +3494,7 @@
               "category": {
                 "base": "X"
               }, 
+              "destination": null, 
               "uuid": "0a6a55d2-b79d-4a69-a1b9-be46e7d45f24"
             }, 
             {
@@ -3446,8 +3516,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 151, 
-          "x": 98, 
+          "y": 451, 
+          "x": 102, 
           "config": {}
         }, 
         {
@@ -3498,8 +3568,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 498, 
-          "x": 101, 
+          "y": 771, 
+          "x": 105, 
           "config": {}
         }, 
         {
@@ -3550,8 +3620,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 898, 
-          "x": 101, 
+          "y": 1079, 
+          "x": 97, 
           "config": {}
         }, 
         {
@@ -3602,8 +3672,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 1299, 
-          "x": 103, 
+          "y": 1421, 
+          "x": 102, 
           "config": {}
         }, 
         {
@@ -3669,17 +3739,56 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 1800, 
+          "y": 1850, 
+          "x": 101, 
+          "config": {}
+        }, 
+        {
+          "uuid": "cdad676b-6bf6-440d-9fbd-64a554d82a6f", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "91b2a99e-1c67-4d45-87a9-3c675f6e209d"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "2fb40249-8548-4a7f-b442-91d6238def80", 
+              "uuid": "86a3c0bb-ecfe-467c-88a7-9286bbf14933", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "SiteName", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 148, 
           "x": 101, 
           "config": {}
         }
       ], 
       "metadata": {
         "expires": 60, 
-        "saved_on": "2016-06-23T12:08:04.111608Z", 
+        "saved_on": "2016-07-11T12:04:39.677392Z", 
         "id": 24995, 
         "name": "IMAM Screening", 
-        "revision": 23
+        "revision": 70
       }
     }, 
     {
@@ -3693,7 +3802,7 @@
           "actions": [
             {
               "msg": {
-                "base": "CARTONS of RUTF RECEIVED: Please enter the number of cartons received during week @flow.week_number."
+                "base": "CARTONS of RUTF RECEIVED: Please enter the number of cartons received during week @flow.weeknum."
               }, 
               "type": "reply"
             }
@@ -3707,29 +3816,29 @@
           "actions": [
             {
               "msg": {
-                "base": "CARTONS of RUTF in BALANCE: Please enter the number of CARTONS in balance at the end of week @flow.week_number."
+                "base": "CARTONS of RUTF in BALANCE: Please enter the number of CARTONS in balance at the end of week @flow.weeknum."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 1939, 
+          "y": 1938, 
           "x": 49, 
           "destination": "2db96e4d-9eab-4d7d-98ed-54a28a6ce75f", 
           "uuid": "b85c6375-05fc-4bec-bc6e-1639112bd4ee", 
           "actions": [
             {
               "msg": {
-                "base": "For week @flow.week_number you received @flow.rutf_in cartons, used @flow.rutf_used_carton cartons and @flow.rutf_used_sachet sachets with a balance of @flow.rutf_bal_carton cartons and @flow.rutf_bal_sachet sachets. Please confirm Yes or No ?"
+                "base": "For week @flow.weeknum you received @flow.rutf_in cartons, used @flow.rutf_used_carton cartons and @flow.rutf_used_sachet sachets with a balance of @flow.rutf_bal_carton cartons and @flow.rutf_bal_sachet sachets. Please confirm Yes or No ?"
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 478, 
-          "x": 829, 
+          "y": 475, 
+          "x": 851, 
           "destination": "c930d5d3-c0a2-42ba-a48e-f04fe37a4085", 
           "uuid": "6086c008-5d35-48db-9b95-237929bcb965", 
           "actions": [
@@ -3742,14 +3851,14 @@
           ]
         }, 
         {
-          "y": 718, 
-          "x": 1039, 
+          "y": 642, 
+          "x": 1233, 
           "destination": "c930d5d3-c0a2-42ba-a48e-f04fe37a4085", 
           "uuid": "41b74faf-2126-4ab9-bfeb-42a9adfc2420", 
           "actions": [
             {
               "msg": {
-                "base": "I'm sorry, I don't recognize the SiteID @flow.checksiteid . Please re-enter the Site ID or enter x to exit. "
+                "base": "I'm sorry, I don't recognize the OTP or SC with SiteID @flow.checksiteid . Please re-enter the Site ID or enter x to exit."
               }, 
               "type": "reply"
             }
@@ -3763,7 +3872,7 @@
           "actions": [
             {
               "msg": {
-                "base": "CARTONS of RUTF USED: Please enter the number of cartons  used during week @flow.week_number."
+                "base": "CARTONS of RUTF USED: Please enter the number of cartons  used during week @flow.weeknum."
               }, 
               "type": "reply"
             }
@@ -3833,7 +3942,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Sorry I did not understand @flow.week_number. Please enter the WEEK NUMBER that you are STOCK reporting for."
+                "base": "Sorry I did not understand @flow.weeknum. Please enter the WEEK NUMBER that you are STOCK reporting for."
               }, 
               "type": "reply"
             }
@@ -3847,7 +3956,7 @@
           "actions": [
             {
               "msg": {
-                "base": "SACHETS of RUTF USED: Please enter the number of SACHETS during week  @flow.week_number."
+                "base": "SACHETS of RUTF USED: Please enter the number of SACHETS during week  @flow.weeknum."
               }, 
               "type": "reply"
             }
@@ -3861,7 +3970,7 @@
           "actions": [
             {
               "msg": {
-                "base": "SACHETS of RUTF in BALANCE: Please enter the number of SACHETS in balance at the end of week @flow.week_number."
+                "base": "SACHETS of RUTF in BALANCE: Please enter the number of SACHETS in balance at the end of week @flow.weeknum."
               }, 
               "type": "reply"
             }
@@ -3910,30 +4019,35 @@
           ]
         }, 
         {
-          "y": 2596, 
-          "x": 58, 
+          "y": 2650, 
+          "x": 48, 
           "destination": null, 
           "uuid": "f8e15b75-13a6-41d3-a644-ff294a12b257", 
           "actions": [
             {
               "msg": {
-                "base": "Thank you @contact for sending the STOCK REPORT."
+                "base": "Thank you @(PROPER(contact)) for sending the STOCK REPORT."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 2427, 
+          "y": 2433, 
           "x": 227, 
           "destination": null, 
           "uuid": "e2b4dd4e-3094-4d48-8519-9bbe6319eaa7", 
           "actions": [
             {
               "msg": {
-                "base": "Please, make all necessary corrections on your STOCK REPORT form and resend the corrected data."
+                "base": "Please, make all necessary corrections on your STOCK REPORT form and re-enter data in RapidPro to correct any errors.  Thank you."
               }, 
               "type": "reply"
+            }, 
+            {
+              "type": "flow", 
+              "name": "IMAM Stock ", 
+              "id": 24996
             }
           ]
         }, 
@@ -4029,7 +4143,7 @@
           "actions": [
             {
               "msg": {
-                "base": "Thanks @contact. for week number @flow.week_number, you reported a balance of F75 @flow.f75_bal_carton cartons &@flow.f75_bal_sachet sachets and of F100 @flow.f100_bal_carton cartons & @flow.f100_bal_sachet sachets. Please confirm Yes or No ?"
+                "base": "Thanks @(PROPER(contact)) for week number @flow.weeknum, you reported a balance of F75 @flow.f75_bal_carton cartons &@flow.f75_bal_sachet sachets and of F100 @flow.f100_bal_carton cartons & @flow.f100_bal_sachet sachets. Please confirm Yes or No ?"
               }, 
               "type": "reply"
             }
@@ -4092,8 +4206,8 @@
           ]
         }, 
         {
-          "y": 376, 
-          "x": 677, 
+          "y": 375, 
+          "x": 855, 
           "destination": null, 
           "uuid": "c44baa10-75c6-48bc-b334-8d76505f94f3", 
           "actions": [
@@ -4119,14 +4233,56 @@
           ]
         }, 
         {
-          "y": 372, 
-          "x": 1063, 
+          "y": 377, 
+          "x": 1082, 
           "destination": "2bbde655-8ce7-4bda-9a64-a83fa347928f", 
           "uuid": "631e8482-4277-4d2a-8f90-057c9f87e4cf", 
           "actions": [
             {
               "msg": {
                 "base": "Sorry, I don't understand. Please enter the SiteID that you are STOCK reporting for:"
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 705, 
+          "x": 856, 
+          "destination": "b5e77dd8-72a7-4c64-b00d-bb9f17ad28ef", 
+          "uuid": "ac907414-c9ce-4053-b2cb-e21ab741c055", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Please enter the TYPE of site you are reporting for: OTP for Outpatient Therapeutic Programme or SC for Stabilisation Centre."
+              }, 
+              "type": "reply"
+            }
+          ]
+        }, 
+        {
+          "y": 930, 
+          "x": 1093, 
+          "destination": "4d369d67-d531-447e-9f83-9e1ed70c4533", 
+          "uuid": "304a291a-2ac4-451d-a5ff-4eb9dfcd6fff", 
+          "actions": [
+            {
+              "field": "type", 
+              "type": "save", 
+              "value": "@flow.stotype.category", 
+              "label": "Type"
+            }
+          ]
+        }, 
+        {
+          "y": 919, 
+          "x": 1322, 
+          "destination": "b5e77dd8-72a7-4c64-b00d-bb9f17ad28ef", 
+          "uuid": "ffc0301f-5e61-4d31-a959-d4f152190ce8", 
+          "actions": [
+            {
+              "msg": {
+                "base": "Sorry, I do not recognize @flow.stotype. Please answer OTP for Outpatient Therapeutic Programme or SC for Stabilisation Centre."
               }, 
               "type": "reply"
             }
@@ -4311,7 +4467,7 @@
               "category": {
                 "base": "Site"
               }, 
-              "destination": "4d369d67-d531-447e-9f83-9e1ed70c4533", 
+              "destination": "ac907414-c9ce-4053-b2cb-e21ab741c055", 
               "uuid": "1cbac095-427c-4970-ab3b-cdd966eb65bb", 
               "destination_type": "A"
             }, 
@@ -4325,7 +4481,7 @@
               "category": {
                 "base": "Supervision"
               }, 
-              "destination": null, 
+              "destination": "41b74faf-2126-4ab9-bfeb-42a9adfc2420", 
               "uuid": "d7c4737a-ace3-4d68-b8eb-86572724650b", 
               "destination_type": "A"
             }, 
@@ -4361,8 +4517,8 @@
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 593, 
-          "x": 824, 
+          "y": 601, 
+          "x": 848, 
           "config": {}
         }, 
         {
@@ -4461,7 +4617,7 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Week_Number", 
+          "label": "WeekNum", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
@@ -4691,7 +4847,7 @@
           "operand": "@contact.type", 
           "finished_key": null, 
           "response_type": "", 
-          "y": 648, 
+          "y": 649, 
           "x": 56, 
           "config": {}
         }, 
@@ -4822,7 +4978,7 @@
               "category": {
                 "base": "X"
               }, 
-              "destination": "5d01b46a-3af5-461c-9166-242accf221e8", 
+              "destination": null, 
               "uuid": "3927a2a3-4e35-4ebb-b3d2-392005bc84a2", 
               "destination_type": "A"
             }, 
@@ -4958,12 +5114,79 @@
           ], 
           "webhook": null, 
           "ruleset_type": "wait_message", 
-          "label": "Response 15", 
+          "label": "Self Report", 
           "operand": "@step.value", 
           "finished_key": null, 
           "response_type": "", 
           "y": 275, 
           "x": 851, 
+          "config": {}
+        }, 
+        {
+          "uuid": "b5e77dd8-72a7-4c64-b00d-bb9f17ad28ef", 
+          "webhook_action": null, 
+          "rules": [
+            {
+              "test": {
+                "test": {
+                  "base": "OTP OPT OT OP O"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "OTP"
+              }, 
+              "destination": "304a291a-2ac4-451d-a5ff-4eb9dfcd6fff", 
+              "uuid": "3c8ddfab-41a3-4bfd-b3f5-ac1f0e857f5c", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "SC IPF IP I"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "SC"
+              }, 
+              "destination": "304a291a-2ac4-451d-a5ff-4eb9dfcd6fff", 
+              "uuid": "07bd0772-8f35-415b-8885-0b03acab61a3", 
+              "destination_type": "A"
+            }, 
+            {
+              "test": {
+                "test": {
+                  "base": "x"
+                }, 
+                "type": "contains_any"
+              }, 
+              "category": {
+                "base": "X"
+              }, 
+              "uuid": "78a6ae1f-9799-4e7f-8bfb-bbe61a70b518"
+            }, 
+            {
+              "test": {
+                "test": "true", 
+                "type": "true"
+              }, 
+              "category": {
+                "base": "Other"
+              }, 
+              "destination": "ffc0301f-5e61-4d31-a959-d4f152190ce8", 
+              "uuid": "015e00da-6ae2-4d73-b258-e395788d834d", 
+              "destination_type": "A"
+            }
+          ], 
+          "webhook": null, 
+          "ruleset_type": "wait_message", 
+          "label": "StoType", 
+          "operand": "@step.value", 
+          "finished_key": null, 
+          "response_type": "", 
+          "y": 806, 
+          "x": 1087, 
           "config": {}
         }
       ], 
@@ -4981,19 +5204,13 @@
             "x": 602, 
             "body": "Stocks Reporting", 
             "title": "SC"
-          }, 
-          {
-            "y": 1976, 
-            "x": 311, 
-            "body": "...", 
-            "title": "Add week number"
           }
         ], 
         "expires": 60, 
-        "name": "IMAM Stock Report", 
-        "saved_on": "2016-06-29T19:07:21.084136Z", 
+        "name": "IMAM Stock ", 
+        "revision": 387, 
         "id": 24996, 
-        "revision": 316
+        "saved_on": "2016-07-11T11:55:20.347791Z"
       }
     }, 
     {
@@ -6047,28 +6264,28 @@
           ]
         }, 
         {
-          "y": 626, 
+          "y": 609, 
           "x": 101, 
           "destination": "b0f06732-e608-43b7-af81-8b5113e46aa1", 
           "uuid": "3b246415-0a9e-4a36-beeb-b05419375128", 
           "actions": [
             {
               "msg": {
-                "eng": "Please enter the number of CARTONS of RUTF DISTRIBUTED"
+                "eng": "Please enter the number of CARTONS of RUTF DISTRIBUTED during week number @flow.weeknum."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 924, 
+          "y": 894, 
           "x": 100, 
           "destination": "65fc3b72-3615-4c3e-91f1-d156b6210c79", 
           "uuid": "ab103460-4df5-45fe-87a4-f66daabae7bc", 
           "actions": [
             {
               "msg": {
-                "eng": "Please enter the number of CARTONS of RUTF in BALANCE"
+                "eng": "Please enter the number of CARTONS of RUTF in BALANCE at end of week number @flow.weeknum."
               }, 
               "type": "reply"
             }
@@ -6082,15 +6299,15 @@
           "actions": [
             {
               "msg": {
-                "eng": "Thank you @contact for sending your Warehouse Stock Report."
+                "eng": "Thank you @(PROPER(contact)) for sending your Warehouse Stock Report."
               }, 
               "type": "reply"
             }
           ]
         }, 
         {
-          "y": 1213, 
-          "x": 99, 
+          "y": 1199, 
+          "x": 100, 
           "destination": "ce4f11ed-8a6d-40b0-966c-4f70fde41caa", 
           "uuid": "1cf860b7-9427-45d0-829a-7925c7cafdff", 
           "actions": [
@@ -6469,10 +6686,10 @@
       ], 
       "metadata": {
         "expires": 60, 
-        "revision": 65, 
+        "revision": 73, 
         "id": 25581, 
         "name": "IMAM State LGA Stocks", 
-        "saved_on": "2016-06-27T15:28:33.484764Z"
+        "saved_on": "2016-07-11T11:57:04.740774Z"
       }
     }, 
     {
