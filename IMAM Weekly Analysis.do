@@ -1,6 +1,9 @@
 *IMAM RapidPro analysis
 
 
+* Store all current RapidPro downloaded data in C:\Temp
+* All working data that will be frequently rewritten and can be deleted is stored in C:\Temp\Working
+* Output is available from C:\Temp
 
 clear
 set more off
@@ -101,10 +104,10 @@ tab Mail , m
 keep URN Name Post Level Mail SiteID Type FirstSeen LastSeen state_code state lga_code lga num_tel RegistrationDate
 order  Name state lga SiteID Level Type Post URN num_tel Mail 
 
-save delete_reg, replace
+save "C:\TEMP\Working\delete_reg", replace
 
 
-* To Analyse Registration Date Use RegistrationDate and not LastSeen - LastSeen represents last time that they routed through to programme report. 
+* To Analyse Registration Date Use RegistrationDate - LastSeen represents last time that they routed through to programme report. 
 gen RegDate =date(RegistrationDate,"DMY")
 format RegDate %td
 gen one = 1
@@ -168,14 +171,13 @@ la var Year "Year of Report"
 *gen WeekNumYear = yw(RepYear, WeekNum)
 *format WeekNumYear %tw
 
-* Calculate ISO weeknumber of report date
+* Calculate ISO report date week number
 * Test if leap year
 generate leap = cond(mdy(2,29,year(report_date)) < . , 1, 0)
 gen dow = dow(report_date)
 * Set sunday to 7 not zero. 
 replace dow = 7 if dow==0
 gen month = month(report_date)
-
 * Calculate ordinal date
 recode month (1=0)(2=31)(3=59)(4=90)(5=120)(6=151)(7=181)(8=212)(9=243)(10=273)(11=304)(12=334), gen(temp)
 * for leap years
@@ -184,7 +186,7 @@ gen ord_date = cond(leap==1, temp2 + day(report_date), temp + day(report_date))
 gen RepWeekNum =  floor(((ord_date - dow) + 10 ) / 7)
 *If a week number of 53 is obtained, one must check that the date is not actually in week 1 of the following year.
 
-* Calculate ISO current weeknum
+* Calculate ISO current week number
 gen current_date = date("$S_DATE", "DMY") 
 format current_date %td
 replace leap = cond(mdy(2,29,year(current_date)) < . , 1, 0)
@@ -198,7 +200,6 @@ recode month (1=0)(2=31)(3=59)(4=90)(5=120)(6=151)(7=181)(8=212)(9=243)(10=273)(
 * for leap years
 recode month (1=0)(2=31)(3=60)(4=91)(5=121)(6=152)(7=182)(8=213)(9=244)(10=274)(11=305)(12=335), gen(temp2)
 replace ord_date = cond(leap==1, temp2 + day(current_date), temp + day(current_date))
-
 gen CurrWeekNum =  floor(((ord_date - dow) + 10 ) / 7)
 * If a week number of 53 is obtained, one must check that the date is not actually in week 1 of the following year.
 * If Thursday of first week of Jan day of week < 4 then assign week to following year. 
@@ -239,10 +240,11 @@ replace Defu = DefU_iValue if Type=="SC"
 replace Dmed = Dmed_iValue if Type=="SC"
 replace Tout = Tout_iValue if Type=="SC"
 
-* Drop data that are confirmed with NO
+* Drop data that are not confirmed, answered with NO
 drop if ConfirmCategory =="No"
 
 * Delete training data ( program and stock data that goes 1,2,4,6,8… ) 
+* always review carefully after training.
 drop if Beg=="2" & Amar =="4" & Tin=="6"
 drop if Dead=="10" & Defu =="12" & Dmed=="14"
 
@@ -262,8 +264,6 @@ replace rep_date_error = 2 if weekdiff > 0
 la def date_error 1 "Report > 8 weeks in the past" 2 "Report week number in future"
 label val rep_date_error date_error
 tab rep_date_error, m 
-
-
 
 * Site ID Error
 gen SiteID_error =1 if strlen(SiteID) <9 
@@ -289,13 +289,57 @@ drop if rep_date_error ==1 | rep_date_error ==2
 keep ContactUUID URN Name SiteID FirstSeen LastSeen WeekNum ConfirmCategory Role Level report_date Year CurrWeekNum ///
       RepWeekNum weekdiff rep_date_error SiteID_error Type AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout unique 
 
-order SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout
+sort SiteID WeekNum
 
-save delete_pro, replace
+save "C:\TEMP\Working\delete_pro", replace
 
-* Missing program reports
+* Add other SiteIDs that have no reporting to ensure that we send reports to all sites. 
+use delete_reg, clear
+*Remove uninterpretable data.
+drop if strlen(SiteID) <9 
+*Remove data that is not from Site level
+drop if Level !="Site"
+*Include only one person (In charge) per SiteID. 
+bysort SiteID Type: egen SiteIDord = seq()
+tab SiteIDord, m
+drop if SiteIDord !=1
 
-* Enter current week number into local. 
+merge 1:m SiteID Type using "C:\TEMP\Working\delete_pro"
+
+* ID	districtname	healthcentername	hcid	year	weeknumber	timestamp	idreporter	agegroup	beg
+* is ID necessary ? 
+gen id = [_n]
+gen End = Beg + Amar + Tin - Dcur - Dead - Defu - Dmed - Tout
+
+keep id StateName LGAName SiteName SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout End
+order id StateName LGAName SiteName SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout End
+
+tab AgeGroup
+tab Beg 
+tab Amar 
+tab Tin 
+tab Dcur
+tab Dead
+tab Defu
+tab Dmed
+tab Tout
+
+* Convert all necessary vars to int. 
+destring SiteID, replace
+destring Beg Amar Tin Dcur Dead Defu Dmed Tout, replace
+
+* EXPORT FOR EXCEL DASHBOARD
+export excel using "C:\TEMP\CMAMDashboard.xls", firstrow(variables) replace
+
+
+
+***********
+* REMINDERS
+***********
+
+* Using program data
+
+* Create local variable of current WeekNum
 sum CurrWeekNum, meanonly
 local end = `r(mean)' - 1
 * Change this to 8 or 7 (weeks in past of complete reporting) for next training
@@ -311,7 +355,7 @@ forvalues week = `start'/`end' {
 collapse (mean) CurrWeekNum (sum) dum*, by(SiteID Type)
 
 * The loop should produce a list of week numbers that site is expected to report for:
-* for example, miss_pro_rept ="19 20 21 22 23 24 25 26"
+* for example, MissProRept ="19 20 21 22 23 24 25 26"
 gen str14 MissProRept = "" 
 forvalues num = `start'/`end' {
 	local temp = MissProRept + " " + "`num'"
@@ -322,15 +366,14 @@ forvalues num = `start'/`end' {
 replace MissProRept = MissProRept + " " 
 
 forvalues week = `start'/`end' {
-	* If you don't add space in subinstr after week below, it makes the list messy. 
+	* If you don't add space in subinstr after week below, it makes the list into a mess. 
 	capture replace MissProRept = subinstr(MissProRept,"`week' ","", .) if dum`week'==1
 }
 egen TotProgRept = rowtotal(dum*)
 tab TotProgRept, m 
 
-
 * Merge with missing programme data with SiteID with phone numbers and names to send reminders. 
-merge 1:m SiteID using delete_reg
+merge 1:m SiteID Type using "C:\TEMP\Working\delete_reg"
 
 
 *Cleaning
