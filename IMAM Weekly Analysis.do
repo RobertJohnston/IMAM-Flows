@@ -29,9 +29,25 @@ import excel "C:\TEMP\reg.xls", sheet("Contacts") firstrow
 * All persons currently in registration flow are involved with CMAM
 
 * Drop all contacts who are not in Sokoto
-drop if substr(Site_inputValueIMAMRegiste,1, 2)!= "33"
+drop if substr(Site_inputValue,1, 2)!= "33"
 
-gen state_code = substr(Site_inputValueIMAMRegiste,1, 2)
+* SiteID
+capture gen SiteID = Site_inputValue
+* Level 
+capture gen Level = Site_inputCategory
+* Type 
+capture gen Type = TypeCategory
+replace Type ="" if Type=="Other"
+* if Type (OTP or SC) is recorded for 1st or 2nd level not implementation level, then delete
+replace Type ="" if Level =="First" | Level == "Second"
+* Post
+capture gen Post = Post_impCategory
+replace Post = Post_supCategory if Level !="Site"
+replace Post ="" if Post=="Other"
+
+
+* State code
+gen state_code = substr(Site_inputValue,1, 2)
 gen state = state_code
 tostring state_code, replace
 
@@ -39,7 +55,7 @@ tostring state_code, replace
 replace state=	"Sokoto" if state==	"33"
 
 * Add names for state and LGA codes
-gen lga_code = substr(Site_inputValueIMAMRegiste,3, 2)
+gen lga_code = substr(Site_inputValue,3, 2)
 gen lga = lga_code
 tostring lga_code, replace
 
@@ -800,8 +816,6 @@ replace Mail = MailValueIMAMRegister if Mail==""
 replace Mail = "no" if MailCategoryIMAMRegister=="no"
 
 * Table of personnel working in LGA working in State.   
-* if Type (OTP or SC) is recorded for 1st or 2nd level not implementation level, then delete
-replace Type ="" if Level =="First" | Level == "Second"
 
 * Enumerate the number of persons registered and number of telephones
 bysort state lga Name: egen num_tel = seq()
@@ -821,7 +835,7 @@ tab SiteID, m
 tab Level , m 
 tab Type , m 
 
-* All registered personnel
+* Save database with all registered personnel included
 save "C:\TEMP\Working\REG_delete", replace
 
 * Site Level Data
@@ -845,17 +859,15 @@ save "C:\TEMP\Working\SITE_delete", replace
 import excel "C:\TEMP\pro.xls", sheet("Contacts") firstrow clear
 * YOU MUST INCLUDE in the download. 
 * - SiteID 
+des SiteID
 
 * Level (First, Second, or Implementation Site)
 * Role (Supervision or Implementation)
 gen Role = RoleCategory
 gen Level = RoleValue
 
-* Week Number
-destring WeekNumValue, gen(WeekNum)
-tab WeekNum, m
-
 * SiteID for programme data report
+* Replace SiteID if report is sent from LGA or State level 
 replace SiteID = ProSiteIDValue if Level !="Site"
 
 * Type of site for programme data report (OTP or SC)
@@ -863,6 +875,10 @@ replace SiteID = ProSiteIDValue if Level !="Site"
 gen Type = TypeValue 
 replace Type = ProTypeCategory if Level !="Site"
 tab Type, m 
+
+* Week Number
+destring WeekNumValue, gen(WeekNum)
+tab WeekNum, m
 
 * Age Group (only used currently in SC)
 gen AgeGroup = "6-59m" if Type =="OTP"
@@ -890,13 +906,15 @@ replace Defu = DefU_iValue if Type=="SC"
 replace Dmed = Dmed_iValue if Type=="SC"
 replace Tout = Tout_iValue if Type=="SC"
 
+destring Beg Amar Tin Dcur Dead Defu Dmed Tout, replace force
+
 * Drop data that are not confirmed, answered with NO
 drop if ConfirmCategory =="No"
 
 * Delete training data ( program and stock data that goes 1,2,4,6,8… ) 
 * always review carefully after training.
-drop if Beg=="2" & Amar =="4" & Tin=="6"
-drop if Dead=="10" & Defu =="12" & Dmed=="14"
+drop if Beg==2 & Amar ==4 & Tin==6
+drop if Dead==10 & Defu ==12 & Dmed==14
 
 * Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
 destring SiteID, gen(SiteIDn) force
@@ -919,11 +937,10 @@ save "C:\TEMP\Working\PRO_delete", replace
 import excel "C:\TEMP\sto.xls", sheet("Contacts") firstrow clear
 * MUST INCLUDE in the download. 
 * SiteID 
+drop if SiteID =="Nat"
 
 * drop if data are not confirmed
 drop if ConfirmCategoryIMAMStock =="No"
-
-drop if SiteID =="Nat"
 
 * Role (Implementation or Supervision)
 gen Role  = PostLevelCategory
@@ -1025,6 +1042,10 @@ save "C:\TEMP\Working\LGA_delete", replace
 *******
 * MERGE ALL FOUR DATABASES TOGETHER
 *******
+* Append data that was not entered correctly (Hannatu Usman, Mahe Ibrahim, Endaline Ngozi). 
+import excel "C:\TEMP\CorrectionsMissingWeekNum.xlsx", sheet("Sheet1") firstrow clear
+tostring SiteID lga_code, replace
+save "C:\TEMP\Working\CorrectionsMissingWeekNum", replace
 
 * Add other SiteIDs that have no reporting to ensure that we send reports to all sites. 
 use "C:\TEMP\Working\SITE_delete.dta", clear
@@ -1048,10 +1069,12 @@ use "C:\TEMP\Working\PRO_delete.dta", clear
 merge 1:1 SiteID Type WeekNum using "C:\TEMP\Working\STO_delete"
 append using "C:\TEMP\Working\LGA_delete"
 drop _merge
+* Add the missing data
+append using "C:\TEMP\Working\CorrectionsMissingWeekNum"
+
 
 
 * FINAL CLEANING
-destring SiteID Beg Amar Tin Dcur Dead Defu Dmed Tout, replace force
 
 * Stata does not follow the ISO definition of weeknumber whereby week 1 always begins on 1 January and week 52 is always 8 or 9 days long.
 * Cannot use week function in Stata on current date. To avoid this error, just convert weeknumbers into dates. 
@@ -1155,6 +1178,7 @@ drop if SiteID==3306 & Type=="OTP"
 
 * Create local variable of current WeekNum
 sum CurrWeekNum, meanonly
+local currentweeknum =  `r(mean)' 
 local end = `r(mean)' - 1
 * Change this to 8 or 7 (weeks in past of complete reporting) for next training
 local start = `end' - 5
@@ -1208,8 +1232,6 @@ forvalues week = `start'/`end' {
 }
 egen ProReptTot = rowtotal(Pdum*)
 egen StoReptTot = rowtotal(Sdum*)
-tab ProReptTot, m 
-tab StoReptTot, m 
 
 * Merge with missing programme data with SiteID with phone numbers and names to send reminders. 
 merge 1:m SiteID Type using "C:\TEMP\Working\REG_delete"
@@ -1228,16 +1250,32 @@ sort length
 replace MissStoRept = MissStoRept[_N] if StoReptTot==.
 
 * Delete programme reports for supervision staff. 
-replace ProMiss = "" if SiteID<9999
+replace ProMiss = "none" if SiteID<9999
 replace ProReptTot =. if SiteID<9999
 
-gen Message = "Dear @contact from @SiteName. This is a REMINDER to send missing PROGRAMME reports for week numbers @contact.promiss and STOCK reports for week numbers @contact.stomiss Thank you!"
-replace Message =  "Dear @contact from @SiteName. This is a REMINDER to send missing STOCK reports for week numbers @contact.stomiss Thank you!" if SiteID<9999
+gen Message = "Dear @contact from @contact.SiteName. This is a REMINDER to send missing PROGRAMME reports for week numbers @contact.promiss and STOCK reports for week numbers @contact.stomiss Thank you!"
+replace Message =  "Dear @contact from @contact.SiteName. This is a REMINDER to send missing STOCK reports for week numbers @contact.stomiss Thank you!" if SiteID<9999
 
-keep Phone Name SiteName SiteID ProMiss StoMiss ProReptTot StoReptTot Message
-order Phone Name SiteName SiteID ProMiss StoMiss ProReptTot StoReptTot Message
+* Results - number of reports sent. 
+tab ProReptTot, m 
+tab StoReptTot, m 
+
+tostring SiteID, replace
+
+keep Phone Name SiteName SiteID ProMiss StoMiss Message Level
+order Phone Name SiteName SiteID ProMiss StoMiss Message Level 
 sort SiteID
-export excel using "C:\TEMP\MissingReptWeeks.xls", firstrow(variables) replace
+save "C:\TEMP\Working\Reminder_delete", replace
+
+* Reminders for LGA and State (only Stock)
+local missreptfilename = "MissReptWeek" + "`currentweeknum'" 
+drop if Level =="Site"
+export excel using "STO`missreptfilename'.xls", firstrow(variables) replace
+
+* Reminders for Implementation sites (Programme and Stock)
+use "C:\TEMP\Working\Reminder_delete", clear
+drop if Level !="Site"
+export excel using "PRO`missreptfilename'.xls", firstrow(variables) replace
 
 
 **************
