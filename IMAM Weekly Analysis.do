@@ -846,7 +846,6 @@ drop if SiteIDord !=1
 
 *Remove uninterpretable data.
 drop if SiteID ==.
-tostring SiteID, replace
 
 keep   SiteID SiteName Type state_code state lga_code lga 
 order  SiteID SiteName Type state_code state lga_code lga 
@@ -916,14 +915,14 @@ drop if ConfirmCategory =="No"
 drop if Beg==2 & Amar ==4 & Tin==6
 drop if Dead==10 & Defu ==12 & Dmed==14
 
-* Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
-destring SiteID, gen(SiteIDn) force
-gsort SiteIDn WeekNum -LastSeen
-by SiteIDn WeekNum: egen unique = seq()
-drop if unique !=1
-
 * Drop if SiteID = X
 drop if SiteID =="X"
+
+* Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
+destring SiteID, replace
+gsort SiteID WeekNum -LastSeen
+by SiteID WeekNum: egen unique = seq()
+drop if unique !=1
 
 keep URN Name SiteID WeekNum Role Level Type AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout FirstSeen LastSeen
 
@@ -990,12 +989,13 @@ drop if strlen(SiteID) <9
 * drop Assaye and Robert
 drop if strmatch(SiteID, "101110001") 
 
-* Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
-destring SiteID, gen(SiteIDn) force
-gsort SiteIDn WeekNum -LastSeen
-by SiteIDn WeekNum: egen unique = seq()
-drop if unique !=1
 drop if SiteID =="X"
+
+* Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
+destring SiteID, replace
+gsort SiteID WeekNum -LastSeen
+by SiteID WeekNum: egen unique = seq()
+drop if unique !=1
 
 keep URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen 
 order URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen 
@@ -1043,9 +1043,9 @@ save "C:\TEMP\Working\LGA_delete", replace
 * MERGE ALL FOUR DATABASES TOGETHER
 *******
 * Append data that was not entered correctly (Hannatu Usman, Mahe Ibrahim, Endaline Ngozi). 
-import excel "C:\TEMP\CorrectionsMissingWeekNum.xlsx", sheet("Sheet1") firstrow clear
-tostring SiteID lga_code, replace
-save "C:\TEMP\Working\CorrectionsMissingWeekNum", replace
+import excel "C:\TEMP\CorrectionsMissingWeekNum20160713.xlsx", sheet("Sheet1") firstrow clear
+tostring lga_code, replace
+save "C:\TEMP\Working\CorrectionsMissingWeekNum20160713", replace
 
 * Add other SiteIDs that have no reporting to ensure that we send reports to all sites. 
 use "C:\TEMP\Working\SITE_delete.dta", clear
@@ -1059,7 +1059,7 @@ drop _merge
 save "C:\TEMP\Working\STO_delete", replace
 
 use "C:\TEMP\Working\SITE_delete.dta", clear
-drop if strlen(SiteID) >4
+drop if SiteID <9999
 merge 1:m SiteID using "C:\TEMP\Working\LGA_delete"
 drop _merge
 save "C:\TEMP\Working\LGA_delete", replace
@@ -1070,7 +1070,7 @@ merge 1:1 SiteID Type WeekNum using "C:\TEMP\Working\STO_delete"
 append using "C:\TEMP\Working\LGA_delete"
 drop _merge
 * Add the missing data
-append using "C:\TEMP\Working\CorrectionsMissingWeekNum"
+append using "C:\TEMP\Working\CorrectionsMissingWeekNum20160713"
 
 
 
@@ -1276,6 +1276,8 @@ export excel using "STO`missreptfilename'.xls", firstrow(variables) replace
 use "C:\TEMP\Working\Reminder_delete", clear
 drop if Level !="Site"
 export excel using "PRO`missreptfilename'.xls", firstrow(variables) replace
+
+
 
 
 **************
