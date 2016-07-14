@@ -1152,21 +1152,27 @@ save "C:\TEMP\Working\CMAM_delete", replace
 ****************************
 * EXPORT FOR EXCEL DASHBOARD
 ****************************
-
+sort SiteID Type WeekNum
 * Drop STATE and LGA data
 drop if SiteID < 9999
 
 * Delete data if there is a reporting date error (in ancient past or future)
 drop if rep_date_error ==1 | rep_date_error ==2 
 
-* ID districtname healthcentername	hcid	year	weeknumber	timestamp	idreporter	agegroup	beg
 gen id = [_n]
 gen End = Beg + Amar + Tin - Dcur - Dead - Defu - Dmed - Tout
 
+gen stockcode = "RUTF"
+* Create instock variable. 
+gen instock = . 
+replace instock = RUTF_bal[_n-1] if SiteID==SiteID[_n-1] & Type==Type[_n-1] & WeekNum==WeekNum[_n-1]+1
+
+* REMOVED F100 and F75 from Excel Dashboard
+
 keep id state lga SiteName SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur ///
-     Dead Defu Dmed Tout End RUTF_in RUTF_out RUTF_bal F75_bal F100_bal 
+     Dead Defu Dmed Tout End stockcode instock RUTF_in RUTF_out RUTF_bal  
 order id state lga SiteName SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur ///
-     Dead Defu Dmed Tout End RUTF_in RUTF_out RUTF_bal F75_bal F100_bal 
+     Dead Defu Dmed Tout End stockcode instock RUTF_in RUTF_out RUTF_bal  
 
 tab AgeGroup
 tab Beg 
@@ -1307,34 +1313,25 @@ export excel using "PRO`missreptfilename'.xls", firstrow(variables) replace
 **************
 *  Analysis
 **************
-
-* Analysis on Registration Data
-* To Analyse Registration Date Use RegistrationDate - LastSeen represents last time that they routed through to programme report. 
-cap gen RegDate =date(RegistrationDate,"DMY")
-cap format RegDate %td
-gen one = 1
-cap graph bar (sum) one, over (RegDate, label(labsize (1.5) alternate)) ytitle("count") title("Date of Registration") 
-* Dates are not correctly presented in graphs. 
-* This graph will present in order for one month blocks with RegistrationDate string as x axis variable. 
-
+* Create report
 
 * Calculate errors in data entry here. 
 
 * Site ID Error
-gen SiteID_error =1 if strlen(SiteID) <9 
-tab SiteID_error, m
+*gen SiteID_error =1 if strlen(SiteID) <9 
+*tab SiteID_error, m
 
 
 * YOU CANNOT SEND DATA FOR WEEK NUMBERS IN THE FUTURE. 
 *Error - Reports from the future
-list Name URN LastSeen WeekNum if rep_date_error ==2 
+*list Name URN LastSeen WeekNum if rep_date_error ==2 
 
 * YOU CANNOT SEND DATA FOR WEEK NUMBERS MORE THAN 2 MONTHS IN PAST 
 *Error - Reports from the future
-list Name URN LastSeen WeekNum if rep_date_error ==1 
+*list Name URN LastSeen WeekNum if rep_date_error ==1 
 
 *Error in SiteID for Programme data
-list Name URN SiteID WeekNum Beg if SiteID_error ==1
+*list Name URN SiteID WeekNum Beg if SiteID_error ==1
 
 
 
@@ -1342,11 +1339,12 @@ list Name URN SiteID WeekNum Beg if SiteID_error ==1
 
 *Saving graphs and log files. 
 
-graph combine male_salary.gph female_salary.gph, col(1) saving(salary_by_sex,replace)
-graph use salary_by_sex
-graph export salary_by_sex.pdf
 
-translate “Stata Log for module 2 exercises.smcl” “Stata Log for module 2 exercises.pdf”
+*graph combine male_salary.gph female_salary.gph, col(1) saving(salary_by_sex,replace)
+*graph use salary_by_sex
+*graph export salary_by_sex.pdf
+
+*translate “Stata Log for module 2 exercises.smcl” “Stata Log for module 2 exercises.pdf”
 
 * Graphlog
 * https://ideas.repec.org/c/boc/bocode/s457778.html
@@ -1360,19 +1358,15 @@ translate “Stata Log for module 2 exercises.smcl” “Stata Log for module 2 exerci
 * graphlog closed without generating PDF.
 
 
-
-
-
-
-
-
-
-
-
-* Create report
-
-* Who registered where with what details
-* First, second, site level
-
+* Analysis on Registration Data
+* To Analyse Registration Date Use RegistrationDate - LastSeen represents last time that they routed through to programme report. 
+cap gen RegDate =date(RegistrationDate,"DMY")
+cap format RegDate %td
+cap gen one = 1
+cap graph bar (sum) one, over (RegDate, label(labsize (1.5) alternate)) ytitle("count") title("Date of Registration") 
+* Dates are not correctly presented in graphs. 
+* This graph will present in order for one month blocks with RegistrationDate string as x axis variable. 
 
 * End of Report - list all personnel
+* Who registered where with what details
+* First, second, site level
