@@ -24,12 +24,11 @@ cd C:\Temp
 * Double check all other vars. 
 
 import excel "C:\TEMP\reg.xls", sheet("Contacts") firstrow
+* do we want the tab of runs or contacts here ?
+* CONTACTS, as that corresponds to everyone registered
 
 * Drop all contacts who are not involved with CMAM IYCF reporting
 * All persons currently in registration flow are involved with CMAM
-
-* Drop all contacts who are not in Sokoto
-drop if substr(Site_inputValue,1, 2)!= "33"
 
 * SiteID
 capture gen SiteID = Site_inputValue
@@ -44,7 +43,6 @@ replace Type ="" if Level =="First" | Level == "Second"
 capture gen Post = Post_impCategory
 replace Post = Post_supCategory if Level !="Site"
 replace Post ="" if Post=="Other"
-
 
 * State code
 gen state_code = substr(Site_inputValue,1, 2)
@@ -91,48 +89,48 @@ gen SiteName = ""
 
 replace SiteName = 	"Binji Up-Graded Dispensary"	if SiteID==	3301110001
 replace SiteName = 	"General Hospital Binji"		if SiteID==	3301210002
-replace SiteName = 	"Birni wari Dispensary"		if SiteID==	3301110003
-replace SiteName = 	"Kalgo Dispensary"		if SiteID==	3301110004
-replace SiteName = 	"Karani Dispensary"		if SiteID==	3301110005
+replace SiteName = 	"Birni wari Dispensary"			if SiteID==	3301110003
+replace SiteName = 	"Kalgo Dispensary"				if SiteID==	3301110004
+replace SiteName = 	"Karani Dispensary"				if SiteID==	3301110005
 replace SiteName = 	"Kura Up-Graded Dispensary"		if SiteID==	3301110006
-replace SiteName = 	"Dalijam Dispensary"		if SiteID==	3301110007
-replace SiteName = 	"Jamali Dispensary"		if SiteID==	3301110008
+replace SiteName = 	"Dalijam Dispensary"			if SiteID==	3301110007
+replace SiteName = 	"Jamali Dispensary"				if SiteID==	3301110008
 replace SiteName = 	"Jamali Tsohuwa Dispensary"		if SiteID==	3301110009
-replace SiteName = 	"Danmali Dispensary"		if SiteID==	3301110010
-replace SiteName = 	"Model PHC Bunkari"		if SiteID==	3301110011
-replace SiteName = 	"Fako Dispensary"		if SiteID==	3301110012
-replace SiteName = 	"Kandiza Dispensary"		if SiteID==	3301110013
-replace SiteName = 	"Gwahitto Dispensary"		if SiteID==	3301110014
-replace SiteName = 	"Soro Dispensary"		if SiteID==	3301110015
-replace SiteName = 	"Tumuni Dispensary"		if SiteID==	3301110016
+replace SiteName = 	"Danmali Dispensary"			if SiteID==	3301110010
+replace SiteName = 	"Model PHC Bunkari"				if SiteID==	3301110011
+replace SiteName = 	"Fako Dispensary"				if SiteID==	3301110012
+replace SiteName = 	"Kandiza Dispensary"			if SiteID==	3301110013
+replace SiteName = 	"Gwahitto Dispensary"			if SiteID==	3301110014
+replace SiteName = 	"Soro Dispensary"			if SiteID==	3301110015
+replace SiteName = 	"Tumuni Dispensary"			if SiteID==	3301110016
 replace SiteName = 	"Gawazai Dispensary"		if SiteID==	3301110017
 replace SiteName = 	"Matabare Dispensary"		if SiteID==	3301110018
 replace SiteName = 	"Yardewu Dispensary"		if SiteID==	3301110019
-replace SiteName = 	"Ginjo Dispensary"		if SiteID==	3301110020
-replace SiteName = 	"Inname Dispensary"		if SiteID==	3301110021
+replace SiteName = 	"Ginjo Dispensary"			if SiteID==	3301110020
+replace SiteName = 	"Inname Dispensary"			if SiteID==	3301110021
 replace SiteName = 	"Kunkurwa Dispensary"		if SiteID==	3301110022
 replace SiteName = 	"Maikulki Up-Graded Dispensary"		if SiteID==	3301110023
-replace SiteName = 	"Margai Dispensary"		if SiteID==	3301110024
-replace SiteName = 	"Samama Dispensary"		if SiteID==	3301110025
+replace SiteName = 	"Margai Dispensary"			if SiteID==	3301110024
+replace SiteName = 	"Samama Dispensary"			if SiteID==	3301110025
 replace SiteName = 	"Tudun Kose Dispensary"		if SiteID==	3301110026
 replace SiteName = 	"Gidan Maidebe Dispensary"		if SiteID==	3301110027
 replace SiteName = 	"Twaidi Dikko Dispensary	"	if SiteID==	3301110028
 replace SiteName = 	"Twaidi Zaidi Dispensary	"	if SiteID==	3301110029
 replace SiteName = 	"Abdulsalami Dispensary	"	if SiteID==	3302110001
-replace SiteName = 	"Lukuyaw Dispensary	"	if SiteID==	3302110002
-replace SiteName = 	"Sifawa Dispensary	"	if SiteID==	3302110003
-replace SiteName = 	"Badau Dispensary	"	if SiteID==	3302110004
+replace SiteName = 	"Lukuyaw Dispensary	"		if SiteID==	3302110002
+replace SiteName = 	"Sifawa Dispensary	"		if SiteID==	3302110003
+replace SiteName = 	"Badau Dispensary	"		if SiteID==	3302110004
 replace SiteName = 	"Darhela Up-Graded Dispensary	"	if SiteID==	3302110005
-replace SiteName = 	"Badawa Dispensary	"	if SiteID==	3302110006
+replace SiteName = 	"Badawa Dispensary	"		if SiteID==	3302110006
 replace SiteName = 	"Bagarawa Dispensary	"	if SiteID==	3302110007
-replace SiteName = 	"PHC Bagarawa	"	if SiteID==	3302110008
+replace SiteName = 	"PHC Bagarawa	"			if SiteID==	3302110008
 replace SiteName = 	"Zangalawa Dispensary	"	if SiteID==	3302110009
 replace SiteName = 	"Bangi Dispensary	"	if SiteID==	3302110010
 replace SiteName = 	"Dabaga Dsipensary	"	if SiteID==	3302110011
 replace SiteName = 	"Tulluwa Dispensary	"	if SiteID==	3302110012
 replace SiteName = 	"Wumumu Dispensary	"	if SiteID==	3302110013
 replace SiteName = 	"Dan Ajwa Dispensary	"	if SiteID==	3302110014
-replace SiteName = 	"K/Wwasau"	if SiteID==	3302110015
+replace SiteName = 	"K/Wwasau"					if SiteID==	3302110015
 replace SiteName = 	"Dingyadi Up-Graded Dispensary"	if SiteID==	3302110016
 replace SiteName = 	"PHC Dingyadi"	if SiteID==	3302110017
 replace SiteName = 	"Gidan Kijo Dispensary	"	if SiteID==	3302110018
@@ -855,7 +853,8 @@ save "C:\TEMP\Working\SITE_delete", replace
 ****************
 * Programme Data	
 ****************
-import excel "C:\TEMP\pro.xls", sheet("Contacts") firstrow clear
+import excel "C:\TEMP\pro.xls", sheet("Runs") firstrow clear
+* Do not use the tab "Contacts" as it is incomplete. 
 * YOU MUST INCLUDE in the download. 
 * - SiteID 
 des SiteID
@@ -864,6 +863,14 @@ des SiteID
 * Role (Supervision or Implementation)
 gen Role = RoleCategory
 gen Level = RoleValue
+tab Role, m 
+tab Level, m 
+
+*gen length = strlen(SiteID)
+*recode length (1 2 = 1 "First") (3 4 = 2 "Second") (9 10 = 3 "Implementation") (* =.), generate(Role)
+*recode Role (1 2 = 1 Supervision)(3 = 2 Implementation)(* =.) , gen(Level)
+* these tables are for all the runs, not the individual contacts. 
+
 
 * SiteID for programme data report
 * Replace SiteID if report is sent from LGA or State level 
@@ -876,7 +883,7 @@ replace Type = ProTypeCategory if Level !="Site"
 tab Type, m 
 
 * Week Number
-destring WeekNumValue, gen(WeekNum)
+destring WeekNumValue, gen(WeekNum) force
 tab WeekNum, m
 
 * Age Group (only used currently in SC)
@@ -919,10 +926,17 @@ drop if Dead==10 & Defu ==12 & Dmed==14
 drop if SiteID =="X"
 
 * Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
+* Do not replace old data if the newer programme report is empty. 
+gen PROnodata = Beg==. & Amar==. & Tin==. & Dcur==. & Dead==. & Defu==. & Dmed==. & Tout==.
+* Note 1 = no data 
+drop if PROnodata ==1
+
+* Remove duplicates
 destring SiteID, replace
 gsort SiteID WeekNum -LastSeen
 by SiteID WeekNum: egen unique = seq()
-drop if unique !=1
+
+drop if unique !=1 
 
 keep URN Name SiteID WeekNum Role Level Type AgeGroup Beg Amar Tin Dcur Dead Defu Dmed Tout FirstSeen LastSeen
 
@@ -933,7 +947,7 @@ save "C:\TEMP\Working\PRO_delete", replace
 ****************
 * Stocks data - Site
 ****************
-import excel "C:\TEMP\sto.xls", sheet("Contacts") firstrow clear
+import excel "C:\TEMP\sto.xls", sheet("Runs") firstrow clear
 * MUST INCLUDE in the download. 
 * SiteID 
 drop if SiteID =="Nat"
@@ -992,6 +1006,12 @@ drop if strmatch(SiteID, "101110001")
 drop if SiteID =="X"
 
 * Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
+* First drop empty reports
+gen STOnodata = RUTF_in==. & RUTF_out==. & RUTF_bal==. & F75_bal==. & F100_bal==. 
+* Note 1 = no data 
+drop if STOnodata ==1
+
+* Remove duplicates
 destring SiteID, replace
 gsort SiteID WeekNum -LastSeen
 by SiteID WeekNum: egen unique = seq()
@@ -999,14 +1019,14 @@ drop if unique !=1
 
 keep URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen 
 order URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen 
-sort SiteID WeekNum
+sort SiteID Type WeekNum
 
 save "C:\TEMP\Working\STO_delete", replace
 
 ****************
 * Stocks data - LGA STATE
 ****************
-import excel "C:\TEMP\lga.xls", sheet("Contacts") firstrow clear
+import excel "C:\TEMP\lga.xls", sheet("Runs") firstrow clear
 * MUST INCLUDE in the download. 
 * SiteID 
 
@@ -1024,15 +1044,15 @@ gen RUTF_out = RUTF_outValue
 gen RUTF_bal = RUTF_balValue
 destring RUTF_in RUTF_out RUTF_bal, replace
 
-* Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
-destring SiteID, gen(SiteIDn) force
-gsort SiteIDn WeekNum -LastSeen
-by SiteIDn WeekNum: egen unique = seq()
-drop if unique !=1
-
 * Drop if confirmation equals No or SiteID = X
 drop if confirmCategory =="No"
 drop if SiteID =="X"
+
+* Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
+destring SiteID, replace
+gsort SiteID WeekNum -LastSeen
+by SiteID WeekNum: egen unique = seq()
+drop if unique !=1
 
 keep URN Name SiteID WeekNum RUTF_in RUTF_out RUTF_bal LastSeen FirstSeen 
 order URN Name SiteID WeekNum RUTF_in RUTF_out RUTF_bal LastSeen FirstSeen 
@@ -1042,10 +1062,6 @@ save "C:\TEMP\Working\LGA_delete", replace
 *******
 * MERGE ALL FOUR DATABASES TOGETHER
 *******
-* Append data that was not entered correctly (Hannatu Usman, Mahe Ibrahim, Endaline Ngozi). 
-import excel "C:\TEMP\CorrectionsMissingWeekNum20160713.xlsx", sheet("Sheet1") firstrow clear
-tostring lga_code, replace
-save "C:\TEMP\Working\CorrectionsMissingWeekNum20160713", replace
 
 * Add other SiteIDs that have no reporting to ensure that we send reports to all sites. 
 use "C:\TEMP\Working\SITE_delete.dta", clear
@@ -1059,7 +1075,7 @@ drop _merge
 save "C:\TEMP\Working\STO_delete", replace
 
 use "C:\TEMP\Working\SITE_delete.dta", clear
-drop if SiteID <9999
+drop if SiteID >9999
 merge 1:m SiteID using "C:\TEMP\Working\LGA_delete"
 drop _merge
 save "C:\TEMP\Working\LGA_delete", replace
@@ -1069,9 +1085,8 @@ use "C:\TEMP\Working\PRO_delete.dta", clear
 merge 1:1 SiteID Type WeekNum using "C:\TEMP\Working\STO_delete"
 append using "C:\TEMP\Working\LGA_delete"
 drop _merge
-* Add the missing data
-append using "C:\TEMP\Working\CorrectionsMissingWeekNum20160713"
 
+drop if SiteID ==.
 
 
 * FINAL CLEANING
@@ -1237,10 +1252,12 @@ egen StoReptTot = rowtotal(Sdum*)
 merge 1:m SiteID Type using "C:\TEMP\Working\REG_delete"
 gen Phone = URN
 
+
 * If the SiteID was not included in the report, then assign all weeks as missing. 
 gen str MissProReptAll = ""
 gen str MissStoReptAll = ""
 
+* Double check 
 gen length = length(ProMiss)
 sort length
 replace MissProRept = MissProRept[_N] if ProReptTot==.
@@ -1250,21 +1267,28 @@ sort length
 replace MissStoRept = MissStoRept[_N] if StoReptTot==.
 
 * Delete programme reports for supervision staff. 
-replace ProMiss = "none" if SiteID<9999
-replace ProReptTot =. if SiteID<9999
+replace ProMiss = "" if SiteID <9999
+replace ProReptTot =. if SiteID <9999
 
-gen Message = "Dear @contact from @contact.SiteName. This is a REMINDER to send missing PROGRAMME reports for week numbers @contact.promiss and STOCK reports for week numbers @contact.stomiss Thank you!"
-replace Message =  "Dear @contact from @contact.SiteName. This is a REMINDER to send missing STOCK reports for week numbers @contact.stomiss Thank you!" if SiteID<9999
+gen Message = "Dear @contact from @contact.SiteName. Thank you for reporting. This is a REMINDER to send missing PROGRAMME reports for week numbers @contact.promiss and STOCK reports for week numbers @contact.stomiss Thank you!"
+replace Message =  "Dear @contact from @contact.SiteName. Thank you for reporting. This is a REMINDER to send missing STOCK reports for week numbers @contact.stomiss Thank you!" if SiteID<9999
 
 * Results - number of reports sent. 
 tab ProReptTot, m 
 tab StoReptTot, m 
 
+* Remove personnel from the reminder who have already sent all reports. 
+egen MaxProRept = max(ProReptTot)
+egen MaxStoRept = max(StoReptTot)
+drop if ProReptTot==ProReptTot & StoReptTot==MaxStoRept
+* Remove personnel who are not registered for CMAM reporting
+drop if SiteID==.
+
 tostring SiteID, replace
 
-keep Phone Name SiteName SiteID ProMiss StoMiss Message Level
-order Phone Name SiteName SiteID ProMiss StoMiss Message Level 
-sort SiteID
+keep Phone Name SiteName SiteID Type ProMiss StoMiss Message Level
+order Phone Name SiteName SiteID Type ProMiss StoMiss Message Level 
+sort SiteID Type 
 save "C:\TEMP\Working\Reminder_delete", replace
 
 * Reminders for LGA and State (only Stock)
@@ -1286,10 +1310,10 @@ export excel using "PRO`missreptfilename'.xls", firstrow(variables) replace
 
 * Analysis on Registration Data
 * To Analyse Registration Date Use RegistrationDate - LastSeen represents last time that they routed through to programme report. 
-gen RegDate =date(RegistrationDate,"DMY")
-format RegDate %td
+cap gen RegDate =date(RegistrationDate,"DMY")
+cap format RegDate %td
 gen one = 1
-graph bar (sum) one, over (RegDate, label(labsize (1.5) alternate)) ytitle("count") title("Date of Registration") 
+cap graph bar (sum) one, over (RegDate, label(labsize (1.5) alternate)) ytitle("count") title("Date of Registration") 
 * Dates are not correctly presented in graphs. 
 * This graph will present in order for one month blocks with RegistrationDate string as x axis variable. 
 
