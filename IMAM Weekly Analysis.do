@@ -1164,15 +1164,15 @@ gen End = Beg + Amar + Tin - Dcur - Dead - Defu - Dmed - Tout
 
 gen stockcode = "RUTF"
 * Create instock variable. 
-gen instock = . 
-replace instock = RUTF_bal[_n-1] if SiteID==SiteID[_n-1] & Type==Type[_n-1] & WeekNum==WeekNum[_n-1]+1
+gen Begstock= . 
+replace Begstock = RUTF_bal[_n-1] if SiteID==SiteID[_n-1] & Type==Type[_n-1] & WeekNum==WeekNum[_n-1]+1
 
 * REMOVED F100 and F75 from Excel Dashboard
 
 keep id state lga SiteName SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur ///
-     Dead Defu Dmed Tout End stockcode instock RUTF_in RUTF_out RUTF_bal  
+     Dead Defu Dmed Tout End stockcode Begstock RUTF_in RUTF_out RUTF_bal  
 order id state lga SiteName SiteID Type Year WeekNum report_date URN AgeGroup Beg Amar Tin Dcur ///
-     Dead Defu Dmed Tout End stockcode instock RUTF_in RUTF_out RUTF_bal  
+     Dead Defu Dmed Tout End stockcode Begstock RUTF_in RUTF_out RUTF_bal  
 
 tab AgeGroup
 tab Beg 
@@ -1183,6 +1183,10 @@ tab Dead
 tab Defu
 tab Dmed
 tab Tout
+
+* Remove later
+* To have cleaner data
+drop if WeekNum<22
 
 export excel using "C:\TEMP\CMAMDashboard.xls", firstrow(variables) replace
 
@@ -1363,7 +1367,7 @@ export excel using "PRO`missreptfilename'.xls", firstrow(variables) replace
 cap gen RegDate =date(RegistrationDate,"DMY")
 cap format RegDate %td
 cap gen one = 1
-cap graph bar (sum) one, over (RegDate, label(labsize (1.5) alternate)) ytitle("count") title("Date of Registration") 
+* cap graph bar (sum) one, over (RegDate, label(labsize (1.5) alternate)) ytitle("count") title("Date of Registration") 
 * Dates are not correctly presented in graphs. 
 * This graph will present in order for one month blocks with RegistrationDate string as x axis variable. 
 
