@@ -130,10 +130,10 @@ tab state_code, m
 
 * Add names for state and LGA codes
 
-replace state="Bauchi" if state==	"5"
-replace state="Gombe" if state==	"16"
-replace state="Jigawa" if state==	"17"
-replace state="Sokoto" if state==	"33"
+replace state="Bauchi" if state=="5"
+replace state="Gombe" if state=="16"
+replace state="Jigawa" if state=="17"
+replace state="Sokoto" if state=="33"
 tab state, m 
 tab state Level, m 
 
@@ -156,29 +156,29 @@ gen lga = lga_code
 tostring lga_code, replace
 tab lga Level, m 
 
-replace lga=	"Binji" if lga 		=="3301"
-replace lga=	"Bodinga" if lga  	=="3302"
-replace lga=	"Dange-Shuni" if lga=="3303"
-replace lga=	"Gada" if lga       =="3304"
-replace lga=	"Goronyo" if lga 	=="3305"
-replace lga=	"Gudu" if lga 		=="3306"
-replace lga=	"Gwadabawa" if lga 	=="3307"
-replace lga=	"Illela" if lga 	=="3308"
-replace lga=	"Isa" if lga 		=="3309"
-replace lga=	"Kebbe"	if lga 		=="3310"
-replace lga=	"Kware"	if lga 		=="3311"
-replace lga=	"Rabah"	if lga 		=="3312"
-replace lga=	"Sabon Birni" if lga=="3313"
-replace lga=	"Shagari" if lga 	=="3314"
-replace lga=	"Silame" if lga 	=="3315"
-replace lga=	"Sokoto North" if lga=="3316"
-replace lga=	"Sokoto South" if lga=="3317"
-replace lga=	"Tambuwal" if lga 	=="3318"
-replace lga=	"Tangaza" if lga 	=="3319"
-replace lga=	"Tureta" if lga 	=="3320"
-replace lga=	"Wamakko" if lga 	=="3321"
-replace lga=	"Wurno" if lga 		=="3322"
-replace lga=	"Yabo" if lga 		=="3323"
+replace lga="Binji" if lga 		=="3301"
+replace lga="Bodinga" if lga  	=="3302"
+replace lga="Dange-Shuni" if lga=="3303"
+replace lga="Gada" if lga       =="3304"
+replace lga="Goronyo" if lga 	=="3305"
+replace lga="Gudu" if lga 		=="3306"
+replace lga="Gwadabawa" if lga 	=="3307"
+replace lga="Illela" if lga 	=="3308"
+replace lga="Isa" if lga 		=="3309"
+replace lga="Kebbe"	if lga 		=="3310"
+replace lga="Kware"	if lga 		=="3311"
+replace lga="Rabah"	if lga 		=="3312"
+replace lga="Sabon Birni" if lga=="3313"
+replace lga="Shagari" if lga 	=="3314"
+replace lga="Silame" if lga 	=="3315"
+replace lga="Sokoto North" if lga=="3316"
+replace lga="Sokoto South" if lga=="3317"
+replace lga="Tambuwal" if lga 	=="3318"
+replace lga="Tangaza" if lga 	=="3319"
+replace lga="Tureta" if lga 	=="3320"
+replace lga="Wamakko" if lga 	=="3321"
+replace lga="Wurno" if lga 		=="3322"
+replace lga="Yabo" if lga 		=="3323"
 
 replace lga="AKKO" if lga =="1601"
 replace lga="BALANGA" if lga =="1602"
@@ -249,47 +249,47 @@ destring SiteID, replace force
 gen SiteName = ""
 
 replace SiteName = "Binji Up-Graded Dispensary"	if SiteID==	3301110001
-replace SiteName = 	"General Hospital Binji"		if SiteID==	3301210002
-replace SiteName = 	"Birni wari Dispensary"			if SiteID==	3301110003
-replace SiteName = 	"Kalgo Dispensary"				if SiteID==	3301110004
-replace SiteName = 	"Karani Dispensary"				if SiteID==	3301110005
-replace SiteName = 	"Kura Up-Graded Dispensary"		if SiteID==	3301110006
-replace SiteName = 	"Dalijam Dispensary"			if SiteID==	3301110007
-replace SiteName = 	"Jamali Dispensary"				if SiteID==	3301110008
-replace SiteName = 	"Jamali Tsohuwa Dispensary"		if SiteID==	3301110009
-replace SiteName = 	"Danmali Dispensary"			if SiteID==	3301110010
-replace SiteName = 	"Model PHC Bunkari"				if SiteID==	3301110011
-replace SiteName = 	"Fako Dispensary"				if SiteID==	3301110012
-replace SiteName = 	"Kandiza Dispensary"			if SiteID==	3301110013
-replace SiteName = 	"Gwahitto Dispensary"			if SiteID==	3301110014
-replace SiteName = 	"Soro Dispensary"			if SiteID==	3301110015
-replace SiteName = 	"Tumuni Dispensary"			if SiteID==	3301110016
-replace SiteName = 	"Gawazai Dispensary"		if SiteID==	3301110017
-replace SiteName = 	"Matabare Dispensary"		if SiteID==	3301110018
-replace SiteName = 	"Yardewu Dispensary"		if SiteID==	3301110019
-replace SiteName = 	"Ginjo Dispensary"			if SiteID==	3301110020
-replace SiteName = 	"Inname Dispensary"			if SiteID==	3301110021
-replace SiteName = 	"Kunkurwa Dispensary"		if SiteID==	3301110022
-replace SiteName = 	"Maikulki Up-Graded Disp"		if SiteID==	3301110023
-replace SiteName = 	"Margai Dispensary"			if SiteID==	3301110024
-replace SiteName = 	"Samama Dispensary"			if SiteID==	3301110025
-replace SiteName = 	"Tudun Kose Dispensary"		if SiteID==	3301110026
-replace SiteName = 	"Gidan Maidebe Dispensary"		if SiteID==	3301110027
-replace SiteName = 	"Twaidi Dikko Dispensary"	if SiteID==	3301110028
-replace SiteName = 	"Twaidi Zaidi Dispensary"	if SiteID==	3301110029
-replace SiteName = 	"Abdulsalami Dispensary"	if SiteID==	3302110001
-replace SiteName = 	"Lukuyaw Dispensary"		if SiteID==	3302110002
-replace SiteName = 	"Sifawa Dispensary"		if SiteID==	3302110003
-replace SiteName = 	"Badau Dispensary"		if SiteID==	3302110004
-replace SiteName = 	"Darhela Up-Graded Disp"	if SiteID==	3302110005
-replace SiteName = 	"Badawa Dispensary"		if SiteID==	3302110006
-replace SiteName = 	"Bagarawa Dispensary"	if SiteID==	3302110007
-replace SiteName = 	"PHC Bagarawa"			if SiteID==	3302110008
-replace SiteName = 	"Zangalawa Dispensary"	if SiteID==	3302110009
-replace SiteName = 	"Bangi Dispensary"	if SiteID==	3302110010
-replace SiteName = 	"Dabaga Dsipensary"	if SiteID==	3302110011
-replace SiteName = 	"Tulluwa Dispensary"	if SiteID==	3302110012
-replace SiteName = 	"Wumumu Dispensary"	if SiteID==	3302110013
+replace SiteName = "General Hospital Binji"		if SiteID==	3301210002
+replace SiteName = "Birni wari Dispensary"			if SiteID==	3301110003
+replace SiteName = "Kalgo Dispensary"				if SiteID==	3301110004
+replace SiteName = "Karani Dispensary"				if SiteID==	3301110005
+replace SiteName = "Kura Up-Graded Dispensary"		if SiteID==	3301110006
+replace SiteName = "Dalijam Dispensary"			if SiteID==	3301110007
+replace SiteName = "Jamali Dispensary"				if SiteID==	3301110008
+replace SiteName = "Jamali Tsohuwa Dispensary"		if SiteID==	3301110009
+replace SiteName = "Danmali Dispensary"			if SiteID==	3301110010
+replace SiteName = "Model PHC Bunkari"				if SiteID==	3301110011
+replace SiteName = "Fako Dispensary"				if SiteID==	3301110012
+replace SiteName = "Kandiza Dispensary"			if SiteID==	3301110013
+replace SiteName = "Gwahitto Dispensary"			if SiteID==	3301110014
+replace SiteName = "Soro Dispensary"			if SiteID==	3301110015
+replace SiteName = "Tumuni Dispensary"			if SiteID==	3301110016
+replace SiteName = "Gawazai Dispensary"		if SiteID==	3301110017
+replace SiteName = "Matabare Dispensary"		if SiteID==	3301110018
+replace SiteName = "Yardewu Dispensary"		if SiteID==	3301110019
+replace SiteName = "Ginjo Dispensary"			if SiteID==	3301110020
+replace SiteName = "Inname Dispensary"			if SiteID==	3301110021
+replace SiteName = "Kunkurwa Dispensary"		if SiteID==	3301110022
+replace SiteName = "Maikulki Up-Graded Disp"		if SiteID==	3301110023
+replace SiteName = "Margai Dispensary"			if SiteID==	3301110024
+replace SiteName = "Samama Dispensary"			if SiteID==	3301110025
+replace SiteName = "Tudun Kose Dispensary"		if SiteID==	3301110026
+replace SiteName = "Gidan Maidebe Dispensary"		if SiteID==	3301110027
+replace SiteName = "Twaidi Dikko Dispensary"	if SiteID==	3301110028
+replace SiteName = "Twaidi Zaidi Dispensary"	if SiteID==	3301110029
+replace SiteName = "Abdulsalami Dispensary"	if SiteID==	3302110001
+replace SiteName = "Lukuyaw Dispensary"		if SiteID==	3302110002
+replace SiteName = "Sifawa Dispensary"		if SiteID==	3302110003
+replace SiteName = "Badau Dispensary"		if SiteID==	3302110004
+replace SiteName = "Darhela Up-Graded Disp"	if SiteID==	3302110005
+replace SiteName = "Badawa Dispensary"		if SiteID==	3302110006
+replace SiteName = "Bagarawa Dispensary"	if SiteID==	3302110007
+replace SiteName = "PHC Bagarawa"			if SiteID==	3302110008
+replace SiteName = "Zangalawa Dispensary"	if SiteID==	3302110009
+replace SiteName = "Bangi Dispensary"	if SiteID==	3302110010
+replace SiteName = "Dabaga Dsipensary"	if SiteID==	3302110011
+replace SiteName = "Tulluwa Dispensary"	if SiteID==	3302110012
+replace SiteName = "Wumumu Dispensary"	if SiteID==	3302110013
 replace SiteName = "Dan Ajwa Dispensary"	if SiteID==	3302110014
 replace SiteName = "K/Wwasau"					if SiteID==	3302110015
 replace SiteName = "Dingyadi Up-Graded Disp"	if SiteID==	3302110016
@@ -2788,6 +2788,526 @@ replace SiteName ="Rauda BHC" if SiteID== 			1727110014
 replace SiteName ="Hadejia General Hospital" if SiteID==	1713210005
 replace SiteName ="Dutse General Hospital" if SiteID==	1706210019
 replace SiteName ="Gumel General Hospital" if SiteID==	1709210009
+
+*YOBE
+replace SiteName ="Azam Kura Dispensary"	if SiteID==	3501110001
+replace SiteName ="Azbak Health Clinic"	if SiteID==	3501110002
+replace SiteName ="Babuje Dispensary"	if SiteID==	3501110003
+replace SiteName ="Bade Clinic"	if SiteID==	3501110004
+replace SiteName ="Bizi Health Centre"	if SiteID==	3501110005
+replace SiteName ="Central Dispensary"	if SiteID==	3501110006
+replace SiteName ="Dagona Health Clinic"	if SiteID==	3501110007
+replace SiteName ="Dalah Health Centre"	if SiteID==	3501110008
+replace SiteName ="Dawayo Dispensary"	if SiteID==	3501110009
+replace SiteName ="Gabarwa Dispensary"	if SiteID==	3501110010
+replace SiteName ="Gashu'a Maternity and Child Health Clinic"	if SiteID==	3501110011
+replace SiteName ="Gashua Sabon Gari General Hospital"	if SiteID==	3501210012
+replace SiteName ="Gwio Kura Dispensary"	if SiteID==	3501110013
+replace SiteName ="Jigawa Health Centre"	if SiteID==	3501110014
+replace SiteName ="Nasara Clinic"	if SiteID==	3501220015
+replace SiteName ="Ngelbowa Health Centre"	if SiteID==	3501110016
+replace SiteName ="Ngeljabe Dispensary"	if SiteID==	3501110017
+replace SiteName ="Sabon Gari Child Welfare Clinic"	if SiteID==	3501110018
+replace SiteName ="Sugum Comprehensive Health Centre"	if SiteID==	3501110019
+replace SiteName ="Sugum Dispensary"	if SiteID==	3501110020
+replace SiteName ="Tagali Dispensary"	if SiteID==	3501110021
+replace SiteName ="Tagama Dispensary"	if SiteID==	3501110022
+replace SiteName ="Zango Dispensary"	if SiteID==	3501110023
+replace SiteName ="Abbari Dispensary"	if SiteID==	3502110001
+replace SiteName ="Ajiri Dispensary"	if SiteID==	3502110002
+replace SiteName ="Bade Gana Dispensary"	if SiteID==	3502110003
+replace SiteName ="Bayamari Maternity and Child Health Clinic"	if SiteID==	3502110004
+replace SiteName ="Bayamari Primary Health Centre"	if SiteID==	3502110005
+replace SiteName ="Bururu Dispensary"	if SiteID==	3502110006
+replace SiteName ="Dadigar Dispensary"	if SiteID==	3502110007
+replace SiteName ="Dalari Health Clinic"	if SiteID==	3502110008
+replace SiteName ="Damaya Dispensary"	if SiteID==	3502110009
+replace SiteName ="Danani Dispensary"	if SiteID==	3502110010
+replace SiteName ="Dapchi General Hospital"	if SiteID==	3502210011
+replace SiteName ="Dapchi Maternity and Child Health Clinic"	if SiteID==	3502110012
+replace SiteName ="Dapso Dispensary"	if SiteID==	3502110013
+replace SiteName ="Dumburi Dispensary"	if SiteID==	3502110014
+replace SiteName ="Gadine Dispensary"	if SiteID==	3502110015
+replace SiteName ="Gangawa Dispensary"	if SiteID==	3502110016
+replace SiteName ="Garin Alkali Dispensary"	if SiteID==	3502110017
+replace SiteName ="Garin Kabaju Dispensary"	if SiteID==	3502110018
+replace SiteName ="Garun Dole Dispensary"	if SiteID==	3502110019
+replace SiteName ="Gilbasu Dispensary"	if SiteID==	3502110020
+replace SiteName ="Girim Dispensary"	if SiteID==	3502110021
+replace SiteName ="Guba Dispensary"	if SiteID==	3502110022
+replace SiteName ="Ilela Dispensary"	if SiteID==	3502110023
+replace SiteName ="Jaba Dispensary"	if SiteID==	3502110024
+replace SiteName ="Juluri Dispensary"	if SiteID==	3502110025
+replace SiteName ="Kakanderi Dispensary"	if SiteID==	3502110026
+replace SiteName ="Kaliyari Dispensary"	if SiteID==	3502110027
+replace SiteName ="Kankare Dispensary"	if SiteID==	3502110028
+replace SiteName ="Koromari Dispensary"	if SiteID==	3502110029
+replace SiteName ="Kujikujiri Dispensary"	if SiteID==	3502110030
+replace SiteName ="Kurnawa Mother and Child Health Centre"	if SiteID==	3502110031
+replace SiteName ="Lawanti Dispensary"	if SiteID==	3502110032
+replace SiteName ="Marari Dispensary"	if SiteID==	3502110033
+replace SiteName ="Masaba Health Clinic"	if SiteID==	3502110034
+replace SiteName ="Metalari Dispensary"	if SiteID==	3502110035
+replace SiteName ="Renukunu Dispensary"	if SiteID==	3502110036
+replace SiteName ="Sunowa Dispensary"	if SiteID==	3502110037
+replace SiteName ="Tarbutu Dispensary"	if SiteID==	3502110038
+replace SiteName ="Turbangida Dispensary"	if SiteID==	3502110039
+replace SiteName ="Warodi Dispensary"	if SiteID==	3502110040
+replace SiteName ="Ajari Dispensary"	if SiteID==	3503110001
+replace SiteName ="Ajiko Medical Centre"	if SiteID==	3503220002
+replace SiteName ="Borno Medical Clinic"	if SiteID==	3503220003
+replace SiteName ="Damakasu Dispensary"	if SiteID==	3503110004
+replace SiteName ="Damanturu Federal Poly Clinic"	if SiteID==	3503110005
+replace SiteName ="Damanturu Model Primary Health Centre"	if SiteID==	3503110006
+replace SiteName ="Damaturu FSP Maternal and Child Health Clinic"	if SiteID==	3503110007
+replace SiteName ="Damaturu Government House Clinic"	if SiteID==	3503110008
+replace SiteName ="Damaturu Nigerian Police Force Clinic"	if SiteID==	3503110009
+replace SiteName ="Dikumari Dispensary"	if SiteID==	3503110010
+replace SiteName ="Federal Secretariat Staff Clinic"	if SiteID==	3503110011
+replace SiteName ="Gabai Dispensary"	if SiteID==	3503110012
+replace SiteName ="Gambir Dispensary"	if SiteID==	3503110013
+replace SiteName ="Gwange Maternity and Child Health Clinic"	if SiteID==	3503110014
+replace SiteName ="Kabaru Dispensary"	if SiteID==	3503110015
+replace SiteName ="Kalallawa Dispensary"	if SiteID==	3503110016
+replace SiteName ="Kukareta Maternity and Child Health Clinic"	if SiteID==	3503110017
+replace SiteName ="Maisandari Clinic"	if SiteID==	3503110018
+replace SiteName ="Murfa Kalam Dispensary"	if SiteID==	3503110019
+replace SiteName ="Nayinawa Dispensary"	if SiteID==	3503110020
+replace SiteName ="Sasawa Dispensary"	if SiteID==	3503110021
+replace SiteName ="State Specialist Hospital"	if SiteID==	3503210022
+replace SiteName ="Very Important Persons Clinic"	if SiteID==	3503220023
+replace SiteName ="Yobe Medical and Maternity Clinic"	if SiteID==	3503220024
+replace SiteName ="Yobe State Secretariat Clinic"	if SiteID==	3503110025
+replace SiteName ="Anze Dispensary"	if SiteID==	3504110001
+replace SiteName ="Boza Dispensary"	if SiteID==	3504110002
+replace SiteName ="Bulaburin Health Clinic"	if SiteID==	3504110003
+replace SiteName ="Chana Dispensary"	if SiteID==	3504110004
+replace SiteName ="Damaze Health Clinic"	if SiteID==	3504110005
+replace SiteName ="Daya Health Clinic"	if SiteID==	3504110006
+replace SiteName ="Dogo Abare Health Clinic"	if SiteID==	3504110007
+replace SiteName ="Dole Health Post"	if SiteID==	3504110008
+replace SiteName ="Doto Fara Health Clinic"	if SiteID==	3504110009
+replace SiteName ="Duffuyel Health Clinic"	if SiteID==	3504110010
+replace SiteName ="Dumbulwa Dispensary"	if SiteID==	3504110011
+replace SiteName ="Fakali Health Clinic"	if SiteID==	3504110012
+replace SiteName ="Ferol Health Clinic"	if SiteID==	3504110013
+replace SiteName ="Fika General Hospital"	if SiteID==	3504210014
+replace SiteName ="Fika Maternity and Child Health Clinic"	if SiteID==	3504110015
+replace SiteName ="Gadaka Health Clinic"	if SiteID==	3504110016
+replace SiteName ="Gadaka Model Primary Health Centre"	if SiteID==	3504110017
+replace SiteName ="Gamari Health Clinic"	if SiteID==	3504110018
+replace SiteName ="Garin Abba Health Clinic"	if SiteID==	3504110019
+replace SiteName ="Garin Alaramma Health Post"	if SiteID==	3504110020
+replace SiteName ="Garin Ari Health Clinic"	if SiteID==	3504110021
+replace SiteName ="Garin Chindo Health Post"	if SiteID==	3504110022
+replace SiteName ="Garin Dauya Health Clinic"	if SiteID==	3504110023
+replace SiteName ="Garin Gamji Health Clinic"	if SiteID==	3504110024
+replace SiteName ="Garin Goge Dispensary"	if SiteID==	3504110025
+replace SiteName ="Garin Tongo Health Post"	if SiteID==	3504110026
+replace SiteName ="Garin Wayo Health Clinic"	if SiteID==	3504110027
+replace SiteName ="Garin Yarima Health Post"	if SiteID==	3504110028
+replace SiteName ="Garkuwa Health Clinic"	if SiteID==	3504110029
+replace SiteName ="Gashaka Health Clinic"	if SiteID==	3504110030
+replace SiteName ="Gashinge Health Post"	if SiteID==	3504110031
+replace SiteName ="Godowoli Dispensary"	if SiteID==	3504110032
+replace SiteName ="Gurjaje Health Post"	if SiteID==	3504110033
+replace SiteName ="Janga Dole Health Clinic"	if SiteID==	3504110034
+replace SiteName ="Janga Siri Health Post"	if SiteID==	3504110035
+replace SiteName ="Kabano Health Clinic"	if SiteID==	3504110036
+replace SiteName ="Kerem Health Clinic"	if SiteID==	3504110037
+replace SiteName ="Koyaya Health Clinic"	if SiteID==	3504110038
+replace SiteName ="Kukar Gadu Health Clinic"	if SiteID==	3504110039
+replace SiteName ="Kurmi Dispensary"	if SiteID==	3504110040
+replace SiteName ="Lewe Health Clinic"	if SiteID==	3504110041
+replace SiteName ="Maluri Dispensary"	if SiteID==	3504110042
+replace SiteName ="Manawachi Health Clinic"	if SiteID==	3504110043
+replace SiteName ="Mazuwan Health Clinic"	if SiteID==	3504110044
+replace SiteName ="Mubi/Fusami Dispensary"	if SiteID==	3504110045
+replace SiteName ="Munchika Health Clinic"	if SiteID==	3504110046
+replace SiteName ="Ngalda Dispensary"	if SiteID==	3504110047
+replace SiteName ="Siminti Health Clinic"	if SiteID==	3504110048
+replace SiteName ="Siminti Model Primary Health Clinic"	if SiteID==	3504110049
+replace SiteName ="Turmi Health Clinic"	if SiteID==	3504110050
+replace SiteName ="Yelwa Dispensary"	if SiteID==	3504110051
+replace SiteName ="Zadawa Health Clinic"	if SiteID==	3504110052
+replace SiteName ="Zamba Health Post"	if SiteID==	3504110053
+replace SiteName ="Zangaya Dispensary"	if SiteID==	3504110054
+replace SiteName ="Abakire Dispensary"	if SiteID==	3505110001
+replace SiteName ="Aigala Dispensary"	if SiteID==	3505110002
+replace SiteName ="Alagarno Health Clinic"	if SiteID==	3505110003
+replace SiteName ="Balarabe Maternal and Child Health Clinic"	if SiteID==	3505220004
+replace SiteName ="Banalewa Health Post"	if SiteID==	3505110005
+replace SiteName ="Baushe Model Primary Health Centre"	if SiteID==	3505110006
+replace SiteName ="Bebande Health Post"	if SiteID==	3505110007
+replace SiteName ="Bindigi Health Clinic"	if SiteID==	3505110008
+replace SiteName ="Borno Kiji Maternal and Child Health Clinic"	if SiteID==	3505110009
+replace SiteName ="Bulanyiwa Health Clinic"	if SiteID==	3505110010
+replace SiteName ="Damagum General Hospital"	if SiteID==	3505210011
+replace SiteName ="Damagum Maternity and Child Health Clinic"	if SiteID==	3505110012
+replace SiteName ="Daura Maternity and Child Health Clinic"	if SiteID==	3505110013
+replace SiteName ="Dogon-Kuka B Maternal and Child Health Clinic"	if SiteID==	3505110014
+replace SiteName ="Dogon-Kuka Maternity and Child Health Clinic"	if SiteID==	3505110015
+replace SiteName ="Dubbol Model Primary Health Centre"	if SiteID==	3505110016
+replace SiteName ="Duhuna Health Clinic"	if SiteID==	3505110017
+replace SiteName ="Dumawal Health Post"	if SiteID==	3505110018
+replace SiteName ="Dumbulwa (Fune) Dispensary"	if SiteID==	3505110019
+replace SiteName ="Gaba Tasha Dispensary"	if SiteID==	3505110020
+replace SiteName ="Ganji Dispensary"	if SiteID==	3505110021
+replace SiteName ="Gazarakuma Health Post"	if SiteID==	3505110022
+replace SiteName ="Gishiwari Dispensary"	if SiteID==	3505110023
+replace SiteName ="Gubana Dispensary"	if SiteID==	3505110024
+replace SiteName ="Gudugurka Dispensary"	if SiteID==	3505110025
+replace SiteName ="Gurungu Health Post"	if SiteID==	3505110026
+replace SiteName ="Jajere Dispensary"	if SiteID==	3505110027
+replace SiteName ="Jajere Maternity and Child Health Clinic"	if SiteID==	3505110028
+replace SiteName ="Jaji Burawa Dispensary"	if SiteID==	3505110029
+replace SiteName ="Kafaje Dispensary"	if SiteID==	3505110030
+replace SiteName ="Kayeri Dispensary"	if SiteID==	3505110031
+replace SiteName ="Kayeri Maternity and Child Health Clinic"	if SiteID==	3505110032
+replace SiteName ="Koibula Dispensary"	if SiteID==	3505110033
+replace SiteName ="Kollere Health Clinic"	if SiteID==	3505110034
+replace SiteName ="Koyaya Health Post"	if SiteID==	3505110035
+replace SiteName ="Kwara-Wango Health Post"	if SiteID==	3505110036
+replace SiteName ="Marmari Dispensary"	if SiteID==	3505110037
+replace SiteName ="Mashio Health Clinic"	if SiteID==	3505110038
+replace SiteName ="Murba Health Post"	if SiteID==	3505110039
+replace SiteName ="Ngelshengele Dispensary"	if SiteID==	3505110040
+replace SiteName ="Ngelzerma Maternity and Child Health Clinic"	if SiteID==	3505110041
+replace SiteName ="Ningi Dispensary"	if SiteID==	3505110042
+replace SiteName ="Sabongari Idi-Barde Dispensary"	if SiteID==	3505110043
+replace SiteName ="Shamka Dispensary"	if SiteID==	3505110044
+replace SiteName ="Shanga Dispensary"	if SiteID==	3505110045
+replace SiteName ="Siminti (Fune) Dispensary"	if SiteID==	3505110046
+replace SiteName ="Sudande Health Post"	if SiteID==	3505110047
+replace SiteName ="Taiyu Health Post"	if SiteID==	3505110048
+replace SiteName ="Tello Dispensary"	if SiteID==	3505110049
+replace SiteName ="Alhajiri Dispensary"	if SiteID==	3506110001
+replace SiteName ="Ashekri Town Dispensary"	if SiteID==	3506110002
+replace SiteName ="Balle Maternal and Child Health Clinic"	if SiteID==	3506110003
+replace SiteName ="Borko Dispensary"	if SiteID==	3506110004
+replace SiteName ="Dagambi Dispensary"	if SiteID==	3506110005
+replace SiteName ="Dajina Dispensary"	if SiteID==	3506110006
+replace SiteName ="Damakarwa Dispensary"	if SiteID==	3506110007
+replace SiteName ="Darro Dispensary"	if SiteID==	3506110008
+replace SiteName ="Dilawa Dispensary"	if SiteID==	3506110009
+replace SiteName ="Fukurti Dispensary"	if SiteID==	3506110010
+replace SiteName ="Futchimiram Health Clinic"	if SiteID==	3506110011
+replace SiteName ="Geidam General Hospital"	if SiteID==	3506210012
+replace SiteName ="Geidam Maternity and Child Health Clinic"	if SiteID==	3506110013
+replace SiteName ="Gumsa Model Primary Health Centre"	if SiteID==	3506110014
+replace SiteName ="Hausari Dispensary"	if SiteID==	3506110015
+replace SiteName ="Kelluri Mother and Child Health Centre"	if SiteID==	3506110016
+replace SiteName ="Kindila Dispensary"	if SiteID==	3506110017
+replace SiteName ="Kukawa Dispensary"	if SiteID==	3506110018
+replace SiteName ="Kusur Dispensary"	if SiteID==	3506110019
+replace SiteName ="Lawan Bukarti Dispensary"	if SiteID==	3506110020
+replace SiteName ="Ma'anna Dispensary"	if SiteID==	3506110021
+replace SiteName ="Malari Dispensary"	if SiteID==	3506110022
+replace SiteName ="Matakuskum Health Clinic"	if SiteID==	3506110023
+replace SiteName ="Adetona Medical Centre"	if SiteID==	3507220001
+replace SiteName ="Ambiya Dispensary"	if SiteID==	3607110002
+replace SiteName ="Azare Dispensary"	if SiteID==	3607110003
+replace SiteName ="Bukkil Dispensary"	if SiteID==	3607110004
+replace SiteName ="Bulturam Dispensary"	if SiteID==	3607110005
+replace SiteName ="Buni Gari Dispesanry"	if SiteID==	3607110006
+replace SiteName ="Buni Yadi General Hospital"	if SiteID==	3607210007
+replace SiteName ="Buniyadi Maternity and Child Health Clinic"	if SiteID==	3607110008
+replace SiteName ="Dadewel Dispensary"	if SiteID==	3607110009
+replace SiteName ="Dadingel Dispensary"	if SiteID==	3607110010
+replace SiteName ="Goniri Comprehensive Health Centre"	if SiteID==	3607110011
+replace SiteName ="Goniri Dispensary"	if SiteID==	3607110012
+replace SiteName ="Gotumba Dispensary"	if SiteID==	3607110013
+replace SiteName ="Gujba Dispensary"	if SiteID==	3607110014
+replace SiteName ="Kasachiya Dispensary"	if SiteID==	3607110015
+replace SiteName ="Katarko Dispensary"	if SiteID==	3607110016
+replace SiteName ="Kukuwa Dispensary"	if SiteID==	3607110017
+replace SiteName ="Malum-Dunari Dispensary"	if SiteID==	3607110018
+replace SiteName ="Mutai Dispensary"	if SiteID==	3607110019
+replace SiteName ="Ngurbuwa Maternity and Child Health Clinic"	if SiteID==	3607110020
+replace SiteName ="Nyakire Dispensary"	if SiteID==	3607110021
+replace SiteName ="Wagir Model Primary Health Centre"	if SiteID==	3607110022
+replace SiteName ="Wulle Dispensary"	if SiteID==	3607110023
+replace SiteName ="Alagarno Health Post"	if SiteID==	3508110001
+replace SiteName ="Ayada Health Post"	if SiteID==	3508110002
+replace SiteName ="Badugo-Badugoro Health Post"	if SiteID==	3508110003
+replace SiteName ="Bara Comprensive Health Centre"	if SiteID==	3508110004
+replace SiteName ="Bara Dispensary"	if SiteID==	3508110005
+replace SiteName ="Birni-Gadam Health Post"	if SiteID==	3508110006
+replace SiteName ="Borno Kiji Health Post"	if SiteID==	3508110007
+replace SiteName ="Bularafa Health Centre"	if SiteID==	3508110008
+replace SiteName ="Bumsa Dispensary"	if SiteID==	3508110009
+replace SiteName ="Bursari Health Post"	if SiteID==	3508110010
+replace SiteName ="Chandam Health Post"	if SiteID==	3508110011
+replace SiteName ="Choka Health Post"	if SiteID==	3508110012
+replace SiteName ="Dokshi Health Centre"	if SiteID==	3508110013
+replace SiteName ="Dutchi Health Post"	if SiteID==	3508110014
+replace SiteName ="Gabai Dispensary (Gulani)"	if SiteID==	3508110015
+replace SiteName ="Gagure Dispensary"	if SiteID==	3508110016
+replace SiteName ="Gargari Health Post"	if SiteID==	3508110017
+replace SiteName ="Garin Maikomo Health Post"	if SiteID==	3508110018
+replace SiteName ="Garin-Abdullahi Health Post"	if SiteID==	3508110019
+replace SiteName ="Garintuwo Dispensary"	if SiteID==	3508110020
+replace SiteName ="Gulani Health Centre"	if SiteID==	3508110021
+replace SiteName ="Jana Health Post"	if SiteID==	3508110022
+replace SiteName ="Kukuwa Health Post"	if SiteID==	3508110023
+replace SiteName ="Kupto-Gana Health Post"	if SiteID==	3508110024
+replace SiteName ="Kushimaga Dispensary"	if SiteID==	3508110025
+replace SiteName ="Mabani Health Post"	if SiteID==	3508110026
+replace SiteName ="Ngurum Health Post"	if SiteID==	3508110027
+replace SiteName ="Nguzuwa Health Post"	if SiteID==	3508110028
+replace SiteName ="Njibulwa Model Primary Health Centre"	if SiteID==	3508110029
+replace SiteName ="Njibulwa Private Clinic"	if SiteID==	3508220030
+replace SiteName ="Ruhu Dispensary"	if SiteID==	3508110031
+replace SiteName ="Ruwan Kuka Health Post"	if SiteID==	3508110032
+replace SiteName ="Shishi Waji Health Post"	if SiteID==	3508110033
+replace SiteName ="Teteba Dispensary"	if SiteID==	3508110034
+replace SiteName ="Yelwa Health Post (Gulani)"	if SiteID==	3508110035
+replace SiteName ="Zongo Health Centre"	if SiteID==	3508110036
+replace SiteName ="Adiya Dispensary"	if SiteID==	3509110001
+replace SiteName ="Agana Health Centre"	if SiteID==	3509110002
+replace SiteName ="Amshi Maternity and Child Health Clinic"	if SiteID==	3509110003
+replace SiteName ="Ariri Health Centre"	if SiteID==	3509110004
+replace SiteName ="Arvani Health Centre"	if SiteID==	3509110005
+replace SiteName ="Bayam Dispensary"	if SiteID==	3509110006
+replace SiteName ="Bubuno Health Centre"	if SiteID==	3509110007
+replace SiteName ="Buduwa Health Centre"	if SiteID==	3509110008
+replace SiteName ="Dachia Health Centre"	if SiteID==	3509110009
+replace SiteName ="Damasa Health Centre"	if SiteID==	3509110010
+replace SiteName ="Dan Takuni Health Centre"	if SiteID==	3509110011
+replace SiteName ="Doro Health Centre"	if SiteID==	3509110012
+replace SiteName ="Dumbari Dispensary"	if SiteID==	3509110013
+replace SiteName ="Gamajam Health Centre"	if SiteID==	3509110014
+replace SiteName ="Garin Biri Health Centre"	if SiteID==	3509110015
+replace SiteName ="Garin Gano Health Centre"	if SiteID==	3509110016
+replace SiteName ="Garin Tsalha Health Centre"	if SiteID==	3509110017
+replace SiteName ="Gasamu Dispensary"	if SiteID==	3509110018
+replace SiteName ="Gasi Health Centre"	if SiteID==	3509110019
+replace SiteName ="Gauya Dispensary"	if SiteID==	3509110020
+replace SiteName ="Girgir Dispensary"	if SiteID==	3509110021
+replace SiteName ="Gogaram Federal Model Primary Health Centre"	if SiteID==	3509110022
+replace SiteName ="Gumulawa Health Centre"	if SiteID==	3509110023
+replace SiteName ="Gurbana Health Centre"	if SiteID==	3509110024
+replace SiteName ="Guzambana Health Centre"	if SiteID==	3509110025
+replace SiteName ="Gwayo Dispensary"	if SiteID==	3509110026
+replace SiteName ="Iyim Dispensary"	if SiteID==	3509110027
+replace SiteName ="Jaba Health Centre"	if SiteID==	3509110028
+replace SiteName ="Jadam Health Centre"	if SiteID==	3509110029
+replace SiteName ="Jakusko Dispensary"	if SiteID==	3509110030
+replace SiteName ="Jakusko General Hospital"	if SiteID==	3509210031
+replace SiteName ="Jakusko Maternity and Child Health Clinic"	if SiteID==	3509110032
+replace SiteName ="Jamil Health Centre"	if SiteID==	3509110033
+replace SiteName ="Kagammu Health Centre"	if SiteID==	3509110034
+replace SiteName ="Karage Maternity and Child Health Clinic"	if SiteID==	3509110035
+replace SiteName ="Katamma Health Centre"	if SiteID==	3509110036
+replace SiteName ="Katangana Health Centre"	if SiteID==	3509110037
+replace SiteName ="Kazir Dispensary"	if SiteID==	3509110038
+replace SiteName ="Kukamaiwa Health Centre"	if SiteID==	3509110039
+replace SiteName ="Kurkushe Dispensary"	if SiteID==	3509110040
+replace SiteName ="Lafiyaloiloi Dispensary"	if SiteID==	3509110041
+replace SiteName ="Lafiyan Gwa Health Centre"	if SiteID==	3509110042
+replace SiteName ="Lamarbago Dispensary"	if SiteID==	3509110043
+replace SiteName ="Muguram Health Centre"	if SiteID==	3509110044
+replace SiteName ="Tajuwa Dispensary"	if SiteID==	3509110045
+replace SiteName ="Tarja Health Centre"	if SiteID==	3509110046
+replace SiteName =" Tudiniya Health Centre"	if SiteID==	3509110047
+replace SiteName ="Bukarti Health Clinic"	if SiteID==	3510110001
+replace SiteName ="Bukku Health Post"	if SiteID==	3510110002
+replace SiteName ="Bularifi Dispensary"	if SiteID==	3510110003
+replace SiteName ="Faji Ganari Dispensary"	if SiteID==	3510110004
+replace SiteName ="Garin Gawo Dispensary"	if SiteID==	3510110005
+replace SiteName ="Gasma Dispensary"	if SiteID==	3510110006
+replace SiteName ="Jajeri Dispensary"	if SiteID==	3510110007
+replace SiteName ="Jajimaji Comprehensive Health Centre"	if SiteID==	3510110008
+replace SiteName ="Jajimaji Maternal and Child Health Clinic"	if SiteID==	3510110009
+replace SiteName ="Kafetuwa Health Post"	if SiteID==	3510110010
+replace SiteName ="Karasuwa Galu Dispensary"	if SiteID==	3510110011
+replace SiteName ="Karasuwa Health Clinic"	if SiteID==	3510110012
+replace SiteName ="Karasuwa Model Primary Health Centre"	if SiteID==	3510110013
+replace SiteName ="Kilbuwa Health Post"	if SiteID==	3510110014
+replace SiteName ="Lamido Sule Health Post"	if SiteID==	3510110015
+replace SiteName ="Mallam Grema Health Post"	if SiteID==	3510110016
+replace SiteName ="Mallam Musari Health Post"	if SiteID==	3510110017
+replace SiteName ="Wachakal Dispensary"	if SiteID==	3510110018
+replace SiteName ="Waro Dispensary"	if SiteID==	3510110019
+replace SiteName ="Bogo Dispensary"	if SiteID==	3511110001
+replace SiteName ="Burdumaram Dispensary"	if SiteID==	3511110002
+replace SiteName ="Damai Dispensary"	if SiteID==	3511110003
+replace SiteName ="Damdari Dispensary"	if SiteID==	3511110004
+replace SiteName ="Dole Machina Health Clinic"	if SiteID==	3511110005
+replace SiteName ="Falimaram Dispensary"	if SiteID==	3511110006
+replace SiteName ="Garanda Dispensary"	if SiteID==	3511110007
+replace SiteName ="Goki Dispensary"	if SiteID==	3511110008
+replace SiteName ="Kagumsuwa Dispensary"	if SiteID==	3511110009
+replace SiteName ="Kalgidi Dispensary"	if SiteID==	3511110010
+replace SiteName ="Kangarwa Dispensary"	if SiteID==	3511110011
+replace SiteName ="Karmashe Dispensary"	if SiteID==	3511110012
+replace SiteName ="Kukayasku Dispensary"	if SiteID==	3511110013
+replace SiteName ="Lamisu Dispensary"	if SiteID==	3511110014
+replace SiteName ="Machina Central Dispensary"	if SiteID==	3511110015
+replace SiteName ="Machina Comprehensive Health Centre"	if SiteID==	3511110016
+replace SiteName ="Machina Maternity Child Health Clinic"	if SiteID==	3511110017
+replace SiteName ="Maskandare Dispensary"	if SiteID==	3511110018
+replace SiteName ="Taganama Dispensary"	if SiteID==	3511110019
+replace SiteName ="Yalauwa Dispensary"	if SiteID==	3511110020
+replace SiteName ="Baraniya Health Clinic"	if SiteID==	3512110001
+replace SiteName ="Biriri Dispensary"	if SiteID==	3512110002
+replace SiteName ="Chalinno Dispensary"	if SiteID==	3512110003
+replace SiteName ="Chukuriwa Primary Health Centre"	if SiteID==	3512110004
+replace SiteName ="Dadiso Health Post"	if SiteID==	3512110005
+replace SiteName ="Dagare Dispensary"	if SiteID==	3512110006
+replace SiteName ="Dagazirwa Health Clinic"	if SiteID==	3512110007
+replace SiteName ="Darin Health Post"	if SiteID==	3512110008
+replace SiteName ="Dawasa Dispensary"	if SiteID==	3512110009
+replace SiteName ="Dawasa Maternity and Child (State) Health Clinic"	if SiteID==	3512110010
+replace SiteName ="Dazigau Maternity and Child Health Clinic"	if SiteID==	3512110011
+replace SiteName ="Degubi Model Primary Health Centre"	if SiteID==	3512110012
+replace SiteName ="Dorawa Dadi Health Post"	if SiteID==	3512110013
+replace SiteName ="Duddaye Dispensary"	if SiteID==	3512110014
+replace SiteName ="Gabur Dispensary"	if SiteID==	3512110015
+replace SiteName ="Garin Baba Dispensary"	if SiteID==	3512110016
+replace SiteName ="Garin Gambo Dispensary"	if SiteID==	3512110017
+replace SiteName ="Garin Jata Dispensary"	if SiteID==	3512110018
+replace SiteName ="Garin Kadai Dispensary"	if SiteID==	3512110019
+replace SiteName ="Garin Keri Dispensary"	if SiteID==	3512110020
+replace SiteName ="Garin Muzam Health Clinic"	if SiteID==	3512110021
+replace SiteName ="Garin Shera Dispensary"	if SiteID==	3512110022
+replace SiteName ="Gudi Dispensary"	if SiteID==	3512110023
+replace SiteName ="Haram Dispensary"	if SiteID==	3512110024
+replace SiteName ="Kael Dispensary"	if SiteID==	3512110025
+replace SiteName ="Katsira Health Centre"	if SiteID==	3512110026
+replace SiteName ="Kukuri (State) Maternity and Child Health Clinic"	if SiteID==	3512110027
+replace SiteName ="Kukuri Primary Health Centre"	if SiteID==	3512110028
+replace SiteName ="Nangere General Hospital"	if SiteID==	3512210029
+replace SiteName ="Old Nangere Health Clinic"	if SiteID==	3512110030
+replace SiteName ="Sabongari Maternity and Child Health Clinic"	if SiteID==	3512110031
+replace SiteName ="Tarajim Health post"	if SiteID==	3512110032
+replace SiteName ="Tikau Health Centre"	if SiteID==	3512110033
+replace SiteName ="Tudun Wada Health Clinic"	if SiteID==	3512110034
+replace SiteName ="Watinane Maternity and Child Health Clinic"	if SiteID==	3512110035
+replace SiteName ="Yaru Health Post"	if SiteID==	3512110036
+replace SiteName ="Zinzano Dispensary"	if SiteID==	3512110037
+replace SiteName ="Afunori Clinic"	if SiteID==	3513110001
+replace SiteName ="Army Barrack Clinic (Nguru)"	if SiteID==	3513110002
+replace SiteName ="Balanguwa Clinic"	if SiteID==	3513110003
+replace SiteName ="Bombori Clinic"	if SiteID==	3513110004
+replace SiteName ="Bubari Health Clinic"	if SiteID==	3513110005
+replace SiteName ="Bulabulin Central Dispensary"	if SiteID==	3513110006
+replace SiteName ="Dagirari Clinic"	if SiteID==	3513110007
+replace SiteName ="Dumsai Dispensary"	if SiteID==	3513110008
+replace SiteName ="Garbi Health Clinic"	if SiteID==	3513110009
+replace SiteName ="Maja-Kura Clinic"	if SiteID==	3513110010
+replace SiteName ="Ngilewa Health Clinic"	if SiteID==	3513110011
+replace SiteName ="Nguru Federal Medical Centre"	if SiteID==	3513310012
+replace SiteName ="Nguru Federal Model Primary Health Centre"	if SiteID==	3513110013
+replace SiteName ="Nguru Maternal and Child Health Clinic"	if SiteID==	3513110014
+replace SiteName ="Salisu Memorial Clinic"	if SiteID==	3513220015
+replace SiteName ="Badejo Clinic"	if SiteID==	3514110001
+replace SiteName ="Beta Clinic"	if SiteID==	3514220002
+replace SiteName ="Bilam Fusam Clinic"	if SiteID==	3514110003
+replace SiteName ="Bubaram Health Clinic"	if SiteID==	3514110004
+replace SiteName ="Bula Clinic"	if SiteID==	3514110005
+replace SiteName ="Bulabulin Clinic"	if SiteID==	3514110006
+replace SiteName ="Catholic Maternity and Child Health Clinic"	if SiteID==	3514220007
+replace SiteName ="Dakasku Clinic"	if SiteID==	3514110008
+replace SiteName ="Danchuwa Clinic"	if SiteID==	3514110009
+replace SiteName ="Dogon-Zare Clinic"	if SiteID==	3514110010
+replace SiteName ="Eva Clinic"	if SiteID==	3514220011
+replace SiteName ="Garin Abba Clinic"	if SiteID==	3514110012
+replace SiteName ="Garin Dala Clinic"	if SiteID==	3514110013
+replace SiteName ="Garin Kachalla Health Clinic"	if SiteID==	3514110014
+replace SiteName ="Garin Makwai Maternal and Child Health Clinic"	if SiteID==	3514110015
+replace SiteName ="Garin Mele Clinic"	if SiteID==	3514110016
+replace SiteName ="Potiskum General Hospital"	if SiteID==	3514110017
+replace SiteName ="Jama'a 2 Clinic"	if SiteID==	3514220018
+replace SiteName ="Jamma'a Clinic"	if SiteID==	3514220019
+replace SiteName ="Juma'a Clinic"	if SiteID==	3514110020
+replace SiteName ="Leprosy Clinic"	if SiteID==	3514110021
+replace SiteName ="Maje Clinic"	if SiteID==	3514110022
+replace SiteName ="Mamudo Maternity and Child Health Clinic"	if SiteID==	3514110023
+replace SiteName ="Mazaganai Maternity and Child Health Clinic"	if SiteID==	3514110024
+replace SiteName ="Nahuta Clinic"	if SiteID==	3514110025
+replace SiteName ="Potiskum Maternity and Child Health Clinic"	if SiteID==	3514110026
+replace SiteName ="Potiskum Medical Clinic"	if SiteID==	3514220027
+replace SiteName ="Potiskum Town Central Clinic"	if SiteID==	3514220028
+replace SiteName ="Royal Clinic"	if SiteID==	3514220029
+replace SiteName ="Taif Maternity Clinic"	if SiteID==	3514220030
+replace SiteName ="Tudun Wada Maternity and Child Health Clinic"	if SiteID==	3514110031
+replace SiteName ="Yerimaram Maternal and Child Health Clinic"	if SiteID==	3514110032
+replace SiteName ="Yindiski Maternity and Child Health Clinic"	if SiteID==	3514110033
+replace SiteName ="Zanwa Clinic"	if SiteID==	3514110034
+replace SiteName ="Farafara MCH"	if SiteID==	3514110035
+replace SiteName ="Babbangida Comprehensive Health Centre"	if SiteID==	3515110001
+replace SiteName ="Babbangida Health Clinic"	if SiteID==	3515110002
+replace SiteName ="Barkami Dispensary"	if SiteID==	3515110003
+replace SiteName ="Biriri Dispensary (Tarmuwa)"	if SiteID==	3515110004
+replace SiteName ="Chirokusko Dispensary"	if SiteID==	3515110005
+replace SiteName ="Garga Dispensary"	if SiteID==	3515110006
+replace SiteName ="Goduram Dispensary"	if SiteID==	3515110007
+replace SiteName ="Jumbam Maternity and Child Health Clinic"	if SiteID==	3515110008
+replace SiteName ="Kaliyari Dispensary (Tarmuwa)"	if SiteID==	3515110009
+replace SiteName ="Koka MDG Clinic"	if SiteID==	3515110010
+replace SiteName ="Koriyel Health Centre"	if SiteID==	3515110011
+replace SiteName ="Lantaiwa Dispensary"	if SiteID==	3515110012
+replace SiteName ="Mafa Maternity and Child Health Clinic"	if SiteID==	3515110013
+replace SiteName ="Mandadawa Dispensary"	if SiteID==	3515110014
+replace SiteName ="Matari Dispensary"	if SiteID==	3515110015
+replace SiteName ="Shekau Dispensary"	if SiteID==	3515110016
+replace SiteName ="Sungul Dispensary"	if SiteID==	3515110017
+replace SiteName ="Buhari Dispensary"	if SiteID==	3516110001
+replace SiteName ="Bukarti Dispensary"	if SiteID==	3516110002
+replace SiteName ="Bulabulin Dispensary"	if SiteID==	3516110003
+replace SiteName ="Bultuwa Maternity and Child Health Clinic"	if SiteID==	3516110004
+replace SiteName ="Dalari Dispensary"	if SiteID==	3516110005
+replace SiteName ="Degeltura Primary Health Centre"	if SiteID==	3516110006
+replace SiteName ="Dekwa Dispensary"	if SiteID==	3516110007
+replace SiteName ="Dilala Dispensary"	if SiteID==	3516110008
+replace SiteName ="Dumbal Dispensary"	if SiteID==	3516110009
+replace SiteName ="Garin Gada Dispensary"	if SiteID==	3516110010
+replace SiteName ="Garin Gawo Dispensary (Yanusari)"	if SiteID==	3516110011
+replace SiteName ="Gremari Dispensary"	if SiteID==	3516110012
+replace SiteName ="Gursulu Dispensary"	if SiteID==	3516110013
+replace SiteName ="Jigage Dispensary"	if SiteID==	3516110014
+replace SiteName ="Kafiya Primary Health Centre"	if SiteID==	3516110015
+replace SiteName ="Kakanderi Dispensary (Yanusari)"	if SiteID==	3516110016
+replace SiteName ="Kalgi Dispensary"	if SiteID==	3516110017
+replace SiteName ="Kanamma General Hospital"	if SiteID==	3516210018
+replace SiteName ="Kujari Primary Health Centre"	if SiteID==	3516110019
+replace SiteName ="Mairari Dispensary"	if SiteID==	3516110020
+replace SiteName ="Manawaji Health Post"	if SiteID==	3516110021
+replace SiteName ="Masta Fari Health Post"	if SiteID==	3516110022
+replace SiteName ="Mozogum Dispensary"	if SiteID==	3516110023
+replace SiteName ="Nganzai Dispensary"	if SiteID==	3516110024
+replace SiteName ="Toshia Dispensary"	if SiteID==	3516110025
+replace SiteName ="Wa'anga Health Post"	if SiteID==	3516110026
+replace SiteName ="Yunusari Comprehensive Health Centre"	if SiteID==	3516110027
+replace SiteName ="Yunusari Health Clinic"	if SiteID==	3516110028
+replace SiteName ="Zai Dispensary"	if SiteID==	3516110029
+replace SiteName ="Zajibiriri Dispensary"	if SiteID==	3516110030
+replace SiteName ="Zigindimi Health Post"	if SiteID==	3516110031
+replace SiteName ="Abbatura Dispensary"	if SiteID==	3517110001
+replace SiteName ="Bula Jaji Dispensary"	if SiteID==	3517110002
+replace SiteName ="Bula Madu Dispensary"	if SiteID==	3517110003
+replace SiteName ="Bulatura Dispensary"	if SiteID==	3517110004
+replace SiteName ="Gumshi Dispensary"	if SiteID==	3517110005
+replace SiteName ="Guya Dispensary"	if SiteID==	3517110006
+replace SiteName ="Guyamari Dispensary"	if SiteID==	3517110007
+replace SiteName ="Jebuwa Dispensary"	if SiteID==	3517110008
+replace SiteName ="Kachallari Dispensary (Yusufari)"	if SiteID==	3517110009
+replace SiteName ="Kaluwa Dispensary"	if SiteID==	3517110010
+replace SiteName ="Kaska Dispensary"	if SiteID==	3517110011
+replace SiteName ="Kerewa Dispensary"	if SiteID==	3517110012
+replace SiteName ="Kuka Tatawa Dispensary"	if SiteID==	3517110013
+replace SiteName ="Kumagannam Dispensary"	if SiteID==	3517110014
+replace SiteName ="Kumagannam General Hospital"	if SiteID==	3517210015
+replace SiteName ="Maimalari Dispensary"	if SiteID==	3517110016
+replace SiteName ="Masassara Dispensary"	if SiteID==	3517110017
+replace SiteName ="Mayori Dispensary"	if SiteID==	3517110018
+replace SiteName ="Sumbar Dispensary"	if SiteID==	3517110019
+replace SiteName ="Tulo-Tulo Dispensary"	if SiteID==	3517110020
+replace SiteName ="Yusufari Comprehensive Health Centre"	if SiteID==	3517110021
+replace SiteName ="Yusufari Maternity and Child Health Clinic"	if SiteID==	3517110022
+replace SiteName ="Yusufari Model Primary Health Centre"	if SiteID==	3517110023
+replace SiteName ="Zumugu Dispensary"	if SiteID==	3517110024
 
 replace SiteName = lga + " LGA" if Level=="Second"
 replace SiteName = state + " State" if Level=="First"
