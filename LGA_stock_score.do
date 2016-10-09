@@ -578,24 +578,52 @@ destring state_code, replace
 * Yobe 	 35
 
 local choosestate = 33
-di `choosestate'
 
-local currentweeknum = CurrWeekNum
+
 * Reminders for LGA and State (only Stock)
-local report_name = "CMAM_Report_Week" + "`currentweeknum'" 
+* Create save file name Sokoto CMAM Report - Week 32
+*local report_name = "CMAM_Report_Week " + CurrWeekNum
+*di `report_name'
 
 
+local SITE ="calc_flag==1 & Level!="Site" & current*==1 & state_code==`choosestate'"
+ 
 ***************
 * STOCKS REPORT
 ***************
 
 
 
-* log using "C:\Analysis\CMAMRep.log", replace
+log using "C:\Analysis/CMAMRep`choosestate'", replace
 
 *******************************************************
 * MANAGEMENT OF SEVERE ACUTE MALNUTRITION STOCKS REPORT
 *******************************************************
+
+list SiteID SiteName CurrWeekNum if SiteID == `choosestate' & one_case==1
+
+
+* STATE WAREHOUSE STOCK LEVELS
+graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
+	saving(rutf_bal,replace)										///
+	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
+	yline(`fourweek', lcolor(orange)) 								///
+	ytitle("RUTF balance")  										///
+	title("State Level RUTF Balance") 								///
+	note("NOTE: orange line = 4 week stock margin - red line = 2 week stock margin") 
+
+graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
+	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
+	yline(`fourweek', lcolor(orange)) 								///
+	ytitle("RUTF balance")  										///
+	title("State Level RUTF Balance") 								///
+	note("NOTE: orange line = 4 week stock margin - red line = 2 week stock margin") ///
+	saving(state_rutf_bal,replace)
+
+* LGA WAREHOUSE STOCK LEVELS
+* change to weekly consumption
+list WeekNum SiteName Name URN RUTF_bal med_con_lga stocknote if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
+
 
 
 * STATE AND LGA LEVEL STOCK OUTS (past 8 weeks)
@@ -609,18 +637,6 @@ list WeekNum SiteName Name URN RUTF_bal stocknote if stockout==1 & Type=="OTP" &
 
 list WeekNum SiteName Name URN F75_bal F100_bal stocknote if stockout==1 & Type=="SC" & state_code==`choosestate', noobs
 
-* STATE WAREHOUSE STOCK LEVELS
-cap graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
-	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
-	yline(`fourweek', lcolor(orange)) 								///
-	ytitle("RUTF balance")  										///
-	title("State Level RUTF Balance") 								///
-	note("NOTE: orange line = 4 week stock margin - red line = 2 week stock margin") ///
-	saving(state_rutf_bal,replace)
-
-* LGA WAREHOUSE STOCK LEVELS
-* change to weekly consumption
-list WeekNum SiteName Name URN RUTF_bal med_con_lga stocknote if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
 
 
 * STATE LEVEL STOCK REPORT SCORE
@@ -628,14 +644,17 @@ graph hbar (mean) stock_report_score? if Level=="First" , over(state, sort(stock
 	bar(1, color(red))bar(2, color(orange*.85)) ///
 	bar(3,color(green*.75)) legend(off) ///
 	title("Stock Reporting Scores by STATE", size(medium)) ///
-	ytitle("Score")
+	ytitle("Score") ///
+	saving(state_score, replace)
 	
 * LGA LEVEL STOCK REPORT SCORE
 graph hbar (mean) stock_report_score? if Level=="Second" , over(lga_state, sort(stock_report_score)) /// 
 	bar(1, color(red))bar(2, color(orange*.85)) ///
 	bar(3,color(green*.75)) legend(off) ///
 	title("Stock Reporting Scores by LGA", size(medium)) ///
-	ytitle("Score")
+	ytitle("Score") ///
+	saving(lga_score, replace)
+	
 	
 
 * MISSING STOCK REPORTS FROM STATE AND LGA
@@ -654,10 +673,10 @@ sort SiteID Type WeekNum
 * The errors are either calculation mistakes of greater than 1 carton of RUTF or calculation mistakes leading negative balances. 
 gsort - RUTF_diff
 
-list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level!="Site" & state_code==`choosestate',abb(20) noobs 
+list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & current8==1 & state_code==`choosestate',abb(20) noobs 
 
 * SITE LEVEL ERRORS
-list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & state_code==`choosestate',abb(20) noobs 
+list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & current8==1 & state_code==`choosestate',abb(20) noobs 
 
 sort SiteID Type WeekNum
 
@@ -683,10 +702,11 @@ list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_dif
 *lga_diff 		= Difference between reports from State and LGA
 list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in lga_diff if Level=="Second" & state_code==`choosestate' ,abb(20) noobs 
 
-	
 log close
 
-graphlog using "C:\Analysis\CMAMRep.log", gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
+graphlog using C:\Analysis\CMAMRep`choosestate'.log, gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
+
+* graphlog using "C:\Analysis\CMAMRep.log", gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
 
 * Graphlog does not work when all graphs are in the same for loop
 
