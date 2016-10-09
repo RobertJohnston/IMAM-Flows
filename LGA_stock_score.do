@@ -80,13 +80,11 @@ save temp.dta, replace
 * Sum of all LGA level RUTF receipts by week - collapse and merge data back into database
 * For comparison to state_RUTF_out - which is just RUTF_out at state level 
 gen lga_RUTF_in = RUTF_in if Level=="Second"
-collapse (sum) lga_RUTF_in, by(WeekNum)
+collapse (sum) lga_RUTF_in, by(WeekNum state)
 save collapse.dta, replace
 
-* SOMETHING WIERD
-
 use temp.dta, clear
-merge m:m WeekNum using "C:\TEMP\Working\collapse.dta"
+merge m:m  WeekNum state using "C:\TEMP\Working\collapse.dta"
 drop _merge
 save temp.dta, replace
 
@@ -104,7 +102,9 @@ drop _merge
 * table WeekNum lga, c(m site_RUTF_in) 
 * include only 1 case per lga & weeknum to make totals
 
-*Penalty for Future Reporting
+**************************
+* Future Reporting Penalty  
+**************************
 * value = 2 of rep_date_error is a record sent for the future
 egen future_error = anycount(rep_date_error), values(2)
 * Only include the data from last 8 weeks. 
@@ -125,8 +125,11 @@ drop future_error future_error_tot future_error_max
 tab future_rept_score, m 
 * must subtract this % from the total score. 
 * now we can delete the reports from the future
-drop if WeekNum > CurrWeekNum
+drop if WeekNum > CurrWeekNum & WeekNum !=.
  
+*************
+* STOCK OUTS
+*************
 * List sites with STOCK OUTS of RUTF F75 F100
 * Stock is < 15 sachets RUTF or 1 sachet of F75 or F100
 gen stockout = 1 if RUTF_bal<0.10 | F75_bal< 0.01 | F100_bal<0.011
@@ -134,19 +137,14 @@ gen stockout = 1 if RUTF_bal<0.10 | F75_bal< 0.01 | F100_bal<0.011
 replace stockout = 1 if RUTF_bal==. & Type!="SC"
 replace stockout = 1 if F75_bal==. & Type=="SC"
 replace stockout = 1 if F100_bal==. & Type=="SC"
-gen stockoutnote = "No Data" if RUTF_bal==. & Type!="SC"
-replace stockoutnote = "No Data" if F75_bal==. & Type=="SC"
-replace stockoutnote = "No Data" if F100_bal==. & Type=="SC"
-tab stockoutnote, m 
+gen stocknote = "No Data" if RUTF_bal==. & Type!="SC"
+replace stocknote = "No Data" if F75_bal==. & Type=="SC"
+replace stocknote = "No Data" if F100_bal==. & Type=="SC"
+tab stocknote, m 
+*list SiteID SiteName stockout stocknote if SiteID>500 & SiteID<520
 * RUTF - Sachets per carton - 150 (0.1 = less than 15 sachets)
 * F75 - Sachets per carton - 120 (0.0083 = less than 1 sachet)
 * F100 - Sachets per carton - 90 (0.011 = less than 1 sachet)
-
-list SiteID SiteName stockout stockoutnote if SiteID==504/507
-
-
-lost Bauchi? 
-
 
 bysort SiteID: egen most_recent_report = max(WeekNum)
 tab most_recent_report, m 
@@ -160,7 +158,9 @@ la var WeekNum "Week Number"
 sort SiteID Type WeekNum
 save temp, replace
 
+********************************
 * INCLUDE MISSING REPORTS DATA
+********************************
 * enter the number of missing reports for the past 8 weeks
 * the database missingrepttot.sav - contains one line for each person - there are more than one reports per site. 
 * the data are only for the current week. 
@@ -216,7 +216,7 @@ replace Level = "First" if SiteID < 99
 list state SiteID complete_stock_reporting StoMiss if Level=="First" ,abb(20) noobs 
 
 * Presentation of Stock-Outs
-list WeekNum state lga SiteName Type Name URN RUTF_in RUTF_out RUTF_bal if stockout==1 & Level!="Site"
+*list WeekNum state lga SiteName Type Name URN RUTF_in RUTF_out RUTF_bal if stockout==1 & Level!="Site"
 *list WeekNum state lga SiteName Type Name URN RUTF_in RUTF_out RUTF_bal if stockout==1 & Type=="OTP"
 *list WeekNum state lga SiteName Type Name URN F75_bal F100_bal if stockout==1 & Type=="SC"
 
@@ -234,10 +234,12 @@ replace RUTF_beg = RUTF_bal[_n-1] if SiteID==SiteID[_n-1] & Type==Type[_n-1] & W
 replace RUTF_beg = RUTF_bal - RUTF_in + RUTF_out if RUTF_beg ==.
 
 gen calc_bal = RUTF_beg + RUTF_in - RUTF_out 
-gen rutf_diff = RUTF_bal - calc_bal
-replace rutf_diff = 0 if rutf_diff < 0.01
+gen RUTF_diff = RUTF_bal - calc_bal
+replace RUTF_diff = 0 if RUTF_diff < 0.01
 
-* Types of Stock Reporting Errors
+*************************
+* Stock Reporting Errors
+*************************
 * neg_error = RUTF_beg < 0  or  Calc_bal < 0
 * calc_error = rutf_bal !=0
 * decimal point reporting
@@ -246,7 +248,7 @@ replace rutf_diff = 0 if rutf_diff < 0.01
 gen calc_error=0
 gen neg_error=0
 gen dec_error=0
-replace calc_error =1 if rutf_diff>1 & rutf_diff !=.
+replace calc_error =1 if RUTF_diff>1 & RUTF_diff !=.
 replace neg_error =1 if RUTF_beg<-0.1 | calc_bal<-0.1 
 * to include all sites in decimal point error, need to move this to IMAM Weekly Analysis 2
 replace dec_error =1 if floor(RUTF_in)!=RUTF_in | floor(RUTF_out)!=RUTF_out | floor(RUTF_bal)!=RUTF_bal
@@ -259,9 +261,15 @@ gen temp = (calc_error + neg_error)/2
 replace temp =. if current8!=1
 bysort SiteID Type: egen overall_calc_error = mean(temp) 
 tab overall_calc_error, m 
+gen calc_flag = 1 if calc_error==1 | neg_error==1 | dec_error==1
+replace calc_flag =. if current8!=1
+replace calc_flag =. if RUTF_diff <=1
 
-format RUTF_beg RUTF_in RUTF_out RUTF_bal calc_bal rutf_diff %12.2g
-*order SiteID WeekNum RUTF_beg RUTF_in RUTF_out RUTF_bal calc_bal rutf_diff Type
+order SiteID SiteName WeekNum calc_error neg_error dec_error temp overall_calc_error
+sort SiteID WeekNum Type
+
+format RUTF_beg RUTF_in RUTF_out RUTF_bal calc_bal RUTF_diff %12.2g
+*order SiteID WeekNum RUTF_beg RUTF_in RUTF_out RUTF_bal calc_bal RUTF_diff Type
 * Should identify all errors first, then do analysis. 
 *list WeekNum state lga SiteName Type Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal if error==1 & Level!="Site"
 *list WeekNum state lga SiteName Type Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal if error==1 & Type=="OTP"
@@ -382,7 +390,7 @@ by SiteID : gen cum_lga_in=sum(lga_RUTF_in)
 gen state_diff = cum_state_out - cum_lga_in
 replace state_diff=. if state_diff==0
 
-order SiteID Type WeekNum state lga state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff SiteID Level 
+* order SiteID Type WeekNum state lga state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff SiteID Level 
 
 * Calculate State Level error of differences between dispatch and receipts
 egen overall_state_diff = max(abs(state_diff))
@@ -551,7 +559,12 @@ gen lga_state = lga + " - " + state
 recode stock_report_score (0/49=1)(50/79=2)(80/100=3), gen(tercile_score)
 separate stock_report_score, by(tercile_score) veryshortlabel
 
-
+format lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in site_RUTF_rec lga_diff state_RUTF_out lga_RUTF_in /// 
+	cum_state_out cum_lga_in state_diff RUTF_beg RUTF_in RUTF_out RUTF_bal %8.1f
+format twoweeklga fourweeklga med_con_lga %8.0f
+* At some point - change site_RUTF_rec to site_RUTF_in
+sort SiteID Type WeekNum
+destring state_code, replace
 	
 
 ***************
@@ -564,7 +577,7 @@ separate stock_report_score, by(tercile_score) veryshortlabel
 * Sokoto 33
 * Yobe 	 35
 
-local choosestate = 5
+local choosestate = 33
 di `choosestate'
 
 local currentweeknum = CurrWeekNum
@@ -572,25 +585,43 @@ local currentweeknum = CurrWeekNum
 local report_name = "CMAM_Report_Week" + "`currentweeknum'" 
 
 
-
 ***************
 * STOCKS REPORT
 ***************
 
-sort SiteID Type WeekNum
 
-format lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in site_RUTF_rec lga_diff state_RUTF_out lga_RUTF_in /// 
-	cum_state_out cum_lga_in state_diff RUTF_beg RUTF_in RUTF_out RUTF_bal %8.1f
-* At some point - change site_RUTF_rec to site_RUTF_in
-
-	
-destring state_code, replace
 
 * log using "C:\Analysis\CMAMRep.log", replace
 
 *******************************************************
 * MANAGEMENT OF SEVERE ACUTE MALNUTRITION STOCKS REPORT
 *******************************************************
+
+
+* STATE AND LGA LEVEL STOCK OUTS (past 8 weeks)
+list WeekNum state lga SiteName Name URN RUTF_bal stocknote if stockout==1 & Level!="Site" & state_code==`choosestate', noobs
+
+* OUTPATIENT THERAPEUTIC PROGRAMME LEVEL STOCK OUTS (past 8 weeks)
+
+list WeekNum SiteName Name URN RUTF_bal stocknote if stockout==1 & Type=="OTP" & state_code==`choosestate', noobs
+
+* STABILISATION CENTRE LEVEL STOCK OUTS (F75 and F100 reported in cartons) during past 8 weeks
+
+list WeekNum SiteName Name URN F75_bal F100_bal stocknote if stockout==1 & Type=="SC" & state_code==`choosestate', noobs
+
+* STATE WAREHOUSE STOCK LEVELS
+cap graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
+	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
+	yline(`fourweek', lcolor(orange)) 								///
+	ytitle("RUTF balance")  										///
+	title("State Level RUTF Balance") 								///
+	note("NOTE: orange line = 4 week stock margin - red line = 2 week stock margin") ///
+	saving(state_rutf_bal,replace)
+
+* LGA WAREHOUSE STOCK LEVELS
+* change to weekly consumption
+list WeekNum SiteName Name URN RUTF_bal med_con_lga stocknote if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
+
 
 * STATE LEVEL STOCK REPORT SCORE
 graph hbar (mean) stock_report_score? if Level=="First" , over(state, sort(stock_report_score)) /// 
@@ -607,63 +638,29 @@ graph hbar (mean) stock_report_score? if Level=="Second" , over(lga_state, sort(
 	ytitle("Score")
 	
 
-
-
 * MISSING STOCK REPORTS FROM STATE AND LGA
 * Table complete reporting
-list state SiteID complete_stock_reporting StoMiss if Level=="First" & state_code==`choosestate' ,abb(20) noobs 
+sort complete_stock_reporting
 
-list lga SiteID complete_stock_reporting StoMiss if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
+list state SiteID complete_stock_reporting StoMiss if Level=="First" & state_code==`choosestate' & one_case==1,abb(20) noobs 
 
-
-* STATE AND LGA LEVEL STOCK OUTS (past 8 weeks)
-list WeekNum state lga SiteName Name URN RUTF_bal stockoutnote if stockout==1 & Level!="Site" & state_code==`choosestate'
-
-
-* OUTPATIENT THERAPEUTIC PROGRAMME LEVEL STOCK OUTS
-
-list WeekNum SiteName Name URN RUTF_bal stockoutnote if stockout==1 & Type=="OTP"
-
-* STABILISATION CENTRE LEVEL STOCK OUTS (F75 and F100 reported in cartons)
-
-list WeekNum SiteName Name URN F75_bal F100_bal stockoutnote if stockout==1 & Type=="SC"
-
-cap graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
-	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
-	yline(`fourweek', lcolor(orange)) 								///
-	ytitle("RUTF balance")  										///
-	title("State Level RUTF Balance") 								///
-	note("NOTE: orange line = 4 week stock margin - red line = 2 week stock margin") ///
-	saving(state_rutf_bal,replace)
-
+list lga SiteID complete_stock_reporting StoMiss if Level=="Second" & state_code==`choosestate' & one_case==1,abb(20) noobs 
 
 
 * ERRORS IN STOCK REPORTS
 * STATE AND LGA LEVEL ERRORS
+sort SiteID Type WeekNum
 
-* The errors are either calculation mistakes of greater than 1 carton of RUTF 
-* or calculation mistakes leading negative balances. 
+* The errors are either calculation mistakes of greater than 1 carton of RUTF or calculation mistakes leading negative balances. 
+gsort - RUTF_diff
 
-list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal if error==1 & Level!="Site"
+list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level!="Site" & state_code==`choosestate',abb(20) noobs 
 
+* SITE LEVEL ERRORS
+list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & state_code==`choosestate',abb(20) noobs 
 
-* OUTPATIENT THERAPEUTIC PROGRAMME ERRORS
+sort SiteID Type WeekNum
 
-* The errors are either calculation mistakes of greater than 1 carton of RUTF 
-* or calculation mistakes leading negative balances. 
-
-list WeekNum lga SiteName Type URN RUTF_beg RUTF_in RUTF_out RUTF_bal if error==1 & Type=="OTP"
-
-
-* STABILISATION CENTRE LEVEL ERRORS
-
-* The errors are either calculation mistakes of greater than 1 carton of RUTF 
-* or calculation mistakes leading negative balances. 
-
-list WeekNum lga SiteName Type Name URN F75_bal F100_bal if error==1 & Type=="SC"
-
-
-	
 * RUTF DISTRIBUTION and RECEIPTS
 
 * STATE LEVEL DISPATCHES vs LGA LEVEL RECEIPTS
@@ -674,68 +671,19 @@ list WeekNum lga SiteName Type Name URN F75_bal F100_bal if error==1 & Type=="SC
 *cum_state_out 		= Cumulative total of RUTF distributed from STATE Warehouse to LGA stores
 *cum_lga_in 		= Cumulative total of RUTF received at LGA stores from STATE Warehouse
 *state_diff 		= Difference between reports from State and LGA
+list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff if Level=="First" & state_code==`choosestate' ,abb(20) noobs 
 
-list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff if Level=="First" 
-
-graph bar (sum) cum_state_out cum_lga_in state_diff , over(WeekNum) ///
-	bar(1,color(eltblue)) bar(2,color(edkblue)) bar(3,color(red))	///
-	title(State RUTF Dispatches and LGA Receipts) 					///
-	legend( label(1 "Cumulative State RUTF Distribution") label(2 "Cumulative LGA RUTF Receipts") label(3 "Difference") pos(6) cols(1)) ///
-	saving(STATEdistLGArec, replace)
- 
- 
-* LGA Level - Weekly consumption of RUTF 
-
-* Weekly Consumption of RUTF in cartons from all implementation sites by LGA 
-
-table WeekNum lga, c(sum RUTF_out) f(%8.1f) col,  if Type=="OTP" 
-
-* Weekly balance of RUTF at LGA level
-
-
-levelsof lga_code, local(levels)
-foreach l of local levels {
-	su med_con_lga if lga_code==`l', meanonly 
-	local twoweek = cond(r(mean),r(mean)*2,0,0) 
-	local fourweek = cond(r(mean),r(mean)*4,0,0) 
-	local lganame: label (lga_code) `l'
-	local graph_name1 = "lga_rutf_bal" + "`l'" 
-	graph bar (sum) lga_rutf_bal if lga_code==`l', over(WeekNum) 	///
-		yline(`twoweek', lcolor(red) lwidth(medthick)) 							///
-		yline(`fourweek', lcolor(orange)) 						///
-		ytitle("RUTF balance")  								///
-		title(`lganame' LGA Level RUTF Balance) 				///
-		note("NOTE: red line = 2 week stock margin - orange line = 4 week stock margin") ///
-		saving(`graph_name1',replace)
-}
-* 
-* LGA LEVEL DISPATCHES vs IMPLEMENTATION SITE RECEIPTS
+* LGA LEVEL DISPATCHES vs OTP LEVEL RECEIPTS
 * Please see the following explanations of variable names for table below
 
-*lga_RUTF_out 	= RUTF distributed from LGA Stores to OTPs
-*site_RUTF_in 	= RUTF received at OTPs from LGA Stores
-*cum_lga_des 	= Cumulative total of RUTF distributed from LGA Stores to OTPs
-*cum_site_rec 	= Cumulative total of RUTF received at OTPs from LGA Stores
-*lga_diff 		= Difference between reports from LGA and OTPs
+*lga_RUTF_out 	= RUTF distributed from STATE Warehouse to LGA stores
+*site_RUTF_in 		= RUTF received at LGA stores from STATE Warehouse
+*cum_lga_out 		= Cumulative total of RUTF distributed from STATE Warehouse to LGA stores
+*cum_site_in 		= Cumulative total of RUTF received at LGA stores from STATE Warehouse
+*lga_diff 		= Difference between reports from State and LGA
+list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in lga_diff if Level=="Second" & state_code==`choosestate' ,abb(20) noobs 
 
-list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_des cum_site_rec lga_diff if Level=="Second" 
-
-
-* LGA LEVEL DISPATCHES vs OTP SITE LEVEL RECEIPTS
-
-levelsof lga_code, local(levels)
-foreach l of local levels {
-	local graph_name2 = "LGAdistSiteRec" + "`l'"
-	local lganame: label (lga_code) `l'
-	graph bar (mean) cum_lga_des cum_site_rec lga_diff if lga_code==`l', over(WeekNum) 	///
-		bar(1,color(eltblue)) bar(2,color(edkblue)) bar(3,color(red))					///
-		ytitle("RUTF Cartons")  														///
-		title(`lganame' RUTF Dispatches and OTP Receipts) 								///
-		legend( label(1 "Cumulative LGA RUTF Distribution") label(2 "Cumulative OTP RUTF Receipts") label(3 "Difference") pos(6) cols(1)) ///
-		note("NOTE: We can reset the cumulative sum by month if necessary") ///
-		saving(`graph_name2',replace)
-}
-		
+	
 log close
 
 graphlog using "C:\Analysis\CMAMRep.log", gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
@@ -778,48 +726,5 @@ graph bar RUTF_in RUTF_out RUTF_bal if SiteID==33, over(WeekNum) stack
 graph bar (sum) RUTF_in if Type=="OTP", over(WeekNum) 
 
 
-*graph bar (sum) RUTF_beg if SiteID==33 , over(WeekNum) name(beg, replace) nodraw
-*graph bar (sum) RUTF_in RUTF_out RUTF_bal if SiteID==33, over(WeekNum) stack legend(pos(12)) name(end, replace) nodraw
-*graph combine beg end, cols(2) title(“Stocks Graphs“)
 
 
-* Compare receipts at LGA versus dispatches at State
-* 2 Graphs side by side
-*graph bar (sum) RUTF_out if Level=="First" , over(WeekNum) name(state_des, replace) nodraw
-*graph bar (sum) RUTF_in if Level=="Second", over(WeekNum) stack legend(pos(12)) name(lga_rec, replace) nodraw
-*graph combine state_des lga_rec, cols(2) title(Dispatches and Receipts)
-* Difficult to interpret
-
-* Does RUTF_in at LGA match RUTF_out from State ? 
-
-
-
-
-
-
-* Insert one case for Gada, Sokoto North and Sokoto South
-local nplus = _N + 1
-set obs `nplus'
-replace SiteID = 3304 in `nplus'
-replace lga="Gada" in `nplus'
-replace WeekNum = 32 in `nplus'
-replace Role="Supervision" in `nplus'
-replace Level="Second" in `nplus'
-replace lga_code = SiteID - 3300 in `nplus'
-local nplus = _N + 2
-set obs `nplus'
-replace SiteID = 3316 in `nplus'
-replace lga="Sokoto North" in `nplus'
-replace WeekNum = 32 in `nplus'
-replace Role="Supervision" in `nplus'
-replace Level="Second" in `nplus'
-replace lga_code = SiteID - 3300 in `nplus'
-local nplus = _N + 3
-set obs `nplus'
-replace SiteID = 3317 in `nplus'
-replace lga="Sokoto South" in `nplus'
-replace WeekNum = 32 in `nplus'
-replace Role="Supervision" in `nplus'
-replace Level="Second" in `nplus'
-replace lga_code = SiteID - 3300 in `nplus'
-* All completely non-functional.
