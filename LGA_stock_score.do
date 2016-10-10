@@ -248,7 +248,7 @@ replace RUTF_diff = 0 if RUTF_diff < 0.01
 gen calc_error=0
 gen neg_error=0
 gen dec_error=0
-replace calc_error =1 if RUTF_diff>1 & RUTF_diff !=.
+replace calc_error =1 if RUTF_diff>=1.1 & RUTF_diff !=.
 replace neg_error =1 if RUTF_beg<-0.1 | calc_bal<-0.1 
 * to include all sites in decimal point error, need to move this to IMAM Weekly Analysis 2
 replace dec_error =1 if floor(RUTF_in)!=RUTF_in | floor(RUTF_out)!=RUTF_out | floor(RUTF_bal)!=RUTF_bal
@@ -553,7 +553,9 @@ gen stock_report_score = round(100 - (comp_sto_score *40) - (future_rept_score *
 table SiteID state if Level!="Site", c (m stock_report_score) 
 
 gen lga_state = lga + " - " + state
-	
+* TEMPORARILY
+drop if lga_state ==" - "
+
 
 * create color group for assignment of colors
 recode stock_report_score (0/49=1)(50/79=2)(80/100=3), gen(tercile_score)
@@ -565,6 +567,9 @@ format twoweeklga fourweeklga med_con_lga %8.0f
 * At some point - change site_RUTF_rec to site_RUTF_in
 sort SiteID Type WeekNum
 destring state_code, replace
+gen weekly_use = med_con_lga
+format weekly_use %8.0f
+
 	
 
 ***************
@@ -594,7 +599,7 @@ local SITE ="calc_flag==1 & Level!="Site" & current*==1 & state_code==`choosesta
 
 
 
-log using "C:\Analysis/CMAMRep`choosestate'", replace
+log using "C:\Analysis/CMAM_Stock_Rep_`choosestate'.log", replace
 
 *******************************************************
 * MANAGEMENT OF SEVERE ACUTE MALNUTRITION STOCKS REPORT
@@ -605,14 +610,6 @@ list SiteID SiteName CurrWeekNum if SiteID == `choosestate' & one_case==1
 
 * STATE WAREHOUSE STOCK LEVELS
 graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
-	saving(rutf_bal,replace)										///
-	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
-	yline(`fourweek', lcolor(orange)) 								///
-	ytitle("RUTF balance")  										///
-	title("State Level RUTF Balance") 								///
-	note("NOTE: orange line = 4 week stock margin - red line = 2 week stock margin") 
-
-graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
 	yline(`twoweek', lcolor(red) lwidth(medthick)) 					///
 	yline(`fourweek', lcolor(orange)) 								///
 	ytitle("RUTF balance")  										///
@@ -622,7 +619,7 @@ graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
 
 * LGA WAREHOUSE STOCK LEVELS
 * change to weekly consumption
-list WeekNum SiteName Name URN RUTF_bal med_con_lga stocknote if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
+list WeekNum SiteName Name URN RUTF_bal weekly_use stocknote if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
 
 
 
@@ -690,7 +687,7 @@ sort SiteID Type WeekNum
 *cum_state_out 		= Cumulative total of RUTF distributed from STATE Warehouse to LGA stores
 *cum_lga_in 		= Cumulative total of RUTF received at LGA stores from STATE Warehouse
 *state_diff 		= Difference between reports from State and LGA
-list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff if Level=="First" & state_code==`choosestate' ,abb(20) noobs 
+list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff if Level=="First" & current8==1 & state_code==`choosestate' ,abb(20) noobs 
 
 * LGA LEVEL DISPATCHES vs OTP LEVEL RECEIPTS
 * Please see the following explanations of variable names for table below
@@ -700,11 +697,11 @@ list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_dif
 *cum_lga_out 		= Cumulative total of RUTF distributed from STATE Warehouse to LGA stores
 *cum_site_in 		= Cumulative total of RUTF received at LGA stores from STATE Warehouse
 *lga_diff 		= Difference between reports from State and LGA
-list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in lga_diff if Level=="Second" & state_code==`choosestate' ,abb(20) noobs 
+list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in lga_diff if Level=="Second" & current8==1 & state_code==`choosestate' ,abb(20) noobs 
 
 log close
 
-graphlog using C:\Analysis\CMAMRep`choosestate'.log, gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
+graphlog using C:\Analysis\CMAM_Stock_Rep_`choosestate'.log, gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
 
 * graphlog using "C:\Analysis\CMAMRep.log", gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
 

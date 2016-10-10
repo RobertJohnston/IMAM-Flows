@@ -134,6 +134,7 @@ replace state="Bauchi" if state=="5"
 replace state="Gombe" if state=="16"
 replace state="Jigawa" if state=="17"
 replace state="Sokoto" if state=="33"
+replace state="Yobe" if state=="35"
 tab state, m 
 tab state Level, m 
 
@@ -240,8 +241,29 @@ replace lga="RONI" if lga =="1724"
 replace lga="SULE TANKARKAR" if lga =="1725"
 replace lga="TAURA" if lga =="1726"
 replace lga="YANKWASHI" if lga =="1727"
+* Yobe State
+replace lga ="BADE" if lga=="3501"
+replace lga ="BUSARI" if lga=="3502"
+replace lga ="DAMATURU" if lga=="3503"
+replace lga ="FIKA" if lga=="3504"
+replace lga ="FUNE" if lga=="3505"
+replace lga ="GEIDAM" if lga=="3506"
+replace lga ="GUJBA" if lga=="3507"
+replace lga ="GULANI" if lga=="3508"
+replace lga ="JAKUSKO" if lga=="3509"
+replace lga ="KARASUWA" if lga=="3510"
+replace lga ="MACHINA" if lga=="3511"
+replace lga ="NANGERE" if lga=="3512"
+replace lga ="NGURU" if lga=="3513"
+replace lga ="POTISKUM" if lga=="3514"
+replace lga ="TARMUWA" if lga=="3515"
+replace lga ="YUNUSARI " if lga=="3516"
+replace lga ="YUSUFARI " if lga=="3517"
+
 replace lga = proper(lga)
 tab lga, m 
+
+
 
 
 * SiteName
@@ -3005,28 +3027,29 @@ replace SiteName ="Ma'anna Dispensary"	if SiteID==	3506110021
 replace SiteName ="Malari Dispensary"	if SiteID==	3506110022
 replace SiteName ="Matakuskum Health Clinic"	if SiteID==	3506110023
 replace SiteName ="Adetona Medical Centre"	if SiteID==	3507220001
-replace SiteName ="Ambiya Dispensary"	if SiteID==	3607110002
-replace SiteName ="Azare Dispensary"	if SiteID==	3607110003
-replace SiteName ="Bukkil Dispensary"	if SiteID==	3607110004
-replace SiteName ="Bulturam Dispensary"	if SiteID==	3607110005
-replace SiteName ="Buni Gari Dispesanry"	if SiteID==	3607110006
-replace SiteName ="Buni Yadi General Hospital"	if SiteID==	3607210007
-replace SiteName ="Buniyadi Maternity and Child Health Clinic"	if SiteID==	3607110008
-replace SiteName ="Dadewel Dispensary"	if SiteID==	3607110009
-replace SiteName ="Dadingel Dispensary"	if SiteID==	3607110010
-replace SiteName ="Goniri Comprehensive Health Centre"	if SiteID==	3607110011
-replace SiteName ="Goniri Dispensary"	if SiteID==	3607110012
-replace SiteName ="Gotumba Dispensary"	if SiteID==	3607110013
-replace SiteName ="Gujba Dispensary"	if SiteID==	3607110014
-replace SiteName ="Kasachiya Dispensary"	if SiteID==	3607110015
-replace SiteName ="Katarko Dispensary"	if SiteID==	3607110016
-replace SiteName ="Kukuwa Dispensary"	if SiteID==	3607110017
-replace SiteName ="Malum-Dunari Dispensary"	if SiteID==	3607110018
-replace SiteName ="Mutai Dispensary"	if SiteID==	3607110019
-replace SiteName ="Ngurbuwa Maternity and Child Health Clinic"	if SiteID==	3607110020
-replace SiteName ="Nyakire Dispensary"	if SiteID==	3607110021
-replace SiteName ="Wagir Model Primary Health Centre"	if SiteID==	3607110022
-replace SiteName ="Wulle Dispensary"	if SiteID==	3607110023
+* Errors in official docs for Guijba LGA Yobe
+replace SiteName ="Ambiya Dispensary"			if SiteID==	3507110002
+replace SiteName ="Azare Dispensary"			if SiteID==	3507110003
+replace SiteName ="Bukkil Dispensary"			if SiteID==	3507110004
+replace SiteName ="Bulturam Dispensary"			if SiteID==	3507110005
+replace SiteName ="Buni Gari Dispesanry"		if SiteID==	3507110006
+replace SiteName ="Buni Yadi General Hospital"	if SiteID==	3507210007
+replace SiteName ="Buniyadi Maternity and Child Health Clinic"	if SiteID==	3507110008
+replace SiteName ="Dadewel Dispensary"			if SiteID==	3507110009
+replace SiteName ="Dadingel Dispensary"			if SiteID==	3507110010
+replace SiteName ="Goniri Comprehensive Health Centre"	if SiteID==	3507110011
+replace SiteName ="Goniri Dispensary"			if SiteID==	3507110012
+replace SiteName ="Gotumba Dispensary"			if SiteID==	3507110013
+replace SiteName ="Gujba Dispensary"			if SiteID==	3507110014
+replace SiteName ="Kasachiya Dispensary"		if SiteID==	3507110015
+replace SiteName ="Katarko Dispensary"			if SiteID==	3507110016
+replace SiteName ="Kukuwa Dispensary"			if SiteID==	3507110017
+replace SiteName ="Malum-Dunari Dispensary"		if SiteID==	3507110018
+replace SiteName ="Mutai Dispensary"			if SiteID==	3507110019
+replace SiteName ="Ngurbuwa Maternity and Child Health Clinic"	if SiteID==	3507110020
+replace SiteName ="Nyakire Dispensary"			if SiteID==	3507110021
+replace SiteName ="Wagir Model Primary Health Centre"	if SiteID==	3507110022
+replace SiteName ="Wulle Dispensary"			if SiteID==	3507110023
 replace SiteName ="Alagarno Health Post"	if SiteID==	3508110001
 replace SiteName ="Ayada Health Post"	if SiteID==	3508110002
 replace SiteName ="Badugo-Badugoro Health Post"	if SiteID==	3508110003
