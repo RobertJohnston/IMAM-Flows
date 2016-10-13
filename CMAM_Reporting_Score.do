@@ -122,12 +122,17 @@ merge m:m SiteID Type using "C:\TEMP\Working\missrepttemp.dta"
 drop _merge
 * save temp.dta, replace
 
+
 * Program Reporting Errors  		25%
 
 * 	 Excess number of TOTAL AT START OF THE WEEK (> 300 children)
 * only one error reported per 8 weeks
-recode Beg (min/299=0) (300/max=1), gen(excess_beg)
-replace excess_beg=. if current8!=1 & WeekNum != most_recent_report
+sum Beg if WeekNum == most_recent_report & current8==1, d
+local seventyfive = r(p75)
+recode Beg (`seventyfive'/max=1) (else=0), gen(excess_beg)
+replace excess_beg=. if WeekNum != most_recent_report
+* if current8!=1
+* Should only have one report per site. 
 tab excess_beg
 
 * 	Percent of sites with TOTAL AT START OF THE WEEK > 300 children - Unlikely
@@ -144,34 +149,25 @@ list state lga WeekNum SiteName Amar Beg if equal_amar_beg ==1 ,abb(5) noobs
 * all errors over past 8 weeks reported
 * Calculate normal ratio
 gen ratio_amar_beg = Amar / Beg 
-gen ratio_amar_beg_temp = ratio_amar_beg
-replace ratio_amar_beg =. if ratio_amar_beg>1 | ratio_amar_beg==0
 * 0 is no admission
 * 1 is equal admissions to under Rx. 
-replace ratio_amar_beg =. if current8!=1 
 * median of ratio_amar_beg
-sum ratio_amar_beg, d
-* include all extreme values with gentle correction (from 0 to 1)
-*replace ratio_amar_beg = ratio_amar_beg_temp if ratio_amar_beg_temp==0
-*replace ratio_amar_beg = 1 if ratio_amar_beg_temp>1
+sum ratio_amar_beg if ratio_amar_beg<1 & ratio_amar_beg!=0 & current8==1 , d
+* include all extreme values with gentle correction (set all from 0 to 1)
+* Max difference from median (from 0 to 1) 
+replace ratio_amar_beg = 1 if ratio_amar_beg>1
 * difference from median
 gen diff_ratio_amar_beg = abs(ratio_amar_beg-r(p50))
-hist diff_ratio_amar_beg
-
-* Max difference from median (from 0 to 1) 
 egen max_diff_ratio_amar_beg = max(diff_ratio_amar_beg)
 * Score for Ratio of new admissions to number of children in charge
 gen amar_beg_score = diff_ratio_amar_beg / max_diff_ratio_amar_beg
-*hist adm_urx_score 
+hist amar_beg_score 
+
+gen CMAM_score = 100 - (comp_score * 40) + (equal_amar_beg * 5) (amar_beg_score * 10)  
 
 replace Amar =. if Amar> 300
 replace Amar =. if  equal_amar_beg ==1
 scatter Amar Beg if excess_beg==0
-
-
-mean ratio_amar_beg, over(lga)
-
-
 
 
 * 	 High Default rates if N > 10
