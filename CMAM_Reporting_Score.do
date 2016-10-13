@@ -17,8 +17,6 @@ use CMAM_delete.dta, clear
 
 * Program Reporting Errors  		25%
 * 	 Ratio of new admissions to number of children in charge - Average Minimum Maximum of Admissions and In-Charge
-* 	 High Default rates if N > 10
-*  	 High Mortality rates if N > 10
 * 	 Missing Exits
 
 * Stock Reporting Errors
@@ -27,7 +25,8 @@ use CMAM_delete.dta, clear
 * 		Reporting in decimal points or thousands of cartons			- Number of errors in past 8 weeks
 * 		Excessive or minimal stocks use per case					- Number of errors in past 8 weeks
 
-* There is no punishment for STOCK-OUTS
+* There is no penalty for High Default rates and High Mortality rates but no punishments
+* There is no penalty for STOCK-OUTS
 
 * First provide reporting on current conditions
 * Second provide data quality score on data from last eight weeks - need to provide older scores to show if improving or not. 
@@ -112,7 +111,7 @@ table state, c(mean complete_reporting)
 * List all sites with complete reporting < 80%
 *list state lga SiteName complete_reporting ProMiss StoMiss if complete_reporting<80,abb(5) noobs 
 
-keep SiteID Type ProMiss StoMiss complete_reporting state state_code lga lga_code
+keep SiteID Type ProMiss StoMiss complete_reporting comp_score state state_code lga lga_code
 save "C:\TEMP\Working\missrepttemp.dta", replace
 
 * MERGE IN MISSING REPORTS DATA
@@ -125,15 +124,22 @@ drop _merge
 
 * Program Reporting Errors  		25%
 
-* 	 Excess number of TOTAL AT START OF THE WEEK (> 300 children)
+* 	 Excess number of TOTAL AT START OF THE WEEK (75% percentile of Beg = 233 children)
 * only one error reported per 8 weeks
 sum Beg if WeekNum == most_recent_report & current8==1, d
 local seventyfive = r(p75)
 recode Beg (`seventyfive'/max=1) (else=0), gen(excess_beg)
 replace excess_beg=. if WeekNum != most_recent_report
-* if current8!=1
+replace excess_beg=. if current8!=1
 * Should only have one report per site. 
 tab excess_beg
+gen diff_excess_beg = abs(Beg - `seventyfive')
+egen max_diff_excess_beg = max(diff_excess_beg)
+* Score for Ratio of new admissions to number of children in charge
+* penalize everyone over the 75th percentile
+gen excess_beg_score = 0.5 + ((diff_excess_beg / max_diff_excess_beg)/2)
+hist excess_beg_score 
+
 
 * 	Percent of sites with TOTAL AT START OF THE WEEK > 300 children - Unlikely
 gsort -Beg
@@ -163,16 +169,63 @@ egen max_diff_ratio_amar_beg = max(diff_ratio_amar_beg)
 gen amar_beg_score = diff_ratio_amar_beg / max_diff_ratio_amar_beg
 hist amar_beg_score 
 
-gen CMAM_score = 100 - (comp_score * 40) + (equal_amar_beg * 5) (amar_beg_score * 10)  
+
+
+* Missing Exits (over 8 weeks)
+* Atot = Total Admissions to program
+* Cin = Total entries to the facility
+gen Cin = Amar + Tin
+* End = Total end of the week in program
+* Cout = Total exits from the facility
+gen Cout= Dcur + Dead + Defu + Dmed + Tout
+sort SiteID Type WeekNum
+* calculate cumulative admissions and exits
+by SiteID : egen tot_cin=total(Cin)
+by SiteID : egen tot_cout=total(Cout)
+gen diff_in_out = tot_cin - tot_cout
+replace diff_in_out =. if WeekNum != most_recent_report
+* How to account for increasing or decreasing caseloads - Take median of program 
+* Better would be to take median of state
+sum diff_in_out, d
+gen median_in_out = r(p50)
+gen adj_diff_in_out = abs(diff_in_out - median_in_out)
+* Penalize all the maximum if the diff is more than 300
+replace adj_diff_in_out = 250 if adj_diff_in_out >250 & diff_in_out!=.
+egen max_diff_in_out = max(adj_diff_in_out)
+gen in_out_score = adj_diff_in_out / max_diff_in_out
+scatter diff_in_out in_out_score 
+
+
+sort SiteID Type WeekNum 
+*order SiteID Type WeekNum Beg Cin Cout tot_cin tot_cout diff_in_out adj_diff_in_out max_diff_in_out in_out_score
+
+
+* Errors between Total Exits preceding week and TOTAL START OF THE WEEK. 
+* Over the past 8 weeks
+gen cout_lastweek = Cout[_n-1] if SiteID == SiteID[_n-1]
+gen diff_lastweek = abs(Beg - cout_lastweek)
+replace diff_lastweek=. if current8!=1
+tab diff_lastweek
+
+*order SiteID Type WeekNum Beg cout_lastweek diff_lastweek
+
+
+
+
+
+
+
+gen CMAM_score = 100 - (comp_score * 40) - (excess_beg_score*10) - (equal_amar_beg * 5) - (amar_beg_score * 10)  
+format CMAM_score %8.0f
+sort CMAM_score
+table lga, c(mean CMAM_score)
+
 
 replace Amar =. if Amar> 300
 replace Amar =. if  equal_amar_beg ==1
 scatter Amar Beg if excess_beg==0
 
 
-* 	 High Default rates if N > 10
-*  	 High Mortality rates if N > 10
-* 	 Missing Exits
 
 
 
