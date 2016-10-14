@@ -68,6 +68,11 @@ tab most_recent_report, m
 sort SiteID Type WeekNum
 save temp, replace
 
+gen lga_state = lga + " - " + state
+* TEMPORARILY
+drop if lga_state ==" - "
+*tab lga_state, m 
+
 ********************************
 * INCLUDE MISSING REPORTS DATA
 ********************************
@@ -148,6 +153,7 @@ list state lga WeekNum SiteName Amar Beg if excess_beg==1 ,abb(5) noobs
 * 	Error - Sites that report New Admissions = Total Start of the Week
 * all errors over past 8 weeks reported
 gen equal_amar_beg = 1 if Amar==Beg & Amar>10 & Amar!=. & current8==1 
+replace equal_amar_beg =0 if equal_amar_beg==.
 tab excess_beg
 list state lga WeekNum SiteName Amar Beg if equal_amar_beg ==1 ,abb(5) noobs 
 
@@ -205,21 +211,36 @@ sort SiteID Type WeekNum
 gen cout_lastweek = Cout[_n-1] if SiteID == SiteID[_n-1]
 gen diff_lastweek = abs(Beg - cout_lastweek)
 replace diff_lastweek=. if current8!=1
-tab diff_lastweek
-
+*tab diff_lastweek
+egen max_diff_lastweek = max(diff_lastweek)
+gen score_diff_lastweek = diff_lastweek / max_diff_lastweek
+scatter diff_lastweek score_diff_lastweek 
 *order SiteID Type WeekNum Beg cout_lastweek diff_lastweek
 
 
 
 
+*save temp, replace
+* add scores to all the last 8 weeks of each site. 
+*collapse (mean) comp_score excess_beg_score equal_amar_beg amar_beg_score in_out_score score_diff_lastweek, by(SiteID Type)
+*merge m:m SiteID Type using "C:\TEMP\Working\temp.dta"
 
 
-
-gen CMAM_score = 100 - (comp_score * 40) - (excess_beg_score*10) - (equal_amar_beg * 5) - (amar_beg_score * 10)  
+gen CMAM_score = 100 - (comp_score * 40) - (excess_beg_score*20) - (equal_amar_beg * 10) - (amar_beg_score * 10) ///
+	- (in_out_score *10) - (score_diff_lastweek * 10) 
 format CMAM_score %8.0f
-sort CMAM_score
-table lga, c(mean CMAM_score)
 
+* table lga, c(mean CMAM_score)
+graph CMAM_score, over(lga)
+
+
+* LGA LEVEL STOCK REPORT SCORE
+graph hbar (mean) CMAM_score , over(lga, sort(CMAM_score)) /// 
+	legend(off) ///
+	title("CMAM Reporting Scores by LGA", size(verysmall)) ///
+	ytitle("Score") ///
+	saving(cmam_score, replace)
+	
 
 replace Amar =. if Amar> 300
 replace Amar =. if  equal_amar_beg ==1
