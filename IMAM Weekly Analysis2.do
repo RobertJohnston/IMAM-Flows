@@ -1,6 +1,7 @@
 * IMAM Weekly Analysis 2
-
+set more off
 use "C:\TEMP\Working\REG_delete", clear
+
 
 * STOCK ALERTS
 * Create list of all personnel with their LGA and SNO telnums for stock alerts
@@ -8,33 +9,185 @@ sort SiteID
 drop if SiteID ==.
 
 drop if SiteID > 99
-gen SNOtelnum = URN
-gen SNOname = Name
-order SiteID Name state_code state SNOtelnum Post
 
-gen SNO = 0
-replace SNO=1 if Name=="Hamza Yakubu Sade ."
-replace SNO=1 if Name=="Suleiman Mamman."
-replace SNO=1 if Name=="Saidu Umar Adamu."
-replace SNO=1 if Name=="Muhammad Ali Hamza."
-drop if SNO==0
+* First Admin 
+gen SNO1 = 0
+gen SNO2 = 0
+gen SNO3 = 0
+
+gen SNO1num = URN
+gen SNO1name = Name
+gen SNO1mail = Mail
+
+gen SNO2num = URN
+gen SNO2name = Name
+gen SNO2mail = Mail
+
+gen SNO3num = URN
+gen SNO3name = Name
+gen SNO3mail = Mail
+
+order SiteID state_code state  Name Post URN Mail SNO1name
+
+
+* Force include Laraba - Yobe
+replace SNO1name = "Laraba Audu." if state_code=="35"
+replace SNO1num = "+2347088113257" if state_code=="35"
+replace SNO1mail = "Laraiaudu@yahoo.com" if state_code=="35"
+
+
+* Adamawa-2
+replace SNO1=1 if Name=="Hauwa Zoakah ."
+replace SNO2=1 if Name=="Wullanga Alfred"
+* Hack to accept only one Alfred - removed period after name
+replace SNO3=1 if Name=="Olawumi Monica Ajayi."
+* Bauchi-5
+replace SNO1=1 if Name=="Hamza Yakubu Sade ."
+replace SNO2=1 if Name=="Ali Shehu Kobi ."
+replace SNO3=1 if Name=="Jackson Ladu Martins."
+* Borno-8
+replace SNO1=1 if Name=="Hassana Suleiman Jibrin."
+replace SNO2=1 if Name=="Abdullahi Alhaji Madi."
+replace SNO3=1 if Name=="Aminu Usman Danzomo."
+* Ifeanyi
+* Gombe-16
+replace SNO1=1 if Name=="Suleiman Mamman."   
+replace SNO2=1 if Name=="Ibrahim Inuwa Lano."
+replace SNO3=1 if Name=="Olufunmilayo Adepoju-Adebambo."
+* Jigawa -17
+replace SNO1=1 if Name=="Saidu Umar Adamu."
+replace SNO2=1 if Name=="Olatomiwa Olabisi."
+replace SNO3=1 if Name=="Temidayo Esther Ajala."
+* Kaduna -18
+replace SNO1=1 if Name=="x"
+replace SNO2=1 if Name=="x"
+replace SNO3=1 if Name=="x"
+* Kano - 19
+replace SNO1=1 if Name=="Murtala M Inuwa."
+replace SNO2=1 if Name=="Sabo Wada."
+replace SNO3=1 if Name=="Ayodeji Osunkentan."
+* Katsina -20
+replace SNO1=1 if Name=="Rabia Mohammed Sno ."
+replace SNO2=1 if Name=="Ijagila Mark ."
+replace SNO3=1 if Name=="Abdulhadi Abdulkadir."
+* Kebbi
+replace SNO1=1 if Name=="Beatrice Kwere."
+replace SNO2=1 if Name=="Abdulmalik Muhammad Illo ."
+replace SNO3=1 if Name=="Shamsu Muhammed."
+* Aliyu Galadima Libata .   
+* Abisola Mary Atoyebi.
+* Sokoto - 33
+replace SNO1=1 if Name=="Muhammad Ali Hamza." 
+replace SNO2=1 if Name=="Hassan Muhammad Galadanci."
+replace SNO3=1 if Name=="Nura Muazu."
+* Yobe - 35
+replace SNO1=1 if Name=="Laraba Audu." 
+* FORCE INCLUDE LARABA
+replace SNO1=1 if SNO1num=="+2347088113257"
+drop if SNO2num=="+2347016837660"
+replace SNO2=1 if Name=="Auwal Ibrahim Jauro ."
+replace SNO3=1 if Name=="Adeleye Grace Bunmilola."
+* Zamfara - 36
+replace SNO1=1 if Name=="Aliyu Ibrahim."
+replace SNO2=1 if Name=="Saifullahi Abdullahi."
+replace SNO3=1 if Name=="John Tsebam ."
+* Ayobami Oyedeji.   
+* Azeezat O. Sule.   
+
+order SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
+
+
+* DELETE IF PERSON IN NOT IN CORRECT POST
+replace SNO1name = "" if SNO1!=1
+replace SNO1num = "" if SNO1!=1
+replace SNO1mail = "" if SNO1!=1
+
+replace SNO2name = "" if SNO2!=1
+replace SNO2num = "" if SNO2!=1
+replace SNO2mail = "" if SNO2!=1
+
+replace SNO3name = "" if SNO3!=1
+replace SNO3num = "" if SNO3!=1
+replace SNO3mail = "" if SNO3!=1
+
+
+* reformat to one line per state with SNO1 SNO2 SNO3 in line. 
+drop if SNO1==0 & SNO2==0 & SNO3==0
+
+order SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
+keep SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
+
+* poor hack to force collapse to work
+* take last row of each state
+replace SNO1name = SNO1name[_n-1] if SNO1name==""
+replace SNO1num = SNO1num[_n-1] if SNO1num==""
+replace SNO1mail = SNO1mail[_n-1] if SNO1mail==""
+
+replace SNO2name = SNO2name[_n-1] if SNO2name==""
+replace SNO2num = SNO2num[_n-1] if SNO2num==""
+replace SNO2mail = SNO2mail[_n-1] if SNO2mail==""
+
+replace SNO3name = SNO3name[_n-1] if SNO3name==""
+replace SNO3num = SNO3num[_n-1] if SNO3num==""
+replace SNO3mail = SNO3mail[_n-1] if SNO3mail==""
+*cleaning bad hack
+replace SNO2name = "" if SNO1name=="Saidu Umar Adamu."
+
+* Collapse 
+bysort SiteID : egen last =seq()
+bysort SiteID : egen max =max(last)
+drop if last!=max
+drop last max
+
 
 save "C:\TEMP\Working\SNO", replace
 
+* LGA NUTRITION FOCAL POINTS - ONLY ID OF ONE
 use "C:\TEMP\Working\REG_delete", clear
-gen LGAtelnum = URN
-gen LGAname = Name
+gen LGA1num = URN
+gen LGA1name = Name
+gen LGA1mail = Name
+
 keep if SiteID > 99 & SiteID < 9999
 sort SiteID
-order  SiteID Name state_code state lga_code lga LGAtelnum Post
+order  SiteID state_code state lga_code lga  Name Post LGA1num LGA1mail 
 keep if Post =="Coordinator" 
-* Three edits - data cleaning
-drop if Name =="Amina Bello."
-drop if LGAtelnum=="+2348081798563"  
 
+* Edits - data cleaning
 * When LGA nut foc points have two numbers have to find out which one works the best. 
+* Duplicate as from 2nd phone - deleted least active
+drop if LGA1num=="+2348081798563"  
+drop if URN =="+2348065871088"
+drop if URN =="+2348065356507"
+drop if URN =="+2347037202082"
+drop if URN =="+2347030635580"
+drop if URN =="+2348029334430"
+drop if Name=="Binta Ibrahim Shehu.."
+drop if Name=="Yagana Mohammed ."
+drop if Name=="Muhammad Ibrahim."
+drop if Name=="Ibrahim Buhari."
+drop if Name=="Abbas Abdullahi Kalgo."
+* Probably LGA stores managers
+drop if Name=="Abubakar. Umar."
+drop if Name=="Bashir Lawan."
+drop if Name=="Aliyu Muhammed."
 
-list SiteID Name state lga Post
+
+* late registrations on 7 Nov for Katsina ???
+drop if Name=="Umar Muntari."
+drop if Name=="Abdul Hadi Abubakar." 
+drop if Name=="Rapidpro."
+
+* more than on entry by name
+egen only_one = tag(SiteID Name)
+drop if only_one !=1
+tab Name, m 
+
+* more than on entry by SiteID
+egen only_one_id = tag(SiteID )
+list SiteID Name state lga Post if only_one_id!=1
+
+list SiteID Name state lga Post 
 
 save "C:\TEMP\Working\LGA", replace
 
@@ -49,14 +202,22 @@ sort SiteID
 format SiteID %10.0f
 gen Phone = URN
 
-order Phone Name SiteID SiteName Name Post state_code state SNOtelnum SNOname lga_code lga LGAtelnum LGAname 
-keep Phone Name SiteID SiteName Name Post state SNOtelnum SNOname lga LGAtelnum LGAname 
+* Data cleaning of IMAM Supervision
+drop if SiteID==1
 
+order  Name Phone SiteID SiteName Post state lga SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail /// 
+	state_code lga_code LGA1num LGA1name LGA1mail 
+keep Phone Name SiteID SiteName state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail /// 
+	 lga LGA1num LGA1name LGA1mail 
+
+* UPLOAD OF IMAM Supervision to rapidpro - does not accept underscore in variable names - do we need state_code and lga_code ?
+	
+	
 * Save IMAM Supervision
 save "C:\TEMP\Working\IMAM_Supervision", replace
 export excel using "IMAM_Supervision", firstrow(variables) replace
 
-* why is this missing? 
+* Next
 use "C:\TEMP\Working\REG_delete", clear
 * Site Level Data
 
@@ -64,7 +225,6 @@ use "C:\TEMP\Working\REG_delete", clear
 bysort SiteID Type: egen SiteIDord = seq()
 tab SiteIDord, m
 drop if SiteIDord !=1
-
 
 *Remove uninterpretable data.
 drop if SiteID ==.
@@ -87,7 +247,7 @@ save "C:\TEMP\Working\SITE_delete", replace
 ****************
 * Programme Data	
 ****************
-import excel "C:\TEMP\pro.xls", sheet("Runs") firstrow clear
+import excel "C:\TEMP\pro.xlsx", sheet("Runs") firstrow clear
 * Do not use the tab "Contacts" as it is incomplete. 
 * Make crash if SiteID is not included
 * YOU MUST INCLUDE in the download. 
@@ -106,6 +266,7 @@ replace SiteID = ProSiteIDValue if Level !="Site"
 
 * Type of site for programme data report (OTP or SC)
 * You cannot assume that Type is correct for supervision level when it comes from the contact data. 
+cap drop Type
 gen Type = TypeValue 
 replace Type = ProTypeCategory if Level !="Site"
 tab Type, m 
@@ -180,27 +341,42 @@ save "C:\TEMP\Working\PRO_delete", replace
 ****************
 * Stocks data - Site
 ****************
-import excel "C:\TEMP\sto.xls", sheet("Runs") firstrow clear
+import excel "C:\TEMP\sto.xlsx", sheet("Runs") firstrow clear
 * MUST INCLUDE in the download. 
 * SiteID 
 drop if SiteID =="Nat"
+drop if SiteID =="Aclo 1234567890"
 
-* drop if data are not confirmed
+* drop if data are reported as incorrect(confirmation)
 drop if ConfirmCategoryIMAMStock =="No"
 
 * Role (Implementation or Supervision)
-gen Role  = PostLevelCategory
+gen Role = PostLevelCategory
 * Level (Site, Second, First, National
 gen Level = PostLevelValue
 
 * SiteID
-tostring CheckSiteIDValue, replace
-replace SiteID = CheckSiteIDValue if SelfReportCategory =="No"
+tostring StoSiteIDValueIMAMStock, replace
+* If LGA FP is reporting for a site. 
+replace SiteID = StoSiteIDValueIMAMStock if SelfReportCategory =="No"
 destring SiteID, replace force
 format SiteID %10.0f
 
+
 * Type (OTP or SC)
-gen Type = stockreporttypeValue
+cap drop Type
+* There is no Type var in data.
+gen Type = route_by_typeCategoryIMAMS
+
+replace Type="" if Type!="OTP" & Type!="SC"
+
+*route_by_type  /// new var name
+* replace Type if reported by LGA FP 
+replace Type= StoTypeCategoryIMAMStock if Type==""
+
+
+* DOUBLE CHECK IF THE TYPE VAR NAME IS CORRECT. 
+
 * WeekNum
 destring WeekNumValue, gen(WeekNum) force
 drop WeekNumCategoryIMAMStock WeekNumValueIMAMStock WeekNumTextIMAMStock
@@ -214,11 +390,44 @@ gen R_outSACH = RUTF_used_sachetValue
 gen R_balCART = RUTF_bal_cartonValue
 gen R_balSACH = RUTF_bal_sachetValue
 
+* DOUBLE COUNTING
+* Test for double counting in RUTF reporting.
 * If RUTF in Sachets is more than 149, then assume that they double reported and gave total in sachets. 
 * this hides errors that need to be corrected. 
 * Must leave errors visible. 
-* replace RUTF_used_sachetValue = mod(RUTF_used_sachetValue,150) if RUTF_used_sachetValue > 149
-* replace RUTF_bal_sachetValue = mod(RUTF_bal_sachetValue,150) if RUTF_bal_sachetValue > 149
+list RUTF_used_cartonValue RUTF_used_sachetValue if RUTF_used_sachetValue> 150 & RUTF_used_sachetValue!=. , abb(20)
+
+gen dc_util = 0
+la var dc_util "Double counting-RUTF utilisation"
+replace dc_util = 1 if RUTF_used_sachetValue > 149
+replace dc_util = 0 if RUTF_used_cartonValue==0
+replace dc_util = 1 if RUTF_used_cartonValue==RUTF_used_sachetValue & RUTF_used_cartonValue>6
+* next line not necessary
+replace dc_util = 0 if RUTF_used_cartonValue==0 | RUTF_used_sachetValue==0
+replace dc_util = 0 if RUTF_used_cartonValue==. | RUTF_used_sachetValue==. 
+tab dc_util, m 
+list RUTF_used_cartonValue RUTF_used_sachetValue dc_util if dc_util ==1  , abb(20)
+
+gen dc_bal = 0
+la var dc_bal "Double counting-RUTF balance"
+replace dc_bal = 1 if RUTF_bal_sachetValue > 149
+replace dc_bal = 0 if RUTF_bal_cartonValue==0
+replace dc_bal = 1 if RUTF_bal_cartonValue==RUTF_bal_sachetValue & RUTF_bal_cartonValue>6
+* next line not necessary
+replace dc_bal = 0 if RUTF_bal_cartonValue==0 | RUTF_bal_sachetValue==0
+replace dc_bal = 0 if RUTF_bal_cartonValue==. | RUTF_bal_sachetValue==. 
+tab dc_bal, m 
+
+* Save in final datafile for review in Report
+gen RUTF_used_cart = RUTF_used_cartonValue
+gen RUTF_used_sach = RUTF_used_sachetValue
+gen RUTF_bal_cart = RUTF_bal_cartonValue
+gen RUTF_bal_sach = RUTF_bal_sachetValue
+
+* List WeekNum state 
+list RUTF_used_cart RUTF_used_sach dc_util if dc_util ==1  , abb(20)
+list RUTF_bal_cart RUTF_bal_sach dc_bal if dc_bal ==1  , abb(20)
+
 
 * STOCKS REPORTING
 * in OTP, we assume out is distributed to and used or consumed by beneficiaries. 
@@ -252,7 +461,7 @@ by SiteID WeekNum: egen unique = seq()
 * tab unique, m 
 drop if unique !=1
 
-keep URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen 
+keep URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen dc_util dc_bal
 order URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen 
 sort SiteID Type WeekNum
 
@@ -261,7 +470,7 @@ save "C:\TEMP\Working\STO_delete", replace
 ****************
 * Stocks data - LGA STATE
 ****************
-import excel "C:\TEMP\lga.xls", sheet("Runs") firstrow clear
+import excel "C:\TEMP\lga.xlsx", sheet("Runs") firstrow clear
 * Crash if SiteID is not present - MUST INCLUDE in the download. 
 des SiteID 
 
@@ -270,19 +479,21 @@ des SiteID
 drop if strlen(SiteID)>4 
 
 gen WeekNum = WeekNumValue
-destring WeekNum, replace
+destring WeekNum, replace force
+replace WeekNum=. if WeekNum < 22 | WeekNum > 53 
 
+* RUTF_in is string
 gen RUTF_in = RUTF_inValue
 gen RUTF_out = RUTF_outValue
 gen RUTF_bal = RUTF_balValue
-destring RUTF_in RUTF_out RUTF_bal, replace
+destring RUTF_in RUTF_out RUTF_bal, replace force
 
 * Drop if confirmation equals No or SiteID = X
 drop if confirmCategory =="No"
 drop if SiteID =="X"
 
 * Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
-destring SiteID, replace
+destring SiteID, replace force
 gsort SiteID WeekNum -LastSeen
 by SiteID WeekNum: egen unique = seq()
 drop if unique !=1
@@ -358,6 +569,7 @@ replace dow = 7 if dow==0
 replace month = month(current_date)
 * Calculate ordinal date
 drop temp temp2
+* for normal years
 recode month (1=0)(2=31)(3=59)(4=90)(5=120)(6=151)(7=181)(8=212)(9=243)(10=273)(11=304)(12=334), gen(temp)
 * for leap years
 recode month (1=0)(2=31)(3=60)(4=91)(5=121)(6=152)(7=182)(8=213)(9=244)(10=274)(11=305)(12=335), gen(temp2)
@@ -423,13 +635,21 @@ tab Tout
 drop if WeekNum<22
 drop if URN ==""
 
-export excel using "C:\TEMP\CMAMDashboard.xls", firstrow(variables) replace
+export excel using "C:\TEMP\CMAMDashboard.xlsx", firstrow(variables) replace
+
+* analysis of stock data - using cartons versus weeks of stock
+* this should be separate do file
+tostring SiteID, gen(SiteIDS)
+sort SiteID Type WeekNum
+order SiteIDS state lga SiteName Type WeekNum Year
 
 
 ***********
 * REMINDERS
 ***********
 use "C:\TEMP\Working\CMAM_delete", clear
+
+format SiteID %10.0f
 
 * Gentle cleaning - Remove there should be no first and second level supervisors with Type = OTP or SC
 sort SiteID
@@ -440,7 +660,7 @@ drop if SiteID < 9999 & Type=="OTP"
 sum CurrWeekNum, meanonly
 local currentweeknum =  `r(mean)' 
 local end = `r(mean)' - 1
-* Change this to 8 or 7 (weeks in past of complete reporting) for next training
+* Change this to 8 or 7 (weeks in past of complete reporting) 
 local start = `end' - 7
 
 gen PROnodata = Beg==. & Amar==. & Tin==. & Dcur==. & Dead==. & Defu==. & Dmed==. & Tout==.
@@ -499,7 +719,9 @@ gen Phone = URN
 
 * Save ProReptTot & StoReptTot as MissingReptTot
 * to merge with data quality score. 
+destring lga_code, replace force
 save C:\TEMP\Working\missingrepttot, replace
+
 
 * If the SiteID was not included in the report, then assign all weeks as missing. 
 gen str MissProReptAll = ""
@@ -518,8 +740,8 @@ replace MissStoRept = MissStoRept[_N] if StoReptTot==.
 replace ProMiss = "" if SiteID <9999
 replace ProReptTot =. if SiteID <9999
 
-gen Message = "Dear @contact from @contact.SiteName. Thank you for reporting. This is a REMINDER to send missing PROGRAMME reports for week numbers @contact.promiss and STOCK reports for week numbers @contact.stomiss"
-replace Message =  "Dear @contact from @contact.SiteName. Thank you for reporting. This is a REMINDER to send missing STOCK reports for week numbers @contact.stomiss" if SiteID<9999
+gen Message = "Dear @contact from @contact.SiteName. REMINDER to send PROGRAMME reports for weeks @contact.promiss and STOCK reports for weeks @contact.stomiss"
+replace Message =  "Dear @contact from @contact.SiteName. REMINDER to send STOCK reports for weeks @contact.stomiss" if SiteID<9999
 
 * Results - number of reports sent. 
 tab ProReptTot, m 
@@ -534,20 +756,26 @@ drop if SiteID==.
 
 tostring SiteID, replace
 
-keep Phone Name lga SiteName SiteID Type ProMiss StoMiss Message Level
-order Phone Name lga SiteName SiteID Type ProMiss StoMiss Message Level 
+keep Phone Name state lga SiteName SiteID Type ProMiss StoMiss Message Level
+order Phone Name state lga SiteName SiteID Type ProMiss StoMiss Message Level 
 sort SiteID Type 
 save "C:\TEMP\Working\Reminder_delete", replace
 
 * Reminders for LGA and State (only Stock)
 local missreptfilename = "MissReptWeek" + "`currentweeknum'" 
+* Drop erroneous entries
+drop if Phone==""
 drop if Level =="Site"
-export excel using "STO`missreptfilename'.xls", firstrow(variables) replace
+drop if Type =="OTP" | Type=="SC"
+destring SiteID, gen(SiteIDtemp) force
+drop if SiteIDtemp > 9999
+drop SiteIDtemp
+export excel using "STO`missreptfilename'.xlsx", firstrow(variables) replace
 
 * Reminders for Implementation sites (Programme and Stock)
 use "C:\TEMP\Working\Reminder_delete", clear
 drop if Level !="Site"
-export excel using "PRO`missreptfilename'.xls", firstrow(variables) replace
+export excel using "PRO`missreptfilename'.xlsx", firstrow(variables) replace
 
 
 
@@ -614,17 +842,49 @@ cap gen one = 1
 * Who registered where with what details
 * First, second, site level
 * Use registration data
+cap log close
 use "C:\TEMP\Working\REG_delete", clear
 
-sort SiteID
+replace Level ="National" if Level=="N" | Level=="n" | Level=="Nat" | Level=="nat" 
+
+gen SID = SiteID
+replace Level ="Site" if SID > 9999
 tostring SiteID, replace
-drop if state =="1"
+drop if state_code =="1" | state_code=="4" | state_code=="18" | state_code=="30"
+
+egen one_site = tag(SiteID)
+tab one_site Level, m
+destring URN, gen(phone) force
+
+* Count LGAs and Sites
+sort SiteID Type Post
 
 log using "C:\Analysis\Personnel_List.log", replace
 
+quietly: sum phone if num_tel==1, d 
+local peepcount = r(N)
+quietly: sum SID if one_site==1 & Level!="Site", d 
+local lgacnt = r(N)- 1	
+quietly: sum SID if one_site==1 & Level=="Site", d 
+
+di %~59s "NATIONAL LEVEL"
+di _newline "Across the north, there have been `peepcount' personnel registered in `r(N)' sites in `lgacnt' LGAs."
+	
 levelsof state, local(levels) 
 foreach l of local levels {
-	disp "Personnel of " "`l'"  " State"
-	list Name URN Post SiteID state lga Level if state=="`l'"
+	di as text "{hline 59}"
+	di %~59s "STATE REPORT `l'"
+	quietly: sum phone if num_tel==1 & state=="`l'", d 
+	local peoplecount = r(N)
+	quietly: sum SID if one_site==1 & Level!="Site" & state=="`l'", d 
+	local lgacount = r(N)-1
+	quietly: sum SID if one_site==1 & Level=="Site" & state=="`l'", d 
+	di _newline "In `l', there are `peoplecount' personnel registered in `r(N)' sites in `lgacount' LGAs."
+	disp _newline "Sites of " "`l'"  
+	list state lga SiteName SiteID if one_site==1 & Level!="Site" & state=="`l'", noobs
+	list state lga SiteName SiteID if one_site==1 & Level=="Site" & state=="`l'", noobs
+	disp _newline "Personnel of " "`l'"  
+	list Name URN Post SiteID state lga Level if state=="`l'", noobs
 } 
 log close
+

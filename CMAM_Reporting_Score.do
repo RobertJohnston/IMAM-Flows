@@ -76,7 +76,8 @@ save temp, replace
 gen lga_state = lga + " - " + state
 * TEMPORARILY
 drop if lga_state ==" - "
-*tab lga_state, m 
+sort SiteID Type
+tab lga_state, m 
 
 ********************************
 * INCLUDE MISSING REPORTS DATA
@@ -103,7 +104,7 @@ drop if URN == "+2348067418765"
 drop if URN == "+2348035351744"
 
 * Analysis only for OTP and SCs.  Drop all supervision staff
-drop if SiteID <101110001
+drop if SiteID <101110002
 drop if SiteID== 351511007
 drop if SiteID== 301110001
 
@@ -143,37 +144,40 @@ drop if WeekNum > CurrWeekNum
 * Program Reporting Errors  		
 ***************************
 * Excess number or zero TOTAL AT START OF THE WEEK 
-* ( Excess = 75% percentile of Beg =~225 children)
-* only one error reported per 8 weeks
-* penalize everyone over the 75th percentile
+* We should not punish for this - if sites are ALIMA or MSF
+hist Beg
+
 sum Beg if WeekNum == most_recent_report & current8==1, d
-local seventyfive = r(p75)
-recode Beg (`seventyfive'/max=1) (else=0), gen(excess_beg)
+local cutoff = r(p50)
+recode Beg (`cutoff'/max=1) (else=0), gen(excess_beg)
 replace excess_beg=. if WeekNum != most_recent_report
 replace excess_beg=. if current8!=1
-* Should only have one report per site. 
-tab excess_beg
-gen tempbeg = Beg -`seventyfive' if excess_beg==1
-replace tempbeg=. if WeekNum != most_recent_report
-bysort SiteID Type: egen diff_excess_beg = mean(tempbeg)
 
-egen max_diff_excess_beg = max(diff_excess_beg)
-* Score for Ratio of new admissions to number of children in charge
-* starting penalty at 0.5 - then add the proportion of the error to total 1. 
-gen excess_beg_score = 0.5 + ((diff_excess_beg / max_diff_excess_beg)/2)
-* if there were no reports on Beg or Amar, there is full penalty. 
-replace excess_beg_score = 0 if excess_beg_score==. 
-hist excess_beg_score
+* Excessive start of the week compared to new admissions. 
+* All reports from last 8 weeks
+gen AmarX8 = Amar * 8
+* Penalty for sites with out of whack that greatly less than amar*8. 
+gen amx8_beg = AmarX8 / Beg
+* scores more than 1 do not look suspicious
 
-* 	Percent of sites with TOTAL AT START OF THE WEEK > 300 children - Unlikely
-gsort -Beg
-list state lga WeekNum SiteName Amar Beg if excess_beg==1 ,abb(5) noobs 
+list state lga WeekNum SiteName Amar Beg AmarX8 amx8_beg excess_beg if excess_beg==1 ,abb(5) noobs 
 
-* 	Error - Sites that report New Admissions = Total Start of the Week
+replace amx8_beg=1 if amx8_beg>1
+replace amx8_beg=. if current8!=1
+
+* Sites with excess_beg!=1 are not out of whack.
+gen out_of_whack_amar_beg = 1 - amx8_beg
+hist out_of_whack_amar_beg
+
+scatter complete_reporting out_of_whack_amar_beg
+
+* Error - Sites that report New Admissions = Total Start of the Week
 * all errors over past 8 weeks reported
 gen equal_amar_beg = 1 if Amar==Beg & Amar>10 & Amar!=. & current8==1 
 replace equal_amar_beg =0 if equal_amar_beg==.
 list state lga WeekNum SiteName Amar Beg if equal_amar_beg ==1 ,abb(5) noobs 
+
+
 
 * 	Excessive (high or low) ratio of new admissions to number of children in charge 
 * all errors over past 8 weeks reported
@@ -203,7 +207,7 @@ replace ratio_amar_beg = 1 if ratio_amar_beg>1
 kdensity ratio_amar_beg, xline(`med_amar_beg') 	
 *scatter Beg ratio_amar_beg 
 *scatter Amar ratio_amar_beg 
- 
+
 * Score for Ratio of new admissions to number of children in charge
 * take mean of all 8 weekly scores. 
 * penalties start at 0.5
@@ -213,6 +217,13 @@ gen amar_beg_score = 0
 replace amar_beg_score = 0.5 + (temp/2) if amar_beg_flag==1 
 replace amar_beg_score =. if current8 !=1
 hist amar_beg_score 
+
+* Which is more appropriate ?
+scatter amar_beg_score out_of_whack_amar_beg
+*bysort lga: egen count_lga = count(Amar)
+* out_of_whack_amar_beg is better as it detects poor quality faster - for sites with higher than median admissions. 
+
+
 
 
 * Missing Exits (over 8 weeks)
@@ -250,13 +261,25 @@ gen cout_lastweek = Cout[_n-1] if SiteID == SiteID[_n-1]
 gen diff_lastweek = abs(Beg - cout_lastweek)
 replace diff_lastweek=. if current8!=1
 *tab diff_lastweek
-egen max_diff_lastweek = max(diff_lastweek)
+
+* Penalty on max is too open - 500 errors in exits is problematic
+* egen max_diff_lastweek = max(diff_lastweek)
+gen max_diff_lastweek = 500
 
 replace temp = diff_lastweek / max_diff_lastweek
+replace temp = 1 if temp > 1
+
 bysort SiteID Type: egen score_diff_lastweek= mean(temp)
 replace score_diff_lastweek=1 if score_diff_lastweek==.
 scatter diff_lastweek score_diff_lastweek 
 *order SiteID Type WeekNum Beg cout_lastweek diff_lastweek
+
+* NEED TO DOUBLE CHECK. 
+gen tot_start_temp = Beg
+* Beg should equal End - IS THIS ERROR ? 
+order tot_start_temp cout_lastweek diff_lastweek max_diff_lastweek score_diff_lastweek, last
+
+
 
 ********
 *STOCKS
@@ -332,41 +355,60 @@ hist sachets_case_week
 * if site has perfect score for one report, but missing 7 reports, then this is not appropriate.
 
 gen CMAM_score = 100 ///
-	- (comp_score * 30) /// 		* COMPLETE REPORTING
-	- (excess_beg_score*10) /// 	* EXCESS NUMBER OF CHILDREN UNDER TREATMENT
-	- (amar_beg_score * 10) ///		* DISTORTED RATIO BETWEEN CHILDREN UNDER TREATMENT AND NEW ADMISSIONS
-	- (in_out_score *10) ///		* PROBABLE MISSING EXITS
+	- (comp_score * 20) /// 		* COMPLETE REPORTING
+	- (out_of_whack_amar_beg * 20) ///		* DISTORTED RATIO BETWEEN CHILDREN UNDER TREATMENT AND NEW ADMISSIONS
+	- (in_out_score *20) ///		* PROBABLE MISSING EXITS
 	- (score_diff_lastweek * 10) /// * ERRORS IN TOTAL END OF WEEK AND TOTAL START OF WEEK
-	- (overall_calc_error * 15) /// * CALCULATION ERRORS IN STOCK REPORTING
-	- (stock_use_score*15)			
-* stock_use_score - DISTORTED NUMBER OF SACHETS USED TO TREAT ONE CHILD FOR ONE WEEK. 
+	- (overall_calc_error * 20) /// * CALCULATION ERRORS IN STOCK REPORTING
+	- (stock_use_score*10) ///      * DISTORTED NUMBER OF SACHETS USED TO TREAT ONE CHILD FOR ONE WEEK. 
+	- 0
 format CMAM_score %8.0f
 
 * Removed penalty for equal_amar_beg in score. 
 		
-order comp_score excess_beg_score amar_beg_score in_out_score score_diff_lastweek overall_calc_error stock_use_score CMAM_score, last
+order comp_score amar_beg_score in_out_score score_diff_lastweek overall_calc_error stock_use_score CMAM_score, last
 	
 * table lga, c(mean CMAM_score)
 
+* create color group for assignment of colors
+recode CMAM_score (0/49.9999=1)(50/79.9999=2)(80/100=3), gen(tercile_score)
+separate CMAM_score, by(tercile_score) veryshortlabel
+
 sort SiteID Type WeekNum 
 
-* STATE LEVEL STOCK REPORT SCORE
+* STATE LEVEL STOCK REPORT SCORE - Tricolor
+*graph hbar (mean) CMAM_score? , over(state, sort(CMAM_score)) /// 
+*	bar(1, color(red)) bar(2, color(orange*.85)) bar(3,color(green*.75)) legend(off) ///
+*	title("CMAM Site Reporting Scores by State", size(medium)) ///
+*	ytitle("Score")  ///
+*	saving(state_score, replace)
+	
+* STATE LEVEL STOCK REPORT SCORE 
 graph hbar (mean) CMAM_score , over(state, sort(CMAM_score)) /// 
-	legend(off) ///
+	bar(1, color(red)) legend(off) ///
 	title("CMAM Site Reporting Scores by State", size(medium)) ///
-	ytitle("Score")  ///
-	saving(cmam_score, replace)
+	ytitle("Score") ysc(r(100)) ytick(0(20)100) ylabel(0(20)100) ///
+	saving(state_score, replace)
 	
 
 * LGA LEVEL STOCK REPORT SCORE
 graph hbar (mean) CMAM_score , over(lga, label(labs(tiny)) sort(CMAM_score)) /// 
-	legend(off) ///
+	bar(1, color(red)) bar(2, color(orange*.85)) bar(3,color(green*.75)) legend(off) ///
 	title("CMAM Site Reporting Scores by LGA", size(medium)) ///
 	ytitle("Score") ///
-	saving(cmam_score, replace)
+	saving(lga_score, replace)
 	
+	
+* LGA LEVEL STOCK REPORT SCORE
+graph hbar (mean) CMAM_score if lga_code==3505  , over(SiteName, label(labs(small)) sort(CMAM_score)) /// 
+	bar(1, color(red)) bar(2, color(orange*.85)) bar(3,color(green*.75)) legend(off) ///
+	title("CMAM Site Reporting Scores by Site", size(medium)) ///
+	ytitle("Score") ///
+	saving(site_score, replace)
 
-
+	
+	
+	
 
 * LGA LEVEL STOCK REPORT SCORE
 graph hbar (mean) CMAM_score if state_code=="33" , over(lga, label(labs(small)) sort(CMAM_score)) /// 

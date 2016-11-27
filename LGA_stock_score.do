@@ -4,24 +4,54 @@ set more off
 cap log close
 cd C:\TEMP\Working\
 
+***************
+*  START HERE
+***************
+* Adamawa 2
+* Bauchi  5
+* Borno   8
+* Gombe   16
+* Jigawa  17
+* Kaduna  18
+* Kano    19
+* Katsina 20
+* Kebbi   21
+* Sokoto  33
+* Yobe 	  35
+* Zamfara 36
+
+local choosestate = 36
+
+***********************
+* Awarding scores that are too high when errors still exist in data - SOkoto State Tangaza. Jigawa State Roni, Kaugama LGA
+***********************
+
 * Quality Reporting Score
 
 * Complete reporting 			40%
-* Timely reporting				5%
-* Reports sent for future dates 5%   - no punishment for reports >8 weeks in past. 
-* Unaccounted for stocks 		25%
+
+* Errors in calculations 		30%
+* 		Errors in calculations (>1 carton)  - Number of errors in past 8 weeks (15%)
+*          or negative starting balance
+* 		Double counting						- Number of errors in past 8 weeks (15%)
+
+* Unaccounted for stocks 		30%
 * 		State is punished for errors between State and LGA (total error over 8 weeks)
 * 		LGA is punished for errors between LGA and Site (total error over 8 weeks)
-* Errors in calculations 		25%
-* 		Errors in calculations (>1 carton)  - Number of errors in past 8 weeks
-* 		Negative starting balance			- Number of errors in past 8 weeks
-* 		Reporting in decimal points			- Number of errors in past 8 weeks
 
 * There is no punishment for STOCK-OUTS
+
+* Removed penalties for: 
+* Timely reporting				
+* Reports sent for future dates  - no punishment for reports >8 weeks in past. 
 
 * First provide reporting on current conditions
 * Second provide data quality score on data from last eight weeks - need to provide older scores to show if improving or not. 
 * worry about showing older data quality scores later.
+
+* Base penalty for gross errors - even if small
+local basepen = 0.3
+
 
 * Use the database with all viable program and stock reports included
 use CMAM_delete.dta, clear
@@ -40,7 +70,10 @@ tab Level, m
 
 * Role
 replace Role="Supervision" if Level=="First" | Level=="Second"
+replace Role="Implementation" if Level=="Site"
+drop if Role==""
 tab Role, m 
+
 
 ****** DATA CLEANING *********
 * some reports from LGA staff for sites are interpreted as LGA reports. 
@@ -56,22 +89,25 @@ drop leap dow month temp temp2 weekdiff ord_date
 drop if SiteID==1
 drop if SiteID==225211001
 drop if SiteID==301110001
-drop if SiteID==504110001
+*drop if SiteID==504110001
+
 * Drop junk data
 drop if SiteID < 5
 drop if SiteID ==101110001
 * Week 22 of 2016 was the first week that we expected valid data to be sent.
 drop if WeekNum < 22 
-* Find out what is answer to this SiteID error
-replace SiteID = 1731110034 if SiteID== 173110034
+
 * Remove all the erroneous LGA attempts of Stock Reports at OTP or SC level
-drop if SiteID<9999 & Type=="OTP" 
-drop if SiteID<9999 & Type=="SC" 
-* replace Role = "Implementation" if SiteID is 
-replace Role= "Implementation" if SiteID >9999
+
 * There should be no rows with Level ==""
 list Type Level Role if Level ==""
-****** END DATA CLEANING *********
+
+* Error in registration - SiteID = 36
+* list if state_code=="36"
+drop if state_code=="36" & WeekNum==.
+
+***** END DATA CLEANING *********
+
 
 destring lga_code, replace
 save temp.dta, replace
@@ -103,7 +139,7 @@ drop _merge
 * include only 1 case per lga & weeknum to make totals
 
 **************************
-* Future Reporting Penalty  
+* Future Reporting  - No penalty
 **************************
 * value = 2 of rep_date_error is a record sent for the future
 egen future_error = anycount(rep_date_error), values(2)
@@ -114,8 +150,6 @@ tab WeekNum current8, m
 * drop other cases of future_error if more than 8 weeks in past. 
 replace future_error=. if current8!= 1
 tab future_error current8, m 
-*gen one = 1
-*table current8 WeekNum , c (count one)
 
 bysort SiteID Type: egen future_error_tot =  total(future_error) 
 egen future_error_max = max(future_error_tot)
@@ -179,7 +213,56 @@ replace Type="Sup" if SiteID <101110000
 replace Level = "Site" if SiteID >101110000
 replace Level = "Second" if SiteID  > 99 & SiteID < 9999 
 replace Level = "First" if SiteID < 99
+drop if state_code=="30"
+drop if state=="N" 
 
+* reset the state_code and lga_code
+tostring SiteID, gen(temp)
+replace state_code = substr(temp,1, 2) if state_lgt==. & state_code==""
+drop temp
+replace lga_code = SiteID if lga_code==. 
+
+* Add names for state and LGA codes
+replace state="Adamawa" if state_code=="2"
+replace state="Bauchi" if state_code=="5"
+replace state="Borno"  if state_code=="8"
+replace state="Gombe"  if state_code=="16"
+replace state="Jigawa" if state_code=="17"
+replace state="Kaduna" if state_code=="18"
+replace state="Kano"   if state_code=="19"
+replace state="Katsina" if state_code=="20"
+replace state="Kebbi"  if state_code=="21"
+replace state="Sokoto" if state_code=="33"
+replace state="Yobe"   if state_code=="35"
+replace state="Zamfara" if state_code=="36"
+
+
+* I don't know why, but Yobe LGA names are not coming through
+* IS THIS NEEDED HERE ? YES
+* Yobe State
+replace lga ="BADE" if lga_code==3501
+replace lga ="BUSARI" if lga_code==3502
+replace lga ="DAMATURU" if lga_code==3503
+replace lga ="FIKA" if lga_code==3504
+replace lga ="FUNE" if lga_code==3505
+replace lga ="GEIDAM" if lga_code==3506
+replace lga ="GUJBA" if lga_code==3507
+replace lga ="GULANI" if lga_code==3508
+replace lga ="JAKUSKO" if lga_code==3509
+replace lga ="KARASUWA" if lga_code==3510
+replace lga ="MACHINA" if lga_code==3511
+replace lga ="NANGERE" if lga_code==3512
+replace lga ="NGURU" if lga_code==3513
+replace lga ="POTISKUM" if lga_code==3514
+replace lga ="TARMUWA" if lga_code==3515
+replace lga ="YUNUSARI" if lga_code==3516
+replace lga ="YUSUFARI" if lga_code==3517
+* TEST Yobe LGA names
+replace lga = proper(lga)
+* list state lga_code lga if SiteID > 3508 & SiteID<3600
+
+tab state, m 
+list lga_code state if SiteID > 3508 & SiteID<3600
 egen count_of_site=tag(SiteID Type)
 order SiteID Type count_of_site
 * Delete duplicates of sites
@@ -192,6 +275,8 @@ gen complete_stock_reporting = 100 - comp_sto_score * 100
 la var StoMiss "Missing Stock Reports"
 list state SiteID complete_stock_reporting StoMiss if Level=="First" ,abb(20) noobs 
 list state lga SiteID complete_stock_reporting StoMiss if Level=="Second" ,abb(20) noobs 
+
+
 ***************
 * DOUBLE CHECK
 * MUST ADD IN MISSING LGAS HERE
@@ -205,15 +290,29 @@ save "C:\TEMP\Working\missrepttemp.dta", replace
 use temp, clear
 replace Type="Sup" if SiteID <9999
 merge m:m SiteID Type using "C:\TEMP\Working\missrepttemp.dta"
-drop _merge
+
+* Find whtat drop 2 = here. 
+* New Yobe rows with no LGA
+* drop _merge
+
 * save temp.dta, replace
 
 * AGAIN reset Level
 replace Level = "Second" if SiteID  > 99 & SiteID < 9999 
 replace Level = "First" if SiteID < 99
 
-* Test Complete Reporting - one report per week - need to select. 
-list state SiteID complete_stock_reporting StoMiss if Level=="First" ,abb(20) noobs 
+* Test Complete Reporting 
+
+sort SiteID
+* all STATE level stock reports 
+* There is one report per state per week - need to select only one 
+* the missing reports are aggregated over the past 8 weeks. Take max of most recent.
+list state SiteID WeekNum complete_stock_reporting StoMiss if Level=="First" ,abb(20) noobs 
+
+*************************
+* Katsina LGA data is present
+table SiteName if SiteID >2000 & SiteID <2099, c(m RUTF_in m RUTF_out m RUTF_bal) 
+**************************
 
 * Presentation of Stock-Outs
 *list WeekNum state lga SiteName Type Name URN RUTF_in RUTF_out RUTF_bal if stockout==1 & Level!="Site"
@@ -235,14 +334,14 @@ replace RUTF_beg = RUTF_bal - RUTF_in + RUTF_out if RUTF_beg ==.
 
 gen calc_bal = RUTF_beg + RUTF_in - RUTF_out 
 gen RUTF_diff = RUTF_bal - calc_bal
-replace RUTF_diff = 0 if RUTF_diff < 0.01
+replace RUTF_diff = 0 if RUTF_diff < 0.01 & RUTF_diff > -0.01 
 
 *************************
 * Stock Reporting Errors
 *************************
 * neg_error = RUTF_beg < 0  or  Calc_bal < 0
 * calc_error = rutf_bal !=0
-* decimal point reporting
+* double counting
 
 * Calculation errors are more than 1 carton.  We would like to move to reporting only cartons and not sachets.
 gen calc_error=0
@@ -250,9 +349,16 @@ gen neg_error=0
 gen dec_error=0
 replace calc_error =1 if RUTF_diff>=1.1 & RUTF_diff !=.
 replace neg_error =1 if RUTF_beg<-0.1 | calc_bal<-0.1 
+
+* Decimal point reporting
+* this will be accepted in some cases
 * to include all sites in decimal point error, need to move this to IMAM Weekly Analysis 2
 replace dec_error =1 if floor(RUTF_in)!=RUTF_in | floor(RUTF_out)!=RUTF_out | floor(RUTF_bal)!=RUTF_bal
 replace dec_error =. if Level=="Site"
+
+
+
+
 *tab calc_error, m 
 *tab neg_error, m 
 *tab dec_error, m 
@@ -264,6 +370,15 @@ tab overall_calc_error, m
 gen calc_flag = 1 if calc_error==1 | neg_error==1 | dec_error==1
 replace calc_flag =. if current8!=1
 replace calc_flag =. if RUTF_diff <=1
+
+
+* Create base penalty if there are errors
+replace overall_calc_error = overall_calc_error + `basepen' if overall_calc_error!=0
+replace overall_calc_error = 1 if overall_calc_error>1
+tab overall_calc_error, m
+
+
+
 
 order SiteID SiteName WeekNum calc_error neg_error dec_error temp overall_calc_error
 sort SiteID WeekNum Type
@@ -320,47 +435,28 @@ table lga, c(m med_con_lga) f(%8.1f), if Type=="OTP"
 gen twoweeklga = med_con_lga*2
 gen fourweeklga = med_con_lga*4
 
+* LABEL GRAPHS IN FOR LOOP
 * This code: local lganame: label (lga_code) `l'
 * in graph required definition of LGA value labels. 
 * Use this trick to get state and LGA names to go through to graphs
 * Four digit lga code
-	
-label define lganame 504	Dambam
-label define lganame 512	Katagum, add
-label define lganame 513	Kirfi, add
-label define lganame 1604	Dukku, add
-label define lganame 1606	Gombe, add
-label define lganame 1609	Nafada, add
-label define lganame 1702	Babura, add
-label define lganame 1703	"Birnin Kudu", add
-label define lganame 1704   Birniwa, add
-label define lganame 1706   Dutse, add
-label define lganame 1709   Gumel , add
-label define lganame 1710	Guri, add
-label define lganame 1712	Gwiwa, add
-label define lganame 1713   Hadeija, add
-label define lganame 1714   Jahun, add
-label define lganame 1716	Kaugama, add
-label define lganame 1717	Kazaure, add
-label define lganame 1719   Kiyawa, add
-label define lganame 1720   Maigatari, add
-label define lganame 1724	Roni, add
-label define lganame 1727	Yankwashi, add
-label define lganame 3301	Binji, add
-label define lganame 3304	Gada, add
-label define lganame 3305	Goronyo, add
-label define lganame 3306	Gudu, add
-label define lganame 3308	Illela, add
-label define lganame 3313	"Sabon Birni", add
-label define lganame 3316	"Sokoto North", add
-label define lganame 3317	"Sokoto South", add
-label define lganame 3319	Tangaza, add
-label define lganame 3321	Wamakko, add
 
-la val lga_code lganame
-tab lga_code
+* DOUBLE COUNTING OF RUTF STOCK at OTP
+* Any double counting penalized full amount - 15%
+gen temp_dc_util= dc_util*100
+gen temp_dc_bal= dc_bal*100
+format temp_dc_util temp_dc_bal %8.1f
+table state, c(m temp_dc_util m temp_dc_bal)
+* Add score/penalty for double counting
+gen dc_temp=0
+replace dc_temp = 1 if dc_util==1 | dc_bal==1
+bysort SiteID Type: egen dc_score = max(dc_temp)
+drop dc_temp
 
-replace state ="Bauchi" if SiteID==5
+
+
+
+
 
 ************************************
 * Dispatches versus Receipts - STATE
@@ -373,22 +469,25 @@ replace lga_RUTF_in=. if Level!="First"
 * Graph below by month is not interesting
 * but then is analysis over past 8 weeks interesting? Yes, if we can show improvements
 * Set to zero all reports older than 8 weeks in past
-replace state_RUTF_out = 0 if current8!=1
-replace lga_RUTF_in = 0 if current8!=1
-* current8!=1 - is there any value of using current8 = yes then I do not make stupid mistakes
+replace state_RUTF_out = 0 if current8 !=1
+replace lga_RUTF_in    = 0 if current8 !=1
+* current8 !=1 - is there any value of using the var current8 = yes then I do not make stupid mistakes
 
 sort SiteID Type WeekNum
 by SiteID : gen cum_state_out=sum(state_RUTF_out)
 * this calculates cumulative sum for all data LGA RUTF in  - no need to select certain LGAs
 by SiteID : gen cum_lga_in=sum(lga_RUTF_in)
 
-* To reset this graph every month use line below
-* by SiteID RepMonth: gen cum_state_out=sum(state_RUTF_out)
-* by SiteID RepMonth: gen cum_lga_in=sum(lga_RUTF_in)
+* Present the data from the last 8 weeks. 
 
 * Difference in state and LGA reports
 gen state_diff = cum_state_out - cum_lga_in
 replace state_diff=. if state_diff==0
+
+
+
+
+
 
 * order SiteID Type WeekNum state lga state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff SiteID Level 
 
@@ -401,7 +500,7 @@ table state if Level=="First", c (m diff_error)
 * Note missing data for Bauchi.
 
 * How to report these data
-la var state_RUTF_out "st-dist"
+la var state_RUTF_out "state distribution"
 
 * levelsof 
 * display only the cases from last 8 weeks
@@ -439,6 +538,11 @@ des site_RUTF_in
 replace lga_RUTF_out =. if current8!=1
 replace site_RUTF_in =. if current8!=1
 
+
+
+
+
+
 * These variables were calculated by aggregate / collapse function at beginning of this file. 
 bysort SiteID: gen cum_lga_out=sum(lga_RUTF_out)
 * this calculates cumulative sum for all data LGA RUTF in  - no need to select certain LGAs
@@ -463,6 +567,12 @@ egen overall_lga_diff = max(abs(lga_diff))
 bysort lga: egen max_lga_diff = max(abs(lga_diff))
 replace diff_error = max_lga_diff / overall_lga_diff if Level=="Second"
 
+
+* Create base penalty if there are errors
+replace diff_error = diff_error + `basepen' if diff_error!=0
+replace diff_error = 1 if diff_error >1
+tab diff_error, m
+* hist diff_error
 
 
 sort SiteID Type WeekNum
@@ -512,6 +622,10 @@ replace lga_RUTF_out =. if current8!=1
 replace site_RUTF_in =. if current8!=1
 
 
+
+
+
+
 * STATE level table. 
 table WeekNum, c(sum state_RUTF_out sum lga_RUTF_in sum state_diff ) f(%8.0f)
 * previously included missing stock reports in table. 
@@ -530,32 +644,46 @@ format RUTF_in RUTF_out RUTF_bal F75_bal F100_bal %8.1f
 
 * Score is based on: 
 * 	Complete Reporting
+
 * 	Errors in balance reporting
-* 	Reporting in decimal points
+
 * 	Cumulative difference between dispatch and receipt between State and LGA
 
 * corrections for missing data. 
 replace future_rept_score=1 if future_rept_score==. 
+
 * If there was no reporting at State or LGA then penalize LGA 100% for diff error. 
 replace diff_error =1 if comp_sto_score ==1
 * Remove duplicate stock error scores - set diff_error = missing if there was no reporting for 8 weeks
-replace diff_error=. if current8!=1 & comp_sto_score !=1
+replace diff_error=. if current8 !=1 & comp_sto_score !=1
 
+* if there are no data, then give full penalty
 replace overall_calc_error=1 if overall_calc_error==. 
-* Why? 
-* drop if SiteID > 9999
+
+
+
+
 
 * DOUBLE CHECK THAT THESE ARE VALID FOR PAST 8 WEEKS
-gen stock_report_score = round(100 - (comp_sto_score *40) - (future_rept_score * 5) - (diff_error * 25) - (overall_calc_error * 25))
+gen stock_report_score = round(100 - (comp_sto_score *40)  - (diff_error * 30) - (overall_calc_error * 15) - (dc_score *15))
 * is diff error in reverse ?
+order SiteID state lga SiteName comp_sto_score  diff_error overall_calc_error dc_score stock_report_score
 
-* missing (timely * 5) a give away for now. 
+
+* have to make score = same number for site so that recode works - sd must = 0.
+
+* missing - a give away for now. 
 table SiteID state if Level!="Site", c (m stock_report_score) 
 
 gen lga_state = lga + " - " + state
 * TEMPORARILY
 drop if lga_state ==" - "
 
+
+* Weeknumber for document name
+quietly: sum CurrWeekNum, d 
+local currentweek = r(p50)
+replace CurrWeekNum = `currentweek' 
 
 * create color group for assignment of colors
 recode stock_report_score (0/49=1)(50/79=2)(80/100=3), gen(tercile_score)
@@ -564,49 +692,52 @@ separate stock_report_score, by(tercile_score) veryshortlabel
 format lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in site_RUTF_rec lga_diff state_RUTF_out lga_RUTF_in /// 
 	cum_state_out cum_lga_in state_diff RUTF_beg RUTF_in RUTF_out RUTF_bal %8.1f
 format twoweeklga fourweeklga med_con_lga %8.0f
+
 * At some point - change site_RUTF_rec to site_RUTF_in
 sort SiteID Type WeekNum
 destring state_code, replace
 gen weekly_use = med_con_lga
 format weekly_use %8.0f
 
-	
+tab state_code, m 
+drop if state_code==30
+drop if state_code==41
 
-***************
-*  START HERE
-***************
 
-* Bauchi  5
-* Gombe  16
-* Jigawa 17
-* Sokoto 33
-* Yobe 	 35
+* Force graph on state and LGA level stocks to appear
+replace WeekNum = CurrWeekNum if WeekNum==. & Level=="First"
+list SiteID WeekNum Level if SiteID < 36
 
-local choosestate = 33
+
+replace RUTF_bal = 0 if WeekNum==CurrWeekNum & Level=="First"	
+
+la var URN "Phone Number"
+la var RUTF_bal "RUTF Balance Cartons"
+la var weekly_use "Weekly Use Cartons"
+la var stocknote "Note"
+la var complete_stock_reporting "Percent complete reporting"
+la var StoMiss "Missing week reports"
+
 
 
 * Reminders for LGA and State (only Stock)
-* Create save file name Sokoto CMAM Report - Week 32
-*local report_name = "CMAM_Report_Week " + CurrWeekNum
-*di `report_name'
-
+* Create save file name, for example Sokoto CMAM Report - Week 32
 
 local SITE ="calc_flag==1 & Level!="Site" & current*==1 & state_code==`choosestate'"
+ 
+cap log close
  
 ***************
 * STOCKS REPORT
 ***************
 
-
-
-log using "C:\Analysis/CMAM_Stock_Rep_`choosestate'.log", replace
-
+log using "C:\Analysis/`choosestate'_CMAM_Stock_Week`currentweek'.log", replace
+set linesize 200
 *******************************************************
 * MANAGEMENT OF SEVERE ACUTE MALNUTRITION STOCKS REPORT
 *******************************************************
 
 list SiteID SiteName CurrWeekNum if SiteID == `choosestate' & one_case==1
-
 
 * STATE WAREHOUSE STOCK LEVELS
 graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
@@ -618,49 +749,55 @@ graph bar (sum) RUTF_bal if SiteID==`choosestate', over(WeekNum) 	///
 	saving(state_rutf_bal,replace)
 
 * LGA WAREHOUSE STOCK LEVELS
-* change to weekly consumption
-list WeekNum SiteName Name URN RUTF_bal weekly_use stocknote if Level=="Second" & state_code==`choosestate' & one_case==1 ,abb(20) noobs 
 
-
+list WeekNum SiteName Name URN RUTF_bal weekly_use stocknote if Level=="Second" & state_code==`choosestate' & one_case==1, subvar abb(20) noobs 
 
 * STATE AND LGA LEVEL STOCK OUTS (past 8 weeks)
-list WeekNum state lga SiteName Name URN RUTF_bal stocknote if stockout==1 & Level!="Site" & state_code==`choosestate', noobs
+
+list WeekNum state lga SiteName Name URN RUTF_bal stocknote if stockout==1 & Level!="Site" & state_code==`choosestate', subvar noobs
 
 * OUTPATIENT THERAPEUTIC PROGRAMME LEVEL STOCK OUTS (past 8 weeks)
 
-list WeekNum SiteName Name URN RUTF_bal stocknote if stockout==1 & Type=="OTP" & state_code==`choosestate', noobs
+list WeekNum SiteName Name URN RUTF_bal stocknote if stockout==1 & Type=="OTP" & state_code==`choosestate', subvar noobs
 
 * STABILISATION CENTRE LEVEL STOCK OUTS (F75 and F100 reported in cartons) during past 8 weeks
 
-list WeekNum SiteName Name URN F75_bal F100_bal stocknote if stockout==1 & Type=="SC" & state_code==`choosestate', noobs
+list WeekNum SiteName Name URN F75_bal F100_bal stocknote if stockout==1 & Type=="SC" & state_code==`choosestate', subvar noobs
 
-
+* STOCK REPORT SCORES
+* are based on 
+* 1.  Complete Reporting for all of the previous 8 weeks
+* 2.  No errors in STOCK Reports over previous 8 weeks (Ending balance from previous week = opening balance of current week)
+* 3.  No errors in accounting STOCK movement from state to LGA or from LGA to OTP. 
 
 * STATE LEVEL STOCK REPORT SCORE
-graph hbar (mean) stock_report_score? if Level=="First" , over(state, sort(stock_report_score)) /// 
+graph hbar (mean) stock_report_score? if Level=="First" , over(state, label(labs(small)) sort(stock_report_score)) /// 
 	bar(1, color(red))bar(2, color(orange*.85)) ///
 	bar(3,color(green*.75)) legend(off) ///
-	title("Stock Reporting Scores by STATE", size(medium)) ///
-	ytitle("Score") ///
+	title("Stock Reporting Scores at STATE level", size(medium)) ///
+	ytitle("Score") ysc(r(100)) ytick(0(20)100) ylabel(0(20)100) blabel(total) ///
 	saving(state_score, replace)
+
+*KATSINA
+table SiteName if SiteID >2000 & SiteID <2099, c(m RUTF_in m RUTF_out m RUTF_bal) 
 	
 * LGA LEVEL STOCK REPORT SCORE
-graph hbar (mean) stock_report_score? if Level=="Second" , over(lga_state, sort(stock_report_score)) /// 
+graph hbar (mean) stock_report_score? if Level=="Second" & state_code==`choosestate' , over(lga_state,  label(labs(small)) sort(stock_report_score)) /// 
 	bar(1, color(red))bar(2, color(orange*.85)) ///
 	bar(3,color(green*.75)) legend(off) ///
-	title("Stock Reporting Scores by LGA", size(medium)) ///
-	ytitle("Score") ///
+	title("Stock Reporting Scores at LGA level", size(medium)) ///
+	ytitle("Score") ysc(r(100)) ytick(0(20)100) ylabel(0(20)100) blabel(total) ///
 	saving(lga_score, replace)
 	
-	
+
 
 * MISSING STOCK REPORTS FROM STATE AND LGA
-* Table complete reporting
+* Table of Percent of Complete Reporting & Missing Weekly Reports. 
 sort complete_stock_reporting
 
-list state SiteID complete_stock_reporting StoMiss if Level=="First" & state_code==`choosestate' & one_case==1,abb(20) noobs 
+list state SiteID complete_stock_reporting StoMiss if Level=="First" & state_code==`choosestate' & one_case==1,subvar abb(20) noobs 
 
-list lga SiteID complete_stock_reporting StoMiss if Level=="Second" & state_code==`choosestate' & one_case==1,abb(20) noobs 
+list lga SiteID complete_stock_reporting StoMiss if Level=="Second" & state_code==`choosestate' & one_case==1, subvar abb(20) noobs 
 
 
 * ERRORS IN STOCK REPORTS
@@ -670,10 +807,13 @@ sort SiteID Type WeekNum
 * The errors are either calculation mistakes of greater than 1 carton of RUTF or calculation mistakes leading negative balances. 
 gsort - RUTF_diff
 
-list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & current8==1 & state_code==`choosestate',abb(20) noobs 
+list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level!="Site" & current8==1 & state_code==`choosestate', ///
+	sepby(SiteID) abb(18) noobs 
 
 * SITE LEVEL ERRORS
-list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & current8==1 & state_code==`choosestate',abb(20) noobs 
+
+list WeekNum SiteName Name URN RUTF_beg RUTF_in RUTF_out RUTF_bal RUTF_diff if calc_flag==1 & Level=="Site" & current8==1 & state_code==`choosestate',  ///
+   sepby(SiteID Type) abb(18) noobs 
 
 sort SiteID Type WeekNum
 
@@ -687,25 +827,33 @@ sort SiteID Type WeekNum
 *cum_state_out 		= Cumulative total of RUTF distributed from STATE Warehouse to LGA stores
 *cum_lga_in 		= Cumulative total of RUTF received at LGA stores from STATE Warehouse
 *state_diff 		= Difference between reports from State and LGA
-list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff if Level=="First" & current8==1 & state_code==`choosestate' ,abb(20) noobs 
+list WeekNum state state_RUTF_out lga_RUTF_in cum_state_out cum_lga_in state_diff if Level=="First" & current8==1 & state_code==`choosestate' , ///
+	sepby(SiteID ) abb(18) noobs 
 
 * LGA LEVEL DISPATCHES vs OTP LEVEL RECEIPTS
 * Please see the following explanations of variable names for table below
 
-*lga_RUTF_out 	= RUTF distributed from STATE Warehouse to LGA stores
+*lga_RUTF_out 	    = RUTF distributed from STATE Warehouse to LGA stores
 *site_RUTF_in 		= RUTF received at LGA stores from STATE Warehouse
 *cum_lga_out 		= Cumulative total of RUTF distributed from STATE Warehouse to LGA stores
 *cum_site_in 		= Cumulative total of RUTF received at LGA stores from STATE Warehouse
-*lga_diff 		= Difference between reports from State and LGA
-list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in lga_diff if Level=="Second" & current8==1 & state_code==`choosestate' ,abb(20) noobs 
+*lga_diff 		    = Difference between reports from State and LGA
+list WeekNum lga lga_RUTF_out site_RUTF_in cum_lga_out cum_site_in lga_diff if Level=="Second" & current8==1 & state_code==`choosestate' , ///
+	sepby(SiteID Type) abb(18) noobs 
 
 log close
 
-graphlog using C:\Analysis\CMAM_Stock_Rep_`choosestate'.log, gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
-
+graphlog using /// 
+	"C:\Analysis/`choosestate'_CMAM_Stock_Week`currentweek'.log", /// 
+	gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) replace
+* add keeptex to option if you want edited latex file. 
 * graphlog using "C:\Analysis\CMAMRep.log", gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) keeptex replace
 
 * Graphlog does not work when all graphs are in the same for loop
+
+* If the problem persists, increase the number of characters Stata writes to the log file before creating a line break.  
+* Type set linesize # (without the quotes), where # is the maximum number of characters on each line.
+
 
 end
 
@@ -743,5 +891,9 @@ graph bar RUTF_in RUTF_out RUTF_bal if SiteID==33, over(WeekNum) stack
 graph bar (sum) RUTF_in if Type=="OTP", over(WeekNum) 
 
 
+
+END
+
+graphlog using C:\Analysis/2_CMAM_Stock_Week46.log, gdirectory(C:/TEMP/Working/) porientation(landscape) fsize(10) lspacing(1) replace
 
 
