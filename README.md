@@ -1,4 +1,4 @@
-# IMAMD-Flows
+# IMAM-Flows
 RapidPro flows for IMAM for integration with Dashboard
 
 In English and French
