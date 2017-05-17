@@ -2,11 +2,15 @@
 set more off
 use "C:\TEMP\Working\REG_delete", clear
 
+* Crash if SiteID and Type are not included
+des SiteID
+des Type
 
 * STOCK ALERTS
 * Create list of all personnel with their LGA and SNO telnums for stock alerts
 sort SiteID
 drop if SiteID ==.
+drop if SiteID ==0
 
 drop if SiteID > 99
 
@@ -15,25 +19,26 @@ gen SNO1 = 0
 gen SNO2 = 0
 gen SNO3 = 0
 
-gen SNO1num = URN
+gen SNO1num  = URN
 gen SNO1name = Name
 gen SNO1mail = Mail
 
-gen SNO2num = URN
+gen SNO2num  = URN
 gen SNO2name = Name
 gen SNO2mail = Mail
 
-gen SNO3num = URN
+gen SNO3num  = URN
 gen SNO3name = Name
 gen SNO3mail = Mail
 
-order SiteID state_code state  Name Post URN Mail SNO1name
+order SiteID state_code state Name Post URN Mail SNO1name
 
 
 * Force include Laraba - Yobe
 replace SNO1name = "Laraba Audu." if state_code=="35"
 replace SNO1num = "+2347088113257" if state_code=="35"
 replace SNO1mail = "Laraiaudu@yahoo.com" if state_code=="35"
+
 
 
 * Adamawa-2
@@ -50,6 +55,7 @@ replace SNO1=1 if Name=="Hassana Suleiman Jibrin."
 replace SNO2=1 if Name=="Abdullahi Alhaji Madi."
 replace SNO3=1 if Name=="Aminu Usman Danzomo."
 * Ifeanyi
+
 * Gombe-16
 replace SNO1=1 if Name=="Suleiman Mamman."   
 replace SNO2=1 if Name=="Ibrahim Inuwa Lano."
@@ -59,18 +65,34 @@ replace SNO1=1 if Name=="Saidu Umar Adamu."
 replace SNO2=1 if Name=="Olatomiwa Olabisi."
 replace SNO3=1 if Name=="Temidayo Esther Ajala."
 * Kaduna -18
-replace SNO1=1 if Name=="x"
-replace SNO2=1 if Name=="x"
-replace SNO3=1 if Name=="x"
+replace SNO1=1 if Name=="Jane Gwani."
+replace SNO2=1 if Name=="Hauwa Usman."
+replace SNO3=1 if Name=="Saratu Aduwak."
 * Kano - 19
 replace SNO1=1 if Name=="Murtala M Inuwa."
 replace SNO2=1 if Name=="Sabo Wada."
 replace SNO3=1 if Name=="Ayodeji Osunkentan."
+
+* CORRECT ERROR THAT THE KATSINA PERSONNEL DO NOT EXPORT TO IMAM SUPERVISION. 
+
 * Katsina -20
 replace SNO1=1 if Name=="Rabia Mohammed Sno ."
-replace SNO2=1 if Name=="Ijagila Mark ."
-replace SNO3=1 if Name=="Abdulhadi Abdulkadir."
-* Kebbi
+replace SNO2=1 if Name=="Abdulhadi Abdulkadir."  
+* +234 806 082 1551
+* hadabdul@yahoo.co.uk
+
+* "Aishatu Abdullahi" was not trained in RapidPro reporting
+replace SNO3=1 if Name=="Hamisu Idris K/bai."   
+* +2348034677471
+* hamisuhara@yahoo.com.\
+
+* notice of Katsina personnel from Abigail. 
+*Rabia Mohammed Sno- state nutrition officer
+*Aishatu Abdullahi Randawa- ASNO
+*Hamisu Hara – Stock manager.
+
+
+* Kebbi - 21
 replace SNO1=1 if Name=="Beatrice Kwere."
 replace SNO2=1 if Name=="Abdulmalik Muhammad Illo ."
 replace SNO3=1 if Name=="Shamsu Muhammed."
@@ -89,7 +111,9 @@ replace SNO2=1 if Name=="Auwal Ibrahim Jauro ."
 replace SNO3=1 if Name=="Adeleye Grace Bunmilola."
 * Zamfara - 36
 replace SNO1=1 if Name=="Aliyu Ibrahim."
-replace SNO2=1 if Name=="Saifullahi Abdullahi."
+* No stocks person identified
+* Ayobami & John are nutrition consultants
+replace SNO2=1 if Name=="Ayobami Oyedeji."
 replace SNO3=1 if Name=="John Tsebam ."
 * Ayobami Oyedeji.   
 * Azeezat O. Sule.   
@@ -118,18 +142,11 @@ order SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mai
 keep SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
 
 * poor hack to force collapse to work
-* take last row of each state
-replace SNO1name = SNO1name[_n-1] if SNO1name==""
-replace SNO1num = SNO1num[_n-1] if SNO1num==""
-replace SNO1mail = SNO1mail[_n-1] if SNO1mail==""
 
-replace SNO2name = SNO2name[_n-1] if SNO2name==""
-replace SNO2num = SNO2num[_n-1] if SNO2num==""
-replace SNO2mail = SNO2mail[_n-1] if SNO2mail==""
+* ERROR HERE.  HACK DID NOT WORK CORRECTLY REDO.
+* should merge out and merge back in all data
 
-replace SNO3name = SNO3name[_n-1] if SNO3name==""
-replace SNO3num = SNO3num[_n-1] if SNO3num==""
-replace SNO3mail = SNO3mail[_n-1] if SNO3mail==""
+* intro of state code above may correct bad hack
 *cleaning bad hack
 replace SNO2name = "" if SNO1name=="Saidu Umar Adamu."
 
@@ -171,19 +188,59 @@ drop if Name=="Abbas Abdullahi Kalgo."
 drop if Name=="Abubakar. Umar."
 drop if Name=="Bashir Lawan."
 drop if Name=="Aliyu Muhammed."
+drop if Name=="Zainab Nayaya." & SiteID==1703 
+drop if Name=="Sani Bedi." & SiteID==2109 
+*Duplicate for Hadiza Gidado. This can be deleted later
+drop if URN =="+2348029854140"
+* Drop duplicate Bello Umar
+drop if URN =="+2347035888665"
+* Duplicate of same person Amina
+drop if Name=="Amin Yahaya Muhammad."
+* extra coordinator Abubakar ?
+drop if Name=="Abubakar  Umar."
+* Jere LGA Borno
+drop if Name=="Maaji Fali."
+* Monguno LGA Borno
+drop if Name=="Zara Modu."
+* Birnin Kebbi LGA Kebbi
+drop if Name=="Altine Muhammad."
+* Kaugama, Jigawa
+drop if Name=="Danladisule."
 
+* Kano state
+* Bichi LGA
+drop if Name=="Hajiya Lami Garba." 
+* Hajiya was old NFP - replaced in Mar17
+* else LGA nut foc is Amina Yusuf Turaki .
+
+* Abdulhadi Abubakar is name of state stores manager of Katsina state. 
+drop if Name=="Abdulhadi Abubakar." & SiteID==2005
+* duplicate name with different spelling of LGA focal point. 
+drop if Name=="Lami   Garba." & SiteID==1905
+drop if Name=="Lami Garba." & SiteID==1905 
 
 * late registrations on 7 Nov for Katsina ???
 drop if Name=="Umar Muntari."
 drop if Name=="Abdul Hadi Abubakar." 
 drop if Name=="Rapidpro."
 
+* Late registration in Adamawa
+drop if Name=="Ularamai Raphael ."
+
+drop if Name=="Binta.Y.Saulawa."
+
+
+* Batsari LGA Katsina
+drop if Name== "Abdul Yasore"
+drop if Name== "Abdul Yasore."
+drop if Name== "Assama'u Tukur."
+
 * more than on entry by name
 egen only_one = tag(SiteID Name)
 drop if only_one !=1
 tab Name, m 
 
-* more than on entry by SiteID
+* more than one entry by SiteID
 egen only_one_id = tag(SiteID )
 list SiteID Name state lga Post if only_one_id!=1
 
@@ -230,7 +287,7 @@ drop if SiteIDord !=1
 drop if SiteID ==.
 
 drop if SiteName=="" & Type=="OTP" 
-drop if SiteName=="" &  Type=="SC"
+drop if SiteName=="" & Type=="SC"
 
 keep   SiteID SiteName Type state_code state lga_code lga 
 order  SiteID SiteName Type state_code state lga_code lga 
@@ -273,14 +330,25 @@ tab Type, m
 
 * Week Number
 destring WeekNumValue, gen(WeekNum) force
-* someone entered weeknum 1.5
-replace WeekNum = floor(WeekNum)
+* delete entry if week number is not integer
+drop if WeekNum != floor(WeekNum)
+*replace WeekNum = floor(WeekNum)
 tab WeekNum, m
+
+gen report_date = dofc(LastSeen)
+format report_date %td
+gen Year = year(report_date)
+* Unfortunate Error of poorly trained personnel
+* Week 1 was reported as Week 53 at end of 2016 
+*************
+* don't reuse this code in 2018 or later
+************* 
+replace WeekNum = 1 if WeekNum ==53 
 
 * Age Group (only used currently in SC)
 gen AgeGroup = "6-59m" if Type =="OTP"
 * When there is reporting for children 0-5m in OTP will have to change line above. 
-replace AgeGroup =  agegroupCategory if Type =="SC"
+replace AgeGroup = agegroupCategory if Type =="SC"
 tab AgeGroup, m 
 
 * Data from OTP flow (o stands for OTP)
@@ -322,13 +390,18 @@ gen PROnodata = Beg==. & Amar==. & Tin==. & Dcur==. & Dead==. & Defu==. & Dmed==
 * Note 1 = no data 
 drop if PROnodata ==1
 
-* Remove duplicates
 destring SiteID, replace force
 format SiteID %10.0f
-gsort SiteID WeekNum -LastSeen
-by SiteID WeekNum: egen unique = seq()
+
+* Drop program data with SiteID's that are not correct. 
+drop if SiteID < 101110001
+
+* Remove duplicates
+gsort SiteID Type WeekNum  -LastSeen
+by SiteID Type WeekNum : egen unique = seq()
+order SiteID Type WeekNum Level
 * Double check the selection of older entries to drop
-* tab unique, m 
+tab unique, m 
 * order SiteID WeekNum Name unique LastSeen Beg Amar
 drop if unique !=1 
 
@@ -344,6 +417,8 @@ save "C:\TEMP\Working\PRO_delete", replace
 import excel "C:\TEMP\sto.xlsx", sheet("Runs") firstrow clear
 * MUST INCLUDE in the download. 
 * SiteID 
+des SiteID
+
 drop if SiteID =="Nat"
 drop if SiteID =="Aclo 1234567890"
 
@@ -362,23 +437,30 @@ replace SiteID = StoSiteIDValueIMAMStock if SelfReportCategory =="No"
 destring SiteID, replace force
 format SiteID %10.0f
 
-
 * Type (OTP or SC)
 cap drop Type
 * There is no Type var in data.
 gen Type = route_by_typeCategoryIMAMS
-
 replace Type="" if Type!="OTP" & Type!="SC"
-
 *route_by_type  /// new var name
 * replace Type if reported by LGA FP 
 replace Type= StoTypeCategoryIMAMStock if Type==""
-
 
 * DOUBLE CHECK IF THE TYPE VAR NAME IS CORRECT. 
 
 * WeekNum
 destring WeekNumValue, gen(WeekNum) force
+replace WeekNum = floor(WeekNum)
+tab WeekNum, m
+
+gen report_date = dofc(LastSeen)
+format report_date %td
+gen Year = year(report_date)
+* Unfortunate Error of poorly trained personnel
+* Week 1 was reported as Week 53 at end of 2016 / don't reuse over years 
+replace WeekNum = 1 if WeekNum ==53 
+
+
 drop WeekNumCategoryIMAMStock WeekNumValueIMAMStock WeekNumTextIMAMStock
 
 * Review RUTF stock
@@ -456,9 +538,10 @@ gen STOnodata = RUTF_in==. & RUTF_out==. & RUTF_bal==. & F75_bal==. & F100_bal==
 drop if STOnodata ==1
 
 * Remove duplicates
-gsort SiteID WeekNum -LastSeen
-by SiteID WeekNum: egen unique = seq()
-* tab unique, m 
+gsort SiteID Type WeekNum -LastSeen
+by SiteID Type WeekNum: egen unique = seq()
+order SiteID Type WeekNum
+tab unique, m 
 drop if unique !=1
 
 keep URN Name SiteID WeekNum Role Level Type RUTF_in RUTF_out RUTF_bal F75_bal F100_bal LastSeen FirstSeen dc_util dc_bal
@@ -474,13 +557,35 @@ import excel "C:\TEMP\lga.xlsx", sheet("Runs") firstrow clear
 * Crash if SiteID is not present - MUST INCLUDE in the download. 
 des SiteID 
 
+* Drop if confirmation equals No or SiteID = X
+drop if ConfirmCategory =="No"
+drop if SiteID =="X"
+
+* Saratu Aduwak of KADUNA was registered with SiteID 18/S 
+replace SiteID = "18" if SiteID =="18/S"
+
+destring SiteID, replace force
+* tab SiteID, m
+
+* tab WeekNumValueIMAMLGAState, m 
+destring WeekNumValueIMAMLGAState, gen(WeekNum) force
+* WeekNum
+replace WeekNum = floor(WeekNum)
+* tab WeekNum, m
+
 * The State and LGA stocks are only for the reporter's SiteID. 
 * Remove all entries with incorrect SiteIDs
-drop if strlen(SiteID)>4 
+sort SiteID WeekNum
+order SiteID WeekNum
 
-gen WeekNum = WeekNumValue
-destring WeekNum, replace force
-replace WeekNum=. if WeekNum < 22 | WeekNum > 53 
+
+gen report_date = dofc(LastSeen)
+format report_date %td
+gen Year = year(report_date)
+* Unfortunate Error of poorly trained personnel
+* Week 1 was reported as Week 53 at end of 2016 / don't reuse over years 
+replace WeekNum = 1 if WeekNum ==53 
+
 
 * RUTF_in is string
 gen RUTF_in = RUTF_inValue
@@ -488,14 +593,13 @@ gen RUTF_out = RUTF_outValue
 gen RUTF_bal = RUTF_balValue
 destring RUTF_in RUTF_out RUTF_bal, replace force
 
-* Drop if confirmation equals No or SiteID = X
-drop if confirmCategory =="No"
-drop if SiteID =="X"
+
 
 * Look for duplicate data on with same WeekNum (all corrections will have more than one entry with same SiteID and WeekNum).
-destring SiteID, replace force
+
 gsort SiteID WeekNum -LastSeen
 by SiteID WeekNum: egen unique = seq()
+order SiteID WeekNum LastSeen report_date RUTF_in RUTF_out RUTF_bal unique
 drop if unique !=1
 
 keep URN Name SiteID WeekNum RUTF_in RUTF_out RUTF_bal LastSeen FirstSeen 
@@ -519,7 +623,17 @@ drop _merge
 save "C:\TEMP\Working\STO_delete", replace
 
 use "C:\TEMP\Working\SITE_delete.dta", clear
-drop if SiteID >9999
+* Drop errors in SiteID
+drop if SiteID >9999 
+* Drop National Level 
+drop if SiteID ==0
+* Drop reporters who are no longer working in IMAM
+drop if SiteID ==99
+* Error with Batsari LGA Katsina
+drop if SiteID == 2003 & SiteName==""
+* REmove IMAM supervision and check if this error still exists.
+
+
 merge 1:m SiteID using "C:\TEMP\Working\LGA_delete"
 drop _merge
 save "C:\TEMP\Working\LGA_delete", replace
@@ -544,11 +658,12 @@ format report_date %td
 gen Year = year(report_date)
 la var Year "Year of Report"
 
-* Calculate ISO report week number
+* Calculate ISO REPORT week number
+* RepWeekNum
 * Test if leap year
 generate leap = cond(mdy(2,29,year(report_date)) < . , 1, 0)
 gen dow = dow(report_date)
-* Set sunday to 7 not zero. 
+* Set sunday to 7 not zero. Sunday is last day of week for ISO weeks.
 replace dow = 7 if dow==0
 gen month = month(report_date)
 * Calculate ordinal date
@@ -557,9 +672,14 @@ recode month (1=0)(2=31)(3=59)(4=90)(5=120)(6=151)(7=181)(8=212)(9=243)(10=273)(
 recode month (1=0)(2=31)(3=60)(4=91)(5=121)(6=152)(7=182)(8=213)(9=244)(10=274)(11=305)(12=335), gen(temp2)
 gen ord_date = cond(leap==1, temp2 + day(report_date), temp + day(report_date))
 gen RepWeekNum =  floor(((ord_date - dow) + 10 ) / 7)
-*If a week number of 53 is obtained, one must check that the date is not actually in week 1 of the following year.
+* If RepWeekNum = 0 then recode to 52 of 53
+replace RepWeekNum = 52 if RepWeekNum==0 
+replace RepWeekNum = 53 if RepWeekNum==0 & leap==1
+* If a week number of 53 is obtained, one must check that the date is not actually in week 1 of the following year.
 
-* Calculate ISO current week number
+
+* Calculate ISO CURRENT week number
+* CurrWeekNum
 gen current_date = date("$S_DATE", "DMY") 
 format current_date %td
 replace leap = cond(mdy(2,29,year(current_date)) < . , 1, 0)
@@ -578,18 +698,66 @@ gen CurrWeekNum =  floor(((ord_date - dow) + 10 ) / 7)
 * If a week number of 53 is obtained, one must check that the date is not actually in week 1 of the following year.
 * If Thursday of first week of Jan day of week < 4 then assign week to following year. 
 disp CurrWeekNum
+local CurrWeekNumTemp = CurrWeekNum
+
 
 * LastSeen in the RapidPro data is the date of the reported flow. 
 * Calculate difference between weeknum and report date. 
 gen weekdiff =  WeekNum - RepWeekNum
+gen weekdifftemp = weekdiff
+* majority of errors of reporting in future are only 2 weeks in future
+* assume that report was made for past if more than 2 weeks in future. 
+* THIS IS A BAD HACK - USE DATES
+* here should use exact dates - year, weeknum
+* we know that the year is within 8 weeks of report date.
+
+* line below recodes the weekdiff for change of years - Between 44 and 52 (53) weeks of weekdiff
+replace weekdiff = WeekNum - 52 - RepWeekNum if weekdifftemp > 2
+drop weekdifftemp
+
+* First calculate weekdiff
 gen rep_date_error = 0
 replace rep_date_error = 1 if weekdiff < -8
-replace rep_date_error = 2 if weekdiff > 0
-la def date_error 0 "No error" 1 "Report > 8 weeks in the past" 2 "Report week number in future"
+replace rep_date_error = 2 if weekdiff > 0 
+replace rep_date_error = 9 if WeekNum ==.
+la def date_error 0 "No error" 1 "Report > 8 weeks in the past" 2 "Report week number in future" 9 "Missing WeekNum"
 label val rep_date_error date_error
 tab rep_date_error, m 
 
+* WeekNumDate is 7 days x # of week numbers difference from Report Date
+* Remove number of weeks from report date
+gen WeekNumDate = report_date + (weekdiff*7)
+* weekdiff is a negative number
+format WeekNumDate %td
+
+* hack to correct dates of WeekNumDate
+* replace january 1st to january 2nd (week 1 2017)
+replace WeekNumDate = date("20170102","YMD") if WeekNumDate ==date("20170101","YMD")
+* replace january 4th to january 2nd (week 1 2017)
+replace WeekNumDate = date("20170102","YMD") if WeekNumDate ==date("20170104","YMD")
+replace WeekNumDate = date("20161226","YMD") if WeekNum == 52
+* Be careful these corrections may be too aggressive
+
+
+* There are more than one dates per WeekNum - There should be only one for calculation purposes
+*list WeekNumDate if WeekNum==1
+gen WeekNumYear = year(WeekNumDate)
+bysort WeekNum WeekNumYear: egen WeekNumDateTemp = min(WeekNumDate)
+replace WeekNumDate = WeekNumDateTemp
+drop WeekNumDateTemp
+* check if calculation was correct
+order SiteID WeekNum WeekNumDate WeekNumYear RepWeekNum report_date Year CurrWeekNum current_date weekdiff
+tab WeekNumDate, m 
+
+
+* double check correct logic error in weekdiff calculation
+* order rep_date_error current_date CurrWeekNum Year report_date RepWeekNum WeekNum WeekNumDate weekdiff, last
+* sort weekdiff
+
 save "C:\TEMP\Working\CMAM_delete", replace
+
+list if WeekNum == 53
+
 
 
 * REMOVE LGA and STATE level data from CMAM dashboard 
@@ -603,13 +771,22 @@ sort SiteID Type WeekNum
 drop if SiteID < 9999
 
 * Delete data if there is a reporting date error (in ancient past or future)
+* no data are analysed from future or more than 8 weeks prior to report date. 
 drop if rep_date_error ==1 | rep_date_error ==2 
+
+
+
+
+
 
 gen id = [_n]
 gen End = Beg + Amar + Tin - Dcur - Dead - Defu - Dmed - Tout
 
 gen stockcode = "RUTF"
+
 * Create instock variable. 
+* RUTF_beg does not exist until it is created here - replace RUTF_beg with last weeks balance
+* Stocks reporting is simplified, only RUTF in, out and balance. 
 gen RUTF_beg= . 
 replace RUTF_beg = RUTF_bal[_n-1] if SiteID==SiteID[_n-1] & Type==Type[_n-1] & WeekNum==WeekNum[_n-1]+1
 
@@ -630,14 +807,24 @@ tab Defu
 tab Dmed
 tab Tout
 
-* Remove later
-* To have cleaner data
-drop if WeekNum<22
+* Data cleaning
 drop if URN ==""
+
+* Drop if WeekNum or State is missing
+drop if WeekNum ==. 
+drop if state ==""
+
+* Keep only 2017 data
+drop if Year <=2016
+
+* Delete data from end of 2016 with incorrect week number
+drop if Year ==2017 & WeekNum >`CurrWeekNumTemp' 
 
 export excel using "C:\TEMP\CMAMDashboard.xlsx", firstrow(variables) replace
 
-* analysis of stock data - using cartons versus weeks of stock
+list if WeekNum == 53 
+
+* analysis of stock data - utilization analysis by cartons versus weeks of available stock remaining in stores. 
 * this should be separate do file
 tostring SiteID, gen(SiteIDS)
 sort SiteID Type WeekNum
@@ -660,7 +847,14 @@ drop if SiteID < 9999 & Type=="OTP"
 sum CurrWeekNum, meanonly
 local currentweeknum =  `r(mean)' 
 local end = `r(mean)' - 1
-* Change this to 8 or 7 (weeks in past of complete reporting) 
+
+* Delete all data that is older than 8 weeks. 
+drop if rep_date_error !=0
+* this eliminated all the sites with no reports in past 8 weeks from receiving exact reminders. 
+
+* Ensure smooth transition from old to new year
+
+* Change this to 7 (weeks in past of complete reporting) 
 local start = `end' - 7
 
 gen PROnodata = Beg==. & Amar==. & Tin==. & Dcur==. & Dead==. & Defu==. & Dmed==. & Tout==.
@@ -670,48 +864,62 @@ gen STOnodata = RUTF_in==. & RUTF_out==. & RUTF_bal==. & F75_bal==. & F100_bal==
 *tab RUTF_in STOnodata , m
 
 * Create dummy vars across daterange for presence of PROGRAMME and STOCKS data
-forvalues week = `start'/`end' {
+forvalues i = `start'/`end' {
+	local week = cond(`i' < 1, `i'+52, `i')
 	gen Pdum`week' = 1 if WeekNum ==`week' & PROnodata!=1
 }
+* Must account for leap years in forvalues above when necessary. 
+
 * Create dummy vars for daterange for STOCKS data
-forvalues week = `start'/`end' {
+forvalues i = `start'/`end' {
+	local week = cond(`i' < 1, `i'+52, `i')
 	gen Sdum`week' = 1 if WeekNum ==`week' & STOnodata!=1
 }
+* Must account for leap years in forvalues above when necessary. 
+
 * Make sure that all sites are included. 
-* Collapse by SiteID including all week numbers
+* COLLAPSE DATA by SiteID including all week numbers
 * this removes only the one reported week number per line
 collapse (mean) CurrWeekNum (sum) Pdum* Sdum*, by(SiteID Type)
 
+* a better method might be to insert numbers instead of removing.  Try this in next version. 
 * The loop should produce a list of week numbers that site is expected to report for:
-* for example, MissProRept ="19 20 21 22 23 24 25 26"
+* for example, MissProRept =" 19 20 21 22 23 24 25 26 "
 gen str14 ProMiss = "" 
-forvalues num = `start'/`end' {
-	local temp = ProMiss + " " + "`num'"
+forvalues i = `start'/`end' {
+	local week = cond(`i' < 1, `i'+52, `i')
+	local temp = ProMiss + "x" + "`week'"
 	cap replace ProMiss = "`temp'"
 	disp ProMiss
 }
 * The loop should produce a list of week numbers that site is expected to report for:
-* for example, MissProRept ="19 20 21 22 23 24 25 26"
+* for example, MissProRept =" 19 20 21 22 23 24 25 26 "
 gen str14 StoMiss = "" 
-forvalues num = `start'/`end' {
-	local temp = StoMiss + " " + "`num'"
+forvalues i = `start'/`end' {
+	local week = cond(`i' < 1, `i'+52, `i')
+	local temp = StoMiss + "x" + "`week'"
 	cap replace StoMiss = "`temp'"
 	disp StoMiss
 }
 * Add a space to ensure that strip function works correctly. 
-replace ProMiss = ProMiss + " " 
-replace StoMiss = StoMiss + " " 
+replace ProMiss = ProMiss + "x" 
+replace StoMiss = StoMiss + "x" 
 
-forvalues week = `start'/`end' {
+forvalues i = `start'/`end' {
+	local week = cond(`i' < 1, `i'+52, `i')
 	* If you don't add space in subinstr after week below, it makes the list into a mess. 
-	capture replace ProMiss = subinstr(ProMiss,"`week' ","", .) if Pdum`week'==1
+	capture replace ProMiss = subinstr(ProMiss,"x`week'","", .) if Pdum`week'==1
 }
-forvalues week = `start'/`end' {
+forvalues i = `start'/`end' {
+	local week = cond(`i' < 1, `i'+52, `i')
 	* If you don't add space in subinstr after week below, it makes the list into a mess. 
-	capture replace StoMiss = subinstr(StoMiss,"`week' ","", .) if Sdum`week'==1
+	capture replace StoMiss = subinstr(StoMiss,"x`week'","", .) if Sdum`week'==1
 }
 egen ProReptTot = rowtotal(Pdum*)
 egen StoReptTot = rowtotal(Sdum*)
+
+replace ProMiss = subinstr(ProMiss,"x"," ", .)
+replace StoMiss = subinstr(StoMiss,"x"," ", .)
 
 * Merge with missing programme data with SiteID with phone numbers and names to send reminders. 
 merge 1:m SiteID Type using "C:\TEMP\Working\REG_delete"
@@ -750,7 +958,10 @@ tab StoReptTot, m
 * Remove personnel from the reminder who have already sent all reports. 
 egen MaxProRept = max(ProReptTot)
 egen MaxStoRept = max(StoReptTot)
-drop if ProReptTot==ProReptTot & StoReptTot==MaxStoRept
+
+* There is a mistake above.  The max(ProReptTot)=9 
+* There should only be 8 reports for past 8 weeks
+drop if ProReptTot>=8 & StoReptTot>=8
 * Remove personnel who are not registered for CMAM reporting
 drop if SiteID==.
 
@@ -850,7 +1061,7 @@ replace Level ="National" if Level=="N" | Level=="n" | Level=="Nat" | Level=="na
 gen SID = SiteID
 replace Level ="Site" if SID > 9999
 tostring SiteID, replace
-drop if state_code =="1" | state_code=="4" | state_code=="18" | state_code=="30"
+drop if state_code =="1" | state_code=="4" | state_code=="30"
 
 egen one_site = tag(SiteID)
 tab one_site Level, m
@@ -888,3 +1099,50 @@ foreach l of local levels {
 } 
 log close
 
+
+END
+
+sort SiteID WeekNum 
+order SiteID WeekNum 
+
+
+*****************
+* Borno registration 24- 28 April 2017
+ use "C:\TEMP\Working\REG_delete", clear
+ drop if state_code != "8"
+ sort FirstSeen
+ 
+* first registration in Borno on week of 24- 28 April 2017
+* FirstSeen - 24apr2017 12:47:09
+
+gen reg_date = dofc(FirstSeen)
+format reg_date %td
+
+*drop if reg_date < dmy(24, 4, 2017)
+drop if reg_date < mdy(4,24,2017)
+
+drop SiteID SiteTemp Site_inputCategoryIMAMRegi Site_inputTextIMAMRegister ContactUUID
+rename Site_inputValueIMAMRegiste siteid
+drop LastSeen NameCategoryIMAMRegister NameValueIMAMRegister NameTextIMAMRegister
+drop Post_supCategoryIMAMRegist Post_supValueIMAMRegister Post_supTextIMAMRegister TypeCategoryIMAMRegister TypeValueIMAMRegister 
+drop TypeTextIMAMRegister Post_impCategoryIMAMRegist Post_impValueIMAMRegister Post_impTextIMAMRegister MailCategoryIMAMRegister 
+drop MailValueIMAMRegister MailTextIMAMRegister state_lgt Groups
+
+
+sort Name
+replace Name = subinstr(Name, ".", "",.)
+replace Name=trim(Name)
+
+replace Name = "Zakariyah Mohammed" if Name == "Zakariya Mohammed"
+gen dupname = 0
+replace dupname = 1 if Name == Name[_n-1]
+
+export excel using "Borno_Apr17", firstrow(variables) replace
+
+count if dupname ==0
+* bysort reg_date: count  if dupname ==0
+drop if dupname ==1
+gen one = 1
+table reg_date, c(count one) 
+
+ 

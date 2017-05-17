@@ -34,13 +34,13 @@ import excel "C:\TEMP\reg.xlsx", sheet("Contacts") firstrow
 * Crash program if SiteID is not included in reg.
 sort SiteID
 
+* Type
+* Crash program if Type is not included in reg.
+tab Type, m
+
 * CLEAN ALL THE FOLLOWING IN THE RAPIDPRO DATABASE. 
 
 *One person entered a SiteID with oooo' s instead of zeros. 
-
-* Correction for Bashiru Abubakar
-* replace Site_inputCategory ="Second" if SiteID=="3308"
-
 
 * The inputed text for SITE is - Site_inputTextIMAMRegister
 order SiteID Site_inputCategoryIMAMRegi Site_inputValueIMAMRegiste Site_inputTextIMAMRegister
@@ -295,6 +295,32 @@ replace lga="SULE TANKARKAR" if lga =="1725"
 replace lga="TAURA" if lga =="1726"
 replace lga="YANKWASHI" if lga =="1727"
 
+* Kaduna
+replace lga="BIRNIN GWARI" if lga =="1801"
+replace lga="CHIKUN" if lga =="1802"
+replace lga="GIWA" if lga =="1803"
+replace lga="IGABI" if lga =="1804"
+replace lga="IKARA" if lga =="1805"
+replace lga="JABA" if lga =="1806"
+replace lga="JEMA'A" if lga =="1807"
+replace lga="KACHIA" if lga =="1808"
+replace lga="KADUNA NORTH" if lga =="1809"
+replace lga="KADUNA SOUTH" if lga =="1810"
+replace lga="KAGARKO" if lga =="1811"
+replace lga="KAJURU" if lga =="1812"
+replace lga="KAURA" if lga =="1813"
+replace lga="KAURU" if lga =="1814"
+replace lga="KUBAU" if lga =="1815"
+replace lga="KUDAN" if lga =="1816"
+replace lga="LERE" if lga =="1817"
+replace lga="MAKARFI" if lga =="1818"
+replace lga="SABON GARI" if lga =="1819"
+replace lga="SANGA" if lga =="1820"
+replace lga="SOBA" if lga =="1821"
+replace lga="ZANGO KATAF" if lga =="1822"
+replace lga="ZARIA" if lga =="1823"
+
+
 * Kano
 replace lga="AJINGI" if lga =="1901"
 replace lga="ALBASU" if lga =="1902"
@@ -444,6 +470,7 @@ replace lga ="POTISKUM" if lga=="3514"
 replace lga ="TARMUWA" if lga=="3515"
 replace lga ="YUNUSARI" if lga=="3516"
 replace lga ="YUSUFARI" if lga=="3517"
+
 * Zamfara State
 replace lga="ANKA" 			if lga=="3601"
 replace lga="BAKURA" 		if lga=="3602"
@@ -459,7 +486,6 @@ replace lga="SHINKAFI" 		if lga=="3611"
 replace lga="TALATA MAFARA" if lga=="3612"
 replace lga="TSAFE" 		if lga=="3613"
 replace lga="ZURMI" 		if lga=="3614"
-
 
 replace lga = proper(lga)
 tab lga, m 
@@ -1461,7 +1487,7 @@ replace SiteName = "TRIUMPHC" if SiteID==	220120035
 replace SiteName = "PEACE HOSP" if SiteID==	220220036
 replace SiteName = "FREEDOM POLY HOSP" if SiteID==	220220037
 replace SiteName = "JEMITA MCH" if SiteID==	220220038
-replace SiteName = "YOLA SPECIALIST HOSP" if SiteID==	220210039
+replace SiteName = "YOLA SPEC HOSP" if SiteID==	220210039
 replace SiteName = "DEMSAWO HC " if SiteID==	220110040
 replace SiteName = "EMICARE CLIN" if SiteID==	220120041
 replace SiteName = "STAR CLIN" if SiteID==	220120042
@@ -2468,7 +2494,7 @@ replace SiteName ="Tuya Disp" if SiteID==	519110025
 replace SiteName ="ECWA CLIN" if SiteID==	519120026
 replace SiteName ="Kankare MAT" if SiteID==	519110027
 replace SiteName ="Aru Disp" if SiteID==	519110028
-replace SiteName ="Rumba Model Primary Health Care Center" if SiteID==	519110029
+replace SiteName ="Rumba Model PHC" if SiteID==	519110029
 replace SiteName ="Muda Babba MAT" if SiteID==	519110030
 replace SiteName ="T/wada MAT" if SiteID==	519110031
 replace SiteName ="Gidam Mada Disp" if SiteID==	519110032
@@ -2542,10 +2568,8 @@ replace SiteName ="Tashena" if SiteID==	520110058
 replace SiteName ="G/gami" if SiteID==	520110059
 
 
-
-
-
 * Borno State
+
 replace SiteName = "ABADAM GH" if SiteID==	801210001
 replace SiteName = "ABADAM H/C" if SiteID==	801110002
 replace SiteName = "AREGE H/C" if SiteID==	801110003
@@ -2557,49 +2581,50 @@ replace SiteName = "NGAM H/C" if SiteID==	801110008
 replace SiteName = "PHC M/F" if SiteID==	801110009
 replace SiteName = "YAU H/C" if SiteID==	801110010
 replace SiteName = "Y/ WANGO  C." if SiteID==	801110011
-replace SiteName = "Gen Hosp ASKIRA" if SiteID==	802210001
+replace SiteName = "GENERAL HOSPITAL ASKIRA" if SiteID==	802210001
 replace SiteName = "FSC ASK/UBA" if SiteID==	802110002
 replace SiteName = "YIMIRALI H/C" if SiteID==	802110003
 replace SiteName = "NGOHI DISP" if SiteID==	802110004
 replace SiteName = "KILARGAL DISP" if SiteID==	802110005
-replace SiteName = " LEHO DISP" if SiteID==	802110006
+replace SiteName = "LEHO DISP" if SiteID==	802110006
 replace SiteName = "NGULDE DISP" if SiteID==	802110007
-replace SiteName = " GARAMBAL DISP" if SiteID==	802110008
+replace SiteName = "GARAMBAL DISP" if SiteID==	802110008
 replace SiteName = "RUMUIRGO MCH" if SiteID==	802110009
 replace SiteName = "CHUL H/C" if SiteID==	802110010
-replace SiteName = " WAMDEO DISP" if SiteID==	802110011
+replace SiteName = "WAMDEO DISP" if SiteID==	802110011
 replace SiteName = "GIWI DISP" if SiteID==	802110012
 replace SiteName = "UDA DISP" if SiteID==	802110013
 replace SiteName = "UVU DISP" if SiteID==	802110014
 replace SiteName = "UBA DISP" if SiteID==	802110015
 replace SiteName = "UBA GH" if SiteID==	802210016
 replace SiteName = "HUSSARA H/C" if SiteID==	802110017
-replace SiteName = " LASSA GH" if SiteID==	802210018
+replace SiteName = "LASSA GH" if SiteID==	802210018
 replace SiteName = "KOPA DISP" if SiteID==	802110019
-replace SiteName = " NGURTHLARU" if SiteID==	802110020
+replace SiteName = "NGURTHLARU" if SiteID==	802110020
 replace SiteName = "MUSA PHC" if SiteID==	802110021
 replace SiteName = "DILLE DISP" if SiteID==	802110022
-replace SiteName = " HUYIM DISP" if SiteID==	802110023
-replace SiteName = "M/ MAJJARI" if SiteID==	803110001
+replace SiteName = "HUYIM DISP" if SiteID==	802110023
+replace SiteName = "Tampul Disp" if SiteID==	802110024
+replace SiteName = "M/MAJJARI" if SiteID==	803110001
 replace SiteName = "BULA GALADA" if SiteID==	803110002
-replace SiteName = "M / KIMERI" if SiteID==	803110003
+replace SiteName = "M/KIMERI" if SiteID==	803110003
 replace SiteName = "ARMY BARRACKS" if SiteID==	803210004
-replace SiteName = " AMCHAKA" if SiteID==	803110005
+replace SiteName = "AMCHAKA" if SiteID==	803110005
 replace SiteName = "WALASA" if SiteID==	803110006
 replace SiteName = "BAKARI" if SiteID==	803110007
-replace SiteName = " ANDARA" if SiteID==	803110008
-replace SiteName = " BANKI DISP" if SiteID==	803110009
+replace SiteName = "ANDARA" if SiteID==	803110008
+replace SiteName = "BANKI DISP" if SiteID==	803110009
 replace SiteName = "UMTH BANKI" if SiteID==	803210010
 replace SiteName = "TAMUWA" if SiteID==	803110011
-replace SiteName = " BOGOMARI" if SiteID==	803110012
-replace SiteName = " JABBARI" if SiteID==	803110013
+replace SiteName = "BOGOMARI" if SiteID==	803110012
+replace SiteName = "JABBARI" if SiteID==	803110013
 replace SiteName = "BOJINO" if SiteID==	803110014
 replace SiteName = "DIPCHARI" if SiteID==	803110015
 replace SiteName = "DARA JARAL" if SiteID==	803110016
 replace SiteName = "JERE" if SiteID==	803110017
 replace SiteName = "GONIRI" if SiteID==	803110018
 replace SiteName = "GORI KURMI" if SiteID==	803110019
-replace SiteName = " JEBRA" if SiteID==	803110020
+replace SiteName = "JEBRA" if SiteID==	803110020
 replace SiteName = "GULUMBA" if SiteID==	803110021
 replace SiteName = "KASHIMERI" if SiteID==	803110022
 replace SiteName = "FSP TANDARI" if SiteID==	803110023
@@ -2629,18 +2654,18 @@ replace SiteName = "EYN J/ GOL" if SiteID==	804120013
 replace SiteName = "G/GADO DISP  " if SiteID==	804110014
 replace SiteName = "TELI H/C" if SiteID==	804110015
 replace SiteName = "WUYO H/C" if SiteID==	804110016
-replace SiteName = " DAMBITAM DISP" if SiteID==	804110017
-replace SiteName = " GAIDAM DISP" if SiteID==	804110018
-replace SiteName = " LARO DISP" if SiteID==	804110019
-replace SiteName = " GUBURDE DISP" if SiteID==	804110020
-replace SiteName = " CHIBRA DISP" if SiteID==	804110021
+replace SiteName = "DAMBITAM DISP" if SiteID==	804110017
+replace SiteName = "GAIDAM DISP" if SiteID==	804110018
+replace SiteName = "LARO DISP" if SiteID==	804110019
+replace SiteName = "GUBURDE DISP" if SiteID==	804110020
+replace SiteName = "CHIBRA DISP" if SiteID==	804110021
 replace SiteName = "DAWAL DISP" if SiteID==	804110022
-replace SiteName = " LIMANTI DISP" if SiteID==	804110023
+replace SiteName = "LIMANTI DISP" if SiteID==	804110023
 replace SiteName = "KUKURAL DISP" if SiteID==	804110024
 replace SiteName = "ZARA DISP" if SiteID==	804110025
 replace SiteName = "BIU GEN HOSP" if SiteID==	805210001
-replace SiteName = "ABBORT CLIN" if SiteID==	805120002
-replace SiteName = "M/ HARI CLIN" if SiteID==	805120003
+replace SiteName = "ABBORT CLINIC" if SiteID==	805120002
+replace SiteName = "M/ HARI CLINIC" if SiteID==	805120003
 replace SiteName = "ARMY BARACK" if SiteID==	805110004
 replace SiteName = "YAWI DISP" if SiteID==	805110005
 replace SiteName = "FSP UNIT" if SiteID==	805110006
@@ -2657,6 +2682,9 @@ replace SiteName = "BETERA DISP" if SiteID==	805110016
 replace SiteName = "ZUWA DISP" if SiteID==	805110017
 replace SiteName = "CHARANGI DISP" if SiteID==	805110018
 replace SiteName = "GUNDA DISP" if SiteID==	805110019
+replace SiteName = "SABO CLINIC" if SiteID==	805110020
+replace SiteName = "MCH BIU" if SiteID==	805110021
+replace SiteName = "Panana Dispensary" if SiteID==	805110022
 replace SiteName = "KORONGULUM" if SiteID==	806110001
 replace SiteName = "MCH" if SiteID==	806110002
 replace SiteName = "MBOAKURA DISP" if SiteID==	806110003
@@ -2672,7 +2700,7 @@ replace SiteName = "KAUTIKARI DISP" if SiteID==	806110012
 replace SiteName = "EYN KUBURMULA" if SiteID==	806120013
 replace SiteName = "KAUMUTAHYAHI" if SiteID==	806110014
 replace SiteName = "KUBURMBULA" if SiteID==	806110015
-replace SiteName = " MBULABAM H/F" if SiteID==	806110016
+replace SiteName = "MBULABAM H/F" if SiteID==	806110016
 replace SiteName = "SHIKARKIR DISP" if SiteID==	806110017
 replace SiteName = "GATAMARWA DISP" if SiteID==	806110018
 replace SiteName = "AJIGIN HC" if SiteID==	807110001
@@ -2691,7 +2719,11 @@ replace SiteName = "KAFA DISP" if SiteID==	807110013
 replace SiteName = "MULGO DISP" if SiteID==	807110014
 replace SiteName = "BA'ALE DISP" if SiteID==	807110015
 replace SiteName = "MULAHARAM" if SiteID==	807110016
-replace SiteName = "Hausari IDP" if SiteID==	807910016
+replace SiteName = "Hausari IDP" if SiteID==	807110017
+replace SiteName = "IDP Camp Clinic" if SiteID==	807110018
+replace SiteName = "Kachallaburari kura Clinic" if SiteID==	807110019
+replace SiteName = "Hausari Health Clinic" if SiteID==	807110020
+replace SiteName = "Central Primary School" if SiteID==	807110021
 replace SiteName = "GEN HOSP  DK" if SiteID==	808210001
 replace SiteName = "MCH DIKWA" if SiteID==	808110002
 replace SiteName = "MCH GAJIBO" if SiteID==	808110003
@@ -2704,14 +2736,14 @@ replace SiteName = "PHC MAJA" if SiteID==	808110009
 replace SiteName = "ANTUL DISP" if SiteID==	808110010
 replace SiteName = "B/ FADEBE  DISP" if SiteID==	808110011
 replace SiteName = "PHC  MASA" if SiteID==	808110012
-replace SiteName = "MCHC" if SiteID==	809110001
+replace SiteName = "MCH CLINIC" if SiteID==	809110001
 replace SiteName = "GEN HOSP" if SiteID==	809210002
 replace SiteName = "BAZAM DISP" if SiteID==	809110003
 replace SiteName = "DUNGA DISP" if SiteID==	809110004
 replace SiteName = "GAZABURE DISP" if SiteID==	809110005
 replace SiteName = "MCH  ZOWO" if SiteID==	809110006
 replace SiteName = "NGETRA PHC" if SiteID==	809110007
-replace SiteName = "Goni Abatchari CLIN" if SiteID==	809110008
+replace SiteName = "Goni Abatchari Clinic" if SiteID==	809110008
 replace SiteName = "GUDUMBALI" if SiteID==	810110001
 replace SiteName = "ADUWA" if SiteID==	810110002
 replace SiteName = "KINGARWA" if SiteID==	810110003
@@ -2727,7 +2759,7 @@ replace SiteName = "ALI GAMBORI" if SiteID==	810110012
 replace SiteName = "WAMIRI" if SiteID==	810110013
 replace SiteName = "BITA H/C" if SiteID==	811110001
 replace SiteName = "IZGE PHC" if SiteID==	811110002
-replace SiteName = "MADUBE DISP" if SiteID==	811110003
+replace SiteName = " MADUBE DISP" if SiteID==	811110003
 replace SiteName = "GEN HOSP NGOSHE" if SiteID==	811210004
 replace SiteName = "KOGHUM H/C" if SiteID==	811110005
 replace SiteName = "NGOSHE SAMA DISP " if SiteID==	811110006
@@ -2738,7 +2770,7 @@ replace SiteName = "TAKWALA DISP" if SiteID==	811110010
 replace SiteName = "GEN HOSP KIRAWA" if SiteID==	811210011
 replace SiteName = "NDABA H/C" if SiteID==	811110012
 replace SiteName = "KIRAWA DISP" if SiteID==	811110013
-replace SiteName = "NDABA KURA HC" if SiteID==	811110014
+replace SiteName = " NDABA KURA HC" if SiteID==	811110014
 replace SiteName = "VALENGADE DISP" if SiteID==	811110015
 replace SiteName = "LIMKARA H/C" if SiteID==	811110016
 replace SiteName = "YAMTAKE DISP" if SiteID==	811110017
@@ -2757,6 +2789,8 @@ replace SiteName = "MCH GWOZA" if SiteID==	811110029
 replace SiteName = "DURE DISP" if SiteID==	811110030
 replace SiteName = "WALA MCH" if SiteID==	811110031
 replace SiteName = "TAKWALA DISP" if SiteID==	811110032
+replace SiteName = "PHC Gwoza" if SiteID==	811110033
+replace SiteName = "Hausari Gagamayo IDP Camp" if SiteID==	811110034
 replace SiteName = "PHC SHSFFA" if SiteID==	812110001
 replace SiteName = "GULA DISP" if SiteID==	812110002
 replace SiteName = "EYN DISP" if SiteID==	812110003
@@ -2777,6 +2811,8 @@ replace SiteName = "WHITAUBAYA DISP" if SiteID==	812110017
 replace SiteName = "AZARE GEN. HOSP" if SiteID==	812210018
 replace SiteName = "HEMA HP" if SiteID==	812110019
 replace SiteName = "GH MARAMA" if SiteID==	812210020
+replace SiteName = "TAWIWI DISP" if SiteID==	812210021
+replace SiteName = "KWAYA BURA MCH" if SiteID==	812210022
 replace SiteName = "NGOMARI" if SiteID==	813110001
 replace SiteName = "UMARU SHEHU HOSP" if SiteID==	813210002
 replace SiteName = "DALARAM" if SiteID==	813110003
@@ -2799,13 +2835,29 @@ replace SiteName = "TUBA" if SiteID==	813110019
 replace SiteName = "FORI DISP" if SiteID==	813110020
 replace SiteName = "ALAU DISP" if SiteID==	813110021
 replace SiteName = "MUNA OTP" if SiteID==	813110022
-replace SiteName = "Jiddari CLIN" if SiteID==	813110022
-replace SiteName = "Dalori IDP Camp" if SiteID==	813910004
-replace SiteName = "Muna Camp CLIN B" if SiteID==	813920022
-replace SiteName = "Muna Camp CLIN A" if SiteID==	813930022
-replace SiteName = "Rehabilitation CENT" if SiteID==	813940002
-replace SiteName = "Goni Kachallari IDP" if SiteID==	813950022
-replace SiteName = "Farm CENT IDP" if SiteID==	813960011
+replace SiteName = "Jiddari Clinic" if SiteID==	813110023
+replace SiteName = "Dalori IDP Camp" if SiteID==	813110024
+replace SiteName = "Muna Camp Clinic B" if SiteID==	813110025
+replace SiteName = "Muna Camp Clinic A" if SiteID==	813110026
+replace SiteName = "Rehabilitation Centre" if SiteID==	813110027
+replace SiteName = "Goni Kachallari IDP" if SiteID==	813110028
+replace SiteName = "Farm Centre IDP" if SiteID==	813110029
+replace SiteName = "Layin Ngoshe" if SiteID==	813110030
+replace SiteName = "Bintu Suga" if SiteID==	813110031
+replace SiteName = "Jiddari Afganistan" if SiteID==	813110032
+replace SiteName = "Ajilari Cross" if SiteID==	813110033
+replace SiteName = "Custom House" if SiteID==	813110034
+replace SiteName = "Dala Caffe" if SiteID==	813110035
+replace SiteName = "Goni Kachallari IDP Camp" if SiteID==	813110036
+replace SiteName = "Kofan Alhaji Yahaya Layin Kwayam" if SiteID==	813110037
+replace SiteName = "Ajari Lawanti Outreach" if SiteID==	813110038
+replace SiteName = "Anguwantaya outreach" if SiteID==	813110039
+replace SiteName = "Sajeri Outreach" if SiteID==	813110040
+replace SiteName = "Kwanan Yobe Outreach" if SiteID==	813110041
+replace SiteName = "Gobe Danisa Outreach" if SiteID==	813110042
+replace SiteName = "Fariya Outreach" if SiteID==	813110043
+replace SiteName = "Goni Kachallari Outreach" if SiteID==	813110044
+replace SiteName = "Dalori PHC" if SiteID==	813110045
 replace SiteName = "MARGUBA DISP" if SiteID==	814110001
 replace SiteName = "BENISHIRK MCH" if SiteID==	814110002
 replace SiteName = "GEN HOSP. B/S" if SiteID==	814210003
@@ -2862,10 +2914,17 @@ replace SiteName = "MAIRAMRI" if SiteID==	816110026
 replace SiteName = "BIDINGERI" if SiteID==	816110027
 replace SiteName = "1000 Estates OTP" if SiteID==	816110028
 replace SiteName = "777 Estates OTP" if SiteID==	816110029
-replace SiteName = "Gubio IDP Camp" if SiteID==	816910005
-replace SiteName = "Kofa IDP Camp" if SiteID==	816920008
-replace SiteName = "Konduga IDP Camp" if SiteID==	816930024
-replace SiteName = "Zaramari Outreach" if SiteID==	816950005
+replace SiteName = "Gubio IDP Camp" if SiteID==	816110030
+replace SiteName = "Kofa IDP Camp" if SiteID==	816110031
+replace SiteName = "Konduga IDP Camp" if SiteID==	816110032
+replace SiteName = "Zaramari Outreach" if SiteID==	816110033
+replace SiteName = "Kofa Kadairi" if SiteID==	816110034
+replace SiteName = "Moranti Outreach" if SiteID==	816110035
+replace SiteName = "Konduga IDP Camp" if SiteID==	816110036
+replace SiteName = "Maimandari 01" if SiteID==	816110037
+replace SiteName = "Yandandari Kura Outreach" if SiteID==	816110038
+replace SiteName = "Yandandari Gana Outreach" if SiteID==	816110039
+replace SiteName = "Mandarari 02 Outreach" if SiteID==	816110040
 replace SiteName = "HF 1 G/H KWA" if SiteID==	817210001
 replace SiteName = "HF 2 MCH KUKAWA" if SiteID==	817110002
 replace SiteName = "HF 3 D/ MASARA" if SiteID==	817110003
@@ -2884,7 +2943,7 @@ replace SiteName = "HF 1 KANGARAM" if SiteID==	817110015
 replace SiteName = "HF 1 MCH" if SiteID==	818110001
 replace SiteName = "HF 2 GEN.HOSP KWAYA" if SiteID==	818210002
 replace SiteName = "HF 2 GADAM HC" if SiteID==	818110003
-replace SiteName = "HF 3  GUBA DISP" if SiteID==	818110004
+replace SiteName = "HF 3 GUBA DISP" if SiteID==	818110004
 replace SiteName = "HF 1 B/GUSI" if SiteID==	818110005
 replace SiteName = "HF 1 KURBA GAYI" if SiteID==	818110006
 replace SiteName = "HF 1 PETA DISP" if SiteID==	818110007
@@ -2906,21 +2965,25 @@ replace SiteName = "HF 1 LOSKURI" if SiteID==	819110008
 replace SiteName = "HF 2 NGWOM" if SiteID==	819110009
 replace SiteName = "HF 1 MUJIGINE" if SiteID==	819110010
 replace SiteName = "HF 1 MASKA" if SiteID==	819110011
-replace SiteName = "Mafa IDP Camp" if SiteID==	819910004
-replace SiteName = "HF 1 ARDORAM" if SiteID==	820110001
-replace SiteName = "HF 1 B/YESU HC" if SiteID==	820110002
-replace SiteName = "HF 1 FURRAM" if SiteID==	820110003
+replace SiteName = "Mafa IDP Camp" if SiteID==	819110012
+replace SiteName = "Adam Kolo Borehole" if SiteID==	819110013
+replace SiteName = "Ajari IDP Camp" if SiteID==	819110014
+replace SiteName = "Zannari IDP Camp Clinic" if SiteID==	819110015
+replace SiteName = "Fulatari 99 House" if SiteID==	819110016
+replace SiteName = "HF 1  ARDORAM" if SiteID==	820110001
+replace SiteName = "HF 1  B/YESU HC" if SiteID==	820110002
+replace SiteName = "HF 1  FURRAM" if SiteID==	820110003
 replace SiteName = "GM PHC" if SiteID==	820110004
-replace SiteName = "HF 1 GEN HOSP" if SiteID==	820210005
-replace SiteName = "HF 2 MCH" if SiteID==	820110006
-replace SiteName = "HF 1 HOYO DISP" if SiteID==	820110007
+replace SiteName = "HF 1  GEN HOSP" if SiteID==	820210005
+replace SiteName = "HF 2  MCH" if SiteID==	820110006
+replace SiteName = "HF 1  HOYO DISP" if SiteID==	820110007
 replace SiteName = "HF 1 KARERAM DISP" if SiteID==	820110008
-replace SiteName = "HF 1 TITIWA" if SiteID==	820110009
+replace SiteName = "HF 1  TITIWA" if SiteID==	820110009
 replace SiteName = "Magumeri Town OTP" if SiteID==	820110010
 replace SiteName = "Bolori 1 Mallahkachalla OTP" if SiteID==	821110001
-replace SiteName = "HF2 BORNO MED. CLIN" if SiteID==	821220002
-replace SiteName = "HF3 KWATAM CLIN" if SiteID==	821220003
-replace SiteName = "HF 4 AYAMSU CLIN" if SiteID==	821220004
+replace SiteName = "HF 2 BORNO MED. CLINIC" if SiteID==	821220002
+replace SiteName = "HF 3 KWATAM CLINIC" if SiteID==	821220003
+replace SiteName = "HF 4 AYAMSU CLINIC" if SiteID==	821220004
 replace SiteName = "HF 5 NEU. PSYCH. HOSP" if SiteID==	821210005
 replace SiteName = "HF 1 ZAGERI CLINC" if SiteID==	821110006
 replace SiteName = "HF 2 B/ NGORAM CHC" if SiteID==	821110007
@@ -2931,28 +2994,55 @@ replace SiteName = "HF 3 STATE PSYCH. HOSP" if SiteID==	821210011
 replace SiteName = "HF 1 GWANGE HC" if SiteID==	821110012
 replace SiteName = "HF 1 GWANGE DISP" if SiteID==	821110013
 replace SiteName = "HF 1 FATIMA A, SHERIF" if SiteID==	821110014
-replace SiteName = "HF 2 POLICE CLIN" if SiteID==	821110015
-replace SiteName = "HF 3 N/ HOME" if SiteID==	821210016
+replace SiteName = "HF 2 POLICE CLINIC" if SiteID==	821110015
+replace SiteName = "HF 3  N/ HOME" if SiteID==	821210016
 replace SiteName = "HF 4 STATE SPECIALIST HOSP" if SiteID==	821210017
 replace SiteName = "HF 4 DENTAL HOSP" if SiteID==	821210018
 replace SiteName = "HF 5 EYE HOSP" if SiteID==	821210019
 replace SiteName = "HF 1 SUNNI HOSP" if SiteID==	821220020
-replace SiteName = "HF 2 NAKOWA CLIN" if SiteID==	821220021
+replace SiteName = "HF 2 NAKOWA CLINIC" if SiteID==	821220021
 replace SiteName = "HF 2 KANEM HOSP" if SiteID==	821220022
 replace SiteName = "HF 4 FOUNDATION HOSP" if SiteID==	821220023
 replace SiteName = "HF 5 CITY HOSP" if SiteID==	821220024
 replace SiteName = "HF 1 YERWA MCH" if SiteID==	821110025
-replace SiteName = "HF 2 ZAMAN CLIN" if SiteID==	821220026
+replace SiteName = "HF 2 ZAMAN CLINIC" if SiteID==	821220026
 replace SiteName = "HF 1 ABBAGANARAM" if SiteID==	821110027
 replace SiteName = "Gomboru Male Disp" if SiteID==	821110028
-replace SiteName = "Nursing Village Maisandari" if SiteID==	821910009
-replace SiteName = "Lamisula IDP" if SiteID==	821920017
-replace SiteName = "Teachers Village IDP Camp" if SiteID==	821930001
-replace SiteName = "CBN IDP Camp" if SiteID==	821940017
-replace SiteName = "NYSC IDP Camp" if SiteID==	821950017
-replace SiteName = "Mafoni IDP Camp " if SiteID==	821960017
-replace SiteName = "Bakasi 2 IDP CLIN" if SiteID==	821970017
-replace SiteName = "Bakasi 1 IDP CLIN" if SiteID==	821980017
+replace SiteName = "Nursing Village Maisandari" if SiteID==	821110029
+replace SiteName = "Lamisula IDP" if SiteID==	821110030
+replace SiteName = "Teachers Village IDP Camp" if SiteID==	821110031
+replace SiteName = "CBN IDP Camp" if SiteID==	821110032
+replace SiteName = "NYSC IDP Camp" if SiteID==	821110033
+replace SiteName = "Mafoni IDP Camp " if SiteID==	821110034
+replace SiteName = "Bakasi 2 IDP Clinic" if SiteID==	821110035
+replace SiteName = "Bakasi 1 IDP Clinic" if SiteID==	821110036
+replace SiteName = "Ummarari Borehole" if SiteID==	821110037
+replace SiteName = "Dala Bulama Karta" if SiteID==	821110038
+replace SiteName = "Cattle Ranch" if SiteID==	821110039
+replace SiteName = "Abuja Talakawa" if SiteID==	821110040
+replace SiteName = "Sabongari Bulama Ari" if SiteID==	821110041
+replace SiteName = "Maidokiri" if SiteID==	821110042
+replace SiteName = "Bolori Kasuwa 1A" if SiteID==	821110043
+replace SiteName = "Masallacin Baburawa" if SiteID==	821110044
+replace SiteName = "Musari" if SiteID==	821110045
+replace SiteName = "Bulama Bukar Tela" if SiteID==	821110046
+replace SiteName = "Fugu Ashemi" if SiteID==	821110047
+replace SiteName = "Kulumari" if SiteID==	821110048
+replace SiteName = "Ibrahim Biu " if SiteID==	821110049
+replace SiteName = "Lawan Maijir" if SiteID==	821110050
+replace SiteName = "Bulabulin Lawanti " if SiteID==	821110051
+replace SiteName = "Ndulimari" if SiteID==	821110052
+replace SiteName = "Shuwari 1" if SiteID==	821110053
+replace SiteName = "Bulama Shuwa" if SiteID==	821110054
+replace SiteName = "Kasuwan Gwoza" if SiteID==	821110055
+replace SiteName = "Gwonidamgari Babban Layi" if SiteID==	821110056
+replace SiteName = "Harwapeace" if SiteID==	821110057
+replace SiteName = "Bayan Kwatas" if SiteID==	821110058
+replace SiteName = "Epidemiology Unit" if SiteID==	821110059
+replace SiteName = "Sullumburi Outreach" if SiteID==	821110060
+replace SiteName = "Karama Kuturu Outreach" if SiteID==	821110061
+replace SiteName = "Millionaire's Quarters Outreach" if SiteID==	821110062
+replace SiteName = "Kulolluri Outreach" if SiteID==	821110063
 replace SiteName = "HF 1 ALA HC" if SiteID==	822110001
 replace SiteName = "HF 2 KAJE HC" if SiteID==	822110002
 replace SiteName = "HF 1 ALA LAWANTI HC" if SiteID==	822110003
@@ -2970,18 +3060,18 @@ replace SiteName = "HF 1 JIBIRLARAM" if SiteID==	822110014
 replace SiteName = "HF 2 NGLEWA" if SiteID==	822110015
 replace SiteName = "HF 3 KOLORAM" if SiteID==	822110016
 replace SiteName = "HF 4 BADARI" if SiteID==	822110017
-replace SiteName = "HF 1 G/H  DAMASRK" if SiteID==	823210001
+replace SiteName = "HF 1 G/H DAMASRK" if SiteID==	823210001
 replace SiteName = "HF 1 MCH" if SiteID==	823110002
 replace SiteName = "HF 1 ASAGA" if SiteID==	823110003
-replace SiteName = "HF 2 GUWA" if SiteID==	823110004
+replace SiteName = "HF 2  GUWA" if SiteID==	823110004
 replace SiteName = "HF 1 GASHIGA" if SiteID==	823110005
 replace SiteName = "HF 1 DUJI CHC" if SiteID==	823110006
-replace SiteName = "HF 2 MELERI" if SiteID==	823110007
+replace SiteName = "HF 2  MELERI" if SiteID==	823110007
 replace SiteName = "HF 1 KARETO" if SiteID==	823110008
 replace SiteName = "HF 1 LAYI" if SiteID==	823110009
 replace SiteName = "HF 1 ZARI" if SiteID==	823110010
-replace SiteName = "HF 2 FSP CLIN" if SiteID==	824110001
-replace SiteName = "HF 3 MCH" if SiteID==	824110002
+replace SiteName = "HF 2 FSP CLINIC" if SiteID==	824110001
+replace SiteName = "HF 3  MCH" if SiteID==	824110002
 replace SiteName = "HF 4 GEN HOSP" if SiteID==	824210003
 replace SiteName = "HF 1 NGURNO HC" if SiteID==	824110004
 replace SiteName = "HF 1 GUMNARI" if SiteID==	824110005
@@ -2989,7 +3079,7 @@ replace SiteName = "HF 1 WULO" if SiteID==	824110006
 replace SiteName = "HF 1 NGOLLAM" if SiteID==	824110007
 replace SiteName = "HF 2 MINTAR" if SiteID==	824110008
 replace SiteName = "HF 3 DEBELE" if SiteID==	824110009
-replace SiteName = "HF 4 DIFINOWA" if SiteID==	824110010
+replace SiteName = "HF 4  DIFINOWA" if SiteID==	824110010
 replace SiteName = "HF 5 ALINGOLLOA" if SiteID==	824110011
 replace SiteName = "HF 6 NAIRAWA" if SiteID==	824110012
 replace SiteName = "HF 1 YELE" if SiteID==	824110013
@@ -2999,14 +3089,14 @@ replace SiteName = "HF 1 MOFIO" if SiteID==	824110016
 replace SiteName = "HF 1 DAMAKULI" if SiteID==	824110017
 replace SiteName = "HF 1 BIDA" if SiteID==	824110018
 replace SiteName = "HF 1 KUMALIA" if SiteID==	824110019
-replace SiteName = "NRC Camp" if SiteID==	824910001
-replace SiteName = "MCH Monguno Alima" if SiteID==	824920004
-replace SiteName = "Govt Girls Sec School Monguno IDP" if SiteID==	824930004
-replace SiteName = "Kuya Primary School Site" if SiteID==	824940002
-replace SiteName = "Govt Snr Sci Sec School Monguno IDP" if SiteID==	824950004
-replace SiteName = "Govt Day SS IDP" if SiteID==	824960002
-replace SiteName = "Waterboard IDP" if SiteID==	824970004
-replace SiteName = "Local Govt Sec IDP " if SiteID==	824980004
+replace SiteName = "NRC Camp" if SiteID==	824110020
+replace SiteName = "MCH Monguno Alima" if SiteID==	824110021
+replace SiteName = "GovGirlsSecSch Monguno IDP" if SiteID==	824110022
+replace SiteName = "Kuya Primary School Site" if SiteID==	824110023
+replace SiteName = "GovSrSciSecSch Monguno IDP" if SiteID==	824110024
+replace SiteName = "Govt Day SS IDP" if SiteID==	824110025
+replace SiteName = "Waterboard IDP" if SiteID==	824110026
+replace SiteName = "Local Govt Sec IDP " if SiteID==	824110027
 replace SiteName = "HF 1 FUYE" if SiteID==	825110001
 replace SiteName = "HF 1 GAMBORI A" if SiteID==	825110002
 replace SiteName = "HF 1 BADIYA HP" if SiteID==	825110003
@@ -3028,9 +3118,9 @@ replace SiteName = "HF 1 SIIGIR DISP" if SiteID==	825110018
 replace SiteName = "HF 1 KIRTA HC" if SiteID==	825110019
 replace SiteName = "HF 1 DANBOURE" if SiteID==	825110020
 replace SiteName = "HF 1 WURGE HP" if SiteID==	825110021
-replace SiteName = "Ngala ISS IDP Camp" if SiteID==	825910010
+replace SiteName = "Ngala ISS IDP Camp" if SiteID==	825110022
 replace SiteName = "TOROWA HC" if SiteID==	826110001
-replace SiteName = "BADU CLIN" if SiteID==	826110002
+replace SiteName = "BADU CLINIC" if SiteID==	826110002
 replace SiteName = "GADAI HC" if SiteID==	826110003
 replace SiteName = "KUDA HC" if SiteID==	826110004
 replace SiteName = "DAMARAM HC" if SiteID==	826110005
@@ -3038,9 +3128,9 @@ replace SiteName = "MAIWA HC" if SiteID==	826110006
 replace SiteName = "GABERWA HC" if SiteID==	826110007
 replace SiteName = "MIYE HC" if SiteID==	826110008
 replace SiteName = "KESSA NGALA DISP" if SiteID==	826110009
-replace SiteName = "FSP CLIN" if SiteID==	826110010
+replace SiteName = "FSP CLINIC" if SiteID==	826110010
 replace SiteName = "GEN HOSP" if SiteID==	826210011
-replace SiteName = "MCHC" if SiteID==	826110012
+replace SiteName = "MCH CLINIC" if SiteID==	826110012
 replace SiteName = "SABSABUWA" if SiteID==	826110013
 replace SiteName = "HF 1 SHANI HC" if SiteID==	827110001
 replace SiteName = "HF 2 GEN. HOSP SHANI" if SiteID==	827210002
@@ -3056,20 +3146,14 @@ replace SiteName = "HF 1 WALAMA" if SiteID==	827110011
 replace SiteName = "HF 1 BARGU HC" if SiteID==	827110012
 replace SiteName = "HF 1 GORA" if SiteID==	827110013
 replace SiteName = "HF 2 WUJE" if SiteID==	827110014
-* Additions from the Southern Borno training - 24 Nov
-replace SiteName = "Tampul Disp" if SiteID==	802110024
-replace SiteName = "Tawiwi Disp" if SiteID==	812210021
-replace SiteName = "Kwaya Bura MCH" if SiteID==	812210022
+replace SiteName = "KUBO MCH" if SiteID==	827110015
 
-* Additions from the Southern Borno training - 25 Nov
-*Borno	Shani 	Kubo	Kubo CHC 	827110015
-*Borno	Biu	Garubula 	Sabo Clinic	805110020
-*Borno	Biu	Zarawuyaku	MCH Biu 	805110021
+
+
 
 
 
 * Gombe - 16
-
 replace SiteName ="Akko HC" if SiteID==	1601110001
 replace SiteName ="Bula Disp" if SiteID==	1601110002
 replace SiteName ="Bula MCH" if SiteID==	1601110003
@@ -3107,7 +3191,7 @@ replace SiteName ="Amina Mat Home" if SiteID==	1601120034
 replace SiteName ="Kumo HC" if SiteID==	1601120035
 replace SiteName ="Salama HC" if SiteID==	1601120036
 replace SiteName ="Kumo MCH " if SiteID==	1601110037
-replace SiteName ="Kumo Gen. HOSP" if SiteID==	1601210038
+replace SiteName ="Kumo GEN HOSP" if SiteID==	1601210038
 replace SiteName ="Kumo HC" if SiteID==	1601110039
 replace SiteName ="Barambu HC" if SiteID==	1601110040
 replace SiteName ="Gwaram MCH" if SiteID==	1601110041
@@ -3357,7 +3441,7 @@ replace SiteName ="Arewa Med CLIN" if SiteID==	1606120016
 replace SiteName ="El-Norf Med CLIN" if SiteID==	1606120017
 replace SiteName ="H/Gana HC" if SiteID==	1606110018
 replace SiteName ="Sunnah HOSP Gombe" if SiteID==	1606220019
-replace SiteName ="Specialist HOSP Gombe" if SiteID==	1606210020
+replace SiteName ="SPEC HOSP Gombe" if SiteID==	1606210020
 replace SiteName ="Divine Specialist Eye CLIN" if SiteID==	1606120021
 replace SiteName ="Yarma Memorial HOSP" if SiteID==	1606120022
 replace SiteName ="Gombe Town MCH" if SiteID==	1606110023
@@ -3864,7 +3948,1567 @@ replace SiteName ="Hadejia Gen Hosp" if SiteID==	1713210005
 replace SiteName ="Dutse Gen Hosp" if SiteID==	1706210019
 replace SiteName ="Gumel Gen Hosp" if SiteID==	1709210009
 
-
+* KADUNA *
+replace SiteName = "PHC KUYELLO" if SiteID==	1801110001
+replace SiteName = "H/C OLD KUYELLO" if SiteID==	1801110002
+replace SiteName = "H/C SHADO" if SiteID==	1801110003
+replace SiteName = "H/C KWASA-KWASA" if SiteID==	1801110004
+replace SiteName = "H/C KWADAGA" if SiteID==	1801110005
+replace SiteName = "PHC TABANNI" if SiteID==	1801110006
+replace SiteName = "H/C OLD TABANNI" if SiteID==	1801110007
+replace SiteName = "H/C DOKAN RUWA" if SiteID==	1801110008
+replace SiteName = "H/C KWALAKWANGI" if SiteID==	1801110009
+replace SiteName = "H/C MAIKYASUWA" if SiteID==	1801110010
+replace SiteName = "H/C LAYIN LASA" if SiteID==	1801110011
+replace SiteName = "H/C K/MAMMAN YALWA" if SiteID==	1801110012
+replace SiteName = "PHC KUTEMESHE" if SiteID==	1801110013
+replace SiteName = "H/C U/GAJERE" if SiteID==	1801110014
+replace SiteName = "H/C U/NACHIBI" if SiteID==	1801110015
+replace SiteName = "M.C.H. BIRNIN GWARI" if SiteID==	1801110016
+replace SiteName = "BADAMUWA NURSING" if SiteID==	1801120017
+replace SiteName = "H/C U/SHITU" if SiteID==	1801110018
+replace SiteName = "H/C KAGI" if SiteID==	1801110019
+replace SiteName = "JIBRIN MAIGWARI GEN HOSP B/GWARI" if SiteID==	1801210020
+replace SiteName = "H/C U/HALADU" if SiteID==	1801110021
+replace SiteName = "H/C AWARO" if SiteID==	1801110022
+replace SiteName = "H/C BUGAI" if SiteID==	1801110023
+replace SiteName = "H/C DOGON DAWA" if SiteID==	1801110024
+replace SiteName = "ALUMMA NURSING HOME" if SiteID==	1801120025
+replace SiteName = "TAIMAKO NURSING HOSP" if SiteID==	1801120026
+replace SiteName = "TALLE CLINIC & MAT " if SiteID==	1801120027
+replace SiteName = "SUNNA CLINIC & MAT " if SiteID==	1801120028
+replace SiteName = "MAS'UD NURSING MAT " if SiteID==	1801120029
+replace SiteName = "PHC SAULAWA" if SiteID==	1801110030
+replace SiteName = "H/C MAGANDA" if SiteID==	1801110031
+replace SiteName = "H/C KIKAZO" if SiteID==	1801110032
+replace SiteName = "H/C GWASKA" if SiteID==	1801110033
+replace SiteName = "H/C GWAURON DUTSE" if SiteID==	1801110034
+replace SiteName = "H/C OLD B/GWARI" if SiteID==	1801110035
+replace SiteName = "H/C LAYIN MAIGWARI" if SiteID==	1801110036
+replace SiteName = "H/C KAMFANIN DOKA" if SiteID==	1801110037
+replace SiteName = "H/C MANDO" if SiteID==	1801110038
+replace SiteName = "H/C GRASING" if SiteID==	1801110039
+replace SiteName = "H/C KIRAZO" if SiteID==	1801110040
+replace SiteName = "H/C FOLWAYA" if SiteID==	1801110041
+replace SiteName = "H/C GAYAM" if SiteID==	1801110042
+replace SiteName = "H/C LABI" if SiteID==	1801110043
+replace SiteName = "H/C RUMANA GWARI" if SiteID==	1801110044
+replace SiteName = "H/C KWAGA" if SiteID==	1801110045
+replace SiteName = "MPHC DOGON DAWA" if SiteID==	1801110046
+replace SiteName = "H/C U/DANKO" if SiteID==	1801110047
+replace SiteName = "H/C SAMINAKA" if SiteID==	1801110048
+replace SiteName = "H/C FUNTUWAN BADADI" if SiteID==	1801110049
+replace SiteName = "PHC DAMARI" if SiteID==	1801110050
+replace SiteName = "H/C TAKAMA" if SiteID==	1801110051
+replace SiteName = "H/C GWANDA" if SiteID==	1801110052
+replace SiteName = "H/C INGADE" if SiteID==	1801110053
+replace SiteName = "DIRAYO CLINIC & MAT " if SiteID==	1801120054
+replace SiteName = "PHC KAKANGI" if SiteID==	1801110055
+replace SiteName = "M.P.H.C. KATAKAKI" if SiteID==	1801110056
+replace SiteName = "H/C U/BAGUDU" if SiteID==	1801110057
+replace SiteName = "H/C GAGUMI" if SiteID==	1801110058
+replace SiteName = "H/C SABON LAYI" if SiteID==	1801110059
+replace SiteName = "H/C TASHAN KEJI" if SiteID==	1801110060
+replace SiteName = "H/C U/ZAKARA" if SiteID==	1801110061
+replace SiteName = "LARABA MEMORIAL CLINIC" if SiteID==	1801120062
+replace SiteName = "LAFIYA TAFI KUDI CLINIC" if SiteID==	1801120063
+replace SiteName = "MPHC RANDAGI" if SiteID==	1801110064
+replace SiteName = "H/C DAWAKIN BASSA" if SiteID==	1801110065
+replace SiteName = "H/C KUKI" if SiteID==	1801110066
+replace SiteName = "H/C UKIGA" if SiteID==	1801110067
+replace SiteName = "H/C KUNGI" if SiteID==	1801110068
+replace SiteName = "H/C IJINGA" if SiteID==	1801110069
+replace SiteName = "H/C U/BADUKU" if SiteID==	1801110070
+replace SiteName = "H/C NASARAWA" if SiteID==	1801110071
+replace SiteName = "H/C KIMBI" if SiteID==	1801110072
+replace SiteName = "H/C SHIRYA" if SiteID==	1801110073
+replace SiteName = "HC ZAKARA" if SiteID==	1801110074
+replace SiteName = "GEN HOSP SABON TASHA" if SiteID==	1802210001
+replace SiteName = "RURAL HOSP KUJAMA" if SiteID==	1802210002
+replace SiteName = "PHC T/WADA KUJAMA" if SiteID==	1802110003
+replace SiteName = "H/POST TOKACHE" if SiteID==	1802110004
+replace SiteName = "H/C KUJAMA GARI" if SiteID==	1802110005
+replace SiteName = "H/C DANBUSHIYA" if SiteID==	1802110006
+replace SiteName = "H/C DOKAN MAIJAMAA" if SiteID==	1802110007
+replace SiteName = "PHC MARABAN RIDO" if SiteID==	1802110008
+replace SiteName = "H/C RIDO" if SiteID==	1802110009
+replace SiteName = "H/C BABBAN SAURA" if SiteID==	1802110010
+replace SiteName = "GODIYA NURSING" if SiteID==	1802120011
+replace SiteName = "BRETHREN CLINIC" if SiteID==	1802120012
+replace SiteName = "HAMDALA CLINIC" if SiteID==	1802120013
+replace SiteName = "GODIYA MEDI CHECK" if SiteID==	1802120014
+replace SiteName = "COSBEN MAT " if SiteID==	1802120015
+replace SiteName = "SAIZA NURSING HOME" if SiteID==	1802120016
+replace SiteName = "HOPE FOR THE VILLAGE CHILD" if SiteID==	1802120017
+replace SiteName = "H/C A/AYABA" if SiteID==	1802110018
+replace SiteName = "H/C KANKOMI" if SiteID==	1802110019
+replace SiteName = "H/C GONIN GORA" if SiteID==	1802110020
+replace SiteName = "H/C LIGARI" if SiteID==	1802110021
+replace SiteName = "H/C KAKAU" if SiteID==	1802110022
+replace SiteName = "H/C BUWAYA" if SiteID==	1802110023
+replace SiteName = "ADONAI HOSP" if SiteID==	1802110024
+replace SiteName = "ALHERI CLINIC" if SiteID==	1802110025
+replace SiteName = "GAYAN NURSING" if SiteID==	1802110026
+replace SiteName = "SAFIYA MC" if SiteID==	1802110027
+replace SiteName = "PHC GWAGWADA" if SiteID==	1802110028
+replace SiteName = "H/C DUTSE" if SiteID==	1802110029
+replace SiteName = "H/C B/KASUWA" if SiteID==	1802110030
+replace SiteName = "H/C KAJARI" if SiteID==	1802110031
+replace SiteName = "H/C A/TURAI" if SiteID==	1802110032
+replace SiteName = "H/C CHIKUN" if SiteID==	1802110033
+replace SiteName = "PHC KATARMA" if SiteID==	1802110034
+replace SiteName = "H/C GADANI" if SiteID==	1802110035
+replace SiteName = "H/C DAKUNU" if SiteID==	1802110036
+replace SiteName = "PHC BURUKU" if SiteID==	1802110037
+replace SiteName = "DAN BURUKU MAT " if SiteID==	1802120038
+replace SiteName = "PHC UDAWA" if SiteID==	1802110039
+replace SiteName = "H/C KASAYA" if SiteID==	1802110040
+replace SiteName = "H/C BARINJE" if SiteID==	1802110041
+replace SiteName = "H/C DANDE" if SiteID==	1802110042
+replace SiteName = "H/C RIMI" if SiteID==	1802110043
+replace SiteName = "PHC KURIGA" if SiteID==	1802110044
+replace SiteName = "PHC  S/GARI" if SiteID==	1802110045
+replace SiteName = "PHC KUDANDAN" if SiteID==	1802110046
+replace SiteName = "HASKE CLINIC & MAT " if SiteID==	1802120047
+replace SiteName = "FAITH NURSING & MAT " if SiteID==	1802120048
+replace SiteName = "SALAMA HEALTH CENTRE" if SiteID==	1802120049
+replace SiteName = "SALAMA CLINIC" if SiteID==	1802120050
+replace SiteName = "AB NASSARA NURSING" if SiteID==	1802120051
+replace SiteName = "PHC NARAYI" if SiteID==	1802110052
+replace SiteName = "WILBASUN HOSP & MAT " if SiteID==	1802120053
+replace SiteName = "PHC NASSARAWA" if SiteID==	1802110054
+replace SiteName = "TOP CLINIC & MAT " if SiteID==	1802120055
+replace SiteName = "MIO PRINCE NURSING HOME" if SiteID==	1802120056
+replace SiteName = "IDEAL WELFARE" if SiteID==	1802120057
+replace SiteName = "TOP CLINIC" if SiteID==	1802120058
+replace SiteName = "TAIMAKO HOSP" if SiteID==	1802120059
+replace SiteName = "SANASI NUR. & MAT  HOME" if SiteID==	1802120060
+replace SiteName = "PHC SABON TASHA" if SiteID==	1802110061
+replace SiteName = "NOMSU HOSP" if SiteID==	1802120062
+replace SiteName = "EMABS HOSP" if SiteID==	1802120063
+replace SiteName = "DOCTORS CLINIC" if SiteID==	1802120064
+replace SiteName = "NEBWA HOSP" if SiteID==	1802120065
+replace SiteName = "NNPC HOSP" if SiteID==	1802120066
+replace SiteName = "ST. MARY HOSP" if SiteID==	1802120067
+replace SiteName = "OMENGALA HC" if SiteID==	1802120068
+replace SiteName = "JEFANAL HOSP" if SiteID==	1802120069
+replace SiteName = "PHC ROMI" if SiteID==	1802110070
+replace SiteName = "SAVANA HOSP & MAT " if SiteID==	1802120071
+replace SiteName = "OUR HOSP" if SiteID==	1802120072
+replace SiteName = "TRINITY NURSING & MAT  HOME" if SiteID==	1802120073
+replace SiteName = "COCIN CLINIC" if SiteID==	1802120074
+replace SiteName = "ECWA HC " if SiteID==	1802120075
+replace SiteName = "A.B.U TEACHING HOSP SHIKA, ZARIA" if SiteID==	1803310001
+replace SiteName = "H/C MARABAN GUGA" if SiteID==	1803110002
+replace SiteName = "PHC SHIKA" if SiteID==	1803110003
+replace SiteName = "H/C TAWATSU" if SiteID==	1803110004
+replace SiteName = "H/C TSIBIRI" if SiteID==	1803110005
+replace SiteName = "HALIMA MEMORIAL CLINIC" if SiteID==	1803110006
+replace SiteName = "GEN HOSP GIWA" if SiteID==	1803210007
+replace SiteName = "PHC GIWA" if SiteID==	1803110008
+replace SiteName = "MPHC TSOHUWAR GIWA" if SiteID==	1803110009
+replace SiteName = "H/C MUJEDAWA" if SiteID==	1803110010
+replace SiteName = "WARDANGA" if SiteID==	1803110011
+replace SiteName = "H/C DANMAHAWAYI" if SiteID==	1803110012
+replace SiteName = "H/C MADOBI" if SiteID==	1803110013
+replace SiteName = "H/C TASHANGUGA" if SiteID==	1803110014
+replace SiteName = "H/C MAJE" if SiteID==	1803110015
+replace SiteName = "H/C KURINGA" if SiteID==	1803110016
+replace SiteName = "H/C BAJIMI" if SiteID==	1803110017
+replace SiteName = "H/C BIYE" if SiteID==	1803110018
+replace SiteName = "H/C PANHAUYA" if SiteID==	1803110019
+replace SiteName = "H/C R/YASHI" if SiteID==	1803110020
+replace SiteName = "H/C GALADIMAWA" if SiteID==	1803110021
+replace SiteName = "H/C TUMBURKU" if SiteID==	1803110022
+replace SiteName = "H/C DUNDUBUS" if SiteID==	1803110023
+replace SiteName = "PHC GANGARA" if SiteID==	1803110024
+replace SiteName = "H/C MADARA" if SiteID==	1803110025
+replace SiteName = "H/C BOMAWA" if SiteID==	1803110026
+replace SiteName = "PHC KAYA" if SiteID==	1803110027
+replace SiteName = "H/C FATIKA" if SiteID==	1803110028
+replace SiteName = "H/C IDASU" if SiteID==	1803110029
+replace SiteName = "H/C DAKO" if SiteID==	1803110030
+replace SiteName = "H/C RUHEWA" if SiteID==	1803110031
+replace SiteName = "PHC WAZATA" if SiteID==	1803110032
+replace SiteName = "H/C DANZA" if SiteID==	1803110033
+replace SiteName = "H/C KADAGE" if SiteID==	1803110034
+replace SiteName = "H/C KAKARAU" if SiteID==	1803110035
+replace SiteName = "H/C MURAI" if SiteID==	1803110036
+replace SiteName = "HC R/YASHI" if SiteID==	1803110037
+replace SiteName = "HC KUNDU" if SiteID==	1803110038
+replace SiteName = "PHC TURAWA" if SiteID==	1803110039
+replace SiteName = "H/C DOKA" if SiteID==	1803110040
+replace SiteName = "H/C S/BIRNI" if SiteID==	1803110041
+replace SiteName = "H/C IYATAWA" if SiteID==	1803110042
+replace SiteName = "PHC KIDANDAN" if SiteID==	1803110043
+replace SiteName = "H/C MAIDARO" if SiteID==	1803110044
+replace SiteName = "H/C S/FILI" if SiteID==	1803110045
+replace SiteName = "SAUKI NURSING HOME" if SiteID==	1803120046
+replace SiteName = "CATHOLIC HEALTH CENTRE" if SiteID==	1803120047
+replace SiteName = "H/C GADAGAU" if SiteID==	1803110048
+replace SiteName = "H/C T/SHARI" if SiteID==	1803110049
+replace SiteName = "H/C YAKAWADA" if SiteID==	1803110050
+replace SiteName = "H/C A/GAGA" if SiteID==	1803110051
+replace SiteName = "IYATAWACLINIC & MAT " if SiteID==	1803120052
+replace SiteName = "NATIONAL EYE CENTRE, KADUNA" if SiteID==	1804310001
+replace SiteName = "GEN HOSP RIGASA" if SiteID==	1804210002
+replace SiteName = "PHC RIGASA" if SiteID==	1804110003
+replace SiteName = "PHC NARIYA" if SiteID==	1804110004
+replace SiteName = "H/C KARSHEN KWALTA" if SiteID==	1804110005
+replace SiteName = "H/C TAROTARO" if SiteID==	1804110006
+replace SiteName = "RAMATULLAHI CLINIC" if SiteID==	1804120007
+replace SiteName = "AISHA ALANSARIYA" if SiteID==	1804120008
+replace SiteName = "AL NASIHA HOSP." if SiteID==	1804120009
+replace SiteName = "CENTRAL HOSP" if SiteID==	1804120010
+replace SiteName = "MIYETTI ALLAH NURSING HOME" if SiteID==	1804120011
+replace SiteName = "ZAITUN HOSP. & MAT " if SiteID==	1804120012
+replace SiteName = "RIGASA HOSP" if SiteID==	1804120013
+replace SiteName = "NASIHA MAT  HOME" if SiteID==	1804120014
+replace SiteName = "LAWAL SHUAIBU CLINIC" if SiteID==	1804120015
+replace SiteName = "MUSLIM HOSP" if SiteID==	1804120016
+replace SiteName = "RURAL HOSP TURUNKU" if SiteID==	1804210017
+replace SiteName = "PHC TURUNKU" if SiteID==	1804110018
+replace SiteName = "PHC FARAKWAI" if SiteID==	1804110019
+replace SiteName = "HC BARGU" if SiteID==	1804110020
+replace SiteName = "HC KANKURMI" if SiteID==	1804110021
+replace SiteName = "PHC RIGACHIKUN" if SiteID==	1804110022
+replace SiteName = "H/C BARAKALLAHU" if SiteID==	1804110023
+replace SiteName = "PHC N.D.C " if SiteID==	1804110024
+replace SiteName = "H/C KURMIN KADUNA " if SiteID==	1804110025
+replace SiteName = "H/C LIKORA " if SiteID==	1804110026
+replace SiteName = "AMANA HOSP" if SiteID==	1804120027
+replace SiteName = "N.T.I. STAFF CLINIC" if SiteID==	1804120028
+replace SiteName = "PHC KERAWA" if SiteID==	1804110029
+replace SiteName = "H/C GWADA" if SiteID==	1804110030
+replace SiteName = "H/C SABON BIRNI" if SiteID==	1804110031
+replace SiteName = "H/C DINKI" if SiteID==	1804110032
+replace SiteName = "H/C BINA" if SiteID==	1804110033
+replace SiteName = "H/C TUMBAU" if SiteID==	1804110034
+replace SiteName = "H/C T/WADA  DANMAMA" if SiteID==	1804110035
+replace SiteName = "PHC  S/BIRNI  DAJI" if SiteID==	1804110036
+replace SiteName = "PHC WUSONO" if SiteID==	1804110037
+replace SiteName = "H/C TAMI" if SiteID==	1804110038
+replace SiteName = "H/C RUNJI" if SiteID==	1804110039
+replace SiteName = "Namu clinic Railway" if SiteID==	1804110040
+replace SiteName = "ANNUR CLINIC S/BIRNI DAJI" if SiteID==	1804120041
+replace SiteName = "PHC N.H.I.S. Z/AYA" if SiteID==	1804110042
+replace SiteName = "PHC K/ZANGO" if SiteID==	1804110043
+replace SiteName = "H/C L/ZANGO" if SiteID==	1804110044
+replace SiteName = "H/C KIGO" if SiteID==	1804110045
+replace SiteName = "H/C MARGI" if SiteID==	1804110046
+replace SiteName = "H/C T/MANGI" if SiteID==	1804110047
+replace SiteName = "H/C AUDI" if SiteID==	1804110048
+replace SiteName = "H/C IRUGA" if SiteID==	1804110049
+replace SiteName = "H/C U/MALAMAI" if SiteID==	1804110050
+replace SiteName = "H/C BAUSHE" if SiteID==	1804110051
+replace SiteName = "DADDA’U CLINIC" if SiteID==	1804120052
+replace SiteName = "PHC IGABI" if SiteID==	1804110053
+replace SiteName = "PHC ASHESHU" if SiteID==	1804110054
+replace SiteName = "H/C SHEKA" if SiteID==	1804110055
+replace SiteName = "AHMED CLINIC" if SiteID==	1804120056
+replace SiteName = "PHC GADAN GAYAN" if SiteID==	1804110057
+replace SiteName = "PHC AMANA" if SiteID==	1804110058
+replace SiteName = "PHC FANTURAWA" if SiteID==	1804110059
+replace SiteName = "AGADAMA CLINIC" if SiteID==	1804120060
+replace SiteName = "GASKIYA CLINIC" if SiteID==	1804120061
+replace SiteName = "MOH`D CLINIC" if SiteID==	1804120062
+replace SiteName = "PHC MANDO" if SiteID==	1804110063
+replace SiteName = "PHC AFAKA" if SiteID==	1804110064
+replace SiteName = "PHC KUTUNGARE " if SiteID==	1804110065
+replace SiteName = "GASKIYA NURSING & MAT " if SiteID==	1804120066
+replace SiteName = "AJI SAUKI CLINIC" if SiteID==	1804120067
+replace SiteName = "BETHEL CLINIC" if SiteID==	1804120068
+replace SiteName = "DR. SANI HOSP." if SiteID==	1804120069
+replace SiteName = "MAIMUNA NURSING & MAT " if SiteID==	1804120070
+replace SiteName = "ANCOR CLINIC & MAT " if SiteID==	1804120071
+replace SiteName = "DAMI CLINIC" if SiteID==	1804120072
+replace SiteName = "AFAKA NURSING HOME & MAT " if SiteID==	1804120073
+replace SiteName = "C.H.C. JAJI" if SiteID==	1804110074
+replace SiteName = "PHC LABAR" if SiteID==	1804110075
+replace SiteName = "H/C BIRNIN YERO" if SiteID==	1804110076
+replace SiteName = "PHC SANHU" if SiteID==	1804110077
+replace SiteName = "GENESIS MAT " if SiteID==	1804120078
+replace SiteName = "JAJI NURSING HOME" if SiteID==	1804120079
+replace SiteName = "GAMBO NURSING HOME" if SiteID==	1804120080
+replace SiteName = "NA'AMU CLINIC" if SiteID==	1804120081
+replace SiteName = "CRYSTAL CLINIC" if SiteID==	1804120082
+replace SiteName = "PHC GWARAJI" if SiteID==	1804110083
+replace SiteName = "PHC KABAN" if SiteID==	1804110084
+replace SiteName = "PHC MAJE" if SiteID==	1804110085
+replace SiteName = "PHC KWARAU TASHA" if SiteID==	1804110086
+replace SiteName = "PHC KANGIMI" if SiteID==	1804110087
+replace SiteName = "PHC MARABAN JOS" if SiteID==	1804110088
+replace SiteName = "PHC KWARAU GARI" if SiteID==	1804110089
+replace SiteName = "PHC RIHOGI" if SiteID==	1804110090
+replace SiteName = "PHC DANKANDE" if SiteID==	1804110091
+replace SiteName = "HOPE CLINIC & MAT " if SiteID==	1804120092
+replace SiteName = "AL-AMIN CLINIC & MAT " if SiteID==	1804120093
+replace SiteName = "GEN HOSP IKARA" if SiteID==	1805210001
+replace SiteName = "MCH IKARA" if SiteID==	1805110002
+replace SiteName = "H/C AUCHANAWA" if SiteID==	1805110003
+replace SiteName = "H/C KANKANKI" if SiteID==	1805110004
+replace SiteName = "H/C U/LIMAN" if SiteID==	1805110005
+replace SiteName = "H/C AMADU DOGO" if SiteID==	1805110006
+replace SiteName = "H/C ZAGEZAGI" if SiteID==	1805110007
+replace SiteName = "IKARA CLINIC" if SiteID==	1805120008
+replace SiteName = "Wada Clinic & MAT " if SiteID==	1805120009
+replace SiteName = "H/C KURMIN KOGI" if SiteID==	1805110010
+replace SiteName = "H/C U/BARAU" if SiteID==	1805110011
+replace SiteName = "H/C FURANA" if SiteID==	1805110012
+replace SiteName = "H/C MAHANGI" if SiteID==	1805110013
+replace SiteName = "H/C DANLAWAL" if SiteID==	1805110014
+replace SiteName = "NASARAWA NURSING HOME K/KOGI" if SiteID==	1805120015
+replace SiteName = "ZUMUNCI NURSING HOME" if SiteID==	1805120016
+replace SiteName = "BAPTIST PHC CENTRE " if SiteID==	1805120017
+replace SiteName = "GODIYA CLINIC KURMIN KOGI" if SiteID==	1805120018
+replace SiteName = "H/C PALA" if SiteID==	1805110019
+replace SiteName = "ZOMO KOWA MC PALA" if SiteID==	1805120020
+replace SiteName = "JANPAN NURSING HOME & MAT  " if SiteID==	1805120021
+replace SiteName = "ALHERI NURSING HOME & MAT " if SiteID==	1805120022
+replace SiteName = "H/C MALIKANCI" if SiteID==	1805110023
+replace SiteName = "H/C JIBIS" if SiteID==	1805110024
+replace SiteName = "H/C BAKULA" if SiteID==	1805110025
+replace SiteName = "RAHAMA NURSING HOME & MAT  MALIKANCI" if SiteID==	1805120026
+replace SiteName = "JAMFALAM NURSING & MAT  HOME" if SiteID==	1805120027
+replace SiteName = "H/C SAYA-SAYA" if SiteID==	1805110028
+replace SiteName = "H/C BAREDA" if SiteID==	1805110029
+replace SiteName = "H/C KURMIN JAU" if SiteID==	1805110030
+replace SiteName = "PHC SAULAWA" if SiteID==	1805110031
+replace SiteName = "H/C FADAMAR KALE" if SiteID==	1805110032
+replace SiteName = "H/C PANPAIDA" if SiteID==	1805110033
+replace SiteName = "SAULAWA NURSING HOME" if SiteID==	1805120034
+replace SiteName = "H/C WAMBAI" if SiteID==	1805110035
+replace SiteName = "H/C YAURAN" if SiteID==	1805110036
+replace SiteName = "H/C RUNJI" if SiteID==	1805110037
+replace SiteName = "H/C KUNKUMI" if SiteID==	1805110038
+replace SiteName = "PHC AUCHAN" if SiteID==	1805110039
+replace SiteName = "H/C ALLAH GABA" if SiteID==	1805110040
+replace SiteName = "ZAINAB NURSING HOME AUCHAN " if SiteID==	1805120041
+replace SiteName = "H/C KUYA" if SiteID==	1805110042
+replace SiteName = "H/C BAMUYAYI" if SiteID==	1805110043
+replace SiteName = "GANGARIDA HC " if SiteID==	1805110044
+replace SiteName = "PHC PAKI" if SiteID==	1805110045
+replace SiteName = "H/C YALWAN DAJI" if SiteID==	1805110046
+replace SiteName = "GEN HOSP, KWOI" if SiteID==	1806210001
+replace SiteName = "PHC SABON GARIN CHORI" if SiteID==	1806110002
+replace SiteName = "H/C BURWAYE" if SiteID==	1806110003
+replace SiteName = "H/C ARZUKA" if SiteID==	1806110004
+replace SiteName = "H/C CHORI FADEK" if SiteID==	1806110005
+replace SiteName = "H/C CHORI BARIKI" if SiteID==	1806110006
+replace SiteName = "H/C CHORI MAKAMA" if SiteID==	1806110007
+replace SiteName = "PHC  FAI" if SiteID==	1806110008
+replace SiteName = "PHC KURMIN JATAU" if SiteID==	1806110009
+replace SiteName = "H/C KURMIN BAUNA" if SiteID==	1806110010
+replace SiteName = "H/C U/ISAH" if SiteID==	1806110011
+replace SiteName = "H/C U/GAUJI" if SiteID==	1806110012
+replace SiteName = "H/C U/SANYI" if SiteID==	1806110013
+replace SiteName = "HC U/GALADIMA" if SiteID==	1806110014
+replace SiteName = "HC T/WADA K/JATAU" if SiteID==	1806110015
+replace SiteName = "HC U/FARI" if SiteID==	1806110016
+replace SiteName = "PHC  FOGYEI" if SiteID==	1806110017
+replace SiteName = "H/C NGASHANG" if SiteID==	1806110018
+replace SiteName = "H/C NGANDURO" if SiteID==	1806110019
+replace SiteName = "PHC  ANKUNG A" if SiteID==	1806110020
+replace SiteName = "H/C  GORA" if SiteID==	1806110021
+replace SiteName = "H/C TAIME" if SiteID==	1806110022
+replace SiteName = "H/C INDOFA" if SiteID==	1806110023
+replace SiteName = "H/C IDAR" if SiteID==	1806110024
+replace SiteName = "H/C ANKUNG B" if SiteID==	1806110025
+replace SiteName = "H/C ANKUNG C" if SiteID==	1806110026
+replace SiteName = "RAMINDOP" if SiteID==	1806110027
+replace SiteName = "HC U/KURA" if SiteID==	1806110028
+replace SiteName = "PHC  NOK" if SiteID==	1806110029
+replace SiteName = "H/C NGAR-NOK" if SiteID==	1806110030
+replace SiteName = "H/C TUNGA-NOK" if SiteID==	1806110031
+replace SiteName = "H/C TUNGA ZEE" if SiteID==	1806110032
+replace SiteName = "H/C SAMBAN DAJI" if SiteID==	1806110033
+replace SiteName = "PHC  SAMBAN GIDA" if SiteID==	1806110034
+replace SiteName = "H/C ANGWAL" if SiteID==	1806110035
+replace SiteName = "H/C U/ZUMA" if SiteID==	1806110036
+replace SiteName = "H/C SAMBAN LOKO" if SiteID==	1806110037
+replace SiteName = "PHC DADDU" if SiteID==	1806110038
+replace SiteName = "H/C KYARI" if SiteID==	1806110039
+replace SiteName = "H/C KURMIN ZOMO" if SiteID==	1806110040
+replace SiteName = "H/C KARSHE" if SiteID==	1806110041
+replace SiteName = "H/C GIDAN SANI" if SiteID==	1806110042
+replace SiteName = "H/C KAJURU" if SiteID==	1806110043
+replace SiteName = "H/C MADACHI" if SiteID==	1806110044
+replace SiteName = "TULSI GIDAN SANI" if SiteID==	1806120045
+replace SiteName = "TULSI DAYANDANG" if SiteID==	1806120046
+replace SiteName = "TULSI KURYAS" if SiteID==	1806120047
+replace SiteName = "TULSI KYARI" if SiteID==	1806120048
+replace SiteName = "TULSI U/BARO" if SiteID==	1806120049
+replace SiteName = "PHC . KWOI" if SiteID==	1806110050
+replace SiteName = "HC SABON GARI KWOI" if SiteID==	1806110051
+replace SiteName = "GODIYA CLINIC" if SiteID==	1806120052
+replace SiteName = "LADI MEMORIAL CLINIC" if SiteID==	1806120053
+replace SiteName = "HELEN CLINIC" if SiteID==	1806120054
+replace SiteName = "ECWA COMP. HEALTH CENTRE" if SiteID==	1806120055
+replace SiteName = "PHC  SAB-ZURO" if SiteID==	1806110056
+replace SiteName = "TBL UNIT" if SiteID==	1806110057
+replace SiteName = "PHC  BITARO" if SiteID==	1806110058
+replace SiteName = "H/C U/RANA" if SiteID==	1806110059
+replace SiteName = "H/C GIDAN KUNDI" if SiteID==	1806110060
+replace SiteName = "H/C DURA" if SiteID==	1806110061
+replace SiteName = "GEN HOSP KAFANCHAN" if SiteID==	1807210001
+replace SiteName = "CALVARY CLINIC & MAT " if SiteID==	1807120002
+replace SiteName = "NEW ERA CLINIC & MAT " if SiteID==	1807120003
+replace SiteName = "RAHAMA HOSP" if SiteID==	1807120004
+replace SiteName = "FAMILY HEALTH UNIT" if SiteID==	1807110005
+replace SiteName = "BETHEL HOSP" if SiteID==	1807120006
+replace SiteName = "SALEM MC AND ORPHANAGE" if SiteID==	1807120007
+replace SiteName = "PHC KAFANCHAN" if SiteID==	1807110008
+replace SiteName = "JEMA'A NURSING HOME" if SiteID==	1807120009
+replace SiteName = "FAITH ALIVE" if SiteID==	1807120010
+replace SiteName = "HEALTH & JAMES " if SiteID==	1807120011
+replace SiteName = "BISHARA CLINIC" if SiteID==	1807120012
+replace SiteName = "H/C ASSO" if SiteID==	1807110013
+replace SiteName = "H/C WAZO" if SiteID==	1807110014
+replace SiteName = "H/C TANDA" if SiteID==	1807110015
+replace SiteName = "H/C KWAGIRI" if SiteID==	1807110016
+replace SiteName = "H/C KUSSUM" if SiteID==	1807110017
+replace SiteName = "SALAMA MC KWAGIRI" if SiteID==	1807120018
+replace SiteName = "H/C ATUKU" if SiteID==	1807110019
+replace SiteName = "H/C TAJAK" if SiteID==	1807110020
+replace SiteName = "H/C BARDE" if SiteID==	1807110021
+replace SiteName = "H/C GABI" if SiteID==	1807110022
+replace SiteName = "H/C GHAUTA" if SiteID==	1807110023
+replace SiteName = "COWA CLINIC KWAREBE" if SiteID==	1807120024
+replace SiteName = "H/C GIDAN WAYA" if SiteID==	1807110025
+replace SiteName = "H/C NISAMA " if SiteID==	1807110026
+replace SiteName = "H/C NIMBIA FOREST" if SiteID==	1807110027
+replace SiteName = "H/C MAILAFIYA" if SiteID==	1807110028
+replace SiteName = "HC KANUFI" if SiteID==	1807110029
+replace SiteName = "RHILAMA HC" if SiteID==	1807110030
+replace SiteName = "ALHERI CLINIC PASAKWARI" if SiteID==	1807120031
+replace SiteName = "MAINASARA HC" if SiteID==	1807120032
+replace SiteName = "FAJAHI MAT  HOME" if SiteID==	1807120033
+replace SiteName = "PHC GODOGODO" if SiteID==	1807110034
+replace SiteName = "H/C ZANKAN" if SiteID==	1807110035
+replace SiteName = "KOWA MC GODOGODO" if SiteID==	1807120036
+replace SiteName = "NI’IMA CLINIC GOLKOFA" if SiteID==	1807120037
+replace SiteName = "ECWA HC " if SiteID==	1807120038
+replace SiteName = "H/C JAGINDI GARI" if SiteID==	1807110039
+replace SiteName = "H/C JAGINDI TASHA" if SiteID==	1807110040
+replace SiteName = "H/C KOGUN RIVER" if SiteID==	1807110041
+replace SiteName = "SAUKI CLINIC JAGINDI TASHA" if SiteID==	1807120042
+replace SiteName = "NAKOWA Med Cent" if SiteID==	1807120043
+replace SiteName = "PHC KAGOMA" if SiteID==	1807110044
+replace SiteName = "H/C FORI" if SiteID==	1807110045
+replace SiteName = "H/C FIDO" if SiteID==	1807110046
+replace SiteName = "DISPENSARY KAGOMA" if SiteID==	1807110047
+replace SiteName = "HOPE CLINIC AMBAN" if SiteID==	1807120048
+replace SiteName = "PHC  U/FARI" if SiteID==	1807110049
+replace SiteName = "H/C B/KOGI" if SiteID==	1807110050
+replace SiteName = "H/C GOSKA" if SiteID==	1807110051
+replace SiteName = "PHC MAIGIZO" if SiteID==	1807110052
+replace SiteName = "H/C ADUWAN II" if SiteID==	1807110053
+replace SiteName = "STAFF CLINIC JEMA'A" if SiteID==	1807110054
+replace SiteName = "RAILWAY MEDICAL CLINIC" if SiteID==	1807120055
+replace SiteName = "FANTSUWAM FOUNDATION" if SiteID==	1807120056
+replace SiteName = "PHC TAKAU" if SiteID==	1807110057
+replace SiteName = "H/C U/YANSHA" if SiteID==	1807110058
+replace SiteName = "GENDER POSITIVE INITIATION" if SiteID==	1807120059
+replace SiteName = "GEN HOSP KACHIA" if SiteID==	1808210001
+replace SiteName = "PHC KACHIA" if SiteID==	1808110002
+replace SiteName = "ANGUWAN ATE" if SiteID==	1808110003
+replace SiteName = "HASKE NURSING HOME" if SiteID==	1808120004
+replace SiteName = "KAUNA NURSING & MAT " if SiteID==	1808120005
+replace SiteName = "MC ROYAL HOSP" if SiteID==	1808120006
+replace SiteName = "SALAMA NURSING & MAT  HOME" if SiteID==	1808120007
+replace SiteName = "ST. PAUL'S PHC " if SiteID==	1808120008
+replace SiteName = "ECWA HC " if SiteID==	1808120009
+replace SiteName = "RURAL HOSP DOKA" if SiteID==	1808210010
+replace SiteName = "HC DOKA" if SiteID==	1808110011
+replace SiteName = "HC AKILIBU" if SiteID==	1808110012
+replace SiteName = "HC RIJANA" if SiteID==	1808110013
+replace SiteName = "DR. ISA CLINIC" if SiteID==	1808120014
+replace SiteName = "ELITU NURSING HOME" if SiteID==	1808120015
+replace SiteName = "KURMIN BABA" if SiteID==	1808110016
+replace SiteName = "KURMIN MAZUGA" if SiteID==	1808110017
+replace SiteName = "H/C AWON " if SiteID==	1808110018
+replace SiteName = "AKWANDU" if SiteID==	1808110019
+replace SiteName = "BARGA" if SiteID==	1808110020
+replace SiteName = "GORA" if SiteID==	1808110021
+replace SiteName = "ANTURU" if SiteID==	1808110022
+replace SiteName = "KWARIN TSOHO" if SiteID==	1808110023
+replace SiteName = "ARIKO" if SiteID==	1808110024
+replace SiteName = "U/KUTURMI" if SiteID==	1808110025
+replace SiteName = "K/GWALE" if SiteID==	1808110026
+replace SiteName = "U/ KADARA" if SiteID==	1808110027
+replace SiteName = "KATUN KASA" if SiteID==	1808110028
+replace SiteName = "KINTARO" if SiteID==	1808110029
+replace SiteName = "U/TOKA" if SiteID==	1808110030
+replace SiteName = "PHC BISHINI" if SiteID==	1808110031
+replace SiteName = "HC KWARIN IYA" if SiteID==	1808110032
+replace SiteName = "HC IDO" if SiteID==	1808110033
+replace SiteName = "DR. BOLASI CLINIC" if SiteID==	1808120034
+replace SiteName = "PHC KATARI " if SiteID==	1808110035
+replace SiteName = "HC BADOKO" if SiteID==	1808110036
+replace SiteName = "WISDOM CLINIC & MAT " if SiteID==	1808120037
+replace SiteName = "PHC AGUNU" if SiteID==	1808110038
+replace SiteName = "HC CROSSING" if SiteID==	1808110039
+replace SiteName = "HC SAKWAI" if SiteID==	1808110040
+replace SiteName = "HC GADANAJI" if SiteID==	1808110041
+replace SiteName = "HC KUTURA RIMI" if SiteID==	1808110042
+replace SiteName = "ZABRANG CLINIC & MAT " if SiteID==	1808120043
+replace SiteName = "PHC SABON SARKI" if SiteID==	1808110044
+replace SiteName = "HC JABAN KOGO" if SiteID==	1808110045
+replace SiteName = "HC GIDAN MANA" if SiteID==	1808110046
+replace SiteName = "FOLZ ANGLICAN Med Cent" if SiteID==	1808120047
+replace SiteName = "PHC KURMIN MUSA" if SiteID==	1808110048
+replace SiteName = "HC ANTUM" if SiteID==	1808110049
+replace SiteName = "HC GYANI" if SiteID==	1808110050
+replace SiteName = "HC GIDAN JIBIR" if SiteID==	1808110051
+replace SiteName = "HC KWATURU" if SiteID==	1808110052
+replace SiteName = "PHC TSAUNI" if SiteID==	1808110053
+replace SiteName = "HC BAHAGO" if SiteID==	1808110054
+replace SiteName = "HC K/SIDI" if SiteID==	1808110055
+replace SiteName = "PHC GIDAN TAGWAI" if SiteID==	1808110056
+replace SiteName = "HC YARBON" if SiteID==	1808110057
+replace SiteName = "HC KUFAN GIDAN" if SiteID==	1808110058
+replace SiteName = "HC GIDAN GYARA" if SiteID==	1808110059
+replace SiteName = "HC WALIJO" if SiteID==	1808110060
+replace SiteName = "PHC ANKUWA" if SiteID==	1808110061
+replace SiteName = "HC FACHI" if SiteID==	1808110062
+replace SiteName = "HC MAI IDO KUFAI" if SiteID==	1808110063
+replace SiteName = "NATIONAL EAR CARE CENTRE KADUNA" if SiteID==	1809310001
+replace SiteName = "BARAU DIKKO SPEC HOSP" if SiteID==	1809210002
+replace SiteName = "DENTAL CENTRE KADUNA" if SiteID==	1809210003
+replace SiteName = "PHC U/RIMI" if SiteID==	1809110004
+replace SiteName = "ZAINAB MEMORIAL HOSP" if SiteID==	1809120005
+replace SiteName = "CRYSTAL OUT PATIENT" if SiteID==	1809120006
+replace SiteName = "JINYA MEDICAL CLINIC" if SiteID==	1809120007
+replace SiteName = "MENDS HOSP" if SiteID==	1809120008
+replace SiteName = "SALEM HOSP" if SiteID==	1809120009
+replace SiteName = "MULTI CARE MEDICAL" if SiteID==	1809120010
+replace SiteName = "KADUNA STATE WATER BOARD CLINIC" if SiteID==	1809120011
+replace SiteName = "SHEIKH ABUBAKAR M. GUMI" if SiteID==	1809120012
+replace SiteName = "DAN IYALI HOSP" if SiteID==	1809120013
+replace SiteName = "CHRISTEL HOSP " if SiteID==	1809120014
+replace SiteName = "AL-SADIQ HOSP " if SiteID==	1809120015
+replace SiteName = "MUSAKA HOSP" if SiteID==	1809120016
+replace SiteName = "NITR" if SiteID==	1809120017
+replace SiteName = "GEN HOSP KAWO" if SiteID==	1809210018
+replace SiteName = "PHC R/GUZA" if SiteID==	1809110019
+replace SiteName = "HAUWA'U MEMORIAL HOSP" if SiteID==	1809110020
+replace SiteName = "POLICE BARRACK MED.CENTRE" if SiteID==	1809110021
+replace SiteName = "1 DIV.HOSP" if SiteID==	1809110022
+replace SiteName = "CALIPHATE HOSP " if SiteID==	1809120023
+replace SiteName = "NIMA HOSP " if SiteID==	1809120024
+replace SiteName = "PHC BADARAWA" if SiteID==	1809110025
+replace SiteName = "PHC M B TUKUR MALALI " if SiteID==	1809110026
+replace SiteName = "MOBEL NURSING HOME" if SiteID==	1809120027
+replace SiteName = "DENTAL SURGERY" if SiteID==	1809120028
+replace SiteName = "EAGLE HOSP" if SiteID==	1809120029
+replace SiteName = "NOUCKEZ ENDOSCOPY" if SiteID==	1809120030
+replace SiteName = "NEVADA SPECIALIST " if SiteID==	1809120031
+replace SiteName = "AL-MANSUR HOSP" if SiteID==	1809120032
+replace SiteName = "ALHERI CLINIC & MAT " if SiteID==	1809120033
+replace SiteName = "PATRIOT DENTAL SURGERY" if SiteID==	1809120034
+replace SiteName = "CARE HOSP" if SiteID==	1809120035
+replace SiteName = "CHAHA EYE HOSP" if SiteID==	1809120036
+replace SiteName = "AL-MANSUR SPEC HOSP" if SiteID==	1809120037
+replace SiteName = "FAMILY HOSP" if SiteID==	1809120038
+replace SiteName = "FOMWAN HOSP" if SiteID==	1809120039
+replace SiteName = "DAMISA HOSP " if SiteID==	1809120040
+replace SiteName = "PHC ZAKARI ISA" if SiteID==	1809110041
+replace SiteName = "RAKIYA MEMORIAL HOSP" if SiteID==	1809120042
+replace SiteName = "PRIME SPEC HOSP" if SiteID==	1809120043
+replace SiteName = "CHILDREN'S SPEC HOSP" if SiteID==	1809120044
+replace SiteName = "HOPE CLINIC & MAT " if SiteID==	1809120045
+replace SiteName = "DOSSO CLINIC & MAT  " if SiteID==	1809120046
+replace SiteName = "THE LAFIYA CLINIC" if SiteID==	1809120047
+replace SiteName = "ALBA CLINIC & MAT " if SiteID==	1809120048
+replace SiteName = "HOREB SPEC HOSP" if SiteID==	1809120049
+replace SiteName = "VICTORY SPEC. HOSP & MAT " if SiteID==	1809120050
+replace SiteName = "LOGOS CLINIC" if SiteID==	1809120051
+replace SiteName = "PHC H/BANKI" if SiteID==	1809110052
+replace SiteName = "DAYO MAT  HOME" if SiteID==	1809120053
+replace SiteName = "PHC KABALA" if SiteID==	1809110054
+replace SiteName = "NAF CLNIC" if SiteID==	1809110055
+replace SiteName = "29 BAT.HOSP" if SiteID==	1809210056
+replace SiteName = "POLICE COLLEGE MED.CENTRE" if SiteID==	1809110057
+replace SiteName = "AS-SHIFA HOSP " if SiteID==	1809120058
+replace SiteName = "KABALA DOKI HOSP " if SiteID==	1809120059
+replace SiteName = "SKILLS SPEC HOSP" if SiteID==	1809120060
+replace SiteName = "RAMAT HOSP" if SiteID==	1809120061
+replace SiteName = "NIGER OPTICAL SERVICES" if SiteID==	1809120062
+replace SiteName = "UNION EYE CLINIC" if SiteID==	1809120063
+replace SiteName = "JODEB HOSP & MAT " if SiteID==	1809120064
+replace SiteName = "AL-ABASS NURSING" if SiteID==	1809120065
+replace SiteName = "PHC JUNCTION ROAD" if SiteID==	1809120066
+replace SiteName = "HASKE CLINIC" if SiteID==	1809120067
+replace SiteName = "ALBARKA HOSP" if SiteID==	1809120068
+replace SiteName = "BELOMONT SPEC HOSP" if SiteID==	1809120069
+replace SiteName = "SEFA SPEC HOSP" if SiteID==	1809120070
+replace SiteName = "ALL NIGERIA FOUNDATION" if SiteID==	1809120071
+replace SiteName = "TOPAZ DENTAL CLINIC" if SiteID==	1809120072
+replace SiteName = "SALISMA NURSING HOME" if SiteID==	1809120073
+replace SiteName = "SOVANEAL ORTHOPEDIC" if SiteID==	1809120074
+replace SiteName = "AREWA OPTICAL CLINIC" if SiteID==	1809120075
+replace SiteName = "COVENANT CLINIC & MAT " if SiteID==	1809120076
+replace SiteName = "ALBARKA MAT " if SiteID==	1809120077
+replace SiteName = "DAN MUSA ULTRASOUND" if SiteID==	1809120078
+replace SiteName = "ABI HOSP" if SiteID==	1809120079
+replace SiteName = "TIM UNITY" if SiteID==	1809120080
+replace SiteName = "SHALOM HOSP " if SiteID==	1809120081
+replace SiteName = "DAN MUSA X-RAY CENTRE" if SiteID==	1809120082
+replace SiteName = "SHAHA HOSP " if SiteID==	1809120083
+replace SiteName = "PHC U/DOSA" if SiteID==	1809110084
+replace SiteName = "IMAM HOSP" if SiteID==	1809120085
+replace SiteName = "MULTI CLINIC" if SiteID==	1809120086
+replace SiteName = "IMAM HOSP" if SiteID==	1809120087
+replace SiteName = "SHEHU HOSP" if SiteID==	1809120088
+replace SiteName = "PHC U/SARKI" if SiteID==	1809110089
+replace SiteName = "CHASEL HOSP" if SiteID==	1809120090
+replace SiteName = "VICAS SPEC HOSP" if SiteID==	1809120091
+replace SiteName = "GARKUWA SPECIALIST" if SiteID==	1809120092
+replace SiteName = "GARDEN CITY HOSP" if SiteID==	1809120093
+replace SiteName = "DALILI HOSP " if SiteID==	1809120094
+replace SiteName = "HIFI CLINIC" if SiteID==	1809120095
+replace SiteName = "PATELA CLINIC & MAT " if SiteID==	1809120096
+replace SiteName = "HABBAT SKIN CLINIC" if SiteID==	1809120097
+replace SiteName = "DARMA NURSING & MAT " if SiteID==	1809120098
+replace SiteName = "KAGORO SHEHAN Med Cent" if SiteID==	1809120099
+replace SiteName = "LARRY CLINIC" if SiteID==	1809120100
+replace SiteName = "JAKOWA SPEC HOSP " if SiteID==	1809120101
+replace SiteName = "NBTE CLINIC" if SiteID==	1809120102
+replace SiteName = "HUBBAT HOSP " if SiteID==	1809120103
+replace SiteName = "EMMA SPEC HOSP " if SiteID==	1809120104
+replace SiteName = "PHC  U/SHANU" if SiteID==	1809110105
+replace SiteName = "BITSAM CLINIC" if SiteID==	1809120106
+replace SiteName = "GIWA HOSP" if SiteID==	1809120107
+replace SiteName = "ABURIME-CHANGSU ORIENTAL DIAG. HOS." if SiteID==	1809120108
+replace SiteName = "AL-IMAN NURSING & MAT  HOME" if SiteID==	1809120109
+replace SiteName = "IMAM MAT  HOME" if SiteID==	1809120110
+replace SiteName = "AL-MADINAT SPEC HOSP" if SiteID==	1809120111
+replace SiteName = "TURAKI HOSP" if SiteID==	1809120112
+replace SiteName = "FASAHA HOSP " if SiteID==	1809120113
+replace SiteName = "ADUREME OCCUPATURE" if SiteID==	1809120114
+replace SiteName = "RESTORATION HOSP" if SiteID==	1809120115
+replace SiteName = "JOWAKO CLINIC" if SiteID==	1809120116
+replace SiteName = "CITY CLINIC" if SiteID==	1809120117
+replace SiteName = "NASIRU CLINIC" if SiteID==	1809120118
+replace SiteName = "HITAF CLINIC" if SiteID==	1809120119
+replace SiteName = "BAREWA CLINIC " if SiteID==	1809120120
+replace SiteName = "MEDICITY HOSP" if SiteID==	1809120121
+replace SiteName = "ALHERI-NAKOWA HOSP" if SiteID==	1809120122
+replace SiteName = "PHC ABAKPA" if SiteID==	1809110123
+replace SiteName = "GARDEN CITY HOSP" if SiteID==	1809120124
+replace SiteName = "SULTAN CLINIC" if SiteID==	1809120125
+replace SiteName = "PSYCHIATRIC HOSP BARNAWA" if SiteID==	1810310001
+replace SiteName = "PHC HAJ ASMAU AHMED MAKARFI" if SiteID==	1810110002
+replace SiteName = "AMINU HOSP & MAT " if SiteID==	1810120003
+replace SiteName = "GILTOE ARIS SPEC HOSP" if SiteID==	1810120004
+replace SiteName = "SALVATION HOSP" if SiteID==	1810120005
+replace SiteName = "MOUFAY CLINICS" if SiteID==	1810120006
+replace SiteName = "PREMIER EYE CLINIC" if SiteID==	1810120007
+replace SiteName = "DELTA CLINIC" if SiteID==	1810120008
+replace SiteName = "AL-TABIB MAT  HOME" if SiteID==	1810120009
+replace SiteName = "C-JAY Med Cent" if SiteID==	1810120010
+replace SiteName = "GILEAD Med Cent" if SiteID==	1810120011
+replace SiteName = "DOCTORS CLINIC" if SiteID==	1810120012
+replace SiteName = "BIO CLINIC" if SiteID==	1810120013
+replace SiteName = "JEFANAL CLINIC" if SiteID==	1810120014
+replace SiteName = "SAMOLU CLINIC & MAT " if SiteID==	1810120015
+replace SiteName = "GEMINA HOSP " if SiteID==	1810120016
+replace SiteName = "44 ARMY REF. HOSP KADUNA" if SiteID==	1810210017
+replace SiteName = "FHU BADIKO" if SiteID==	1810110018
+replace SiteName = "MCH KURMIN MASHI" if SiteID==	1810110019
+replace SiteName = "MASHI HOSP" if SiteID==	1810120020
+replace SiteName = "ALHERI CLINIC & MAT " if SiteID==	1810120021
+replace SiteName = "BETO DOCTOR CLINIC" if SiteID==	1810120022
+replace SiteName = "SALAMAT HOSP" if SiteID==	1810120023
+replace SiteName = "Dr GWAMNA AWAN GEN HOSP  KAKURI" if SiteID==	1810210024
+replace SiteName = "312 ARTILLERY HOSP" if SiteID==	1810110025
+replace SiteName = "PHC UNGUWAR MAKAMA" if SiteID==	1810120026
+replace SiteName = "SENDER POLY.HOSP" if SiteID==	1810120027
+replace SiteName = "MCH  KAKURI  HAUSA" if SiteID==	1810110028
+replace SiteName = "PHC YMCA" if SiteID==	1810110029
+replace SiteName = "RUMBU HOSP" if SiteID==	1810120030
+replace SiteName = "AMINA HOSP" if SiteID==	1810120031
+replace SiteName = "ISHAKU MEMORIAL CLINIC" if SiteID==	1810120032
+replace SiteName = "SENDA POLYCLINIC" if SiteID==	1810120033
+replace SiteName = "NIGERIAN BOTTLING CO. LTD" if SiteID==	1810120034
+replace SiteName = "SEVEN UP BOTTLING CO. LTD" if SiteID==	1810120035
+replace SiteName = "SOLID FOUNDATION MAT " if SiteID==	1810120036
+replace SiteName = "YUSUF DANTSOHO MEMORIAL HOSP. T/WADA" if SiteID==	1810210037
+replace SiteName = "PHC U/SANUSI" if SiteID==	1810110038
+replace SiteName = "MPHC DANQUATERS" if SiteID==	1810110039
+replace SiteName = "KAD POLY HOSP" if SiteID==	1810110040
+replace SiteName = "SALAMATU HOSP" if SiteID==	1810120041
+replace SiteName = "GODIYA CLINIC " if SiteID==	1810120042
+replace SiteName = "FHU KURMIN GWARI" if SiteID==	1810110043
+replace SiteName = "T.B.L. KURMIN GWARI" if SiteID==	1810110044
+replace SiteName = "MCH U/MAKAMA" if SiteID==	1810110045
+replace SiteName = "AITAAM HOSP" if SiteID==	1810120046
+replace SiteName = "PHC MAKERA I" if SiteID==	1810110047
+replace SiteName = "PHC MAKERA II" if SiteID==	1810110048
+replace SiteName = "OXFORD HOSP" if SiteID==	1810120049
+replace SiteName = "AG LIMA CLINICS" if SiteID==	1810120050
+replace SiteName = "BARKA SPEC HOSP" if SiteID==	1810120051
+replace SiteName = "ALBARKA MAT  HOME CLINIC" if SiteID==	1810120052
+replace SiteName = "DEWAS CLINIC & MAT " if SiteID==	1810120053
+replace SiteName = "ENDURANCE MAT  HOME" if SiteID==	1810120054
+replace SiteName = "TANZU MEMORIAL HOSP" if SiteID==	1810120055
+replace SiteName = "JICON CLINIC & MAT " if SiteID==	1810120056
+replace SiteName = "ABDUL-ZEEZ MEMORIAL HOSP" if SiteID==	1810120057
+replace SiteName = "SABY HOSP" if SiteID==	1810120058
+replace SiteName = "UNITED NIGERIAN TEXTILES" if SiteID==	1810120059
+replace SiteName = "NIGERIA BREWERIES LTD" if SiteID==	1810120060
+replace SiteName = "CRYSTAL CLINIC & MAT " if SiteID==	1810120061
+replace SiteName = "I.M.F.N. ISLAMIYA HOSP" if SiteID==	1810120062
+replace SiteName = "ISLAMIC MEDICAL FOUND. HOSP" if SiteID==	1810120063
+replace SiteName = "AT-TATBIQ ISLAMIC Med Cent" if SiteID==	1810120064
+replace SiteName = "PHC KAGORO ROAD" if SiteID==	1810110065
+replace SiteName = "AITAM HOSP" if SiteID==	1810120066
+replace SiteName = "ZAITUN HOSP" if SiteID==	1810120067
+replace SiteName = "IMF HOSP" if SiteID==	1810120068
+replace SiteName = "PHC KUBAU ROAD" if SiteID==	1810110069
+replace SiteName = "PHC FAKI ROAD" if SiteID==	1810110070
+replace SiteName = "TOFAN HOSP" if SiteID==	1810120071
+replace SiteName = "PHC KABALA WEST" if SiteID==	1810110072
+replace SiteName = "H/C GARBA LAWAL" if SiteID==	1810110073
+replace SiteName = "TBL ZANGO" if SiteID==	1810110074
+replace SiteName = "FHU ZANGO ROAD" if SiteID==	1810110075
+replace SiteName = "PHC U/MUAZU" if SiteID==	1810110076
+replace SiteName = "BIBA HOSP " if SiteID==	1810120077
+replace SiteName = "ZAITUN NURSING & MAT " if SiteID==	1810120078
+replace SiteName = "LIBERAL CLINIC & MAT " if SiteID==	1810120079
+replace SiteName = "ROYAL Med Cent" if SiteID==	1810120080
+replace SiteName = "SUJUD HOSP" if SiteID==	1810120081
+replace SiteName = "H/C KINKINAU" if SiteID==	1810110082
+replace SiteName = "RASMAH CLINIC & MAT  HOME" if SiteID==	1810120083
+replace SiteName = "ALBARKAN ALLAH HOSP" if SiteID==	1810120084
+replace SiteName = "UMMI RAKIYA HOSP" if SiteID==	1810120085
+replace SiteName = "KHAMMAZ CLINIC & MAT  HOME" if SiteID==	1810120086
+replace SiteName = "PHC TELEVISION GARAGE" if SiteID==	1810110087
+replace SiteName = "BENGOLA HOSP" if SiteID==	1810120088
+replace SiteName = "THEK MAT  HOME" if SiteID==	1810120089
+replace SiteName = "LYONNS HOSP " if SiteID==	1810120090
+replace SiteName = "RAPHA NURSING & MAT  HOME" if SiteID==	1810120091
+replace SiteName = "HOLINESS NURSING & MAT " if SiteID==	1810120092
+replace SiteName = "ROMIO CLINIC" if SiteID==	1810120093
+replace SiteName = "HAUWA MEDICARE & NURSING" if SiteID==	1810120094
+replace SiteName = "TRIKANIYA MAT  HOME" if SiteID==	1810120095
+replace SiteName = "SHIYA NURSING & MAT  HOME" if SiteID==	1810120096
+replace SiteName = "OMEGA CLINIC & MAT " if SiteID==	1810120097
+replace SiteName = "ECWA HC" if SiteID==	1810120098
+replace SiteName = "TRINITY HOME HOSP & MAT " if SiteID==	1810120099
+replace SiteName = "NEBINA SPEC HOSP & MAT " if SiteID==	1810120100
+replace SiteName = "PETROVI1K CLINIC & MAT " if SiteID==	1810120101
+replace SiteName = "TRUST HOSP" if SiteID==	1810120102
+replace SiteName = "E-L SHADDAI CLINIC" if SiteID==	1810120103
+replace SiteName = "HALIMAT MAT " if SiteID==	1810120104
+replace SiteName = "KINGDOM HOSP" if SiteID==	1810120105
+replace SiteName = "HARMONY HOSP" if SiteID==	1810120106
+replace SiteName = "AFTER RAIL OPTICS" if SiteID==	1810120107
+replace SiteName = "AL-AMIN Med Cent" if SiteID==	1810120108
+replace SiteName = "LIBERTY NURSING & MAT " if SiteID==	1810120109
+replace SiteName = "ST. GERALDS CATHOLIC HOSP" if SiteID==	1810120110
+replace SiteName = "DAMI-LO CLINIC" if SiteID==	1810120111
+replace SiteName = "ARK OF GOD'S COVENANT CLINIC" if SiteID==	1810120112
+replace SiteName = "MUSA NURSING HOME" if SiteID==	1810120113
+replace SiteName = "GODIYA HOSP" if SiteID==	1810120114
+replace SiteName = "AL-FIJIR CLINIC & MAT " if SiteID==	1810120115
+replace SiteName = "AS-SABUUR HOSP & MAT " if SiteID==	1810120116
+replace SiteName = "GEN HOSP KAGARKO" if SiteID==	1811210001
+replace SiteName = "PHC SABON ICE" if SiteID==	1811110002
+replace SiteName = "H/C DOGON DAJI" if SiteID==	1811110003
+replace SiteName = "H/C KUDIRI" if SiteID==	1811110004
+replace SiteName = "H/C JANJALA" if SiteID==	1811110005
+replace SiteName = "H/C DAKAREMI" if SiteID==	1811110006
+replace SiteName = "PHC KAGARKO" if SiteID==	1811110007
+replace SiteName = "HC SABON ICHE" if SiteID==	1811110008
+replace SiteName = "HC KUSAI" if SiteID==	1811110009
+replace SiteName = "HC KARAMI" if SiteID==	1811110010
+replace SiteName = "PHC KENYI" if SiteID==	1811110011
+replace SiteName = "HC KURMIN DANGANA" if SiteID==	1811110012
+replace SiteName = "HC RUZAI" if SiteID==	1811110013
+replace SiteName = "HC KASARU" if SiteID==	1811110014
+replace SiteName = "HC KURATAM" if SiteID==	1811110015
+replace SiteName = "HC KUKYER" if SiteID==	1811110016
+replace SiteName = "HC ARIBI" if SiteID==	1811110017
+replace SiteName = "HC KUTAHO" if SiteID==	1811110018
+replace SiteName = "HC KABARA" if SiteID==	1811110019
+replace SiteName = "PHC JERE" if SiteID==	1811110020
+replace SiteName = "M.C.H. CHINKA" if SiteID==	1811110021
+replace SiteName = "M.C.H. GUJENI" if SiteID==	1811110022
+replace SiteName = "M.C.H. LATIKO" if SiteID==	1811110023
+replace SiteName = "M.C.H. DUMALE" if SiteID==	1811110024
+replace SiteName = "HC KWASERE" if SiteID==	1811110025
+replace SiteName = "PHC KURMI JBRIN" if SiteID==	1811110026
+replace SiteName = "M.C.H. MEMDOR" if SiteID==	1811110027
+replace SiteName = "M.C.H. CHIGWA" if SiteID==	1811110028
+replace SiteName = "SHADALAFIYA" if SiteID==	1811110029
+replace SiteName = "PHC KUBACHA" if SiteID==	1811110030
+replace SiteName = "M.C.H. KATUGAL" if SiteID==	1811110031
+replace SiteName = "M.C.H. KUSHAMFA" if SiteID==	1811110032
+replace SiteName = "HC CIKIN GARI KATUGAL" if SiteID==	1811110033
+replace SiteName = "M.C.H. NKOJO" if SiteID==	1811110034
+replace SiteName = "HASKE & MAT " if SiteID==	1811120035
+replace SiteName = "EMMY CATHOLIC PHC" if SiteID==	1811120036
+replace SiteName = "M.C.H. KUSHE FADA" if SiteID==	1811110037
+replace SiteName = "M.C.H. KAFARMA" if SiteID==	1811110038
+replace SiteName = "M.C.H. K/MAKARANTA" if SiteID==	1811110039
+replace SiteName = "M.C.H. DOGON KURMI" if SiteID==	1811110040
+replace SiteName = "M.C.H. CHUKULLA" if SiteID==	1811110041
+replace SiteName = "M.C.H. KASSABERE" if SiteID==	1811110042
+replace SiteName = "M.C.H. PANKORE" if SiteID==	1811110043
+replace SiteName = "H/C MARKE" if SiteID==	1811110044
+replace SiteName = "H/C CHILLA" if SiteID==	1811110045
+replace SiteName = "M.C.H. KUDIRI" if SiteID==	1811110046
+replace SiteName = "M.C.H. RAFIN KINBA" if SiteID==	1811110047
+replace SiteName = "SALAMA MAT  & NURSING HOME" if SiteID==	1811120048
+replace SiteName = "ST. MICHAEL PHC" if SiteID==	1811120049
+replace SiteName = "M.C.H. PABAGI" if SiteID==	1811110050
+replace SiteName = "HC KASARU" if SiteID==	1811110051
+replace SiteName = "HC IDATURA" if SiteID==	1811110052
+replace SiteName = "MCH GORA" if SiteID==	1811110053
+replace SiteName = "HC. AKOTI" if SiteID==	1811110054
+replace SiteName = "MC ROYAL HOSP" if SiteID==	1811120055
+replace SiteName = "ZUMA MEDICAL CLINIC & CONV. HOME" if SiteID==	1811120056
+replace SiteName = "PHC IDDAH" if SiteID==	1811110057
+replace SiteName = "H/C TAFFA" if SiteID==	1811110058
+replace SiteName = "M.C.H. CHAKWAMA" if SiteID==	1811110059
+replace SiteName = "M.C.H. KWACHI" if SiteID==	1811110060
+replace SiteName = "AMILAN HC" if SiteID==	1811120061
+replace SiteName = "GODIYA CLINIC" if SiteID==	1811120062
+replace SiteName = "EGONATUN MAT " if SiteID==	1811120063
+replace SiteName = "BISHARA MAT " if SiteID==	1811120064
+replace SiteName = "JOY CLINIC" if SiteID==	1811120065
+replace SiteName = "SAUKI NURSING & MAT " if SiteID==	1811120066
+replace SiteName = "HC  KUKUI" if SiteID==	1811110067
+replace SiteName = "H/C ICE BISA" if SiteID==	1811110068
+replace SiteName = "M.C.H. KOSOH" if SiteID==	1811110069
+replace SiteName = "M.C.H. KUSANI" if SiteID==	1811110070
+replace SiteName = "ALHERI CLINIC" if SiteID==	1811120071
+replace SiteName = "RURAL HOSP IDON" if SiteID==	1812210001
+replace SiteName = "M.C.H. IDON" if SiteID==	1812110002
+replace SiteName = "H/C DOKA" if SiteID==	1812110003
+replace SiteName = "IDON GIDA" if SiteID==	1812110004
+replace SiteName = "H/C IRI STATION" if SiteID==	1812110005
+replace SiteName = "H/C IRI GARI" if SiteID==	1812110006
+replace SiteName = "H/C AFOGO" if SiteID==	1812110007
+replace SiteName = "H/C DANBAGUDU" if SiteID==	1812110008
+replace SiteName = "PHC IBURU" if SiteID==	1812110009
+replace SiteName = "H/P K/IDON" if SiteID==	1812110010
+replace SiteName = "H/P S/GARI AFOGO" if SiteID==	1812110011
+replace SiteName = "H/C BUDA" if SiteID==	1812110012
+replace SiteName = "M.C.H. KAJURU" if SiteID==	1812110013
+replace SiteName = "GOVT TECH COL" if SiteID==	1812110014
+replace SiteName = "H/C KALLAH" if SiteID==	1812110015
+replace SiteName = "H/C GEFE" if SiteID==	1812110016
+replace SiteName = "H/C IDUH" if SiteID==	1812110017
+replace SiteName = "H/C LIBERE" if SiteID==	1812110018
+replace SiteName = "DANKPONI MAT  & CLINIC" if SiteID==	1812120019
+replace SiteName = "ECWA HC" if SiteID==	1812120020
+replace SiteName = "M.C.H. K/MAGANI" if SiteID==	1812110021
+replace SiteName = "H/C DUTSEN GAYA" if SiteID==	1812110022
+replace SiteName = "KAUNA CLINIC & MAT " if SiteID==	1812120023
+replace SiteName = "TAUSAYI MAT " if SiteID==	1812120024
+replace SiteName = "M.C.H. KUFANA" if SiteID==	1812110025
+replace SiteName = "M.C.H. M/KAJURU" if SiteID==	1812110026
+replace SiteName = "H/C AKU" if SiteID==	1812110027
+replace SiteName = "H/C RUBU" if SiteID==	1812110028
+replace SiteName = "H/C RAFIN KUNU" if SiteID==	1812110029
+replace SiteName = "M.C.H. MARO" if SiteID==	1812110030
+replace SiteName = "H/C CHIBIYA" if SiteID==	1812110031
+replace SiteName = "H/C KARMAI" if SiteID==	1812110032
+replace SiteName = "H/C U/GAMBO" if SiteID==	1812110033
+replace SiteName = "H/C DOGON NOMA" if SiteID==	1812110034
+replace SiteName = "H/C U/BARDE" if SiteID==	1812110035
+replace SiteName = "H/C BAKIRA" if SiteID==	1812110036
+replace SiteName = "H/C OGAKALLAH" if SiteID==	1812110037
+replace SiteName = "NAKOWA HEALTH MAT " if SiteID==	1812120038
+replace SiteName = "H/C RIMAU" if SiteID==	1812110039
+replace SiteName = "FAS NURSING HOME" if SiteID==	1812120040
+replace SiteName = "TANTATU " if SiteID==	1812110041
+replace SiteName = "KUTURA STATION" if SiteID==	1812110042
+replace SiteName = "RURAL HOSP KAURA" if SiteID==	1813210043
+replace SiteName = "PHC  KAURA" if SiteID==	1813110044
+replace SiteName = "H/C ANTURUNG" if SiteID==	1813110045
+replace SiteName = "AMARKS MAT  HOME" if SiteID==	1813120046
+replace SiteName = "PHC  FADA" if SiteID==	1813110047
+replace SiteName = "PHC TUM" if SiteID==	1813110048
+replace SiteName = "H/C FADAN DAJI" if SiteID==	1813110049
+replace SiteName = "ECWA COMPR. HEALTH CENTRE" if SiteID==	1813120050
+replace SiteName = "H/C KUKUM GIDA" if SiteID==	1813110051
+replace SiteName = "H/C K/DAJI" if SiteID==	1813110052
+replace SiteName = "H/C ZAKWA" if SiteID==	1813110053
+replace SiteName = "M.C.H. K/DUTSE" if SiteID==	1813110054
+replace SiteName = "H/C MADAMAI" if SiteID==	1813110055
+replace SiteName = "T.B. M.H. KAGORO" if SiteID==	1813110056
+replace SiteName = "M.C.H. AGBAN" if SiteID==	1813110057
+replace SiteName = "PHC  GARAJE" if SiteID==	1813110058
+replace SiteName = "H/C TSONJE" if SiteID==	1813110059
+replace SiteName = "H/C MALAGUM II" if SiteID==	1813110060
+replace SiteName = "PHC MALLAGUM I" if SiteID==	1813110061
+replace SiteName = "CPHC TUM" if SiteID==	1813110062
+replace SiteName = "TUM CLINIC" if SiteID==	1813120063
+replace SiteName = "PHC MANCHOCK" if SiteID==	1813110064
+replace SiteName = "MORO'A Med Cent" if SiteID==	1813120065
+replace SiteName = "MAMCO HC" if SiteID==	1813120066
+replace SiteName = "BATURE MEM HOSP" if SiteID==	1813120067
+replace SiteName = "PHC  BONDONG" if SiteID==	1813110068
+replace SiteName = "H/C U/KAYA" if SiteID==	1813110069
+replace SiteName = "H/C U/GATA" if SiteID==	1813110070
+replace SiteName = "H/C BINIKI" if SiteID==	1813110071
+replace SiteName = "ST. LOIS CLINIC" if SiteID==	1813120072
+replace SiteName = "HC  ZANKAN" if SiteID==	1813110073
+replace SiteName = "PHC SABON GARI" if SiteID==	1813110074
+replace SiteName = "PHC  FADA ATTAKAR" if SiteID==	1813110075
+replace SiteName = "C.M.H.C. SAFIO" if SiteID==	1813110076
+replace SiteName = "H/C TACHIRA" if SiteID==	1813110077
+replace SiteName = "PHC DOSAI" if SiteID==	1813110078
+replace SiteName = "LARUTH MAT " if SiteID==	1813120079
+replace SiteName = "MAMAN YAN BIYU HP" if SiteID==	1813120080
+replace SiteName = "RURAL HOSP KAURU" if SiteID==	1814210001
+replace SiteName = "PHC  KAURU" if SiteID==	1814110002
+replace SiteName = "NA'ALLAH CONVALES CENTRE" if SiteID==	1814120003
+replace SiteName = "H/C KAGA DAMA" if SiteID==	1814110004
+replace SiteName = "H/C IBADA" if SiteID==	1814110005
+replace SiteName = "H/C KAHUTA" if SiteID==	1814110006
+replace SiteName = "PHC  DANDAURA" if SiteID==	1814110007
+replace SiteName = "H/C MAKAMI" if SiteID==	1814110008
+replace SiteName = "H/C BARWA" if SiteID==	1814110009
+replace SiteName = "H/C UNG. NOMA" if SiteID==	1814110010
+replace SiteName = "COCIN CLINIC" if SiteID==	1814120011
+replace SiteName = "H/C DOKAN KARJI" if SiteID==	1814110012
+replace SiteName = "H/C KADAGE" if SiteID==	1814110013
+replace SiteName = "H/C MAJIDADI" if SiteID==	1814110014
+replace SiteName = "SAUKI MCH" if SiteID==	1814120015
+replace SiteName = "AMANATA MEMORIAL" if SiteID==	1814120016
+replace SiteName = "H/C KWASSAM" if SiteID==	1814110017
+replace SiteName = "H/C FAGEN RAWA" if SiteID==	1814110018
+replace SiteName = "H/C KUYANBANA" if SiteID==	1814110019
+replace SiteName = "H/C GARMADI" if SiteID==	1814110020
+replace SiteName = "H/C GALADIMAWA" if SiteID==	1814110021
+replace SiteName = "H/C KUSHEKA" if SiteID==	1814110022
+replace SiteName = "H/C KAIBI" if SiteID==	1814110023
+replace SiteName = "MPHC KIDUGU" if SiteID==	1814110024
+replace SiteName = "H/C KINUGU" if SiteID==	1814110025
+replace SiteName = "H/C KUSHEKA" if SiteID==	1814110026
+replace SiteName = "H/C GESHERE" if SiteID==	1814110027
+replace SiteName = "H/C BINAWA" if SiteID==	1814110028
+replace SiteName = "H/C DINGI" if SiteID==	1814110029
+replace SiteName = "H/C KABENE" if SiteID==	1814110030
+replace SiteName = "PHC KONO" if SiteID==	1814110031
+replace SiteName = "RAHUSA NURSING & CONVALESC. HOME" if SiteID==	1814120032
+replace SiteName = "H/C FADAN CHAWAI" if SiteID==	1814110033
+replace SiteName = "PHC DAMAKASUWA" if SiteID==	1814110034
+replace SiteName = "H/C RIBANG" if SiteID==	1814110035
+replace SiteName = "H/C BAKIN KOGI" if SiteID==	1814110036
+replace SiteName = "BADARUN KASA" if SiteID==	1814110037
+replace SiteName = "KURMIN RUWA " if SiteID==	1814110038
+replace SiteName = "KURMIN RIZGA" if SiteID==	1814110039
+replace SiteName = "CATHOLIC RURAL HEALTH CENTRE" if SiteID==	1814120040
+replace SiteName = "H/C KAMARU CHAWAI" if SiteID==	1814110041
+replace SiteName = "H/C KIKIRIN" if SiteID==	1814110042
+replace SiteName = "ECWA HC" if SiteID==	1814120043
+replace SiteName = "H/C KIFFIN" if SiteID==	1814110044
+replace SiteName = "H/C KIZACHI" if SiteID==	1814110045
+replace SiteName = "H/C RAHAMA " if SiteID==	1814110046
+replace SiteName = "H/C CHORI " if SiteID==	1814110047
+replace SiteName = "TAHIR CLINIC" if SiteID==	1814120048
+replace SiteName = "RURAL HOSP PAMBEGWA" if SiteID==	1815210001
+replace SiteName = "PHC PAMBEGUA" if SiteID==	1815110002
+replace SiteName = "H/C SABON LAYI" if SiteID==	1815110003
+replace SiteName = "H/C DANMALIKI" if SiteID==	1815110004
+replace SiteName = "PAMBEGWA Med Cent" if SiteID==	1815120005
+replace SiteName = "MAI GAMO NURSING HOME" if SiteID==	1815120006
+replace SiteName = "ST. DENNIS CATHOLIC HEALTH CENTRE" if SiteID==	1815120007
+replace SiteName = "COCIN CLINIC" if SiteID==	1815120008
+replace SiteName = "PHC TAKALAFIYA" if SiteID==	1815110009
+replace SiteName = "H/C ANCHAU GARI" if SiteID==	1815110010
+replace SiteName = "PHC MAIYASHI" if SiteID==	1815110011
+replace SiteName = "H/C JENAU" if SiteID==	1815110012
+replace SiteName = "H/C GIDAN GATA" if SiteID==	1815110013
+replace SiteName = "H/C GIDAN MAI AUDUGA" if SiteID==	1815110014
+replace SiteName = "GAMBO SAWABA CLINIC" if SiteID==	1815120015
+replace SiteName = "ANCHAU Med Cent" if SiteID==	1815120016
+replace SiteName = "PHC DAMAU" if SiteID==	1815110017
+replace SiteName = "H/C BANKI" if SiteID==	1815110018
+replace SiteName = "H/C WAGAHO" if SiteID==	1815110019
+replace SiteName = "H/C DANHAUYA" if SiteID==	1815110020
+replace SiteName = "PHC DUTSEN WAI" if SiteID==	1815110021
+replace SiteName = "H/C KULI" if SiteID==	1815110022
+replace SiteName = "TAIMAKO NURSING HOME" if SiteID==	1815120023
+replace SiteName = "H/C HASKIYA" if SiteID==	1815110024
+replace SiteName = "H/C KUDUMI" if SiteID==	1815110025
+replace SiteName = "H/C BUGAU" if SiteID==	1815110026
+replace SiteName = "H/C YAR DOKA" if SiteID==	1815110027
+replace SiteName = "H/C KANWA" if SiteID==	1815110028
+replace SiteName = "H/C KAGA DAMA" if SiteID==	1815110029
+replace SiteName = "A.A MIKAILA NURSING HOME" if SiteID==	1815120030
+replace SiteName = "SAMI-LAFIYA MEDICAL" if SiteID==	1815120031
+replace SiteName = "CATHOLIC HEALTH CENTRE" if SiteID==	1815120032
+replace SiteName = "PHC KARGI" if SiteID==	1815110033
+replace SiteName = "H/C GADAS" if SiteID==	1815110034
+replace SiteName = "H/C GEDEGE" if SiteID==	1815110035
+replace SiteName = "H/C MALIKANCI D." if SiteID==	1815110036
+replace SiteName = "H/C U/RUKU" if SiteID==	1815110037
+replace SiteName = "KAUNA CLINIC & MAT " if SiteID==	1815120038
+replace SiteName = "SAUKI CONV. & MAT " if SiteID==	1815120039
+replace SiteName = "GASKIYA MAT  & NURSING HOME" if SiteID==	1815120040
+replace SiteName = "TUNDE NURSING HOME" if SiteID==	1815120041
+replace SiteName = "AWARKE Med Cent" if SiteID==	1815120042
+replace SiteName = "SDA CLINIC" if SiteID==	1815120043
+replace SiteName = "H/C KAREH" if SiteID==	1815110044
+replace SiteName = "H/C NASARU" if SiteID==	1815110045
+replace SiteName = "H/C MATANGI" if SiteID==	1815110046
+replace SiteName = "H/C JIDDA" if SiteID==	1815110047
+replace SiteName = "H/C KWADARO" if SiteID==	1815110048
+replace SiteName = "PHC KUBAU" if SiteID==	1815110049
+replace SiteName = "H/C KEFI" if SiteID==	1815110050
+replace SiteName = "COCIN DISPENSARY" if SiteID==	1815120051
+replace SiteName = "ALHERI NURSING HOME" if SiteID==	1815120052
+replace SiteName = "H/C MAH" if SiteID==	1815110053
+replace SiteName = "H/C RIKOCI" if SiteID==	1815110054
+replace SiteName = "H/C KARABA" if SiteID==	1815110055
+replace SiteName = "H/C KURAYE" if SiteID==	1815110056
+replace SiteName = "H/C DOKAN TORO" if SiteID==	1815110057
+replace SiteName = "H/C DOKAN TAGWAI" if SiteID==	1815110058
+replace SiteName = "H/C TALATA" if SiteID==	1815110059
+replace SiteName = "GODIYA CLINIC & MAT " if SiteID==	1815120060
+replace SiteName = "CETO NURSING & MAT  HOME" if SiteID==	1815120061
+replace SiteName = "H/C A/ MAMUDA" if SiteID==	1815110062
+replace SiteName = "H/C KAMPANIN MAUDE" if SiteID==	1815110063
+replace SiteName = "H/C ZABI" if SiteID==	1815110064
+replace SiteName = "H/C A/DOGO" if SiteID==	1815110065
+replace SiteName = "WAMI NURSING & CLINIC" if SiteID==	1815120066
+replace SiteName = "M.P.H.C. ZUNTU" if SiteID==	1815110067
+replace SiteName = "H/C DANKANDE" if SiteID==	1815110068
+replace SiteName = "H/C WAZABI" if SiteID==	1815110069
+replace SiteName = "SUNNA MAT  HOME" if SiteID==	1815120070
+replace SiteName = "SAUKI MAT & MED" if SiteID==	1815120071
+replace SiteName = "RURAL HOSP HUNKUYI" if SiteID==	1816210001
+replace SiteName = "PHC HUNKUYI" if SiteID==	1816110002
+replace SiteName = "H/C SABON GARI" if SiteID==	1816110003
+replace SiteName = "H/C DANBAMI" if SiteID==	1816110004
+replace SiteName = "H/C DUMUGA" if SiteID==	1816110005
+replace SiteName = "H/C MUSAWA" if SiteID==	1816110006
+replace SiteName = "H/C JAJA" if SiteID==	1816110007
+replace SiteName = "H/C KYAUDAI" if SiteID==	1816110008
+replace SiteName = "H/C DUFA-DUFA" if SiteID==	1816110009
+replace SiteName = "H/C DANMAKWARWA" if SiteID==	1816110010
+replace SiteName = "H/C GARU" if SiteID==	1816110011
+replace SiteName = "H/C LAFIYA" if SiteID==	1816110012
+replace SiteName = "PHC KUDAN" if SiteID==	1816110013
+replace SiteName = "H/C NASARAWA" if SiteID==	1816110014
+replace SiteName = "H/C DAMASKI" if SiteID==	1816110015
+replace SiteName = "H/C NATARAWA" if SiteID==	1816110016
+replace SiteName = "KUDAN CLIN & MAT" if SiteID==	1816120017
+replace SiteName = "H/C ZABI" if SiteID==	1816110018
+replace SiteName = "H/C DANDAKO" if SiteID==	1816110019
+replace SiteName = "H/C TASHAN KUDE" if SiteID==	1816110020
+replace SiteName = "KORAMA CLIN & MAT" if SiteID==	1816120021
+replace SiteName = "RAHAMA NURSING HOME" if SiteID==	1816120022
+replace SiteName = "NAKOWA NURSING HOME" if SiteID==	1816120023
+replace SiteName = "PHC DOKA" if SiteID==	1816110024
+replace SiteName = "H/C GUIBI" if SiteID==	1816110025
+replace SiteName = "H/C MAZARA" if SiteID==	1816110026
+replace SiteName = "H/C KYADI" if SiteID==	1816110027
+replace SiteName = "PHC LIKORO" if SiteID==	1816110028
+replace SiteName = "H/C KUSHIGI" if SiteID==	1816110029
+replace SiteName = "PHC TABA" if SiteID==	1816110030
+replace SiteName = "H/C DANKALA" if SiteID==	1816110031
+replace SiteName = "H/C MAHUTA" if SiteID==	1816110032
+replace SiteName = "H/C TASHAR JIRGI" if SiteID==	1816110033
+replace SiteName = "H/C KADA-KADA" if SiteID==	1816110034
+replace SiteName = "H/C BAGALDI" if SiteID==	1816110035
+replace SiteName = "MPHC K/WALI" if SiteID==	1816110036
+replace SiteName = "H/C DANGASHI" if SiteID==	1816110037
+replace SiteName = "GEN HOSP SAMINAKA" if SiteID==	1817210001
+replace SiteName = "CHC SAMINAKA" if SiteID==	1817110002
+replace SiteName = "SAMINAKA ASSEMBLY OF GOD" if SiteID==	1817120003
+replace SiteName = "GHO SAMIKA" if SiteID==	1817120004
+replace SiteName = "NASARAWAN CLIN & MAT SAMINAKA " if SiteID==	1817120005
+replace SiteName = "H/C FEDERE" if SiteID==	1817110006
+replace SiteName = "H/C DOMAWA" if SiteID==	1817110007
+replace SiteName = "H/C SHENI" if SiteID==	1817110008
+replace SiteName = "H/C ABADAWA" if SiteID==	1817110009
+replace SiteName = "H/CTSOHUWAN DOMAWA" if SiteID==	1817110010
+replace SiteName = "COCIN CLINIC" if SiteID==	1817120011
+replace SiteName = "PHC DAN-ALHAJI" if SiteID==	1817110012
+replace SiteName = "DOKAN DAN BALA SDA" if SiteID==	1817120013
+replace SiteName = "H/C  J/KURAMA" if SiteID==	1817110014
+replace SiteName = "H/C MASKAWA" if SiteID==	1817110015
+replace SiteName = "H/C WAWAN RAFI" if SiteID==	1817110016
+replace SiteName = "H/C AGAJI" if SiteID==	1817110017
+replace SiteName = "H/C DOKAN DANBALA" if SiteID==	1817110018
+replace SiteName = "H/C MAHANGA" if SiteID==	1817110019
+replace SiteName = "H/C TABO-TABO" if SiteID==	1817110020
+replace SiteName = "PHC GARU" if SiteID==	1817110021
+replace SiteName = "H/C MARIRI" if SiteID==	1817110022
+replace SiteName = "H/C K/DODO" if SiteID==	1817110023
+replace SiteName = "H/C PITIWARSA" if SiteID==	1817110024
+replace SiteName = "H/C JAMA`AN IYA" if SiteID==	1817110025
+replace SiteName = "H/C KARAN BANA" if SiteID==	1817110026
+replace SiteName = "NAKOWA CLINIC & MATER. GARU" if SiteID==	1817120027
+replace SiteName = "SDA WARSA" if SiteID==	1817120028
+replace SiteName = "ECWA MAT GARU" if SiteID==	1817120029
+replace SiteName = "H/C GURE" if SiteID==	1817110030
+replace SiteName = "H/C F/KAHUGU" if SiteID==	1817110031
+replace SiteName = "H/C B/KAHUGU" if SiteID==	1817110032
+replace SiteName = "H/C UDAMMI" if SiteID==	1817110033
+replace SiteName = "PHC KAKI DARE" if SiteID==	1817110034
+replace SiteName = "H/C KAWARE" if SiteID==	1817110035
+replace SiteName = "H/C KUDURU" if SiteID==	1817110036
+replace SiteName = "H/C NATARE" if SiteID==	1817110037
+replace SiteName = "DAN ASABE H/C GURE" if SiteID==	1817120038
+replace SiteName = "ECWA HC" if SiteID==	1817120039
+replace SiteName = "PHC KAYARDA" if SiteID==	1817110040
+replace SiteName = "H/C KAKU KURAMA" if SiteID==	1817110041
+replace SiteName = "H/C UKAMM" if SiteID==	1817110042
+replace SiteName = "H/C G/DUTSE" if SiteID==	1817110043
+replace SiteName = "H/C WUROKO" if SiteID==	1817110044
+replace SiteName = "H/C GALMA" if SiteID==	1817110045
+replace SiteName = "H/C KAKUN SAMA" if SiteID==	1817110046
+replace SiteName = "NURSING TASHAN KAYADA" if SiteID==	1817110047
+replace SiteName = "SDA KAYARDA " if SiteID==	1817110048
+replace SiteName = "KAKU SARKI NURSING & MAT" if SiteID==	1817120049
+replace SiteName = "DAVID H/C G/DUTSE" if SiteID==	1817120050
+replace SiteName = "PHC YARKASUWA" if SiteID==	1817110051
+replace SiteName = "PHC UKISSA" if SiteID==	1817110052
+replace SiteName = "PHC MAIGAMO" if SiteID==	1817110053
+replace SiteName = "H/C KUDARU" if SiteID==	1817110054
+replace SiteName = "H/C WUROKO" if SiteID==	1817110055
+replace SiteName = "H/C TSURUTAWA" if SiteID==	1817110056
+replace SiteName = "MWHC U/HAYATU" if SiteID==	1817110057
+replace SiteName = "H/C ALWALU" if SiteID==	1817110058
+replace SiteName = "H/C RUMAIYAN KUDARU" if SiteID==	1817110059
+replace SiteName = "NURSING HOME AND MAT MAIGAMO(PRIVATE)" if SiteID==	1817120060
+replace SiteName = "CON. HOME U/ISHAYA" if SiteID==	1817120061
+replace SiteName = "PHC LERE" if SiteID==	1817110062
+replace SiteName = "PHC SIGAU" if SiteID==	1817110063
+replace SiteName = "H/C D/ALHAJI II" if SiteID==	1817110064
+replace SiteName = "H/C GAMAGIRA" if SiteID==	1817110065
+replace SiteName = "H/C JURAWA" if SiteID==	1817110066
+replace SiteName = "H/C U/JIKA" if SiteID==	1817110067
+replace SiteName = "FOMWAN CLINIC LERE" if SiteID==	1817120068
+replace SiteName = "MWHC R/KURA" if SiteID==	1817110069
+replace SiteName = "H/C DOGON DAJI" if SiteID==	1817110070
+replace SiteName = "H/C LUWUNA" if SiteID==	1817110071
+replace SiteName = "H/C KARGI" if SiteID==	1817110072
+replace SiteName = "H/C NAZANGI" if SiteID==	1817110073
+replace SiteName = "H/C JINGIR" if SiteID==	1817110074
+replace SiteName = "SALAMA CLINIC & MAT MARABAN GURE " if SiteID==	1817120075
+replace SiteName = "SDA RAMIN KURA" if SiteID==	1817120076
+replace SiteName = "SAMULAFIYA NURSING & MAT LUWUNA" if SiteID==	1817120077
+replace SiteName = "PHC U/BAWA" if SiteID==	1817110078
+replace SiteName = "H/C SABON BIRNI" if SiteID==	1817110079
+replace SiteName = "H/C UNG KURA" if SiteID==	1817110080
+replace SiteName = "H/C DAN JABA" if SiteID==	1817110081
+replace SiteName = "SAUKI CLINIC" if SiteID==	1817120082
+replace SiteName = "ECWA CHC U/BAWA" if SiteID==	1817120083
+replace SiteName = "U/BAWA SALAMA CLINIC (PRIVATE)" if SiteID==	1817120084
+replace SiteName = "PHC TUDAI" if SiteID==	1817110085
+replace SiteName = "H/C DOKA" if SiteID==	1817110086
+replace SiteName = "H/C ISHEME" if SiteID==	1817110087
+replace SiteName = "H/C LAZURU" if SiteID==	1817110088
+replace SiteName = "H/C KROSHA" if SiteID==	1817110089
+replace SiteName = "H/C GIDAN DUTSE" if SiteID==	1817110090
+replace SiteName = "H/C KAFIN LAZURU" if SiteID==	1817110091
+replace SiteName = "H/C DURUMI" if SiteID==	1817110092
+replace SiteName = "H/C BABAN FADAMA" if SiteID==	1817110093
+replace SiteName = "GEN HOSPMAKARFI" if SiteID==	1818210001
+replace SiteName = "H/C MAKARFI" if SiteID==	1818110002
+replace SiteName = "H/C ANGUWAN GERI" if SiteID==	1818110003
+replace SiteName = "H/C DANDAMISA" if SiteID==	1818110004
+replace SiteName = "H/C MARKE" if SiteID==	1818110005
+replace SiteName = "H/C S/GARIN DAJI" if SiteID==	1818110006
+replace SiteName = "H/C RUMA" if SiteID==	1818110007
+replace SiteName = "ADI MAT  & CLINIC" if SiteID==	1818120008
+replace SiteName = "MAIGASKIYA NURSING & MAT " if SiteID==	1818120009
+replace SiteName = "TALATU HP" if SiteID==	1818120010
+replace SiteName = "PHC DANGUZURI" if SiteID==	1818110011
+replace SiteName = "H/C DAN'AYAMAKA" if SiteID==	1818110012
+replace SiteName = "PHC T/YARI" if SiteID==	1818110013
+replace SiteName = "H/C D/AYAMAKA" if SiteID==	1818110014
+replace SiteName = "PHC GAZARA" if SiteID==	1818110015
+replace SiteName = "H/C GANGARA" if SiteID==	1818110016
+replace SiteName = "H/C GIWAYE" if SiteID==	1818110017
+replace SiteName = "H/C MAHANGI" if SiteID==	1818110018
+replace SiteName = "H/C MAKAURATA" if SiteID==	1818110019
+replace SiteName = "H/C S/GARIN GAZARA" if SiteID==	1818110020
+replace SiteName = "H/C GIMI TASHA" if SiteID==	1818110021
+replace SiteName = "H/C RAHAMA" if SiteID==	1818110022
+replace SiteName = "H/C SOKO" if SiteID==	1818110023
+replace SiteName = "PHC GIMI GARI" if SiteID==	1818110024
+replace SiteName = "PHC GUBUCHI" if SiteID==	1818110025
+replace SiteName = "H/C T/WADA" if SiteID==	1818110026
+replace SiteName = "SAUKI Med Cent" if SiteID==	1818120027
+replace SiteName = "IKON ALLAH HC" if SiteID==	1818120028
+replace SiteName = "PHC GWANKI" if SiteID==	1818110029
+replace SiteName = "H/C TAFIDA" if SiteID==	1818110030
+replace SiteName = "H/C KUNKUMI" if SiteID==	1818110031
+replace SiteName = "H/C DORAYI" if SiteID==	1818110032
+replace SiteName = "H/C BUKUTAJE" if SiteID==	1818110033
+replace SiteName = "SA'I MAT  HOME" if SiteID==	1818120034
+replace SiteName = "KUNKUMI NURSING HOME" if SiteID==	1818120035
+replace SiteName = "PHC MAYERE" if SiteID==	1818110036
+replace SiteName = "H/C DURUM" if SiteID==	1818110037
+replace SiteName = "H/C DANKWAIRE" if SiteID==	1818110038
+replace SiteName = "H/C ANGUWAN KOLO" if SiteID==	1818110039
+replace SiteName = "H/C KURUNTUMAWA" if SiteID==	1818110040
+replace SiteName = "PHC NASARAWA DOYA" if SiteID==	1818110041
+replace SiteName = "H/C KWATA KWARE" if SiteID==	1818110042
+replace SiteName = "GODIYA MAT  HOME" if SiteID==	1818120043
+replace SiteName = "PHC KASUWAR MATA MAKARFI" if SiteID==	1818110044
+replace SiteName = "H/C D/KOWA" if SiteID==	1818110045
+replace SiteName = "VINO Med Cent" if SiteID==	1818120046
+replace SiteName = "MAJ. IBRAHIM MEMORIAL HOSP SABON GARI" if SiteID==	1819210001
+replace SiteName = "PHC SAMARU" if SiteID==	1819110002
+replace SiteName = "SICK BAY A.B.U." if SiteID==	1819110003
+replace SiteName = "JAMA'A CLINIC" if SiteID==	1819120004
+replace SiteName = "SAMARU CLINIC" if SiteID==	1819120005
+replace SiteName = "JOSAM HOSP" if SiteID==	1819120006
+replace SiteName = "SAUKI CLINICK" if SiteID==	1819120007
+replace SiteName = "HOPE CLINIC & MAT " if SiteID==	1819120008
+replace SiteName = "ABARIKE HOSP" if SiteID==	1819120009
+replace SiteName = "F.H.U. U/JABA" if SiteID==	1819110010
+replace SiteName = "JOECE HOSP" if SiteID==	1819120011
+replace SiteName = "LADIYA CLINIC" if SiteID==	1819120012
+replace SiteName = "SUNSHINE MAT  & CLINIC" if SiteID==	1819120013
+replace SiteName = "PHC BASAWA" if SiteID==	1819110014
+replace SiteName = "H/C U/RIMI" if SiteID==	1819110015
+replace SiteName = "H/C PALLADAN" if SiteID==	1819110016
+replace SiteName = "AVIATION BASAWA" if SiteID==	1819110017
+replace SiteName = "H/C BOMO" if SiteID==	1819110018
+replace SiteName = "H/C H/DOGO" if SiteID==	1819110019
+replace SiteName = "H/POST KWAKWAREN MANO" if SiteID==	1819110020
+replace SiteName = "PHC CHIKAJI" if SiteID==	1819110021
+replace SiteName = "RAILWAY" if SiteID==	1819110022
+replace SiteName = "MAJOR IBRAHIM CLINIC" if SiteID==	1819110023
+replace SiteName = "SAIDU DANIGE HOSP" if SiteID==	1819110024
+replace SiteName = "CHC A.B.U ANNEX" if SiteID==	1819110025
+replace SiteName = "HAKURI CLINIC & MAT " if SiteID==	1819120026
+replace SiteName = "H/POST DOGARAWA" if SiteID==	1819110027
+replace SiteName = "M.P.H.C. S/DADI" if SiteID==	1819110028
+replace SiteName = "H/POST GWANDA" if SiteID==	1819110029
+replace SiteName = "H/POST Z/DANBARNO" if SiteID==	1819110030
+replace SiteName = "MIDWAY CLINIC KWANTIRESHI" if SiteID==	1819110031
+replace SiteName = "PHC HANWA" if SiteID==	1819110032
+replace SiteName = "SALAMA CLINIC & MAT " if SiteID==	1819120033
+replace SiteName = "IMANI HOSP & MAT " if SiteID==	1819120034
+replace SiteName = "MONI CLINIC" if SiteID==	1819120035
+replace SiteName = "TAMAIKO CLINIC" if SiteID==	1819120036
+replace SiteName = "AL-MADINA OUT PATIENT CLINIC" if SiteID==	1819120037
+replace SiteName = "LIMI HOSP & MAT " if SiteID==	1819120038
+replace SiteName = "RANGWAME MAT  & NURSING HOME" if SiteID==	1819120039
+replace SiteName = "PHC  JAMA’A" if SiteID==	1819110040
+replace SiteName = "PHC ABDUKWARI" if SiteID==	1819110041
+replace SiteName = "H/POST U/M. SULE" if SiteID==	1819110042
+replace SiteName = "H/C U/KUDU" if SiteID==	1819110043
+replace SiteName = "ABBRA-HAM MAT " if SiteID==	1819120044
+replace SiteName = "SAVANNA POLY CLINIC" if SiteID==	1819120045
+replace SiteName = "CHRISMA OPTICAL" if SiteID==	1819120046
+replace SiteName = "KANNAWA CLINIC" if SiteID==	1819120047
+replace SiteName = "HIKMA CLINIC" if SiteID==	1819120048
+replace SiteName = "BA MAIYI CLINIC & MAT " if SiteID==	1819120049
+replace SiteName = "NANA CLINIC & MAT " if SiteID==	1819120050
+replace SiteName = "MAYFAIR CLINIC" if SiteID==	1819120051
+replace SiteName = "PHC MUCHIA " if SiteID==	1819110052
+replace SiteName = "PHC KWATA " if SiteID==	1819110053
+replace SiteName = "ABARIKE Med Cent" if SiteID==	1819120054
+replace SiteName = "TSUGUGI CLINIC" if SiteID==	1819120055
+replace SiteName = "PHC ZABI" if SiteID==	1819110056
+replace SiteName = "PHC SHIKA DAM" if SiteID==	1819110057
+replace SiteName = "H/C HAYIN OJO" if SiteID==	1819110058
+replace SiteName = "GEN HOSP GWANTU" if SiteID==	1820210001
+replace SiteName = "MCH GWANTU" if SiteID==	1820110002
+replace SiteName = "H/C GWANTU KURMI" if SiteID==	1820110003
+replace SiteName = "GWANTU MED CLINIC" if SiteID==	1820120004
+replace SiteName = "SAGAN Med Cent" if SiteID==	1820120005
+replace SiteName = "E.R.C.C. CLINIC" if SiteID==	1820110006
+replace SiteName = "RHILAMA CLINIC" if SiteID==	1820120007
+replace SiteName = "BUKATA CLINIC" if SiteID==	1820110008
+replace SiteName = "AMACAS CLINIC" if SiteID==	1820110009
+replace SiteName = "COMBILA CLINIC" if SiteID==	1820110010
+replace SiteName = "H/C ANKPON" if SiteID==	1820110011
+replace SiteName = "H/C AKWANKWAN" if SiteID==	1820110012
+replace SiteName = "H/C GANI SARKI" if SiteID==	1820110013
+replace SiteName = "H/C ANKARA" if SiteID==	1820110014
+replace SiteName = "H/C GANI MADAKI" if SiteID==	1820110015
+replace SiteName = "H/C NUMBU BASHAYI" if SiteID==	1820110016
+replace SiteName = "PHC LANGA" if SiteID==	1820110017
+replace SiteName = "H/C UNGUWAN GALADIMA" if SiteID==	1820110018
+replace SiteName = "H/C ABAN" if SiteID==	1820110019
+replace SiteName = "H/C UNGUWAN YARO NIMBE" if SiteID==	1820110020
+replace SiteName = "H/C AMBE SARKI" if SiteID==	1820110021
+replace SiteName = "GONJI CLINIC" if SiteID==	1820110022
+replace SiteName = "H/C ANCHA" if SiteID==	1820110023
+replace SiteName = "HC ANZERE" if SiteID==	1820110024
+replace SiteName = "HC GBUILA" if SiteID==	1820110025
+replace SiteName = "H/C RANDA" if SiteID==	1820110026
+replace SiteName = "HC ZANBUR" if SiteID==	1820110027
+replace SiteName = "PHC F/NINZO" if SiteID==	1820110028
+replace SiteName = "H/C SAMBE" if SiteID==	1820110029
+replace SiteName = "M.C.H. ABU" if SiteID==	1820110030
+replace SiteName = "H/C KONTAGORA" if SiteID==	1820110031
+replace SiteName = "H/C LANDA" if SiteID==	1820110032
+replace SiteName = "HC UNGUWAN NUNGU" if SiteID==	1820110033
+replace SiteName = "HC MAISAMARI" if SiteID==	1820110034
+replace SiteName = "HC FADAN AYU" if SiteID==	1820110035
+replace SiteName = "NASARA MAT " if SiteID==	1820120036
+replace SiteName = "PHC ABORO" if SiteID==	1820110037
+replace SiteName = "H/C AJANGWAI" if SiteID==	1820110038
+replace SiteName = "H/C KUTAL " if SiteID==	1820110039
+replace SiteName = "H/C KUBAL" if SiteID==	1820110040
+replace SiteName = "HC ANTOR" if SiteID==	1820110041
+replace SiteName = "H/C WASA" if SiteID==	1820110042
+replace SiteName = "H/C ABUJA MADA" if SiteID==	1820110043
+replace SiteName = "H/C UNGUWAN MUSULMI" if SiteID==	1820110044
+replace SiteName = "H/C KARSHI DAJI" if SiteID==	1820110045
+replace SiteName = "PHC SABON GIDA" if SiteID==	1820110046
+replace SiteName = "H/C DOGON DAJI" if SiteID==	1820110047
+replace SiteName = "H/C AMBEN" if SiteID==	1820110048
+replace SiteName = "H/C TARI" if SiteID==	1820110049
+replace SiteName = "M.C.H. MAYIR" if SiteID==	1820110050
+replace SiteName = "H/C AMBEN" if SiteID==	1820110051
+replace SiteName = "H/C TARI" if SiteID==	1820110052
+replace SiteName = "ERCC AGAMETI" if SiteID==	1820120053
+replace SiteName = "H/C FADANKARSHI" if SiteID==	1820110054
+replace SiteName = "CONFIDENCE HEALTH CENTRE" if SiteID==	1820120055
+replace SiteName = "BATURE H/C F/KARSHI" if SiteID==	1820120056
+replace SiteName = "DANARU NURSING & MAT  HOME" if SiteID==	1820120057
+replace SiteName = "SELEH NURSING & MAT  HOME" if SiteID==	1820120058
+replace SiteName = "ECWA HC" if SiteID==	1820120059
+replace SiteName = "E.R.C.C. CLINIC" if SiteID==	1820120060
+replace SiteName = "ST. LOIS CLINIC" if SiteID==	1820120061
+replace SiteName = "RURAL HOSP MAIGANA" if SiteID==	1821210001
+replace SiteName = "PHC YAKASAI" if SiteID==	1821110002
+replace SiteName = "H/C TUDU-SAIBU" if SiteID==	1821110003
+replace SiteName = "H/C KAJAN" if SiteID==	1821110004
+replace SiteName = "H/C ANGUWAN RIMI" if SiteID==	1821110005
+replace SiteName = "H/C MATARI" if SiteID==	1821110006
+replace SiteName = "H/C TOFA" if SiteID==	1821110007
+replace SiteName = "MC MAIGANA" if SiteID==	1821120008
+replace SiteName = "CHC SOBA" if SiteID==	1821110009
+replace SiteName = "H/C YALWAN-BENE" if SiteID==	1821110010
+replace SiteName = "H/C YAWAN MAKARANTA" if SiteID==	1821110011
+replace SiteName = "H/C KAWARE" if SiteID==	1821110012
+replace SiteName = "H/C U/MALLAM DOGO" if SiteID==	1821110013
+replace SiteName = "H/C U/DAN ISAH" if SiteID==	1821110014
+replace SiteName = "H/C KUYA MUTSA" if SiteID==	1821110015
+replace SiteName = "HAMDALA CLINIC" if SiteID==	1821110016
+replace SiteName = "FIDAT CLINIC" if SiteID==	1821110017
+replace SiteName = "LIFEWAY CLINIC" if SiteID==	1821110018
+replace SiteName = "LAFIYA CLINIC" if SiteID==	1821110019
+replace SiteName = "HC G.T.C. SOBA" if SiteID==	1821110020
+replace SiteName = "HC G.G.S.S." if SiteID==	1821110021
+replace SiteName = "Med Cent BONETMAL GEMU " if SiteID==	1821120022
+replace SiteName = "PHC GAMAGIRA" if SiteID==	1821110023
+replace SiteName = "H/C TAMA" if SiteID==	1821110024
+replace SiteName = "H/C GURBABIYA" if SiteID==	1821110025
+replace SiteName = "H/C DANJABA" if SiteID==	1821110026
+replace SiteName = "H/C BELE" if SiteID==	1821110027
+replace SiteName = "H/C BAKURA" if SiteID==	1821110028
+replace SiteName = "H/C SHARIFAI" if SiteID==	1821110029
+replace SiteName = "H/C ANGUWAN GALADIMA" if SiteID==	1821110030
+replace SiteName = "KWALLIYA CLINIC" if SiteID==	1821110031
+replace SiteName = "H/C GARU" if SiteID==	1821110032
+replace SiteName = "H/C KINKIBA" if SiteID==	1821110033
+replace SiteName = "H/C MARWA" if SiteID==	1821110034
+replace SiteName = "H/C DAMARI" if SiteID==	1821110035
+replace SiteName = "H/C TAMBA" if SiteID==	1821110036
+replace SiteName = "H/C FAGACI" if SiteID==	1821110037
+replace SiteName = "YAKUBU GYANG MAT " if SiteID==	1821120038
+replace SiteName = "H/C RAHAMA" if SiteID==	1821110039
+replace SiteName = "H/C ANGUWAN MADAKI" if SiteID==	1821110040
+replace SiteName = "H/C SABON KUDI" if SiteID==	1821110041
+replace SiteName = "NAKOWA CLINIC" if SiteID==	1821120042
+replace SiteName = "T/SAIBU Med Cent" if SiteID==	1821120043
+replace SiteName = "MARMARA CLINIC" if SiteID==	1821110044
+replace SiteName = "LAFIYA SOBA NURSING & MAT " if SiteID==	1821120045
+replace SiteName = "H/C DANWATA" if SiteID==	1821110046
+replace SiteName = "H/C TAKALAFIYA" if SiteID==	1821110047
+replace SiteName = "H/C MAIZARE" if SiteID==	1821110048
+replace SiteName = "H/C SABAWA" if SiteID==	1821110049
+replace SiteName = "H/C DANWATA" if SiteID==	1821110050
+replace SiteName = "H/C SABON GIDA" if SiteID==	1821110051
+replace SiteName = "H/C LUNGU" if SiteID==	1821110052
+replace SiteName = "H/C KURUNGUFI" if SiteID==	1821110053
+replace SiteName = "H/C TURAWA" if SiteID==	1821110054
+replace SiteName = "H/C MAKWARE LEMO" if SiteID==	1821110055
+replace SiteName = "H/C MADARZAI" if SiteID==	1821110056
+replace SiteName = "UMAR TANIMU CLINIC" if SiteID==	1821120057
+replace SiteName = "UMAR BALA CLINIC" if SiteID==	1821120058
+replace SiteName = "H/C KWASALLO" if SiteID==	1821110059
+replace SiteName = "H/C DINYA" if SiteID==	1821110060
+replace SiteName = "H/C SUDDU" if SiteID==	1821110061
+replace SiteName = "H/C SAMBIRNI" if SiteID==	1821110062
+replace SiteName = "H/C TABA" if SiteID==	1821110063
+replace SiteName = "AIKE CLINIC" if SiteID==	1821120064
+replace SiteName = "SALISU CLINIC" if SiteID==	1821120065
+replace SiteName = "IBRAHIM CLINIC" if SiteID==	1821120066
+replace SiteName = "PHC RICHIFA" if SiteID==	1821110067
+replace SiteName = "H/C FARINKASA" if SiteID==	1821110068
+replace SiteName = "H/C MAGADDA" if SiteID==	1821110069
+replace SiteName = "MURTALA NURSING HOME" if SiteID==	1821120070
+replace SiteName = "AL-UMMA NURSING & MAT " if SiteID==	1821120071
+replace SiteName = "JUDECH NURSING HOME" if SiteID==	1821120072
+replace SiteName = "RICHIFA CLINIC" if SiteID==	1821120073
+replace SiteName = "PHC GIMBA" if SiteID==	1821110074
+replace SiteName = "H/C MAGADA" if SiteID==	1821110075
+replace SiteName = "H/C BAGALDI" if SiteID==	1821110076
+replace SiteName = "H/C WANKA" if SiteID==	1821110077
+replace SiteName = "PHC AWAI" if SiteID==	1821110078
+replace SiteName = "H/C U/FULANI" if SiteID==	1821110079
+replace SiteName = "H/C U/NAHAYI" if SiteID==	1821110080
+replace SiteName = "GEN HOSP ZANGO KATAF" if SiteID==	1822210001
+replace SiteName = "PHC ZANGO" if SiteID==	1822110002
+replace SiteName = "GEN HOSP ZONKWA" if SiteID==	1822210003
+replace SiteName = "PHC ZONKWA" if SiteID==	1822110004
+replace SiteName = "H/C FADIA MUGU" if SiteID==	1822110005
+replace SiteName = "PHC KURMIN BI" if SiteID==	1822110006
+replace SiteName = "H/C MADAUCHI" if SiteID==	1822110007
+replace SiteName = "H/C FADIA GIDA" if SiteID==	1822110008
+replace SiteName = "H/C ADUWAN GIDA" if SiteID==	1822110009
+replace SiteName = "H/C FADIA GUGA" if SiteID==	1822110010
+replace SiteName = "H/C YABYAN" if SiteID==	1822110011
+replace SiteName = "PHC FADAN KAJE" if SiteID==	1822110012
+replace SiteName = "JEMA'A CLINIC & MAT " if SiteID==	1822120013
+replace SiteName = "ZONKWA Med Cent" if SiteID==	1822120014
+replace SiteName = "ST. LOIUS CATHOLIC HOSP" if SiteID==	1822120015
+replace SiteName = "MPHC JANKASA" if SiteID==	1822110016
+replace SiteName = "H/C KURMIN MASARA" if SiteID==	1822110017
+replace SiteName = "H/C ZAMAWAN" if SiteID==	1822110018
+replace SiteName = "H/C KANGWAZA" if SiteID==	1822110019
+replace SiteName = "ECWA KIBORI" if SiteID==	1822120020
+replace SiteName = "PHC MABUSHI" if SiteID==	1822110021
+replace SiteName = "H/C UNG/JUJU" if SiteID==	1822110022
+replace SiteName = "H/C UNG/JABA" if SiteID==	1822110023
+replace SiteName = "H/C NOEKASHI" if SiteID==	1822110024
+replace SiteName = "H/C MATSIRGA" if SiteID==	1822110025
+replace SiteName = "ECWA CLINIC SAMARU" if SiteID==	1822120026
+replace SiteName = "PHC U/RIMI" if SiteID==	1822110027
+replace SiteName = "H/C RIKAWAN" if SiteID==	1822110028
+replace SiteName = "H/C KATSIT" if SiteID==	1822110029
+replace SiteName = "H/C MARSA" if SiteID==	1822110030
+replace SiteName = "H/C AFANA" if SiteID==	1822110031
+replace SiteName = "ZUGWAI CLINIC" if SiteID==	1822110032
+replace SiteName = "KAFANCHAN GOODWILL" if SiteID==	1822120033
+replace SiteName = "PHC SAKO" if SiteID==	1822110034
+replace SiteName = "H/C MABUHU" if SiteID==	1822110035
+replace SiteName = "H/C MAGAMIYA" if SiteID==	1822110036
+replace SiteName = "H/C UNG/KOHOGO" if SiteID==	1822110037
+replace SiteName = "H/C KIGUDU" if SiteID==	1822110038
+replace SiteName = "PHC KAMANTAN" if SiteID==	1822110039
+replace SiteName = "H/C BALLE" if SiteID==	1822110040
+replace SiteName = "H/C YANGAL" if SiteID==	1822110041
+replace SiteName = "H/C KUNGUN" if SiteID==	1822110042
+replace SiteName = "H/C KAGAL" if SiteID==	1822110043
+replace SiteName = "H/C KAZIR" if SiteID==	1822110044
+replace SiteName = "H/C ZUTRUNG MAGO" if SiteID==	1822110045
+replace SiteName = "H/C KABAM" if SiteID==	1822110046
+replace SiteName = "H/C LENAK" if SiteID==	1822110047
+replace SiteName = "ZABRANG MAT " if SiteID==	1822120048
+replace SiteName = "SAUKI CLINIC (OUT PATIENT)" if SiteID==	1822120049
+replace SiteName = "TODALEAL MEDICAL LTD" if SiteID==	1822120050
+replace SiteName = "ZUGWAI CLINIC & MAT " if SiteID==	1822120051
+replace SiteName = "PHC  GORA BAFAI" if SiteID==	1822110052
+replace SiteName = "H/C KWAKU" if SiteID==	1822110053
+replace SiteName = "H/C G/GIDA" if SiteID==	1822110054
+replace SiteName = "H/C SAGWAZA" if SiteID==	1822110055
+replace SiteName = "H/C GAN GORA" if SiteID==	1822110056
+replace SiteName = "H/C TAKANAI" if SiteID==	1822110057
+replace SiteName = "H/C WARKAN" if SiteID==	1822110058
+replace SiteName = "PHC FARMAN" if SiteID==	1822110059
+replace SiteName = "H/C ABET" if SiteID==	1822110060
+replace SiteName = "H/C KURDAN" if SiteID==	1822110061
+replace SiteName = "H/C SAKWACK" if SiteID==	1822110062
+replace SiteName = "FORTUNE MAT " if SiteID==	1822120063
+replace SiteName = "PHC KAMURU" if SiteID==	1822110064
+replace SiteName = "H/C GIDAN BAKO" if SiteID==	1822110065
+replace SiteName = "H/C DUTSEN BAKO" if SiteID==	1822110066
+replace SiteName = "H/C ANCHUNA" if SiteID==	1822110067
+replace SiteName = "H/C FANCIL" if SiteID==	1822110068
+replace SiteName = "H/C K/DUTSE" if SiteID==	1822110069
+replace SiteName = "H/C RAFIN JUMA`A" if SiteID==	1822110070
+replace SiteName = "GIDAN ALI" if SiteID==	1822110071
+replace SiteName = "H/C LADDUGA" if SiteID==	1822110072
+replace SiteName = "PHC MADAKIYA" if SiteID==	1822110073
+replace SiteName = "H/C ADUWAN " if SiteID==	1822110074
+replace SiteName = "H/C TSORIYANG" if SiteID==	1822110075
+replace SiteName = "H/C ZITU" if SiteID==	1822110076
+replace SiteName = "H/C FARMAN DUTSE" if SiteID==	1822110077
+replace SiteName = "H/C MATSIRGA" if SiteID==	1822110078
+replace SiteName = "H/C MANIYA" if SiteID==	1822110079
+replace SiteName = "ST. LOIUS CLINIC" if SiteID==	1822120080
+replace SiteName = "H. GAMBO SAWABA GEN HOSP. ZARIA" if SiteID==	1823210001
+replace SiteName = "DENTAL CENTRE ZARIA" if SiteID==	1823210002
+replace SiteName = "PHC TUDUN-WADA" if SiteID==	1823110003
+replace SiteName = "H/C DANDUTSE" if SiteID==	1823110004
+replace SiteName = "ZARIA CLINIC & MAT " if SiteID==	1823120005
+replace SiteName = "ALOAYE CLINIC & MAT " if SiteID==	1823120006
+replace SiteName = "AFUWA SPECIALIST" if SiteID==	1823120007
+replace SiteName = "TAS MC" if SiteID==	1823120008
+replace SiteName = "ZARIA CLINIC" if SiteID==	1823120009
+replace SiteName = "CITY HIMMA MAT  & CHILD WELFARE" if SiteID==	1823120010
+replace SiteName = "SAUKI CLINIC & MAT " if SiteID==	1823120011
+replace SiteName = "MARABA CLINIC & MAT " if SiteID==	1823120012
+replace SiteName = "PHC WUCICIRI" if SiteID==	1823110013
+replace SiteName = "H/C BOGARI" if SiteID==	1823110014
+replace SiteName = "ABA HP" if SiteID==	1823110015
+replace SiteName = "T/KUSA NURSING HOME & MAT " if SiteID==	1823120016
+replace SiteName = "NASARA CLINIC & MAT " if SiteID==	1823120017
+replace SiteName = "PHC DAMBO" if SiteID==	1823110018
+replace SiteName = "H/C KAKEYI" if SiteID==	1823110019
+replace SiteName = "H/C DAKACI" if SiteID==	1823110020
+replace SiteName = "GWARGWAJE NURSING HOME & MAT " if SiteID==	1823120021
+replace SiteName = "TAIMAKO CLINIC & MAT  HOME" if SiteID==	1823120022
+replace SiteName = "FAIDA NURSING & MAT " if SiteID==	1823120023
+replace SiteName = "ZAM-ZAM NURSING HOME & MAT " if SiteID==	1823120024
+replace SiteName = "RAHAMA CLINIC" if SiteID==	1823120025
+replace SiteName = "RAHAMA CLINIC & MAT " if SiteID==	1823120026
+replace SiteName = "S.S. KUFENA DISPENSARY " if SiteID==	1823110027
+replace SiteName = "H/C GABARI" if SiteID==	1823110028
+replace SiteName = "H/C R/MAGAJI" if SiteID==	1823110029
+replace SiteName = "H/C UNG.DANKALI" if SiteID==	1823110030
+replace SiteName = "H/C KAURAN-JULI" if SiteID==	1823110031
+replace SiteName = "ANNA-KITCHER Med Cent" if SiteID==	1823120032
+replace SiteName = "GRACE MEMORIAL CLINIC" if SiteID==	1823120033
+replace SiteName = "ST. LUKE'S ANGLICAN HOSP WUSASA ZARIA" if SiteID==	1823120034
+replace SiteName = "ST. MARTIN DEPORES CATHOLIC HOSP." if SiteID==	1823120035
+replace SiteName = "PHC TUKUR-TUKUR" if SiteID==	1823110036
+replace SiteName = "H/C TUDUN JUKUN" if SiteID==	1823110037
+replace SiteName = "NAGARI CLINIC & MAT  HOME" if SiteID==	1823120038
+replace SiteName = "HAFSAT MEDICAL DIAGNOSTIC" if SiteID==	1823120039
+replace SiteName = "MUSLIM SPEC HOSP" if SiteID==	1823120040
+replace SiteName = "HAFSAT MC" if SiteID==	1823120041
+replace SiteName = "NAGARI HOSP" if SiteID==	1823120042
+replace SiteName = "PHC D/ABBA" if SiteID==	1823110043
+replace SiteName = "H/C SAYEN TUNKARA" if SiteID==	1823110044
+replace SiteName = "H/C KASUWAN DUTSE" if SiteID==	1823110045
+replace SiteName = "H/C U/MALAMAI" if SiteID==	1823110046
+replace SiteName = "H/C DAN MADINA" if SiteID==	1823110047
+replace SiteName = "H/C KWABA" if SiteID==	1823110048
+replace SiteName = "KAFIN MARDANNI" if SiteID==	1823110049
+replace SiteName = "H/C TANKARAU" if SiteID==	1823110050
+replace SiteName = "H/C DORAYI" if SiteID==	1823110051
+replace SiteName = "H/C KAKO" if SiteID==	1823110052
+replace SiteName = "H/C MAGAJIYA" if SiteID==	1823110053
+replace SiteName = "H/C AMARU" if SiteID==	1823110054
+replace SiteName = "H/C JUSHI" if SiteID==	1823110055
+replace SiteName = "ZARMAN HOSP" if SiteID==	1823120056
+replace SiteName = "PHC UNGUWAN ALKALI" if SiteID==	1823110057
+replace SiteName = "J.N.I. MAT  & CHILD WELFARE" if SiteID==	1823120058
+replace SiteName = "TAIMAKO CLINIC & MAT  " if SiteID==	1823120059
+replace SiteName = "ALAGA CLINIC " if SiteID==	1823120060
+replace SiteName = "PHC B/DODO" if SiteID==	1823110061
+replace SiteName = "PHC JAKARA" if SiteID==	1823110062
+replace SiteName = "H/C SALMANAWA" if SiteID==	1823110063
+replace SiteName = "ALAGA CLINIC" if SiteID==	1823120064
+replace SiteName = "PHC GYALLESU" if SiteID==	1823110065
+replace SiteName = "PHC RIMIN DOKO" if SiteID==	1823110066
+replace SiteName = "PHC U/BISHAR" if SiteID==	1823110067
+replace SiteName = "PHC U/FATIKA" if SiteID==	1823110068
+replace SiteName = "H/C DURUMI" if SiteID==	1823110069
+replace SiteName = "H/C DANJINJIRI" if SiteID==	1823110070
+replace SiteName = "H/C ALFADARAI" if SiteID==	1823110071
 
 
 *KANO
@@ -3959,7 +5603,7 @@ replace SiteName = "Galawa HP" if SiteID==	1903110024
 replace SiteName = "Baure HP" if SiteID==	1903110025
 replace SiteName = "Kariya M/Kambu HP" if SiteID==	1903110026
 replace SiteName = "Surfan HP" if SiteID==	1903110027
-replace SiteName = "Tiga Gen. Hosp" if SiteID==	1904210001
+replace SiteName = "Tiga GEN HOSP" if SiteID==	1904210001
 replace SiteName = "Bebeji PHC" if SiteID==	1904110002
 replace SiteName = "Tariwa Disp" if SiteID==	1904110003
 replace SiteName = "Bagauda HP" if SiteID==	1904110004
@@ -3980,7 +5624,7 @@ replace SiteName = "Ranka HP" if SiteID==	1904110018
 replace SiteName = "Rantan HP" if SiteID==	1904110019
 replace SiteName = "Cutar Biki HP" if SiteID==	1904110020
 replace SiteName = "Taimako Nursing Home" if SiteID==	1904120021
-replace SiteName = "Bichi Gen. Hosp" if SiteID==	1905210001
+replace SiteName = "Bichi GEN HOSP" if SiteID==	1905210001
 replace SiteName = "Danzabuwa MPHC" if SiteID==	1905110002
 replace SiteName = "Badume HC" if SiteID==	1905110003
 replace SiteName = "Kawaji HP" if SiteID==	1905110004
@@ -4234,7 +5878,7 @@ replace SiteName = "Continental Clin" if SiteID==	1912120044
 replace SiteName = "Crescent Clin" if SiteID==	1912120045
 replace SiteName = "Crown Dental" if SiteID==	1912120046
 replace SiteName = "Ebony Clin" if SiteID==	1912120047
-replace SiteName = "Middle Road Maternity" if SiteID==	1912120048
+replace SiteName = "Middle Road MAT " if SiteID==	1912120048
 replace SiteName = "Emotan Clin" if SiteID==	1912120049
 replace SiteName = "Foundation Clin" if SiteID==	1912120050
 replace SiteName = "Good Pasture Clin" if SiteID==	1912120051
@@ -4626,7 +6270,7 @@ replace SiteName = "Wailare Disp" if SiteID==	1929110021
 replace SiteName = "Bakalari HP" if SiteID==	1929110022
 replace SiteName = "Walawa HP" if SiteID==	1929110023
 replace SiteName = "Yallada HP" if SiteID==	1929110024
-replace SiteName = "Minjibir Gen. Hosp" if SiteID==	1930210001
+replace SiteName = "Minjibir GEN HOSP" if SiteID==	1930210001
 replace SiteName = "Garji HP" if SiteID==	1930110002
 replace SiteName = "Koya BHC" if SiteID==	1930110003
 replace SiteName = "Sanbauna BHC" if SiteID==	1930110004
@@ -4652,7 +6296,7 @@ replace SiteName = "Gurjiya Disp" if SiteID==	1930110023
 replace SiteName = "Garke HP" if SiteID==	1930110024
 replace SiteName = "MA Wase Spec Hosp" if SiteID==	1931210001
 replace SiteName = "Sir MS Gen Hosp" if SiteID==	1931210002
-replace SiteName = "Gama Health Post" if SiteID==	1931110003
+replace SiteName = "Gama HP" if SiteID==	1931110003
 replace SiteName = "Badawa Disp" if SiteID==	1931110004
 replace SiteName = "Kawo HP" if SiteID==	1931110005
 replace SiteName = "Giginyu BHC" if SiteID==	1931110006
@@ -4674,7 +6318,7 @@ replace SiteName = "Gaskiya Textile Staff Clin" if SiteID==	1931120021
 replace SiteName = "Luna Continental Staff Clin" if SiteID==	1931120022
 replace SiteName = "Nig Spinners Dyer Clin" if SiteID==	1931120023
 replace SiteName = "Bamaiyi Sai Allah Clin" if SiteID==	1931120024
-replace SiteName = "Ikon Allah Maternity" if SiteID==	1931120025
+replace SiteName = "Ikon Allah MAT " if SiteID==	1931120025
 replace SiteName = "Sani Bello Hosp" if SiteID==	1931120026
 replace SiteName = "Tafa Clin" if SiteID==	1931120027
 replace SiteName = "Ahmadiyya Hosp" if SiteID==	1931120028
@@ -4726,7 +6370,7 @@ replace SiteName = "Unity Hosp" if SiteID==	1931120073
 replace SiteName = "Victory Clin" if SiteID==	1931120074
 replace SiteName = "Yamid Clin" if SiteID==	1931120075
 replace SiteName = "ECWA Eye Hosp" if SiteID==	1931120076
-replace SiteName = "Kano Medical Center" if SiteID==	1931120077
+replace SiteName = "Kano MC" if SiteID==	1931120077
 replace SiteName = "Terry Text Nig Ltd Staff Clin" if SiteID==	1931120078
 replace SiteName = "WJ Bush Staff Clin" if SiteID==	1931120079
 replace SiteName = "Rano Gen Hosp" if SiteID==	1932210001
@@ -4737,7 +6381,7 @@ replace SiteName = "Rurum HC" if SiteID==	1932110005
 replace SiteName = "Saji Disp" if SiteID==	1932110006
 replace SiteName = "Yama Disp " if SiteID==	1932110007
 replace SiteName = "Bul HP" if SiteID==	1932110008
-replace SiteName = "Yalwa Health Post" if SiteID==	1932110009
+replace SiteName = "Yalwa HP" if SiteID==	1932110009
 replace SiteName = "Kazaurawa HP" if SiteID==	1932110010
 replace SiteName = "Tabobi HP" if SiteID==	1932110011
 replace SiteName = "Lausu HP" if SiteID==	1932110012
@@ -4780,7 +6424,7 @@ replace SiteName = "Danshayi HP" if SiteID==	1934110011
 replace SiteName = "Krofin Yashi Disp" if SiteID==	1934110012
 replace SiteName = "Sakaratsa Disp" if SiteID==	1934110013
 replace SiteName = "Maigari  " if SiteID==	1934110014
-replace SiteName = " Ingila HP" if SiteID==	1934110015
+replace SiteName = "Ingila HP" if SiteID==	1934110015
 replace SiteName = "Tamawa Disp" if SiteID==	1934110016
 replace SiteName = "Yalwa BHC" if SiteID==	1934110017
 replace SiteName = "Yango HP" if SiteID==	1934110018
@@ -4809,7 +6453,7 @@ replace SiteName = "Shakogi HP" if SiteID==	1935110018
 replace SiteName = "Janbirji HP" if SiteID==	1935110019
 replace SiteName = "Tsaure HC" if SiteID==	1935110020
 replace SiteName = "Yan Shadu HP" if SiteID==	1935110021
-replace SiteName = "Sumaila Gen. Hosp" if SiteID==	1936210001
+replace SiteName = "Sumaila GEN HOSP" if SiteID==	1936210001
 replace SiteName = "Karofi Sumaila Disp" if SiteID==	1936110002
 replace SiteName = "Bingi HP" if SiteID==	1936110003
 replace SiteName = "Gala Disp" if SiteID==	1936110004
@@ -4920,7 +6564,7 @@ replace SiteName = "U/Rimi Disp" if SiteID==	1939110012
 replace SiteName = "Wangara HP" if SiteID==	1939110013
 replace SiteName = "Yalwa Karama HP" if SiteID==	1939110014
 replace SiteName = "Yanoko HP" if SiteID==	1939110015
-replace SiteName = "Yarimawa Health Post" if SiteID==	1939110016
+replace SiteName = "Yarimawa HP" if SiteID==	1939110016
 replace SiteName = "Lambu BHC" if SiteID==	1939110017
 replace SiteName = "Jagaja Disp" if SiteID==	1939110018
 replace SiteName = "Tofa Missionary Clin" if SiteID==	1939120019
@@ -5048,7 +6692,7 @@ replace SiteName = "Yan Lahadi HP" if SiteID==	1944110017
 replace SiteName = "Katai  Faudan HC" if SiteID==	1944110018
 replace SiteName = "Fadi Sonka HP" if SiteID==	1944110019
 replace SiteName = "Al-Hilal Mat Hosp" if SiteID==	1944120020
-replace SiteName = "Amana Hospital" if SiteID==	1944120021
+replace SiteName = "Amana HOSP" if SiteID==	1944120021
 replace SiteName = "Sauki Clin " if SiteID==	1944120022
 replace SiteName = "G/Alhazai Mat Hosp" if SiteID==	1944120023
 
@@ -5373,7 +7017,7 @@ replace SiteName = "CHARANCHI MCHC" if SiteID==	2006110008
 replace SiteName = "HANAYE HC" if SiteID==	2006110009
 replace SiteName = "KERERIYA HC" if SiteID==	2006110010
 replace SiteName = "TIKI HC" if SiteID==	2006110011
-replace SiteName = "CHARANCI MEDICAL Clin AND MATERNITY" if SiteID==	2006120012
+replace SiteName = "CHARANCI MEDICAL Clin AND MAT " if SiteID==	2006120012
 replace SiteName = "MAZAGA PHC" if SiteID==	2006110013
 replace SiteName = "MDG DOKA PHC" if SiteID==	2006110014
 replace SiteName = "DANGUNA HC" if SiteID==	2006110015
@@ -5466,7 +7110,7 @@ replace SiteName = "T/AGEWA DESP" if SiteID==	2007110043
 replace SiteName = "DANDUME CHC" if SiteID==	2008110001
 replace SiteName = "DANDUME PHC" if SiteID==	2008110002
 replace SiteName = "HAJARAKI HC" if SiteID==	2008120003
-replace SiteName = "NASIHA MATERNITY" if SiteID==	2008120004
+replace SiteName = "NASIHA MAT " if SiteID==	2008120004
 replace SiteName = "JIRUWA HC" if SiteID==	2008110005
 replace SiteName = "UNG. RIMI HC" if SiteID==	2008110006
 replace SiteName = "UNG. ZANGO HC" if SiteID==	2008110007
@@ -5508,8 +7152,8 @@ replace SiteName = "UNG. ILU HC" if SiteID==	2008110042
 replace SiteName = "PHC DANJA" if SiteID==	2009110001
 replace SiteName = "PHC DABAI" if SiteID==	2009110002
 replace SiteName = "TANDAMA HC" if SiteID==	2009110003
-replace SiteName = " KAHUTU HC" if SiteID==	2009110004
-replace SiteName = " JIBA HC" if SiteID==	2009110005
+replace SiteName = "KAHUTU HC" if SiteID==	2009110004
+replace SiteName = "JIBA HC" if SiteID==	2009110005
 replace SiteName = "FSC DANJA" if SiteID==	2009110006
 replace SiteName = "UNG GWARI  DESP" if SiteID==	2009110007
 replace SiteName = "DANANANY DESP" if SiteID==	2009110008
@@ -5535,8 +7179,8 @@ replace SiteName = "TAFARIN HABE DESP" if SiteID==	2009110027
 replace SiteName = "DAURAN NUHU DESP" if SiteID==	2009110028
 replace SiteName = "DAURAN INDA DESP" if SiteID==	2009110029
 replace SiteName = "CHC DAURA" if SiteID==	2010110001
-replace SiteName = "BAWO Clin AND MATERNITY" if SiteID==	2010220002
-replace SiteName = "DAURA MEDICAL Clin AND MATERNITY" if SiteID==	2010120003
+replace SiteName = "BAWO Clin AND MAT " if SiteID==	2010220002
+replace SiteName = "DAURA MEDICAL Clin AND MAT " if SiteID==	2010120003
 replace SiteName = "MADOBI HC" if SiteID==	2010110004
 replace SiteName = "SHARAWA MCH" if SiteID==	2010110005
 replace SiteName = "KURNEJI MCH" if SiteID==	2010110006
@@ -5726,9 +7370,9 @@ replace SiteName = "BCGA HC" if SiteID==	2014110041
 replace SiteName = "TUDUN WADA HC" if SiteID==	2014110042
 replace SiteName = "BISTIT" if SiteID==	2014220043
 replace SiteName = "KHAMEK" if SiteID==	2014220044
-replace SiteName = "FUNTUA MED Clin AND MATERNITY" if SiteID==	2014220045
+replace SiteName = "FUNTUA MED Clin AND MAT " if SiteID==	2014220045
 replace SiteName = "NAKOWA Clin" if SiteID==	2014220046
-replace SiteName = "JUST HOSPITAL" if SiteID==	2014120047
+replace SiteName = "JUST HOSP" if SiteID==	2014120047
 replace SiteName = "BAGIRE HC" if SiteID==	2014110048
 replace SiteName = "BURMA HC" if SiteID==	2014110049
 replace SiteName = "LASANAWA HC" if SiteID==	2014110050
@@ -5798,7 +7442,7 @@ replace SiteName = "PPFN HC" if SiteID==	2016110018
 replace SiteName = "TSANBEN 7 HC" if SiteID==	2016110019
 replace SiteName = "FAFARA HC" if SiteID==	2016110020
 replace SiteName = "TSANBEN RADI HC" if SiteID==	2016110021
-replace SiteName = "JIBIA MEDICAL Clin AND MATERNITY" if SiteID==	2016120022
+replace SiteName = "JIBIA MEDICAL Clin AND MAT " if SiteID==	2016120022
 replace SiteName = "TUDUN WADA HC" if SiteID==	2016110023
 replace SiteName = "PPFN HC" if SiteID==	2016110024
 replace SiteName = "JIBIA BABBA HC" if SiteID==	2016110025
@@ -6000,7 +7644,7 @@ replace SiteName = "D/NAYAKI MCH" if SiteID==	2020110025
 replace SiteName = "K/MAINA MCH" if SiteID==	2020110026
 replace SiteName = "RIMAYE CHC" if SiteID==	2020110027
 replace SiteName = "YARGAJEM HC" if SiteID==	2020110028
-replace SiteName = "NASARAWA (R) HC" if SiteID==	2020110029
+replace SiteName = "NASARAWA(R)HC" if SiteID==	2020110029
 replace SiteName = "TAFASHIYA MCH" if SiteID==	2020110030
 replace SiteName = "NASARAWA HC" if SiteID==	2020110031
 replace SiteName = "TSA PHC" if SiteID==	2020110032
@@ -6020,10 +7664,10 @@ replace SiteName = "SAUKI Clin" if SiteID==	2021120009
 replace SiteName = "LOW COST HC" if SiteID==	2021110010
 replace SiteName = "GEN HOSPKTN" if SiteID==	2021210011
 replace SiteName = "KUKAR GESA MCH" if SiteID==	2021110012
-replace SiteName = "RAFIN DADI DESP. MCHC" if SiteID==	2021110013
-replace SiteName = "RAFIN DADI DESP." if SiteID==	2021110014
+replace SiteName = "RAFIN DADI DESP MCHC" if SiteID==	2021110013
+replace SiteName = "RAFIN DADI DESP" if SiteID==	2021110014
 replace SiteName = "KOFAR KAURA MCHC" if SiteID==	2021110015
-replace SiteName = "TURAI YAR'ADUA MCH " if SiteID==	2021210016
+replace SiteName = "TURAI YAR'ADUA MCH" if SiteID==	2021210016
 replace SiteName = "GIDAN DAWA Clin" if SiteID==	2021110017
 replace SiteName = "POLICE Clin" if SiteID==	2021120018
 replace SiteName = "ALHERI Clin" if SiteID==	2021120019
@@ -6036,8 +7680,8 @@ replace SiteName = "INWALA HC" if SiteID==	2021110025
 replace SiteName = "NEW MELLINIUM Clin" if SiteID==	2021120026
 replace SiteName = "ASFA'U Clin" if SiteID==	2021120027
 replace SiteName = "GODIYA Clin" if SiteID==	2021120028
-replace SiteName = "NANA BILKISU MATERNITY" if SiteID==	2021120029
-replace SiteName = "KATSINA SPECIALIST HOSP." if SiteID==	2021120030
+replace SiteName = "NANA BILKISU MAT " if SiteID==	2021120029
+replace SiteName = "KATSINA SPEC HOSP." if SiteID==	2021120030
 replace SiteName = "OKMOS Clin" if SiteID==	2021120031
 replace SiteName = "TUNDUN YAN'LIHIDDA MCH" if SiteID==	2021110032
 replace SiteName = "KOFAR GUGA MCHC" if SiteID==	2021110033
@@ -6177,7 +7821,7 @@ replace SiteName = "DEOCEASE Clin" if SiteID==	2025120023
 replace SiteName = "ALMAKIYAYI HC" if SiteID==	2025110024
 replace SiteName = "GEN HOSPMLF" if SiteID==	2025210025
 replace SiteName = "MALUMFASHI Clin" if SiteID==	2025120026
-replace SiteName = "M. BALA HOSPITAL" if SiteID==	2025120027
+replace SiteName = "M. BALA HOSP" if SiteID==	2025120027
 replace SiteName = "DOWN Clin" if SiteID==	2025120028
 replace SiteName = "ECWA Clin" if SiteID==	2025120029
 replace SiteName = "T/DUKUMI Clin" if SiteID==	2025120030
@@ -6670,11 +8314,11 @@ replace SiteName = "Takalau" if SiteID==	2106110017
 replace SiteName = "Mourida" if SiteID==	2106110018
 replace SiteName = "Karyo" if SiteID==	2106110019
 replace SiteName = "B/Tasha" if SiteID==	2106110020
-replace SiteName = "Sir Yahaya Mem. Hospital " if SiteID==	2106210021
-replace SiteName = "Godiya Hospital " if SiteID==	2106220022
+replace SiteName = "Sir Yahaya Mem. HOSP " if SiteID==	2106210021
+replace SiteName = "Godiya HOSP " if SiteID==	2106220022
 replace SiteName = "Alpha Clinic" if SiteID==	2106220023
 replace SiteName = "Major Foundation Clinic" if SiteID==	2106220024
-replace SiteName = "Federal Medical Centre" if SiteID==	2106310025
+replace SiteName = "Federal Med Cent" if SiteID==	2106310025
 replace SiteName = "Army Barracks Clinic" if SiteID==	2106110026
 replace SiteName = "Ujariya" if SiteID==	2106110027
 replace SiteName = "Junju" if SiteID==	2106110028
@@ -6737,7 +8381,7 @@ replace SiteName = "MCH Ribah" if SiteID==	2109110016
 replace SiteName = "Unashi" if SiteID==	2109110017
 replace SiteName = "Yarkuka" if SiteID==	2109110018
 replace SiteName = "Wasagu" if SiteID==	2109110019
-replace SiteName = "G/Hospital" if SiteID==	2109210020
+replace SiteName = "G/HOSP" if SiteID==	2109210020
 replace SiteName = "Kunjiri Med. Clinic" if SiteID==	2109220021
 replace SiteName = "Koliko" if SiteID==	2109110022
 replace SiteName = "Maga" if SiteID==	2109110023
@@ -6774,7 +8418,7 @@ replace SiteName = "N/Goma/Gumbai" if SiteID==	2111110009
 replace SiteName = "Masama/ Kwasagara" if SiteID==	2111110010
 replace SiteName = "RHC" if SiteID== 2111110011
 
-replace SiteName = 	"Gwandu Gen Hosp"	if SiteID==	2111210012
+replace SiteName = "Gwandu Gen Hosp"	if SiteID==	2111210012
 replace SiteName = "MDG Wadako" 		if SiteID==	2109110025
 replace SiteName = "PHC Kyaku" 			if SiteID==	2109110026
 replace SiteName = "Gen Hosp Bena" 		if SiteID==	2109210027
@@ -6861,7 +8505,7 @@ replace SiteName = "Mayolo" if SiteID==	2115110016
 replace SiteName = "Mungadi" if SiteID==	2115110017
 replace SiteName = "Batoro" if SiteID==	2115110018
 replace SiteName = "Maiyama MCH" if SiteID==	2115110019
-replace SiteName = "G/Hospital " if SiteID==	2115210020
+replace SiteName = "G/HOSP " if SiteID==	2115210020
 replace SiteName = "Sauki Clinic Maiyama" if SiteID==	2115220021
 replace SiteName = "S/Dosa" if SiteID==	2115110022
 replace SiteName = "Gubba" if SiteID==	2115110023
@@ -6971,7 +8615,7 @@ replace SiteName = "Amanawa" if SiteID==	2121110008
 replace SiteName = "Alembalu" if SiteID==	2121110009
 replace SiteName = "MCH" if SiteID==	2121110010
 replace SiteName = "ANC" if SiteID==	2121110011
-replace SiteName = "Gen. Hosp. Zuru" if SiteID==	2121210012
+replace SiteName = "GEN HOSP. Zuru" if SiteID==	2121210012
 replace SiteName = "Hankuri Clinic" if SiteID==	2121120013
 replace SiteName = "Godiya Clinics" if SiteID==	2121220014
 replace SiteName = "Faith Clinic Zuru" if SiteID==	2121120015
@@ -7047,7 +8691,7 @@ replace SiteName = "PHC Danchadi"	if SiteID==	3302110029
 replace SiteName = "Town Disp Danchadi"	if SiteID==	3302110030
 replace SiteName = "1 Battalion Military Hosp"	if SiteID==	3303210001
 replace SiteName = "Shuni Disp"	if SiteID==	3303110002
-replace SiteName = "Amanawa Lep/General Hosp"	if SiteID==	3303210003
+replace SiteName = "Amanawa Lep/GEN HOSP"	if SiteID==	3303210003
 replace SiteName = "Rudu Disp"	if SiteID==	3303110004
 replace SiteName = "Basic HC Amanawa"	if SiteID==	3303110005
 replace SiteName = "Bodai Kaura Disp"	if SiteID==	3303110006
@@ -7387,9 +9031,9 @@ replace SiteName = "Ungwar Lalle Disp"	if SiteID==	3313110028
 replace SiteName = "Yar Bulutu Disp"	if SiteID==	3313110029
 replace SiteName = "Garin Idi Disp"	if SiteID==	3313110030
 replace SiteName = "Kwatsal Disp"	if SiteID==	3313110031
-replace SiteName = "Nasara CLIN Sabon Birni"	if SiteID==	3313110032
-replace SiteName = "PHC Sabon Birni"	if SiteID==	3313110033
-replace SiteName = "Son AllaHC"	if SiteID==	3313110034
+replace SiteName = "Nasara Clin Sabon Birni"	if SiteID==	3313110032
+replace SiteName = "Sabon Birni Gen Hosp"	if SiteID==	3313210033
+replace SiteName = "Son Alla HC"	if SiteID==	3313110034
 replace SiteName = "Garin Abara Disp"	if SiteID==	3313110035
 replace SiteName = "Gawo Disp"	if SiteID==	3313110036
 replace SiteName = "Tsamaye Disp"	if SiteID==	3313110037
@@ -7470,7 +9114,7 @@ replace SiteName = "Sultan Palace CLIN"	if SiteID==	3316110011
 replace SiteName = "Women and Children Welfare CLIN"	if SiteID==	3316210012
 replace SiteName = "Rini Tawaye CLIN"	if SiteID==	3316110013
 replace SiteName = "Holy Family CLIN"	if SiteID==	3316210014
-replace SiteName = "Alfijir Specialist HOSP"	if SiteID==	3317220001
+replace SiteName = "Alfijir SPEC HOSP"	if SiteID==	3317220001
 replace SiteName = "Marina CLIN"	if SiteID==	3317220002
 replace SiteName = "Tudunwada CLIN"	if SiteID==	3317110003
 replace SiteName = "Anas Private HOSP"	if SiteID==	3317220004
@@ -7479,16 +9123,16 @@ replace SiteName = "Gidan Masau Disp"	if SiteID==	3317110006
 replace SiteName = "Gagi Basic HC"	if SiteID==	3317110007
 replace SiteName = "Devine HC"	if SiteID==	3317220008
 replace SiteName = "Mabera Mujaya Disp"	if SiteID==	3317110009
-replace SiteName = "Freehand Specialist HOSP"	if SiteID==	3317220010
+replace SiteName = "Freehand SPEC HOSP"	if SiteID==	3317220010
 replace SiteName = "Gidan Dahala Disp"	if SiteID==	3317110011
 replace SiteName = "Mabera Basic HC"	if SiteID==	3317110012
 replace SiteName = "Police CLIN"	if SiteID==	3317110013
-replace SiteName = "Saraki Specialist HOSP"	if SiteID==	3317220014
+replace SiteName = "Saraki SPEC HOSP"	if SiteID==	3317220014
 replace SiteName = "Sheperd CLIN"	if SiteID==	3317220015
 replace SiteName = "Wali Bako CLIN"	if SiteID==	3317220016
 replace SiteName = "Maryam Abacha Women & Children HOSP"	if SiteID==	3317210017
 replace SiteName = "Godiya CLIN"	if SiteID==	3317220018
-replace SiteName = "Sahel Specialist HOSP"	if SiteID==	3317220019
+replace SiteName = "Sahel SPEC HOSP"	if SiteID==	3317220019
 replace SiteName = "Aliyu Jodi CLIN"	if SiteID==	3317220020
 replace SiteName = "Hussein Med Center"	if SiteID==	3317220021
 replace SiteName = "Hamdala CLIN"	if SiteID==	3317220022
@@ -7497,7 +9141,7 @@ replace SiteName = "Zafari HOSP"	if SiteID==	3317220024
 replace SiteName = "Karaye CLIN"	if SiteID==	3317220025
 replace SiteName = "PPFN CLIN"	if SiteID==	3317110026
 replace SiteName = "Rijiya CLIN"	if SiteID==	3317220027
-replace SiteName = "Specialist HOSP, Sokoto"	if SiteID==	3317210028
+replace SiteName = "SPEC HOSP, Sokoto"	if SiteID==	3317210028
 replace SiteName = "Toraro CLIN"	if SiteID==	3317220029
 replace SiteName = "Bagida Disp"	if SiteID==	3318110001
 replace SiteName = "Danmadi Disp"	if SiteID==	3318110002
@@ -7792,7 +9436,7 @@ replace SiteName ="Maisandari CLIN"	if SiteID==	3503110018
 replace SiteName ="Murfa Kalam Disp"	if SiteID==	3503110019
 replace SiteName ="Nayinawa Disp"	if SiteID==	3503110020
 replace SiteName ="Sasawa Disp"	if SiteID==	3503110021
-replace SiteName ="State Specialist HOSP"	if SiteID==	3503210022
+replace SiteName ="State SPEC HOSP"	if SiteID==	3503210022
 replace SiteName ="Very Important Persons CLIN"	if SiteID==	3503220023
 replace SiteName ="Yobe Med and MCH"	if SiteID==	3503220024
 replace SiteName ="Yobe State Secretariat CLIN"	if SiteID==	3503110025
@@ -8275,7 +9919,7 @@ replace SiteName = "Tsabta Disp" if SiteID==	3601110038
 replace SiteName = "Wuya PHC" if SiteID==	3601110039
 replace SiteName = "Yan Matankari Disp" if SiteID==	3601110040
 replace SiteName = "yarsabaya Disp" if SiteID==	3601110041
-replace SiteName = "Bakura General Hosp" if SiteID==	3602210001
+replace SiteName = "Bakura GEN HOSP" if SiteID==	3602210001
 replace SiteName = "Bakura OLP Clinic" if SiteID==	3602110002
 replace SiteName = "Bakura Town Disp" if SiteID==	3602110003
 replace SiteName = "Birnin Tudu Disp (Baku)" if SiteID==	3602110004
@@ -8483,7 +10127,7 @@ replace SiteName = "100 Housing Clinic" if SiteID==	3607110001
 replace SiteName = "Gusau Gen Hosp" if SiteID==	3607210002
 replace SiteName = "Gusau FMC" if SiteID==	3607310003
 replace SiteName = "Gusau Medical Clinic" if SiteID==	3607120004
-replace SiteName = "Gusau Orphans an Less Previlaged" if SiteID==	3607210005
+replace SiteName = "Gusau Orphans & Less Privileged" if SiteID==	3607210005
 replace SiteName = "Government House Clinic" if SiteID==	3607110006
 replace SiteName = "Hayin M/Ibrahim Clinic" if SiteID==	3607110007
 replace SiteName = "Jakiri Community Desp." if SiteID==	3607110008
@@ -8504,12 +10148,12 @@ replace SiteName = "Lafiya Clinic" if SiteID==	3607110022
 replace SiteName = "Maijatau Desp." if SiteID==	3607120023
 replace SiteName = "Ruwan Bore Disp (R Bore)" if SiteID==	3607110024
 replace SiteName = "Takokai Clinic" if SiteID==	3607110025
-replace SiteName = "Arewa Hospital" if SiteID==	3607120026
+replace SiteName = "Arewa HOSP" if SiteID==	3607120026
 replace SiteName = "Bamaiyi Clinic" if SiteID==	3607120027
 replace SiteName = "Fatima Private Clinic" if SiteID==	3607120028
 replace SiteName = "Madan Karo Clinic" if SiteID==	3607110029
 replace SiteName = "Mallaha C" if SiteID==	3607120030
-replace SiteName = "Rama Hospital" if SiteID==	3607120031
+replace SiteName = "Rama HOSP" if SiteID==	3607120031
 replace SiteName = "Sabo Gari C" if SiteID==	3607120032
 replace SiteName = "Agwai Desp." if SiteID==	3607110033
 replace SiteName = "Dr Mustapha Private Clinic" if SiteID==	3607120034
@@ -8660,7 +10304,7 @@ replace SiteName = "Aljimma Disp" if SiteID==	3609110036
 replace SiteName = "Gidan Dawa Disp" if SiteID==	3609110037
 replace SiteName = "Kofar Kyarawa Desp." if SiteID==	3609110038
 replace SiteName = "Shandame (Jihiya) Disp" if SiteID==	3609110039
-replace SiteName = "Maradun General Hosp" if SiteID==	3609210040
+replace SiteName = "Maradun GEN HOSP" if SiteID==	3609210040
 replace SiteName = "Maradun Town Disp" if SiteID==	3609110041
 replace SiteName = "Maradun WCWC" if SiteID==	3609110042
 replace SiteName = "Maradun OLP" if SiteID==	3609110043
@@ -8854,7 +10498,7 @@ replace SiteName = "Rahama Clinic" if SiteID==	3613110031
 replace SiteName = "Rakyabu Disp" if SiteID==	3613110032
 replace SiteName = "Sungawa Disp" if SiteID==	3613110033
 replace SiteName = "Tsafe  OLPH" if SiteID==	3613110034
-replace SiteName = "Tsafe General Hosp" if SiteID==	3613210035
+replace SiteName = "Tsafe GEN HOSP" if SiteID==	3613210035
 replace SiteName = "Tsafe GSS Clinic" if SiteID==	3613110036
 replace SiteName = "Tsafe WCWC" if SiteID==	3613110037
 replace SiteName = "Bayan Banki Disp" if SiteID==	3613110038
@@ -8942,6 +10586,7 @@ tab SiteName, m
 
 * User Name
 replace Name = proper(Name)
+* replace . from end of name
 
 * Email
 cap gen Mail = ""
@@ -8979,5 +10624,8 @@ save "C:\TEMP\Working\REG_delete", replace
 
 do "IMAM Weekly Analysis2"
 
+* End
 
+gen namelgth = length(Name)
+gsort -namelgth
 
