@@ -20,8 +20,7 @@ cd C:\TEMP\Working\
 * Yobe 	  35
 * Zamfara 36
 
-local choosestate = 33
-
+local choosestate = 8
 
 * Quality Reporting Score
 

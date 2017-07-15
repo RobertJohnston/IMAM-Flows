@@ -2,280 +2,10 @@
 set more off
 use "C:\TEMP\Working\REG_delete", clear
 
-* Crash if SiteID and Type are not included
+* Crash if SiteID and Type were not selected in the download from RapidPro.
 des SiteID
 des Type
 
-* STOCK ALERTS
-* Create list of all personnel with their LGA and SNO telnums for stock alerts
-sort SiteID
-drop if SiteID ==.
-drop if SiteID ==0
-
-drop if SiteID > 99
-
-* First Admin 
-gen SNO1 = 0
-gen SNO2 = 0
-gen SNO3 = 0
-
-gen SNO1num  = URN
-gen SNO1name = Name
-gen SNO1mail = Mail
-
-gen SNO2num  = URN
-gen SNO2name = Name
-gen SNO2mail = Mail
-
-gen SNO3num  = URN
-gen SNO3name = Name
-gen SNO3mail = Mail
-
-order SiteID state_code state Name Post URN Mail SNO1name
-
-
-* Force include Laraba - Yobe
-replace SNO1name = "Laraba Audu." if state_code=="35"
-replace SNO1num = "+2347088113257" if state_code=="35"
-replace SNO1mail = "Laraiaudu@yahoo.com" if state_code=="35"
-
-
-
-* Adamawa-2
-replace SNO1=1 if Name=="Hauwa Zoakah ."
-replace SNO2=1 if Name=="Wullanga Alfred"
-* Hack to accept only one Alfred - removed period after name
-replace SNO3=1 if Name=="Olawumi Monica Ajayi."
-* Bauchi-5
-replace SNO1=1 if Name=="Hamza Yakubu Sade ."
-replace SNO2=1 if Name=="Ali Shehu Kobi ."
-replace SNO3=1 if Name=="Jackson Ladu Martins."
-* Borno-8
-replace SNO1=1 if Name=="Hassana Suleiman Jibrin."
-replace SNO2=1 if Name=="Abdullahi Alhaji Madi."
-replace SNO3=1 if Name=="Aminu Usman Danzomo."
-* Ifeanyi
-
-* Gombe-16
-replace SNO1=1 if Name=="Suleiman Mamman."   
-replace SNO2=1 if Name=="Ibrahim Inuwa Lano."
-replace SNO3=1 if Name=="Olufunmilayo Adepoju-Adebambo."
-* Jigawa -17
-replace SNO1=1 if Name=="Saidu Umar Adamu."
-replace SNO2=1 if Name=="Olatomiwa Olabisi."
-replace SNO3=1 if Name=="Temidayo Esther Ajala."
-* Kaduna -18
-replace SNO1=1 if Name=="Jane Gwani."
-replace SNO2=1 if Name=="Hauwa Usman."
-replace SNO3=1 if Name=="Saratu Aduwak."
-* Kano - 19
-replace SNO1=1 if Name=="Murtala M Inuwa."
-replace SNO2=1 if Name=="Sabo Wada."
-replace SNO3=1 if Name=="Ayodeji Osunkentan."
-
-* CORRECT ERROR THAT THE KATSINA PERSONNEL DO NOT EXPORT TO IMAM SUPERVISION. 
-
-* Katsina -20
-replace SNO1=1 if Name=="Rabia Mohammed Sno ."
-replace SNO2=1 if Name=="Abdulhadi Abdulkadir."  
-* +234 806 082 1551
-* hadabdul@yahoo.co.uk
-
-* "Aishatu Abdullahi" was not trained in RapidPro reporting
-replace SNO3=1 if Name=="Hamisu Idris K/bai."   
-* +2348034677471
-* hamisuhara@yahoo.com.\
-
-* notice of Katsina personnel from Abigail. 
-*Rabia Mohammed Sno- state nutrition officer
-*Aishatu Abdullahi Randawa- ASNO
-*Hamisu Hara – Stock manager.
-
-
-* Kebbi - 21
-replace SNO1=1 if Name=="Beatrice Kwere."
-replace SNO2=1 if Name=="Abdulmalik Muhammad Illo ."
-replace SNO3=1 if Name=="Shamsu Muhammed."
-* Aliyu Galadima Libata .   
-* Abisola Mary Atoyebi.
-* Sokoto - 33
-replace SNO1=1 if Name=="Muhammad Ali Hamza." 
-replace SNO2=1 if Name=="Hassan Muhammad Galadanci."
-replace SNO3=1 if Name=="Nura Muazu."
-* Yobe - 35
-replace SNO1=1 if Name=="Laraba Audu." 
-* FORCE INCLUDE LARABA
-replace SNO1=1 if SNO1num=="+2347088113257"
-drop if SNO2num=="+2347016837660"
-replace SNO2=1 if Name=="Auwal Ibrahim Jauro ."
-replace SNO3=1 if Name=="Adeleye Grace Bunmilola."
-* Zamfara - 36
-replace SNO1=1 if Name=="Aliyu Ibrahim."
-* No stocks person identified
-* Ayobami & John are nutrition consultants
-replace SNO2=1 if Name=="Ayobami Oyedeji."
-replace SNO3=1 if Name=="John Tsebam ."
-* Ayobami Oyedeji.   
-* Azeezat O. Sule.   
-
-order SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
-
-
-* DELETE IF PERSON IN NOT IN CORRECT POST
-replace SNO1name = "" if SNO1!=1
-replace SNO1num = "" if SNO1!=1
-replace SNO1mail = "" if SNO1!=1
-
-replace SNO2name = "" if SNO2!=1
-replace SNO2num = "" if SNO2!=1
-replace SNO2mail = "" if SNO2!=1
-
-replace SNO3name = "" if SNO3!=1
-replace SNO3num = "" if SNO3!=1
-replace SNO3mail = "" if SNO3!=1
-
-
-* reformat to one line per state with SNO1 SNO2 SNO3 in line. 
-drop if SNO1==0 & SNO2==0 & SNO3==0
-
-order SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
-keep SiteID state_code state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail
-
-* poor hack to force collapse to work
-
-* ERROR HERE.  HACK DID NOT WORK CORRECTLY REDO.
-* should merge out and merge back in all data
-
-* intro of state code above may correct bad hack
-*cleaning bad hack
-replace SNO2name = "" if SNO1name=="Saidu Umar Adamu."
-
-* Collapse 
-bysort SiteID : egen last =seq()
-bysort SiteID : egen max =max(last)
-drop if last!=max
-drop last max
-
-
-save "C:\TEMP\Working\SNO", replace
-
-* LGA NUTRITION FOCAL POINTS - ONLY ID OF ONE
-use "C:\TEMP\Working\REG_delete", clear
-gen LGA1num = URN
-gen LGA1name = Name
-gen LGA1mail = Name
-
-keep if SiteID > 99 & SiteID < 9999
-sort SiteID
-order  SiteID state_code state lga_code lga  Name Post LGA1num LGA1mail 
-keep if Post =="Coordinator" 
-
-* Edits - data cleaning
-* When LGA nut foc points have two numbers have to find out which one works the best. 
-* Duplicate as from 2nd phone - deleted least active
-drop if LGA1num=="+2348081798563"  
-drop if URN =="+2348065871088"
-drop if URN =="+2348065356507"
-drop if URN =="+2347037202082"
-drop if URN =="+2347030635580"
-drop if URN =="+2348029334430"
-drop if Name=="Binta Ibrahim Shehu.."
-drop if Name=="Yagana Mohammed ."
-drop if Name=="Muhammad Ibrahim."
-drop if Name=="Ibrahim Buhari."
-drop if Name=="Abbas Abdullahi Kalgo."
-* Probably LGA stores managers
-drop if Name=="Abubakar. Umar."
-drop if Name=="Bashir Lawan."
-drop if Name=="Aliyu Muhammed."
-drop if Name=="Zainab Nayaya." & SiteID==1703 
-drop if Name=="Sani Bedi." & SiteID==2109 
-*Duplicate for Hadiza Gidado. This can be deleted later
-drop if URN =="+2348029854140"
-* Drop duplicate Bello Umar
-drop if URN =="+2347035888665"
-* Duplicate of same person Amina
-drop if Name=="Amin Yahaya Muhammad."
-* extra coordinator Abubakar ?
-drop if Name=="Abubakar  Umar."
-* Jere LGA Borno
-drop if Name=="Maaji Fali."
-* Monguno LGA Borno
-drop if Name=="Zara Modu."
-* Birnin Kebbi LGA Kebbi
-drop if Name=="Altine Muhammad."
-* Kaugama, Jigawa
-drop if Name=="Danladisule."
-
-* Kano state
-* Bichi LGA
-drop if Name=="Hajiya Lami Garba." 
-* Hajiya was old NFP - replaced in Mar17
-* else LGA nut foc is Amina Yusuf Turaki .
-
-* Abdulhadi Abubakar is name of state stores manager of Katsina state. 
-drop if Name=="Abdulhadi Abubakar." & SiteID==2005
-* duplicate name with different spelling of LGA focal point. 
-drop if Name=="Lami   Garba." & SiteID==1905
-drop if Name=="Lami Garba." & SiteID==1905 
-
-* late registrations on 7 Nov for Katsina ???
-drop if Name=="Umar Muntari."
-drop if Name=="Abdul Hadi Abubakar." 
-drop if Name=="Rapidpro."
-
-* Late registration in Adamawa
-drop if Name=="Ularamai Raphael ."
-
-drop if Name=="Binta.Y.Saulawa."
-
-
-* Batsari LGA Katsina
-drop if Name== "Abdul Yasore"
-drop if Name== "Abdul Yasore."
-drop if Name== "Assama'u Tukur."
-
-* more than on entry by name
-egen only_one = tag(SiteID Name)
-drop if only_one !=1
-tab Name, m 
-
-* more than one entry by SiteID
-egen only_one_id = tag(SiteID )
-list SiteID Name state lga Post if only_one_id!=1
-
-list SiteID Name state lga Post 
-
-save "C:\TEMP\Working\LGA", replace
-
-* Add LGA and SNO to implementation site level list. 
-use "C:\TEMP\Working\REG_delete", clear
-drop if SiteID ==. 
-merge m:1 state_code using "C:\TEMP\Working\SNO"
-drop _merge
-
-merge m:1 lga_code using "C:\TEMP\Working\LGA"
-sort SiteID
-format SiteID %10.0f
-gen Phone = URN
-
-* Data cleaning of IMAM Supervision
-drop if SiteID==1
-
-order  Name Phone SiteID SiteName Post state lga SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail /// 
-	state_code lga_code LGA1num LGA1name LGA1mail 
-keep Phone Name SiteID SiteName state SNO1name SNO1num SNO1mail SNO2name SNO2num SNO2mail SNO3name SNO3num SNO3mail /// 
-	 lga LGA1num LGA1name LGA1mail 
-
-* UPLOAD OF IMAM Supervision to rapidpro - does not accept underscore in variable names - do we need state_code and lga_code ?
-	
-	
-* Save IMAM Supervision
-save "C:\TEMP\Working\IMAM_Supervision", replace
-export excel using "IMAM_Supervision", firstrow(variables) replace
-
-* Next
-use "C:\TEMP\Working\REG_delete", clear
 * Site Level Data
 
 *Include only one SiteID for merge with programme data. 
@@ -310,11 +40,27 @@ import excel "C:\TEMP\pro.xlsx", sheet("Runs") firstrow clear
 * YOU MUST INCLUDE in the download. 
 des SiteID
 
+destring SiteID, gen(SiteIDtemp)force
+* This has been corrected in RapidPro
+replace SiteIDtemp = 3301110008 if SiteID == "33 01 11 0008"
+
 * Level (First, Second, or Implementation Site)
 * Role (Supervision or Implementation)
-gen Role = RoleCategory
-gen Level = RoleValue
+* gen Role = RoleCategory
+gen Role = SiteIDCategoryIMAMProgram
+replace Role = "Implementation" if Role =="" & SiteIDtemp > 101110001 & SiteIDtemp < 3699990999
+replace Role = "Implementation" if Role =="Other" & SiteIDtemp > 101110001 & SiteIDtemp < 3699990999
+replace Role = "Supervision" if Role =="" & SiteIDtemp < 3699
+replace Role = "Supervision" if Role =="Other" & SiteIDtemp < 3699
+replace Role = "" if Role =="Other" 
+replace Role = "" if SiteIDtemp ==99
 tab Role, m 
+
+gen Level = SiteIDValueIMAMProgram
+replace Level = "Site" if SiteIDtemp > 101110001 & SiteIDtemp < 3699990999
+replace Level = "Second" if SiteIDtemp > 101 & SiteIDtemp < 3699
+replace Level = "First" if SiteIDtemp >= 1 & SiteIDtemp <= 36
+replace Level = "" if SiteIDtemp ==99
 tab Level, m 
 
 * SiteID for programme data report
@@ -374,7 +120,8 @@ replace Tout = Tout_iValue if Type=="SC"
 destring Beg Amar Tin Dcur Dead Defu Dmed Tout, replace force
 
 * Drop data that are not confirmed, answered with NO
-drop if ConfirmCategory =="No"
+drop if ConfirmCategory !="Yes"
+tab ConfirmCategory, m 
 
 * Delete training data ( program and stock data that goes 1,2,4,6,8… ) 
 * always review carefully after training.
@@ -423,12 +170,34 @@ drop if SiteID =="Nat"
 drop if SiteID =="Aclo 1234567890"
 
 * drop if data are reported as incorrect(confirmation)
-drop if ConfirmCategoryIMAMStock =="No"
+drop if ConfirmCategoryIMAMStock !="Yes"
+tab ConfirmCategoryIMAMStock, m 
+
+destring SiteID, gen(SiteIDtemp) force
 
 * Role (Implementation or Supervision)
-gen Role = PostLevelCategory
+* gen Role = PostLevelCategory
+
+gen Role = SiteIDCategoryIMAMStock
+replace Role = "Implementation" if Role =="" & SiteIDtemp > 101110001 & SiteIDtemp < 3699990999
+replace Role = "Implementation" if Role =="Other" & SiteIDtemp > 101110001 & SiteIDtemp < 3699990999
+replace Role = "Supervision" if Role =="" & SiteIDtemp < 3699
+replace Role = "Supervision" if Role =="Other" & SiteIDtemp < 3699
+replace Role = "" if Role =="Other" 
+replace Role = "" if SiteIDtemp ==99
+tab Role, m 
+
 * Level (Site, Second, First, National
-gen Level = PostLevelValue
+* gen Level = PostLevelValue
+gen Level = SiteIDValueIMAMStock
+replace Level = "Site" if SiteIDtemp > 101110001 & SiteIDtemp < 3699990999
+replace Level = "Second" if SiteIDtemp > 101 & SiteIDtemp < 3699
+replace Level = "First" if SiteIDtemp >= 1 & SiteIDtemp <= 36
+replace Level = "" if SiteIDtemp ==99
+tab Level, m 
+
+
+
 
 * SiteID
 tostring StoSiteIDValueIMAMStock, replace
@@ -558,8 +327,8 @@ import excel "C:\TEMP\lga.xlsx", sheet("Runs") firstrow clear
 des SiteID 
 
 * Drop if confirmation equals No or SiteID = X
-drop if ConfirmCategory =="No"
-drop if SiteID =="X"
+drop if ConfirmCategory !="Yes"
+tab ConfirmCategory, m 
 
 * Saratu Aduwak of KADUNA was registered with SiteID 18/S 
 replace SiteID = "18" if SiteID =="18/S"

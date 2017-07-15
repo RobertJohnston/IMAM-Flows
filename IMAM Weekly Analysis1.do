@@ -31,11 +31,11 @@ import excel "C:\TEMP\reg.xlsx", sheet("Contacts") firstrow
 * All persons currently in registration flow are involved with CMAM
 
 * SiteID
-* Crash program if SiteID is not included in reg.
+* Crash program if SiteID was not selected for download from RapidPro. 
 sort SiteID
 
 * Type
-* Crash program if Type is not included in reg.
+* Crash program if Type was not selected for download from RapidPro. 
 tab Type, m
 
 * CLEAN ALL THE FOLLOWING IN THE RAPIDPRO DATABASE. 
